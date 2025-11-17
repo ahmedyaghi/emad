@@ -24,7 +24,7 @@ class SettingsProvider extends ServiceProvider
     {
 
         if (Schema::hasTable('settings')) {
-            $settings = Setting::pluck('key', 'value')->toArray();
+            $settings = Setting::pluck('value', 'key')->toArray();
             View::share('settings', $settings);
         }
     }

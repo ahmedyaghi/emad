@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\TrainingOpportunity;
 use Illuminate\Database\Seeder;
 
-class TrainingOpportunitiesTableSeeder extends Seeder
+class TrainingOpportunitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class TrainingOpportunitiesTableSeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             TrainingOpportunity::create([
                 'association_id' => 1,
-                'title' => 'فرصة تدريب في القطاع غير الربحي',
+                'title' => 'فرصة تدريب في القطاع غير الربحي'.$i,
                 'short_description' => 'اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.',
                 'location' => 'مكة المكرمة – المنطقة المركزية ',
                 'duration' => 'دوام كامل – 8 ساعات',
@@ -24,6 +24,7 @@ class TrainingOpportunitiesTableSeeder extends Seeder
                 'responsibilities' => 'Responsibilities for training opportunity ',
                 'conditions' => 'Conditions for training opportunity ',
                 'features' => 'Features of training opportunity ',
+                'slug' => 'forsat-tadrib-'.$i,
             ]);
         }
     }

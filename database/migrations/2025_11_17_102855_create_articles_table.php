@@ -11,19 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('training_opportunities', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('association_id')->constrained('associations')->onDelete('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('short_description')->nullable();
-            $table->string('location')->nullable();
-            $table->string('duration')->nullable();
-            $table->string('attendance')->nullable();
-            $table->string('salaray')->nullable();
-            $table->text('responsibilities')->nullable();
-            $table->text('conditions')->nullable();
-            $table->text('features')->nullable();
+            $table->string('image')->nullable();
+            $table->text('description')->nullable();
+            $table->date('published_at')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('training_opportunities');
+        Schema::dropIfExists('articles');
     }
 };

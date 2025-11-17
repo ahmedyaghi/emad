@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Association;
 use Illuminate\Database\Seeder;
 
-class AssociationsTableSeeder extends Seeder
+class AssociationSeeder extends Seeder
 {
     /**
      * Run the database seeds.

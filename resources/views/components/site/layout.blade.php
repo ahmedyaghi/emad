@@ -1,3 +1,4 @@
+@props(['internal' => true])
 <!DOCTYPE html>
 <html dir="rtl">
   <head>

@@ -1,28 +1,10 @@
 <x-site.layout>
     <div class="main-wrapper">
-<!-- begin:: Header --> 
-      <div class="main-header internal">
-        <nav class="navbar navbar-expand-lg navbar-light py-0">
-          <div class="overlay collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"></div>
-          <div class="container"><a class="navbar-brand py-0" href="#"><img src="assets/images/logo.svg" alt=""/></a>
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars fa-lg"></i></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars fa-lg"></i></button>
-              <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link active" href="index.html">الرئيسية</a></li>
-                <li class="nav-item"><a class="nav-link" href="training.html">فرص تدريبية</a></li>
-                <li class="nav-item"><a class="nav-link" href="blogs.html">المقالات </a></li>
-                <li class="nav-item"><a class="nav-link" href="">تواصل معنا</a></li>
-              </ul>
-              <ul class="navbar-nav align-items-lg-center col-auto">
-                <li class="nav-item mx-lg-2 mb-3 mb-lg-0"><a class="btn btn-white roubnded-pill" href="" data-bs-toggle="modal" data-bs-target="#modalRegister">انشاء الحساب</a></li>
-                <li class="nav-item"><a class="btn btn-primary roubnded-pill" href="" data-bs-toggle="modal" data-bs-target="#loginModal">تسجيل الدخول</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div><!-- end:: Header --> 
-      <main><!-- start:: section -->
+      <!-- begin:: Header --> 
+        <x-site.header />
+      <!-- end:: Header --> 
+      <main>
+        <!-- start:: section -->
         <section class="section section-home" style="background:url(assets/images/bg-home.png); background-repeat: no-repeat; background-size: cover;">
           <div class="container">
             <div class="row mb-4">
@@ -178,7 +160,8 @@
         @endif
         <!-- end:: section -->
         
-<!-- start:: section -->  
+        <!-- start:: section -->
+        @if(!$articles->isEmpty())  
         <section class="section">
           <div class="container">
             <div class="row mb-5">
@@ -193,114 +176,19 @@
               <div class="swiper-wrapper-wrapper">
                 <div class="swiper swiper-training">
                   <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <div class="widget_item-card m-2 widget_2">
-                        <div class="widget_item-image mb-3"><a href=""> 
-                            <picture> <img src="assets/images/image.png" alt=""/></picture></a></div>
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-2"><a href="">اسم المقال</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                          <div class="widget_item-campany mb-4 d-flex align-items-center">
-                            <div class="campany-image me-2"><img src="assets/images/logo.svg" alt=""/></div>
-                            <h6 class="campany-name">شركة عماد </h6>
-                          </div>
-                          <div class="widget_item-info mt-3 pt-3">
-                            <div class="d-flex align-items-start"><img class="info-icon me-2" src="assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="widget_item-card m-2 widget_2">
-                        <div class="widget_item-image mb-3"><a href=""> 
-                            <picture> <img src="assets/images/image.png" alt=""/></picture></a></div>
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-2"><a href="">اسم المقال</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                          <div class="widget_item-campany mb-4 d-flex align-items-center">
-                            <div class="campany-image me-2"><img src="assets/images/logo.svg" alt=""/></div>
-                            <h6 class="campany-name">شركة عماد </h6>
-                          </div>
-                          <div class="widget_item-info mt-3 pt-3">
-                            <div class="d-flex align-items-start"><img class="info-icon me-2" src="assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="widget_item-card m-2 widget_2">
-                        <div class="widget_item-image mb-3"><a href=""> 
-                            <picture> <img src="assets/images/image.png" alt=""/></picture></a></div>
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-2"><a href="">اسم المقال</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                          <div class="widget_item-campany mb-4 d-flex align-items-center">
-                            <div class="campany-image me-2"><img src="assets/images/logo.svg" alt=""/></div>
-                            <h6 class="campany-name">شركة عماد </h6>
-                          </div>
-                          <div class="widget_item-info mt-3 pt-3">
-                            <div class="d-flex align-items-start"><img class="info-icon me-2" src="assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="widget_item-card m-2 widget_2">
-                        <div class="widget_item-image mb-3"><a href=""> 
-                            <picture> <img src="assets/images/image.png" alt=""/></picture></a></div>
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-2"><a href="">اسم المقال</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                          <div class="widget_item-campany mb-4 d-flex align-items-center">
-                            <div class="campany-image me-2"><img src="assets/images/logo.svg" alt=""/></div>
-                            <h6 class="campany-name">شركة عماد </h6>
-                          </div>
-                          <div class="widget_item-info mt-3 pt-3">
-                            <div class="d-flex align-items-start"><img class="info-icon me-2" src="assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="widget_item-card m-2 widget_2">
-                        <div class="widget_item-image mb-3"><a href=""> 
-                            <picture> <img src="assets/images/image.png" alt=""/></picture></a></div>
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-2"><a href="">اسم المقال</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                          <div class="widget_item-campany mb-4 d-flex align-items-center">
-                            <div class="campany-image me-2"><img src="assets/images/logo.svg" alt=""/></div>
-                            <h6 class="campany-name">شركة عماد </h6>
-                          </div>
-                          <div class="widget_item-info mt-3 pt-3">
-                            <div class="d-flex align-items-start"><img class="info-icon me-2" src="assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide">
-                      <div class="widget_item-card m-2 widget_2">
-                        <div class="widget_item-image mb-3"><a href=""> 
-                            <picture> <img src="assets/images/image.png" alt=""/></picture></a></div>
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-2"><a href="">اسم المقال</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                          <div class="widget_item-campany mb-4 d-flex align-items-center">
-                            <div class="campany-image me-2"><img src="assets/images/logo.svg" alt=""/></div>
-                            <h6 class="campany-name">شركة عماد </h6>
-                          </div>
-                          <div class="widget_item-info mt-3 pt-3">
-                            <div class="d-flex align-items-start"><img class="info-icon me-2" src="assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    @foreach ($articles as $article)
+                      <x-site.article :model="$article" />
+                    @endforeach
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section><!-- end:: section --> 
+        </section>
+        @endif
+        <!-- end:: section --> 
+
+
 <!-- start:: section -->  
         <section class="section section-join">
           <div class="container">
