@@ -224,12 +224,12 @@ $(document).ready(function () {
       const isValid = validateStep(currentStepIndex);
       if (!isValid) return false;
 
-      if (currentStepIndex === 1 && nextStepIndex === 2 && !otpVerified) {
-        e.preventDefault();
-        otpModal.show();
-        setTimeout(() => $('.otp-input').first().focus(), 400);
-        return false;
-      }
+      // if (currentStepIndex === 1 && nextStepIndex === 2 && !otpVerified) {
+      //   e.preventDefault();
+      //   otpModal.show();
+      //   setTimeout(() => $('.otp-input').first().focus(), 400);
+      //   return false;
+      // }
     }
     return true;
   });

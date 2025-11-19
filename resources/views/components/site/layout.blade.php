@@ -39,7 +39,16 @@
   <body>
     <!-- begin:: Page -->
       <div class="page">
-        {{ $slot }}        
+        <div class="main-wrapper">
+        <!-- begin:: Header --> 
+          <x-site.header :internal="$internal"/>
+        <!-- end:: Header --> 
+        <main>
+          {{ $slot }}  
+        </main>
+        <x-site.footer />
+        <x-site.modal />
+        </div>
       </div>
     <!-- end:: Page -->
     <script src="{{ asset('assets/js/query.min.js') }}"></script>

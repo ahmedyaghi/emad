@@ -1,10 +1,5 @@
 <x-site.layout :internal="false">
-    <div class="main-wrapper">
-      <!-- begin:: Header --> 
-        <x-site.header :internal="false"/>
-      <!-- end:: Header --> 
-        <main>
-            <!-- start:: section -->
+       <!-- start:: section -->
         <section class="section section-bg-light">
           <div class="container">
             <div class="row mb-4">
@@ -13,15 +8,15 @@
                   <div class="col-12"> 
                     <ol class="breadcrumb">
                       <div class="breadcrumb-item"><a href=""> طلبات العمل</a></div>
-                      <div class="breadcrumb-item">فرصة تدريب في القطاع غير الربحي</div>
+                      <div class="breadcrumb-item">{{$training_opportunity->title}}</div>
                     </ol>
                   </div>
                 </div>
                 <div class="row mb-4"> 
                   <div class="col-12">
                     <div class="pannel">
-                      <h2 class="mb-3 font-semi-bold font-24">فرصة تدريب في القطاع غير الربحي</h2>
-                      <h6 class="text-gray">تبحث شركة الإسناد الموسمي لخدمات الحجاج عن أفراد مؤهلين للانضمام إلى فريقها كمشرفين ميدانيين خلال موسم الحج. ستكون مسؤولاً عن تنظيم وإرشاد مجموعة من الحجاج أثناء تنقلهم بين المشاعر المقدسة، وضمان التزامهم بالتعليمات والخطط التشغيلية.</h6>
+                      <h2 class="mb-3 font-semi-bold font-24">{{$training_opportunity->title}}</h2>
+                      <h6 class="text-gray">{{$training_opportunity->short_description}}</h6>
                     </div>
                   </div>
                 </div>
@@ -46,11 +41,7 @@
                           </div>
                           <div class="card-body">
                             <ul class="description-list">
-                              <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                              <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                              <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                              <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                              <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                              {!! $training_opportunity->responsibilities !!}
                             </ul>
                           </div>
                         </div>
@@ -62,11 +53,7 @@
                           </div>
                           <div class="card-body">
                             <ul class="description-list">
-                              <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                              <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                              <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                              <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                              <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                              {!! $training_opportunity->conditions !!}
                             </ul>
                           </div>
                         </div>
@@ -78,11 +65,7 @@
                           </div>
                           <div class="card-body">
                             <ul class="description-list">
-                              <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                              <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                              <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                              <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                              <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                             {!! $training_opportunity->features !!}
                             </ul>
                           </div>
                         </div>
@@ -96,10 +79,10 @@
                   <h5 class="mb-3 font-bold">تفاصيل التدريب</h5>
                   <hr/>
                   <ul class="description-list-2">
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/location.svg" alt=""/></span> مكة المكرمة – المشاعر المقدسة (منى – مزدلفة – عرفات).</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/briefcase.svg" alt=""/></span> دوام كامل – 8 ساعات</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/calendar.svg" alt=""/></span> 10 أيام (من 1 ذو الحجة حتى 10 ذو الحجة)</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/riyal-circular.svg" alt=""/></span> مرتب 3000 ريال سعودي</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/location.svg" alt=""/></span>{{$training_opportunity->location}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/briefcase.svg" alt=""/></span> {{$training_opportunity->attendance}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/calendar.svg" alt=""/></span>{{$training_opportunity->duration}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/riyal-circular.svg" alt=""/></span> {{$training_opportunity->salaray}}</li>
                     <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/user2.svg" alt=""/></span> الذكور فقط لهذه الوظيفة.</li>
                   </ul>
                   <hr/><a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
@@ -107,6 +90,6 @@
               </div>
             </div>
           </div>
-        </section><!-- end:: section -->  
-        </main>
+        </section>
+        <!-- end:: section -->  
 </x-site.layout>

@@ -180,17 +180,9 @@ return [
         'location' => 'الموقع',
         'project_id' => 'المشروع',
         'experience' => 'الخبرة',
-        'city_id' => 'المدينة',
-        'age_range_id' => 'الفئة العمرية',
-        'free_time_range_id' => 'أوقات التفرغ المتاحة',
-        'has_previous_experience' => 'هل لديك خبرة سابقة في العمل التطوعي؟',
-        'aid_type_id' => 'نوع الطلب',
-        'aid_text' => 'خطاب طلب الإعانة',
-        'aid_title' => 'عنوان الطلب',
         'duration' => 'المدة',
-        'volunteer_category_id' => 'تصنيف النشاط التطوعي',
         'short_description' => 'الوصف القصير',
-        'working_hours' => 'عدد ساعات التطوع',
+        'sex' => 'الجنس',
 
     ],
 ];

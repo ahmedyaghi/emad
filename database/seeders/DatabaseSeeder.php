@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserTypeEnum;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,18 +24,12 @@ class DatabaseSeeder extends Seeder
         $admin = User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@admin.com',
-            'id_number' => '794876816',
+            'id_number' => '803218148',
+            'type' => UserTypeEnum::ADMIN,
         ]);
+
+        $admin->profile()->create([]);
 
         $admin->assignRole('admin');
-
-        $user = User::factory()->create([
-            'name' => 'User',
-            'email' => 'user@user.com',
-            'id_number' => '204714353',
-        ]);
-
-        $user->assignRole('user');
-
     }
 }

@@ -1,10 +1,4 @@
-<x-site.layout>
-    <div class="main-wrapper">
-      <!-- begin:: Header --> 
-        <x-site.header />
-      <!-- end:: Header --> 
-        <main>
-
+<x-site.layout >
         <!-- start:: section -->
         <section class="section section-home" style="background:url(../assets/images/bg-training.png); background-repeat: no-repeat; background-size: cover;background-position: bottom;">
           <div class="container">
@@ -141,5 +135,4 @@
             </div>
           </div>
         </section><!-- end:: section --> 
-      </main>
 </x-site.layout>
