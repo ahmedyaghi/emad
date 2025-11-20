@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,8 +16,6 @@ jobs:
       with:
         php-version: 8.2
 
-
-
     - name: Deploy Using SSH
       uses: appleboy/ssh-action@v0.1.9
       with:
@@ -28,7 +25,7 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         
         script: |
-          cd domains/basiqat.ng/public_html/emad-backend
+          cd domains/emadpro.com/public_html
           git pull origin main
           composer install --optimize-autoloader --no-dev --no-progress --no-interaction --prefer-dist
           php artisan migrate:fresh --seed
