@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Enums\UserTypeEnum;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,16 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AssociationSeeder::class);
         $this->call(TrainingOpportunitySeeder::class);
         $this->call(ArticleSeeder::class);
-
-        $admin = User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'id_number' => '803218148',
-            'type' => UserTypeEnum::ADMIN,
-        ]);
-
-        $admin->profile()->create([]);
-
-        $admin->assignRole('admin');
+        $this->call(UserSeeder::class);
     }
 }

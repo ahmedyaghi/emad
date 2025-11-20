@@ -111,26 +111,9 @@
               @endif
 
             </div>
-            <div class="row"> 
+                <div class="row"> 
               <div class="col-12">
-                <div class="d-lg-flex align-items-center justify-content-between">
-                  <div class="d-lg-flex align-items-center">
-                    <select class="form-control  select2 rounded" data-width="70px">
-                      <option value="9">9</option>
-                      <option value="8">8</option>
-                      <option value="7">7</option>
-                      <option value="6">6</option>
-                    </select>
-                    <h4 class="ms-2 my-4 my-lg-0">تم عرض من 1 إلى 9 من أصل 40</h4>
-                  </div>
-                  <ul class="pagination">
-                    <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                    <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                    <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                    <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                    <li class="page-item"><a class="page-link" href=""> 5</a></li>
-                  </ul>
-                </div>
+                {{$training_opportunities->links('site.pagination')}}
               </div>
             </div>
           </div>

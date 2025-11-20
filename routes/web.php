@@ -28,16 +28,25 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+    Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
+    });
+
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
-        Route::get('/', [App\Http\Controllers\Individual\MainController::class, 'main'])->name('main');
+        Route::get('/', [App\Http\Controllers\Individual\DashboardController::class, 'dashboard'])->name('dashboard');
+    });
+
+    Route::group(['prefix' => 'association', 'as' => 'association.', 'middleware' => ['role:association']], function () {
+        Route::get('/', [App\Http\Controllers\Association\DashboardController::class, 'dashboard'])->name('dashboard');
+    });
+
+    Route::group(['prefix' => 'faculty-member', 'as' => 'faculty-member.', 'middleware' => ['role:faculty-member']], function () {
+        Route::get('/', [App\Http\Controllers\FacultyMember\DashboardController::class, 'dashboard'])->name('dashboard');
+    });
+
+    Route::group(['prefix' => 'consultant', 'as' => 'consultant.', 'middleware' => ['role:consultant']], function () {
+        Route::get('/', [App\Http\Controllers\Consultant\DashboardController::class, 'dashboard'])->name('dashboard');
     });
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {});
-
-/** Admin Routes */
-Route::group(['prefix' => 'admin'], function () {
-
-    Route::group(['middleware' => ['auth', 'role:admin']], function () {});
-});
-/** Admin Routes */

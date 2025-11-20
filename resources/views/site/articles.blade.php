@@ -52,7 +52,6 @@
             <div class="row"> 
               <div class="col-12">
                 {{$articles->links('site.pagination')}}
-                
               </div>
             </div>
           </div>
