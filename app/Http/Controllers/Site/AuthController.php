@@ -42,7 +42,7 @@ class AuthController extends Controller
     public function handle_register_individual(RegisterIndividualRequest $request)
     {
 
-        //UserService::register($request->validated());
+        // UserService::register($request->validated());
         $data = $request->validated();
         $user = User::create([
             'name' => $data['name'],
@@ -141,6 +141,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect()->route('main')->with('success', 'رافقتك السلامة');
     }
 }

@@ -14,6 +14,7 @@ class MainController extends Controller
         $associations = Association::all();
         $training_opportunities = TrainingOpportunity::all();
         $articles = Article::all();
+
         return view('site.main', get_defined_vars());
     }
 }

@@ -16,6 +16,7 @@ class ContactUsController extends Controller
     public function handle_contact_us(ContactUsRequest $request)
     {
         ContactUs::create($request->validated());
+
         return redirect()->route('main');
     }
 }
