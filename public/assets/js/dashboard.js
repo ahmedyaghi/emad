@@ -8,7 +8,7 @@ $(document).ready(function () {
       Switch View (List / Grid)
   --------------------------------------*/
   $(".list-view").on("click", function () {
-    $(".view-mode .tab-pane.active")
+    $(".view-mode .tab-pane.active,.view-mode")
       .addClass("list-view-mode")
       .removeClass("grid-view-mode");
 
@@ -17,7 +17,7 @@ $(document).ready(function () {
   });
 
   $(".grid-view").on("click", function () {
-    $(".view-mode .tab-pane.active")
+    $(".view-mode .tab-pane.active,.view-mode")
       .addClass("grid-view-mode")
       .removeClass("list-view-mode");
 
@@ -29,13 +29,10 @@ $(document).ready(function () {
   /*------------------------------------
       Initialize Summernote Editor
   --------------------------------------*/
-  if ($('#summernote').length && $.fn.summernote) {
-    $('#summernote').summernote({
-      height: 300,
-      lang: 'ar-AR'
-    });
-}
-
+  $('#summernote').summernote({
+    height: 300,
+    lang: 'ar-AR'
+  });
 
 
   /*------------------------------------

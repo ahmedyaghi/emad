@@ -1712,6 +1712,7 @@ hr {
   visibility: visible;
 }
 
+.view-mode > div,
 .view-mode .tab-pane .row > div {
   transition: all 0.3s ease;
 }
@@ -1730,6 +1731,22 @@ hr {
   .view-mode .tab-pane.grid-view-mode .row > div {
     flex: 0 0 50%;
     max-width: 50%;
+  }
+}
+.view-mode.list-view-mode > div {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+@media (min-width: 992px) {
+  .view-mode.list-view-mode > div .widget_item-info > .col-6 {
+    width: 25%;
+  }
+}
+
+@media (min-width: 992px) {
+  .view-mode.grid-view-mode > div {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
   }
 }
 .list-view.active,
