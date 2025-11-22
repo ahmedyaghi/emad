@@ -60,5 +60,36 @@
     <script src="{{ asset('assets/js/smartWizard.min.js') }}"></script>
     <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+      $(document).ready(function() {
+          var $select = $('#per_page');
+
+          // Initialize Select2 (if not already)
+          if (!$select.hasClass('select2-hidden-accessible')) {
+              $select.select2({
+                  width: '70px'
+              });
+          }
+
+          $select.on('select2:select', function(e) {
+              var value = e.params.data.id; // selected value
+
+              // Use URL API to modify current URL
+              var url = new URL(window.location.href);
+
+              // Set per_page parameter
+              url.searchParams.set('per_page', value);
+
+              // Reset page to 1
+              url.searchParams.set('page', 1);
+
+              // Redirect
+              window.location.href = url.toString();
+          });
+      });
+      </script>
+
+
+
   </body>
 </html> 

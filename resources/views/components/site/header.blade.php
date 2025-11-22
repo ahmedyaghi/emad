@@ -7,10 +7,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars fa-lg"></i></button>
             <ul class="navbar-nav mx-auto">
-            <li class="nav-item"><a class="nav-link active" href="{{route('main')}}">الرئيسية</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{route('training-opportunities')}}">فرص تدريبية</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{route('articles')}}">المقالات </a></li>
-            <li class="nav-item"><a class="nav-link" href="{{route('contact-us')}}">تواصل معنا</a></li>
+            <li class="nav-item"><a class="nav-link {{ request()->routeIs('main') ? 'active' : '' }}" href="{{route('main')}}">الرئيسية</a></li>
+            <li class="nav-item"><a class="nav-link {{ request()->routeIs('training-opportunities') ? 'active' : '' }}" href="{{route('training-opportunities')}}">فرص تدريبية</a></li>
+            <li class="nav-item"><a class="nav-link {{ request()->routeIs('articles') ? 'active' : '' }}" href="{{route('articles')}}">المقالات </a></li>
+            <li class="nav-item"><a class="nav-link {{ request()->routeIs('contact-us') ? 'active' : '' }}" href="{{route('contact-us')}}">تواصل معنا</a></li>
             </ul>
             @guest
             <ul class="navbar-nav align-items-lg-center col-auto">
