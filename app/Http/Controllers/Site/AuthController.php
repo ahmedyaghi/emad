@@ -9,11 +9,10 @@ use App\Http\Requests\Site\Auth\RegisterAssociationRequest;
 use App\Http\Requests\Site\Auth\RegisterConsultantRequest;
 use App\Http\Requests\Site\Auth\RegisterFacultyMemberRequest;
 use App\Http\Requests\Site\Auth\RegisterIndividualRequest;
-use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
@@ -39,82 +38,24 @@ class AuthController extends Controller
         }
     }
 
-    public function handle_register_individual(RegisterIndividualRequest $request)
+    public function handle_register(Request $request, $type)
     {
 
-        // UserService::register($request->validated());
-        $data = $request->validated();
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'id_number' => $data['id_number'],
-            'type' => UserTypeEnum::INDIVIDUAL,
-            'phone' => $data['phone'],
-            'password' => Hash::make(123456),
+        $enum_type = UserTypeEnum::from($type);
+        $type = Str::lower($enum_type->name);
 
-        ]);
+        $form_request_class = match ($type) {
+            'individual' => RegisterIndividualRequest::class,
+            'association' => RegisterAssociationRequest::class,
+            'faculty_member' => RegisterFacultyMemberRequest::class,
+            'consultant' => RegisterConsultantRequest::class,
+            default => throw new \InvalidArgumentException('Invalid type'),
+        };
 
-        $user->profile()->create([]);
-        $user->assignRole('individual');
+        $form_request = app($form_request_class);
+        $data = $form_request->validated();
 
-        return view('site.auth.registration_success');
-    }
-
-    public function handle_register_association(RegisterAssociationRequest $request)
-    {
-        $data = $request->validated();
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'type' => UserTypeEnum::ASSOCIATION,
-            'phone' => $data['phone'],
-            'password' => Hash::make(123456),
-
-        ]);
-
-        $user->profile()->create([]);
-        $user->assignRole('association');
-
-        return view('site.auth.registration_success');
-    }
-
-    public function handle_register_faculty_member(RegisterFacultyMemberRequest $request)
-    {
-        $data = $request->validated();
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'id_number' => $data['id_number'],
-            'type' => UserTypeEnum::FACULTY_MEMBER,
-            'phone' => $data['phone'],
-            'password' => Hash::make(123456),
-
-        ]);
-
-        $user->profile()->create([]);
-        $user->assignRole('faculty-member');
-
-        return view('site.auth.registration_success');
-    }
-
-    public function handle_register_consultant(RegisterConsultantRequest $request)
-    {
-
-        $data = $request->validated();
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'id_number' => $data['id_number'],
-            'type' => UserTypeEnum::CONSULTANT,
-            'phone' => $data['phone'],
-            'password' => Hash::make(123456),
-
-        ]);
-
-        $user->profile()->create([]);
-        $user->assignRole('consultant');
-
-        return view('site.auth.registration_success');
+        return UserService::register($data, $enum_type);
     }
 
     public function handle_login(LoginRequest $request)

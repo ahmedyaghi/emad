@@ -20,11 +20,9 @@ return new class extends Migration
             $table->foreignId('place_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('work_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('neighabourhood_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('specialization_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('nationality_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('skill_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('course_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('university_id')->nullable()->constrained()->onDelete('cascade');
+            // $table->foreignId('course_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('position_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('bio')->nullable();
             $table->string('website')->nullable();
@@ -37,6 +35,9 @@ return new class extends Migration
             $table->string('manager_name')->nullable();
             $table->string('manager_phone')->nullable();
             $table->string('manager_email')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('street_name')->nullable();
             $table->timestamps();
         });
     }

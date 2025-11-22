@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Specialization;
 use Illuminate\Database\Seeder;
 
 class SpecializationSeeder extends Seeder
@@ -11,6 +12,6 @@ class SpecializationSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Specialization::create(['name' => 'إدارة أعمال']);
     }
 }

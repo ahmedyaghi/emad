@@ -19,7 +19,7 @@
           <div class="container"> 
             <div class="row mb-4">
               <div class="col-12"> 
-                <h4 class="font-semi-bold mb-3">عرض {{count($articles)}} نتيجة فرصة تدريب</h4>
+                <h4 class="font-semi-bold mb-3">عرض {{count($articles)}} نتيجة مقال</h4>
                 <h6>بناءً على ملفك الشخصي وتفضيلاتك</h6>
               </div>
             </div>

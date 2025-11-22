@@ -7,7 +7,7 @@
                 <div class="row"> 
                   <div class="col-12"> 
                     <ol class="breadcrumb">
-                      <div class="breadcrumb-item"><a href=""> طلبات العمل</a></div>
+                      <div class="breadcrumb-item"><a href="{{route('training-opportunities')}}"> الفرص التدريبية</a></div>
                       <div class="breadcrumb-item">{{$training_opportunity->title}}</div>
                     </ol>
                   </div>
@@ -85,7 +85,12 @@
                     <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/riyal-circular.svg" alt=""/></span> {{$training_opportunity->salaray}}</li>
                     <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/user2.svg" alt=""/></span> الذكور فقط لهذه الوظيفة.</li>
                   </ul>
-                  <hr/><a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
+                  <hr/>
+                  @auth
+                    <a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
+                  @else
+                    <a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#loginModal">قدّم الآن </a>
+                  @endauth
                 </div>
               </div>
             </div>

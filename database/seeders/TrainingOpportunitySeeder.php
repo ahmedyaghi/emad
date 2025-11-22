@@ -15,6 +15,8 @@ class TrainingOpportunitySeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             TrainingOpportunity::create([
                 'association_id' => 1,
+                'type_id' => 1,
+                'city_id' => 1,
                 'title' => 'فرصة تدريب في القطاع غير الربحي'.$i,
                 'short_description' => 'اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.',
                 'location' => 'مكة المكرمة – المنطقة المركزية ',
@@ -25,6 +27,7 @@ class TrainingOpportunitySeeder extends Seeder
                 'conditions' => 'Conditions for training opportunity ',
                 'features' => 'Features of training opportunity ',
                 'slug' => 'forsat-tadrib-'.$i,
+                'for_male' => 1,
             ]);
         }
     }

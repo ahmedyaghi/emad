@@ -1,14 +1,17 @@
 @if ($paginator->hasPages())
-
 <div class="d-lg-flex align-items-center justify-content-between">
     <div class="d-lg-flex align-items-center">
+     
     <select class="form-control  select2 rounded" data-width="70px">
         <option value="9">9</option>
-        <option value="8">8</option>
-        <option value="7">7</option>
-        <option value="6">6</option>
+        <option value="18">18</option>
+        <option value="36">36</option>
+        <option value="100">100</option>
     </select>
-    <h4 class="ms-2 my-4 my-lg-0">تم عرض  {{$paginator->perPage()}}  من أصل {{$paginator->total()}}</h4>
+        <h4 class="ms-2 my-4 my-lg-0">
+    تم عرض من {{$paginator->perPage()}} إلى {{$paginator->perPage() * $paginator->currentPage()}} من أصل  {{$paginator->total()}}
+    </h4>
+
     </div>
     <ul class="pagination">
      @if ($paginator->onFirstPage())

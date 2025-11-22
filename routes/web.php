@@ -4,6 +4,7 @@ use App\Http\Controllers\Site\ArticleController;
 use App\Http\Controllers\Site\AuthController;
 use App\Http\Controllers\Site\ContactUsController;
 use App\Http\Controllers\Site\MainController;
+use App\Http\Controllers\Site\NewsController;
 use App\Http\Controllers\Site\TrainingOpportunityController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,13 +15,12 @@ Route::get('/articles', [ArticleController::class, 'articles'])->name('articles'
 Route::get('/articles/{slug}', [ArticleController::class, 'article'])->name('article');
 Route::get('/contact-us', [ContactUsController::class, 'contact_us'])->name('contact-us');
 Route::post('/contact-us', [ContactUsController::class, 'handle_contact_us'])->name('handle.contact-us');
+Route::get('/news', [NewsController::class, 'news'])->name('news');
+Route::get('/news/{slug}', [NewsController::class, 'news_details'])->name('news.details');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register/{type}', [AuthController::class, 'register'])->name('register');
-    Route::post('/register-individual', [AuthController::class, 'handle_register_individual'])->name('handle.register.individual');
-    Route::post('/register-association', [AuthController::class, 'handle_register_association'])->name('handle.register.association');
-    Route::post('/register-faculty-member', [AuthController::class, 'handle_register_faculty_member'])->name('handle.register.faculty.member');
-    Route::post('/register-consultant', [AuthController::class, 'handle_register_consultant'])->name('handle.register.consultant');
+    Route::post('/register/{type}', [AuthController::class, 'handle_register'])->name('handle.register');
     Route::post('/login', [AuthController::class, 'handle_login'])->name('handle.login');
 });
 

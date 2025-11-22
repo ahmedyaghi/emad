@@ -1,76 +1,24 @@
 <x-site.layout>
         <!-- start:: section -->
-        <section class="section section-home" style="background:url(assets/images/bg-home.png); background-repeat: no-repeat; background-size: cover;">
+        <section class="section section-home" style="background:url({{asset('assets/images/bg-home.png')}}); background-repeat: no-repeat; background-size: cover;">
           <div class="container">
             <div class="row mb-4">
               <div class="col-lg-7 mx-auto">
                 <div class="text-center">
                   <h1 class="home-title font-bold mb-3 text-white"> منصة عماد نحو العمل الهادف</h1>
-                  <h4 class="home-text mb-4 text-white">منصة رائدة تربط المنظمات غير الربحية بشبكة من الطلاب والباحثين المهرة في المملكة العربية السعودية. نحن نسهل عملية دمج العمل لمساعدتك في بناء مجتمع أقوى.</h4><a class="btn btn-play font-medium" href="https://www.youtube.com/embed/tgbNymZ7vqY" data-fancybox="gallery"><span>تشغيل الفيديو</span><span class="icon ms-3"><img src="assets/images/play.svg" alt=""/></span></a>
+                  <h4 class="home-text mb-4 text-white">منصة رائدة تربط المنظمات غير الربحية بشبكة من الطلاب والباحثين المهرة في المملكة العربية السعودية. نحن نسهل عملية دمج العمل لمساعدتك في بناء مجتمع أقوى.</h4><a class="btn btn-play font-medium" href="https://www.youtube.com/embed/tgbNymZ7vqY" data-fancybox="gallery"><span>تشغيل الفيديو</span><span class="icon ms-3"><img src="{{asset('assets/images/play.svg')}}" alt=""/></span></a>
                 </div>
               </div>
             </div>
           </div>
-        </section><!-- end:: section -->  
-<!-- start:: section -->
-        <section class="section section-filter">
-          <div class="container">
-            <div class="section-content">
-              <form action="" method="post"> 
-                <div class="row align-items-end">
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2">نوع الفرصة التدريبية</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2"> تدريب 1</option>
-                        <option value="3"> تدريب 2</option>
-                        <option value="4"> تدريب 3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2">المنطقة</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2"> المنطقة 1</option>
-                        <option value="3"> المنطقة 2</option>
-                        <option value="4"> المنطقة 3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2">الجنس</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2"> ذكر</option>
-                        <option value="3">انثى</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2"> الجهة</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2">الجهة 1</option>
-                        <option value="3">الجهة 2</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-auto"> 
-                    <div class="form-group mb-3 mb-lg-0">
-                      <button class="btn btn-primary w-100" type="submit">البحث</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section><!-- end:: section -->  
-<!-- start:: section -->
+        </section>
+        <!-- end:: section -->  
+        
+        <!-- start:: section -->
+          <x-site.search :types="$training_opportunity_types" :associations="$associations" :cities="$cities"/>
+        <!-- end:: section --> 
+
+        <!-- start:: section -->
         <section class="section">
           <div class="container">
             <div class="text-center"> 
@@ -83,10 +31,11 @@
                 <div class="col-lg-8 mx-auto">
                   <h5 class="mb-4 text-gray">ﻟﺘﻨﺴــــﻴﻖ اﻟﺘﻜﺎﻣﻞ ﻋﻦ ﻋﻤﻞ ﻋﺒﺮ ﻣﻠﻔﺎت ﺷــــﺨﺼــــﻴﺔ ﻟﻠﻄﺮﻓﻴﻦ، ﻓﻲ ﺗﻄـﺒـﻴـﻖ اﻟﻤﺸــــــــــﺎرﻳﻊ اﻟﻌـﻤـﻠـﻴـــﺔ ﻟﻤـﻨـﻈـﻤـــﺎت ﻏﻴـﺮ اﻟﺮﺑﺤـﻴـــﺔ ﻟﺘﺴـــــﻬﻴﻞ اﻟﺘﻮﻇﻴﻒ، اﻟﺘﺪرﻳﺐ، واﻟﺘﻄﻮع ﺑﺸـــــﻜﻞ ﻣﻨﻈﻢ، ﻣﻊ ﺗﻮﻓﻴﺮ ﻣﻘــﺎﻻت إﺛﺮاﺋﻴــﺔ وﺑﻮﺳــــــﺘــﺎت وﻇﻴﻔﻴــﺔ وﻧﻈــﺎم دﻓﻊ ﻻﺷﺘﺮاﻛﺎت المنظمات ﻏﻴﺮ اﻟﺮﺑﺤﻴﺔ.</h5>
                 </div>
-              </div><a class="btn btn-primary" href=""> استعرض جميع الفرص التدريبية</a>
+              </div><a class="btn btn-primary" href="{{route('training-opportunities')}}"> استعرض جميع الفرص التدريبية</a>
             </div>
           </div>
-        </section><!-- end:: section -->  
+        </section>
+        <!-- end:: section -->  
 
         <!-- start:: section -->
         @if(!$training_opportunities->isEmpty())  
@@ -97,7 +46,7 @@
                 <h2 class="section-title font-bold mb-2">الفرص التدريبية </h2>
                 <h4 class="text-gray">تصفح فرص التدريب والتطوع المتاحة، وقم بتطبيق مهاراتك في مشاريع مؤثرة.</h4>
               </div>
-              <div class="col-auto"> <a class="btn btn-white" href="">استعرض جميع الفرص</a></div>
+              <div class="col-auto"> <a class="btn btn-white" href="{{route('training-opportunities')}}">استعرض جميع الفرص</a></div>
             </div>
           </div>
           <div class="row">
@@ -184,7 +133,7 @@
         <!-- end:: section --> 
 
 
-<!-- start:: section -->  
+        <!-- start:: section -->  
         <section class="section section-join">
           <div class="container">
             <div class="section-content">
@@ -204,7 +153,9 @@
               </div>
               <div class="row">
                 <div class="col-12"> 
-                  <div class="text-center"> <a class="btn btn-primary px-5" href=""> أستكمل ملفك الشخصي </a></div>
+                  @guest
+                    <div class="text-center"> <a class="btn btn-primary px-5" href="" data-bs-toggle="modal" data-bs-target="#loginModal"> أستكمل ملفك الشخصي </a></div>
+                  @endguest
                 </div>
               </div>
             </div>

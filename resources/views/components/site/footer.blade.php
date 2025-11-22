@@ -10,7 +10,7 @@
                 <li><a href="{{route('main')}}">الرئيسية</a></li>
                 <li><a href="#">عن المنصة</a></li>
                 <li><a href="{{route('training-opportunities')}}">الفرص التدريبية</a></li>
-                <li><a href="{{route('articles')}}">الأخبار</a></li>
+                <li><a href="{{route('news')}}">الأخبار</a></li>
                 <li><a href="{{route('contact-us')}}">تواصل معنا</a></li>
               </ul>
             </div>

@@ -15,64 +15,8 @@
         <!-- end:: section -->  
 
         <!-- start:: section -->
-        <section class="section section-filter pb-2">
-          <div class="container">
-            <div class="section-content">
-              <form action="" method="post"> 
-                <div class="row align-items-end">
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2">نوع الفرصة التدريبية</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2"> تدريب 1</option>
-                        <option value="3"> تدريب 2</option>
-                        <option value="4"> تدريب 3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2">المنطقة</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2"> المنطقة 1</option>
-                        <option value="3"> المنطقة 2</option>
-                        <option value="4"> المنطقة 3</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2">الجنس</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2"> ذكر</option>
-                        <option value="3">انثى</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg">
-                    <div class="form-group mb-3 mb-lg-0">
-                      <label class="label-form font-medium mb-2"> الجهة</label>
-                      <select class="form-control select2" data-placeholder="اختار">
-                        <option value=""> </option>
-                        <option value="2">الجهة 1</option>
-                        <option value="3">الجهة 2</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-lg-auto"> 
-                    <div class="form-group mb-3 mb-lg-0">
-                      <button class="btn btn-primary w-100" type="submit">البحث</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
-        <!-- end:: section -->  
+          <x-site.search :types="$training_opportunity_types" :associations="$associations" :cities="$cities"/>
+        <!-- end:: section --> 
 
         <!-- start:: section -->  
         <section class="section">

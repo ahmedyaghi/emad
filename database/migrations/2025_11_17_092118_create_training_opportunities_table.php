@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('training_opportunities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('association_id')->constrained('associations')->onDelete('cascade');
+            $table->foreignId('type_id')->nullable()->constrained('training_opportunity_types')->onDelete('cascade');
+            $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('short_description')->nullable();
@@ -24,6 +26,8 @@ return new class extends Migration
             $table->text('responsibilities')->nullable();
             $table->text('conditions')->nullable();
             $table->text('features')->nullable();
+            $table->boolean('for_male')->nullable()->default(0);
+            $table->boolean('for_female')->nullable()->default(0);
             $table->timestamps();
         });
     }

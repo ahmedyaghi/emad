@@ -27,12 +27,14 @@
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
     <meta name="copyright" content=" "/>
+    <link href="{{ asset('assets/images/logo.svg') }}" rel="icon">
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&amp;display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('assets/css/smart_wizard_all.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css') }}"/>
+    
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">  --}}
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
   </head>
@@ -59,4 +61,4 @@
     <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
   </body>
-</html>
+</html> 
