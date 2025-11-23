@@ -17,6 +17,6 @@ class ContactUsController extends Controller
     {
         ContactUs::create($request->validated());
 
-        return redirect()->route('main');
+        return redirect()->route('main')->with('success', 'تم استلام رسالتك بنجاح');
     }
 }

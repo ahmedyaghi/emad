@@ -51,10 +51,7 @@
       <main>
         <main class="main-content">
             <x-common.header />
-         
-          <div class="main-content-inner"> 
             {{ $slot }}
-          </div>
         </main>
       </main>
     </div>

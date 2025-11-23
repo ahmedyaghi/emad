@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/swiper.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css') }}"/>
-    
+    <link rel="stylesheet" href="{{asset('assets/css/toastr.min.css')}}"/>
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">  --}}
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}"/>
   </head>
@@ -59,34 +59,43 @@
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
     <script src="{{ asset('assets/js/smartWizard.min.js') }}"></script>
     <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
+    <script src="{{asset('assets/js/toastr.min.js')}}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
       $(document).ready(function() {
           var $select = $('#per_page');
 
-          // Initialize Select2 (if not already)
-          if (!$select.hasClass('select2-hidden-accessible')) {
-              $select.select2({
-                  width: '70px'
-              });
-          }
-
+          // if (!$select.hasClass('select2-hidden-accessible')) {
+          //     $select.select2({
+          //         width: '70px'
+          //     });
+          // }
           $select.on('select2:select', function(e) {
-              var value = e.params.data.id; // selected value
-
-              // Use URL API to modify current URL
+              var value = e.params.data.id; 
               var url = new URL(window.location.href);
-
-              // Set per_page parameter
               url.searchParams.set('per_page', value);
-
-              // Reset page to 1
-              url.searchParams.set('page', 1);
-
-              // Redirect
+             // url.searchParams.set('page', 1);
               window.location.href = url.toString();
           });
       });
+      </script>
+
+      <script>
+        @if(session('success'))
+            toastr.success("{{session('success')}}");
+        @endif
+
+        @if(session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(session('info'))
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(session('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
       </script>
 
 

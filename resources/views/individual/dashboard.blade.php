@@ -1,38 +1,52 @@
 <x-common.layout>
-    <div class="row gx-lg-3 mb-3">
-              <div class="col-lg-4 col-sm-6">
+   <div class="main-content-inner"> 
+            <div class="row gx-lg-3">
+              <div class="col-lg-3 col-sm-6">
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
                         <h2 class="font-semi-bold">10</h2>
-                        <h6 class="text-gray">وظائفي المنشورة</h6>
+                        <h6 class="text-gray">عدد المهارات المكتسبة</h6>
                       </div>
-                      <div class="col-auto"> <img src="../assets/images/briefcase3.svg" alt=""/></div>
+                      <div class="col-auto"> <img src="../assets/images/permanent-job.svg" alt=""/></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6">
+              <div class="col-lg-3 col-sm-6">
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
                         <h2 class="font-semi-bold">10</h2>
-                        <h6 class="text-gray">عدد المتدربين</h6>
+                        <h6 class="text-gray">عدد الدورات المكتملة</h6>
                       </div>
-                      <div class="col-auto"> <img src="../assets/images/user-switch.svg" alt=""/></div>
+                      <div class="col-auto"> <img src="../assets/images/permanent-job.svg" alt=""/></div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6">
+              <div class="col-lg-3 col-sm-6">
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
                         <h2 class="font-semi-bold">10</h2>
-                        <h6 class="text-gray">عدد طلبات التدريب</h6>
+                        <h6 class="text-gray">عدد الاختبارات</h6>
+                      </div>
+                      <div class="col-auto"> <img src="../assets/images/permanent-job.svg" alt=""/></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex">
+                      <div class="col">
+                        <h2 class="font-semi-bold">10</h2>
+                        <h6 class="text-gray">عدد المهام والتقارير</h6>
                       </div>
                       <div class="col-auto"> <img src="../assets/images/permanent-job.svg" alt=""/></div>
                     </div>
@@ -40,154 +54,136 @@
                 </div>
               </div>
             </div>
-            <div class="row gx-lg-3">
-              <div class="col-12">
-                <div class="pannel">
-                  <div class="pannel-head">
-                    <div class="d-flex justify-content-between">
-                      <div class="col-lg-7">
-                        <h3 class="font-semi-bold mb-2"> وظائفي المنشورة</h3>
-                        <h6 class="text-gray">تابع حالة الوظائف التي نشرتها ، وابقَ على اطلاع بآخر التحديثات</h6>
-                      </div>
-                      <div class="col-auto"><a class="btn btn-light" href="new-training-published.html">نشر وظيفة جديدة</a></div>
+            <div class="row mb-4">
+              <div class="col-12"> 
+                <div class="card-profile d-flex align-items-start"> 
+                  <div class="col-auto me-3">
+                    <div class="circle-progress circle-small" id="graph" data-percent="70">
+                      <div class="total-result">70%</div>
                     </div>
                   </div>
-                  <div class="pannel-body">
+                  <div class="col-lg-9">
+                    <h4 class="mb-3 font-bold">أستكمل ملفك الشخصي</h4>
+                    <h6 class="mb-3">استكمالك لملفك الشخصي يساعدنا في ترشيح الوظائف الأنسب لك، ويزيد من فرص قبولك لدى الجهات. أضف معلوماتك الشخصية، مؤهلاتك، وخبراتك العملية لتظهر بشكل احترافي أمام أصحاب العمل.</h6><a class="btn btn-primary px-4" href="">أستكمل ملفك الشخصي </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row gx-lg-3">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-head">
+                    <div class="d-flex justify-content-between">
+                      <div class="col-lg-7">
+                        <h3 class="font-semi-bold mb-2"> الدورات الخاص بك</h3>
+                        <h6 class="text-gray">تابع حالة الدورات الخاص بك، وابقَ على اطلاع بآخر التحديثات.</h6>
+                      </div>
+                      <div class="col-auto"><a class="btn btn-light" href="">مشاهدة الكل </a></div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="widget_item-card text-center d-flex flex-column align-items-center justify-content-center py-5"><img class="mb-3" src="../assets/images/catalogue2.svg" alt=""/>
+                      <h3 class="mb-3 font-bold">لا يوجد اي دورات خاصة بك</h3>
+                      <h6 class="mb-4 text-gray">اكتشف مجموعة واسعة من الدورات التي نمكنك من تطوير من امكانياتك</h6><a class="btn btn-primary" href="">استكشف الوظائف </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row gx-lg-3">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-head">
+                    <div class="d-flex justify-content-between">
+                      <div class="col-lg-7">
+                        <h3 class="font-semi-bold mb-2"> طلباتي</h3>
+                        <h6 class="text-gray">تابع حالة الوظائف التي تقدمت لها، وابقَ على اطلاع بآخر التحديثات من الجهات</h6>
+                      </div>
+                      <div class="col-auto"><a class="btn btn-light" href="">مشاهدة الكل </a></div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="widget_item-card text-center d-flex flex-column align-items-center justify-content-center py-5"><img class="mb-3" src="../assets/images/catalogue2.svg" alt=""/>
+                      <h3 class="mb-3 font-bold">لا يوجد اي طلبات عمل خاصة بك</h3>
+                      <h6 class="mb-4 text-gray">اكتشف مجموعة واسعة من الفرص التي نمكنك من نطبيق معرفتك وقدم على وظيفة الان</h6><a class="btn btn-primary" href="">استكشف الوظائف </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row gx-lg-3">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-head">
+                    <div class="d-flex justify-content-between">
+                      <div class="col-lg-7">
+                        <h3 class="font-semi-bold mb-2">استكشف الفرصة التدريبية المضافة مؤخرًا</h3>
+                        <h6 class="text-gray">خدمات واستشارات تكنولوجيا المعلومات</h6>
+                      </div>
+                      <div class="col-auto"><a class="btn btn-light" href="">مشاهدة الكل </a></div>
+                    </div>
+                  </div>
+                  <div class="card-body">
                     <div class="row"> 
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="widget_item-status accepted-text accepted-bg font-medium">نشرت</div>
+                      <div class="col-lg-4 col-md-6"> 
+                        <div class="widget_item-card m-2 shadow-none">
                           <div class="widget_item-content">
-                            <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="my-training-single.html">تدريب في القطاع غير الربحي</a></h4>
+                            <h4 class="widget_item-title font-semi-bold mb-2"><a href="">فرصة تدريب في القطاع غير الربحي</a></h4>
                             <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                            <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                              </div>
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
+                            <div class="widget_item-campany mb-4 d-flex align-items-center">
+                              <div class="campany-image me-2"><img src="../assets/images/logo.svg" alt=""/></div>
+                              <h6 class="campany-name">شركة عماد </h6>
+                            </div>
+                            <div class="widget_item-info mt-3 pt-3 mb-4">
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/location.svg" alt=""/><span class="info-title text-gray">مكة المكرمة – المنطقة المركزية</span></div>
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/briefcase.svg" alt=""/><span class="info-title text-gray">دوام كامل – 8 ساعات</span></div>
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">10 أيام (من 1 ذو الحجة حتى 10 ذو الحجة)</span></div>
+                            </div>
+                            <div class="widget_item-action row gx-2">
+                              <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="">عرض تفاصيل </a></div>
+                              <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="">قدّم الآن </a></div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="widget_item-status ended-text ended-bg font-medium">انتهت</div>
+                      <div class="col-lg-4 col-md-6"> 
+                        <div class="widget_item-card m-2 shadow-none">
                           <div class="widget_item-content">
-                            <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="my-training-single.html">تدريب في القطاع غير الربحي</a></h4>
+                            <h4 class="widget_item-title font-semi-bold mb-2"><a href="">فرصة تدريب في القطاع غير الربحي</a></h4>
                             <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                            <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                              </div>
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
+                            <div class="widget_item-campany mb-4 d-flex align-items-center">
+                              <div class="campany-image me-2"><img src="../assets/images/logo.svg" alt=""/></div>
+                              <h6 class="campany-name">شركة عماد </h6>
+                            </div>
+                            <div class="widget_item-info mt-3 pt-3 mb-4">
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/location.svg" alt=""/><span class="info-title text-gray">مكة المكرمة – المنطقة المركزية</span></div>
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/briefcase.svg" alt=""/><span class="info-title text-gray">دوام كامل – 8 ساعات</span></div>
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">10 أيام (من 1 ذو الحجة حتى 10 ذو الحجة)</span></div>
+                            </div>
+                            <div class="widget_item-action row gx-2">
+                              <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="">عرض تفاصيل </a></div>
+                              <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="">قدّم الآن </a></div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="widget_item-status accepted-text accepted-bg font-medium">نشرت</div>
+                      <div class="col-lg-4 col-md-6"> 
+                        <div class="widget_item-card m-2 shadow-none">
                           <div class="widget_item-content">
-                            <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="my-training-single.html">تدريب في القطاع غير الربحي</a></h4>
+                            <h4 class="widget_item-title font-semi-bold mb-2"><a href="">فرصة تدريب في القطاع غير الربحي</a></h4>
                             <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                            <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                              </div>
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
+                            <div class="widget_item-campany mb-4 d-flex align-items-center">
+                              <div class="campany-image me-2"><img src="../assets/images/logo.svg" alt=""/></div>
+                              <h6 class="campany-name">شركة عماد </h6>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="widget_item-status ended-text ended-bg font-medium">انتهت</div>
-                          <div class="widget_item-content">
-                            <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="my-training-single.html">تدريب في القطاع غير الربحي</a></h4>
-                            <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                            <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                              </div>
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
+                            <div class="widget_item-info mt-3 pt-3 mb-4">
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/location.svg" alt=""/><span class="info-title text-gray">مكة المكرمة – المنطقة المركزية</span></div>
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/briefcase.svg" alt=""/><span class="info-title text-gray">دوام كامل – 8 ساعات</span></div>
+                              <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">10 أيام (من 1 ذو الحجة حتى 10 ذو الحجة)</span></div>
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="widget_item-status accepted-text accepted-bg font-medium">نشرت</div>
-                          <div class="widget_item-content">
-                            <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="my-training-single.html">تدريب في القطاع غير الربحي</a></h4>
-                            <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                            <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                              </div>
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="widget_item-status ended-text ended-bg font-medium">انتهت</div>
-                          <div class="widget_item-content">
-                            <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="my-training-single.html">تدريب في القطاع غير الربحي</a></h4>
-                            <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                            <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                              </div>
-                              <div class="col-6 mb-4">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
-                              <div class="col-6">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                              </div>
+                            <div class="widget_item-action row gx-2">
+                              <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="">عرض تفاصيل </a></div>
+                              <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="">قدّم الآن </a></div>
                             </div>
                           </div>
                         </div>
@@ -197,4 +193,5 @@
                 </div>
               </div>
             </div>
+          </div>
 </x-common.layout>

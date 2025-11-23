@@ -34,10 +34,27 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
         Route::get('/', [App\Http\Controllers\Individual\DashboardController::class, 'dashboard'])->name('dashboard');
+        Route::get('/profile', [App\Http\Controllers\Individual\ProfileController::class, 'profile'])->name('profile');
+        Route::get('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
+        Route::get('/training-opportunities/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
+        Route::get('/my-training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'my_training_opportunities'])->name('my-training-opportunities');
+        Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
+        Route::get('/courses', [App\Http\Controllers\Individual\CourseController::class, 'courses'])->name('courses');
+        Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
+
     });
 
     Route::group(['prefix' => 'association', 'as' => 'association.', 'middleware' => ['role:association']], function () {
         Route::get('/', [App\Http\Controllers\Association\DashboardController::class, 'dashboard'])->name('dashboard');
+
+        Route::get('/profile', [App\Http\Controllers\Association\ProfileController::class, 'profile'])->name('profile');
+        Route::get('/training-opportunities', [App\Http\Controllers\Association\TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
+        Route::get('/training-opportunities/{slug}', [App\Http\Controllers\Association\TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
+        Route::get('/trainees', [App\Http\Controllers\Association\TraineeController::class, 'trainees'])->name('trainees');
+        Route::get('/reports', [App\Http\Controllers\Association\ReportController::class, 'reports'])->name('reports');
+        Route::get('/articles', [App\Http\Controllers\Association\ArticleController::class, 'articles'])->name('articles');
+        Route::get('/assessments', [App\Http\Controllers\Association\AssessmentController::class, 'assessments'])->name('assessments');
+
     });
 
     Route::group(['prefix' => 'faculty-member', 'as' => 'faculty-member.', 'middleware' => ['role:faculty-member']], function () {
