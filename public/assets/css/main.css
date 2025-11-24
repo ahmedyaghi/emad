@@ -1121,6 +1121,7 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   background-color: rgba(174, 102, 117, 0.3);
   box-shadow: 0px 5.64478px 11.2896px rgba(0, 0, 0, 0.05);
   border-radius: 30.1055px;
@@ -1490,7 +1491,7 @@ button {
 }
 
 .card {
-  width: 220px;
+  /* width: 220px; */
   padding: 18px;
   border-radius: 10px;
   border: 2px solid transparent;

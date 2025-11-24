@@ -1,4 +1,13 @@
 $(document).ready(function () {
+
+/*------------------------------------
+      Initialize AOS
+  --------------------------------------*/
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+
   /*------------------------------------
       Initialize Select2
   --------------------------------------*/
@@ -76,7 +85,7 @@ $(document).ready(function () {
     },
   });
 
- 
+
   /*------------------------------------
       Initialize All Training Swipers
   --------------------------------------*/
@@ -252,8 +261,8 @@ $(document).ready(function () {
 
     $("#otpError").text("");
     otpVerified = true; // Mark OTP as verified
-    otpModal.hide(); 
-    $('#smartwizard').smartWizard("next"); 
+    otpModal.hide();
+    $('#smartwizard').smartWizard("next");
 
     setTimeout(() => { otpVerified = false; }, 500);
   });

@@ -5,30 +5,30 @@
             <div class="row mb-4">
               <div class="col-lg-6 mx-auto">
                 <div class="text-center">
-                  <h1 class="home-title font-bold mb-4 text-white"> اكتشف الفرص تدريبية </h1>
-                  <h4 class="home-text mb-4 text-white px-5">تصفح فرص التدريب والتطوع المتاحة، وقم بتطبيق مهاراتك في مشاريع مؤثرة.</h4>
+                  <h1 class="home-title font-bold mb-4 text-white" data-aos="fade-up" data-aos-delay="100"> اكتشف الفرص تدريبية </h1>
+                  <h4 class="home-text mb-4 text-white px-5" data-aos="fade-up" data-aos-delay="200">تصفح فرص التدريب والتطوع المتاحة، وقم بتطبيق مهاراتك في مشاريع مؤثرة.</h4>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <!-- end:: section -->  
+        <!-- end:: section -->
 
         <!-- start:: section -->
           <x-site.search :types="$training_opportunity_types" :associations="$associations" :cities="$cities"/>
-        <!-- end:: section --> 
+        <!-- end:: section -->
 
-        <!-- start:: section -->  
+        <!-- start:: section -->
         <section class="section">
-          <div class="container"> 
+          <div class="container">
             <div class="row mb-4">
-              <div class="col-12"> 
-                <h4 class="font-semi-bold mb-3">عرض {{count($training_opportunities)}} نتيجة فرصة تدريب</h4>
-                <h6>بناءً على ملفك الشخصي وتفضيلاتك</h6>
+              <div class="col-12">
+                <h4 class="font-semi-bold mb-3" data-aos="fade-up" data-aos-delay="100">عرض {{count($training_opportunities)}} نتيجة فرصة تدريب</h4>
+                <h6  data-aos="fade-up" data-aos-delay="200">بناءً على ملفك الشخصي وتفضيلاتك</h6>
               </div>
             </div>
-            <div class="row">
-              @if(!$training_opportunities->isEmpty())  
+            <div class="row" data-aos="fade-up" data-aos-delay="300">
+              @if(!$training_opportunities->isEmpty())
                 @foreach($training_opportunities as $training_opportunity)
                    <div class="col-lg-4 col-md-6">
                     <div class="widget_item-card">
@@ -55,11 +55,11 @@
               @endif
 
             </div>
-                <div class="row"> 
+                <div class="row">
               <div class="col-12">
                 {{$training_opportunities->links('site.pagination')}}
               </div>
             </div>
           </div>
-        </section><!-- end:: section --> 
+        </section><!-- end:: section -->
 </x-site.layout>

@@ -3,7 +3,7 @@
         <!-- start:: section -->
           <section class="section section-bg-light">
           <div class="container">
-            <div class="row">
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
               <div class="col-lg-8 mx-auto">
                 <div class="section-content">
                   <form action="{{route('handle.contact-us')}}" method="POST">
@@ -62,5 +62,5 @@
             </div>
           </div>
          </section>
-        <!-- end:: section -->  
+        <!-- end:: section -->
 </x-site.layout>
