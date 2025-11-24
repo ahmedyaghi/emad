@@ -4,15 +4,15 @@
           <div class="container">
             <div class="row mb-4">
               <div class="col-lg-8">
-                <div class="row"> 
-                  <div class="col-12"> 
+                <div class="row" data-aos="fade-up" data-aos-delay="100">
+                  <div class="col-12">
                     <ol class="breadcrumb">
                       <div class="breadcrumb-item"><a href="{{route('training-opportunities')}}"> الفرص التدريبية</a></div>
                       <div class="breadcrumb-item">{{$training_opportunity->title}}</div>
                     </ol>
                   </div>
                 </div>
-                <div class="row mb-4"> 
+                <div class="row mb-4" data-aos="fade-up" data-aos-delay="200">
                   <div class="col-12">
                     <div class="pannel">
                       <h2 class="mb-3 font-semi-bold font-24">{{$training_opportunity->title}}</h2>
@@ -20,7 +20,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row" data-aos="fade-up" data-aos-delay="300">
                   <div class="col-12">
                     <ul class="nav nav-pills mb-3 gap-3" id="pills-tab" role="tablist">
                       <li class="nav-item">
@@ -74,7 +74,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4"> 
+              <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="pannel">
                   <h5 class="mb-3 font-bold">تفاصيل التدريب</h5>
                   <hr/>
@@ -96,5 +96,5 @@
             </div>
           </div>
         </section>
-        <!-- end:: section -->  
+        <!-- end:: section -->
 </x-site.layout>

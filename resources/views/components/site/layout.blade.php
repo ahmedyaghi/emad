@@ -29,6 +29,7 @@
     <meta name="copyright" content=" "/>
     <link href="{{ asset('assets/images/logo.svg') }}" rel="icon">
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/aos.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/smart_wizard_all.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/fancybox.css') }}"/>
@@ -42,11 +43,11 @@
     <!-- begin:: Page -->
       <div class="page">
         <div class="main-wrapper">
-        <!-- begin:: Header --> 
+        <!-- begin:: Header -->
           <x-site.header :internal="$internal"/>
-        <!-- end:: Header --> 
+        <!-- end:: Header -->
         <main>
-          {{ $slot }}  
+          {{ $slot }}
         </main>
         <x-site.footer />
         <x-site.modal />
@@ -60,6 +61,7 @@
     <script src="{{ asset('assets/js/smartWizard.min.js') }}"></script>
     <script src="{{ asset('assets/js/fancybox.umd.js') }}"></script>
     <script src="{{asset('assets/js/toastr.min.js')}}"></script>
+    <script src="{{asset('assets/js/aos.js')}}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
       $(document).ready(function() {
@@ -71,7 +73,7 @@
           //     });
           // }
           $select.on('select2:select', function(e) {
-              var value = e.params.data.id; 
+              var value = e.params.data.id;
               var url = new URL(window.location.href);
               url.searchParams.set('per_page', value);
              // url.searchParams.set('page', 1);
@@ -101,4 +103,4 @@
 
 
   </body>
-</html> 
+</html>

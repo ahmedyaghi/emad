@@ -5,21 +5,21 @@
             <div class="row mb-4">
               <div class="col-lg-6 mx-auto">
                 <div class="text-center">
-                  <h1 class="home-title font-bold mb-4 text-white">{{$article->title}}</h1>
-                  <h4 class="home-text mb-4 text-white px-5">{{$article->short_description}}</h4>
+                  <h1 class="home-title font-bold mb-4 text-white" data-aos="fade-up" data-aos-delay="100">{{$article->title}}</h1>
+                  <h4 class="home-text mb-4 text-white px-5" data-aos="fade-up" data-aos-delay="200">{{$article->short_description}}</h4>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <!-- end:: section -->  
-        <!-- start:: section -->  
-        <section class="section">
-          <div class="container"> 
-            <div class="row"> 
+        <!-- end:: section -->
+        <!-- start:: section -->
+        <section class="section" data-aos="fade-up" data-aos-delay="100">
+          <div class="container">
+            <div class="row">
               <div class="col-lg-9 mx-auto">
                 <div class="row mb-4">
-                  <div class="col-12"> 
+                  <div class="col-12">
                     <h2 class="font-bold mb-3">{{$article->title}}</h2>
                     <div class="d-lg-flex align-items-center justify-content-between">
                       <h6>{{$article->published_at}}</h6>
@@ -32,16 +32,16 @@
                     </div>
                   </div>
                 </div>
-                <div class="row mb-4"> 
+                <div class="row mb-4">
                   <div class="col-12"> <img class="w-100" src="../assets/images/img1.png" alt=""/></div>
                 </div>
                 <div class="row">
-                  <div class="col-12"> 
-                  {!! $article->description !!}   
+                  <div class="col-12">
+                  {!! $article->description !!}
                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section><!-- end:: section --> 
+        </section><!-- end:: section -->
 </x-site.layout>

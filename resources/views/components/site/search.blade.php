@@ -1,10 +1,10 @@
   <section class="section section-filter">
     <div class="container">
     <div class="section-content">
-        <form action="{{route('training-opportunities')}}" method="get"> 
+        <form action="{{route('training-opportunities')}}" method="get">
         <div class="row align-items-end">
-            <div class="col-12 col-lg">
-            <div class="form-group mb-3 mb-lg-0">
+            <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="100">
+            <div class="form-group mb-3 mb-lg-0" >
                 <label class="label-form font-medium mb-2">نوع الفرصة التدريبية</label>
                 @if(!$types->isEmpty())
                 <select class="form-control select2" data-placeholder="اختار" name="type_id">
@@ -16,7 +16,7 @@
                 @endif
             </div>
             </div>
-            <div class="col-12 col-lg">
+            <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="200">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2">المنطقة</label>
                 @if(!$associations->isEmpty())
@@ -29,7 +29,7 @@
                 @endif
             </div>
             </div>
-            <div class="col-12 col-lg">
+            <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="300">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2">الجنس</label>
                 <select class="form-control select2" data-placeholder="اختار" name="sex">
@@ -39,7 +39,7 @@
                 </select>
             </div>
             </div>
-            <div class="col-12 col-lg">
+            <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="400">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2"> الجهة</label>
                 @if(!$associations->isEmpty())
@@ -52,7 +52,7 @@
                 @endif
             </div>
             </div>
-            <div class="col-12 col-lg-auto"> 
+            <div class="col-12 col-lg-auto" data-aos="fade-up" data-aos-delay="500">
             <div class="form-group mb-3 mb-lg-0">
                 <button class="btn btn-primary w-100" type="submit">البحث</button>
             </div>
