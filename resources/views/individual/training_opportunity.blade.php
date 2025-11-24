@@ -4,16 +4,16 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href=""> طلبات العمل</a></div>
-                    <div class="breadcrumb-item">فرصة تدريب في القطاع غير الربحي</div>
+                    <div class="breadcrumb-item"><a href="{{route('individual.training-opportunities')}}"> الفرص التدريبية</a></div>
+                    <div class="breadcrumb-item">{{$model->title}}</div>
                   </ol>
                 </div>
               </div>
               <div class="row mb-4"> 
                 <div class="col-12">
                   <div class="pannel">
-                    <h2 class="mb-3 font-semi-bold font-24">فرصة تدريب في القطاع غير الربحي</h2>
-                    <h6 class="text-gray">تبحث شركة الإسناد الموسمي لخدمات الحجاج عن أفراد مؤهلين للانضمام إلى فريقها كمشرفين ميدانيين خلال موسم الحج. ستكون مسؤولاً عن تنظيم وإرشاد مجموعة من الحجاج أثناء تنقلهم بين المشاعر المقدسة، وضمان التزامهم بالتعليمات والخطط التشغيلية.</h6>
+                    <h2 class="mb-3 font-semi-bold font-24">{{$model->title}}</h2>
+                    <h6 class="text-gray">{{$model->short_description}}</h6>
                   </div>
                 </div>
               </div>
@@ -38,27 +38,7 @@
                         </div>
                         <div class="card-body">
                           <ul class="description-list">
-                            <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                            <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                            <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                            <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                            <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="tab-3">
-                      <div class="card">
-                        <div class="card-head">
-                          <h5 class="font-semi-bold mb-2"> شروط القبول</h5>
-                        </div>
-                        <div class="card-body">
-                          <ul class="description-list">
-                            <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                            <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                            <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                            <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                            <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                             {!! $model->responsibilities !!}
                           </ul>
                         </div>
                       </div>
@@ -66,15 +46,23 @@
                     <div class="tab-pane fade" id="tab-2">
                       <div class="card">
                         <div class="card-head">
+                          <h5 class="font-semi-bold mb-2"> شروط القبول</h5>
+                        </div>
+                        <div class="card-body">
+                          <ul class="description-list">
+                            {!! $model->conditions !!}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-3">
+                      <div class="card">
+                        <div class="card-head">
                           <h5 class="font-semi-bold mb-2"> المزايا والمكافأة</h5>
                         </div>
                         <div class="card-body">
                           <ul class="description-list">
-                            <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                            <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                            <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                            <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                            <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                            {!! $model->features !!}
                           </ul>
                         </div>
                       </div>
@@ -88,11 +76,21 @@
                 <h5 class="mb-3 font-bold">تفاصيل التدريب</h5>
                 <hr/>
                 <ul class="description-list-2">
-                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/location.svg" alt=""/></span> مكة المكرمة – المشاعر المقدسة (منى – مزدلفة – عرفات).</li>
-                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/briefcase.svg" alt=""/></span> دوام كامل – 8 ساعات</li>
-                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/calendar.svg" alt=""/></span> 10 أيام (من 1 ذو الحجة حتى 10 ذو الحجة)</li>
-                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/riyal-circular.svg" alt=""/></span> مرتب 3000 ريال سعودي</li>
-                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/user2.svg" alt=""/></span> الذكور فقط لهذه الوظيفة.</li>
+                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/location.svg')}}" alt=""/></span>{{$model->location}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/briefcase.svg')}}" alt=""/></span> {{$model->attendance}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></span>{{$model->duration}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/riyal-circular.svg')}}" alt=""/></span> {{$model->salaray}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/user2.svg')}}" alt=""/></span>
+                      @php
+                        if($model->for_male == 1){
+                          echo "الذكور فقط لهذه الوظيفة.";
+                        } elseif($model->for_female == 2){
+                          echo "الإناث فقط لهذه الوظيفة.";
+                        } elseif($model->for_male == 1 && $model->for_female == 2) {
+                          echo "الذكور والإناث لهذه الوظيفة.";
+                        }
+                      @endphp
+                     </li>
                 </ul>
                 <hr/><a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
               </div>
@@ -106,24 +104,32 @@
                   <h6 class="text-gray">أنت على بُعد خطوة واحدة من التقديم على هذه التدريب.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action=""> 
+                  <form action="{{route('individual.training-opportunities.apply')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="training_id" value="{{$model->id}}">
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
                           <div class="form-group"> 
                             <label class="form-label">السيرة الذاتية </label>
                             <div class="upload-box">
-                              <input id="fileInput" type="file" accept=".pdf,.doc,.docx"/>
-                              <div class="upload-placeholder"><img class="mb-3" src="../assets/images/upload.svg"/>
+                              <input id="fileInput" type="file" accept=".pdf,.doc,.docx" name="cv"/>
+                              <div class="upload-placeholder"><img class="mb-3" src="{{asset('assets/images/upload.svg')}}"/>
                                 <h3 class="font-bold mb-2 text-main">اسحب وأفلِت أو اختر الملف الذي تريد تحميله</h3>
                                 <h6 class="mb-2 text-sub">الحد الأقصى للحجم 5 ميجا بايت</h6>
                               </div>
                               <div class="file-list"></div>
                             </div>
+                            @if ($errors->has('cv'))
+                              <span class="text-danger">{{ $errors->first('cv') }}</span>
+                            @endif
                           </div>
                           <div class="form-group"> 
                             <label class="form-label">خطاب تعريفي </label>
-                            <input class="form-control" type="text" placeholder="أدخل خطاب تعريفي..."/>
+                            <textarea name="cover_letter" id="" cols="30" rows="4" class="form-control"></textarea>
+                            @if ($errors->has('cover_letter'))
+                              <span class="text-danger">{{ $errors->first('cover_letter') }}</span>
+                            @endif
                           </div>
                         </div>
                       </div>
@@ -141,7 +147,8 @@
               </div>
             </div>
           </div><!-- end:: modal -->
-<!-- start:: modal -->
+          
+          <!-- start:: modal -->
           <div class="modal fade" id="profileCompletionModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content border-0">

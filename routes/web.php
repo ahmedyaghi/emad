@@ -37,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/profile', [App\Http\Controllers\Individual\ProfileController::class, 'profile'])->name('profile');
         Route::get('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
         Route::get('/training-opportunities/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
+        Route::post('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'apply_training_opportunities'])->name('training-opportunities.apply');
+
         Route::get('/my-training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'my_training_opportunities'])->name('my-training-opportunities');
         Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
         Route::get('/courses', [App\Http\Controllers\Individual\CourseController::class, 'courses'])->name('courses');

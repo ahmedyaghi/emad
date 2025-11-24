@@ -60,17 +60,17 @@
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2">عرض 84 نتيجة فرصة تدريبية</h3>
+                  <h3 class="font-semi-bold mb-2">عرض {{count($training_opportunities)}} نتيجة فرصة تدريبية</h3>
                   <h6 class="text-gray">بناءً على ملفك الشخصي وتفضيلاتك</h6>
                 </div>
-                <div class="col-lg-auto"><a class="btn btn-white" href="jobs-single.html">مشاهدة الكل </a></div>
+                <div class="col-lg-auto"><a class="btn btn-white" href="{{route('individual.training-opportunities')}}">مشاهدة الكل </a></div>
               </div>
             </div>
             <div class="col-12">  
               <div class="row gx-3">
                 @foreach($training_opportunities as $training_opportunity)
-                 <div class="col-lg-4 col-md-6">
-                    <div class="widget_item-card">
+                <div class="col-lg-4 col-md-6">
+                    <div class="widget_item-card widget-2">
                     <div class="widget_item-content">
                         <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('individual.training-opportunity', $training_opportunity->slug)}}">{{$training_opportunity->title}}</a></h4>
                         <h6 class="widget_item-desc text-gray mb-3">{{$training_opportunity->short_description}}</h6>

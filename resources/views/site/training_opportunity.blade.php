@@ -79,11 +79,21 @@
                   <h5 class="mb-3 font-bold">تفاصيل التدريب</h5>
                   <hr/>
                   <ul class="description-list-2">
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/location.svg" alt=""/></span>{{$training_opportunity->location}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/briefcase.svg" alt=""/></span> {{$training_opportunity->attendance}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/calendar.svg" alt=""/></span>{{$training_opportunity->duration}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/riyal-circular.svg" alt=""/></span> {{$training_opportunity->salaray}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="../assets/images/user2.svg" alt=""/></span> الذكور فقط لهذه الوظيفة.</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/location.svg')}}" alt=""/></span>{{$training_opportunity->location}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/briefcase.svg')}}" alt=""/></span> {{$training_opportunity->attendance}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></span>{{$training_opportunity->duration}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/riyal-circular.svg')}}" alt=""/></span> {{$training_opportunity->salaray}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/user2.svg')}}" alt=""/></span>
+                      @php
+                        if($training_opportunity->for_male == 1){
+                          echo "الذكور فقط لهذه الوظيفة.";
+                        } elseif($training_opportunity->for_female == 2){
+                          echo "الإناث فقط لهذه الوظيفة.";
+                        } elseif($training_opportunity->for_male == 1 && $training_opportunity->for_female == 2) {
+                          echo "الذكور والإناث لهذه الوظيفة.";
+                        }
+                      @endphp
+                     </li>
                   </ul>
                   <hr/>
                   @auth
