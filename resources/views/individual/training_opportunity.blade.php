@@ -92,10 +92,16 @@
                       @endphp
                      </li>
                 </ul>
-                <hr/><a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
+                <hr/>
+                @if(!$has_applied) 
+                  <a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
+                @else
+                  <a class="btn btn-primary w-100" disabled>تم التقديم</a>
+                @endif
               </div>
             </div>
-          </div><!-- start:: modal -->
+          </div>
+          <!-- start:: modal -->
           <div class="modal fade" id="profileCompletionFormModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content border-0">
@@ -146,7 +152,8 @@
                 </div>
               </div>
             </div>
-          </div><!-- end:: modal -->
+          </div>
+          <!-- end:: modal -->
           
           <!-- start:: modal -->
           <div class="modal fade" id="profileCompletionModal" tabindex="-1" aria-hidden="true">

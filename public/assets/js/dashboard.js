@@ -95,7 +95,7 @@ $(document).ready(function () {
     }
 
     // Reset input value
-    $(this).val("");
+    //$(this).val("");
   });
 
 });

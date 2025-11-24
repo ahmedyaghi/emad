@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/summernote-bs5.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css')}}"/>
+    <link rel="stylesheet" href="{{asset('assets/css/toastr.min.css')}}"/>
     <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css')}}"> --> 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}"/>
   </head>
@@ -65,6 +66,24 @@
     <script src="{{ asset('assets/js/plyr.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote-ar-AR.min.js') }}"></script>
+    <script src="{{asset('assets/js/toastr.min.js')}}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script>
+        @if(session('success'))
+            toastr.success("{{session('success')}}");
+        @endif
+
+        @if(session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(session('info'))
+            toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(session('warning'))
+            toastr.warning("{{ session('warning') }}");
+        @endif
+      </script>
   </body>
 </html>
