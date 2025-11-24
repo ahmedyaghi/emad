@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('neighabourhoods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->string('name');
             $table->timestamps();
         });
     }
