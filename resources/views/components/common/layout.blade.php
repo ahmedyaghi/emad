@@ -46,7 +46,19 @@
       @php
           $role = auth()->user()->getRoleNames()->first();
       @endphp
-      @includeIf("components.$role.sidebar")
+      <aside class="sidebar">
+          <div class="sidebar-header d-none d-lg-block"><img class="logo" src="{{asset('assets/images/logo-white.svg')}}" alt=""/></div>
+          <ul class="sidebar-menu">
+          @includeIf("components.$role.sidebar",['role' => $role])  
+          </ul>
+          <div class="sidebar-footer"><a class="profile d-flex align-items-center gap-2" href="{{route($role.'.profile')}}">
+              <div class="profile-image col-auto"><img src="{{asset('assets/images/avatar.png')}}" alt=""/></div>
+              <div class="col"> 
+              <h6 class="text-white">{{Auth::user()->name}}</h6>
+              <h6 class="text-white font-light font-12">عرض الملف الشخصي</h6>
+              </div>
+              <div class="col-auto icon"><img src="{{asset('assets/images/arrow-left.svg')}}" alt=""/></div></a></div>
+      </aside>
       <!-- end:: aside --> 
       </div>
       <main>

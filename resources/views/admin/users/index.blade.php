@@ -1,0 +1,1 @@
+<x-common.layout></x-common.layout>

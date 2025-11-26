@@ -30,6 +30,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
+        Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'profile'])->name('profile');
+        Route::get('/exams', [App\Http\Controllers\Admin\ExamController::class, 'exams'])->name('exams');
+        Route::get('/courses', [App\Http\Controllers\Admin\CourseController::class, 'courses'])->name('courses');
+        Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'reports'])->name('reports');
+        Route::get('/packages', [App\Http\Controllers\Admin\PackageController::class, 'packages'])->name('packages');
+        Route::get('/associations', [App\Http\Controllers\Admin\AssociationController::class, 'associations'])->name('associations');
+        Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'users'])->name('users');
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
