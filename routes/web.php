@@ -38,10 +38,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
         Route::get('/training-opportunities/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
         Route::post('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'apply_training_opportunities'])->name('training-opportunities.apply');
-
-        Route::get('/my-training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'my_training_opportunities'])->name('my-training-opportunities');
-        Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
+        Route::get('/training-opportunity-applications', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_applications'])->name('training-opportunity-applications');
+        Route::get('/training-opportunity-applications/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_application_details'])->name('training-opportunity-application-details');
         Route::get('/courses', [App\Http\Controllers\Individual\CourseController::class, 'courses'])->name('courses');
+        Route::get('/courses/{slug}', [App\Http\Controllers\Individual\CourseController::class, 'course_details'])->name('course.details');
+
+        Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
         Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
     });
 

@@ -27,4 +27,19 @@ class Course extends Model
     {
         return $this->belongsToMany(Exam::class);
     }
+
+    public function units()
+    {
+        return $this->hasMany(CourseUnit::class);
+    }
+
+    public function instructors()
+    {
+        return $this->hasMany(CourseInstructor::class);
+    }
+
+    public function certificates()
+    {
+        return $this->hasMany(CourseCertificate::class);
+    }
 }

@@ -1,104 +1,122 @@
 /* =========================================================
+ PASSWORD VISIBILITY TOGGLE
+   - Switches input type between "password" and "text"
+   - Triggered when the user clicks the eye icon button
+   ========================================================= */
+
+   $(document).on("click", ".toggle-pass", function (e) {
+    e.preventDefault();
+
+    const input = $(this).siblings("input");
+
+    if (input.attr("type") === "password") {
+        input.attr("type", "text");
+    } else {
+        input.attr("type", "password");
+    }
+});
+
+/* =========================================================
    GLOBAL INITIALIZATIONS & UI CONTROLS
    ========================================================= */
 
-$(document).ready(function () {
+  $(document).ready(function () {
 
-  /*------------------------------------
-      Switch View (List / Grid)
-  --------------------------------------*/
-  $(".list-view").on("click", function () {
-    $(".view-mode .tab-pane.active,.view-mode")
-      .addClass("list-view-mode")
-      .removeClass("grid-view-mode");
+    /*------------------------------------
+        Switch View (List / Grid)
+    --------------------------------------*/
+    $(".list-view").on("click", function () {
+      $(".view-mode .tab-pane.active,.view-mode")
+        .addClass("list-view-mode")
+        .removeClass("grid-view-mode");
 
-    $(this).addClass("active");
-    $(".grid-view").removeClass("active");
-  });
-
-  $(".grid-view").on("click", function () {
-    $(".view-mode .tab-pane.active,.view-mode")
-      .addClass("grid-view-mode")
-      .removeClass("list-view-mode");
-
-    $(this).addClass("active");
-    $(".list-view").removeClass("active");
-  });
-
-
-  /*------------------------------------
-      Initialize Summernote Editor
-  --------------------------------------*/
-  $('#summernote').summernote({
-    height: 300,
-    lang: 'ar-AR'
-  });
-
-
-  /*------------------------------------
-      Drawer Toggle
-  --------------------------------------*/
-  $(".drawer-toggle").on("click", function () {
-    $("body").toggleClass("is-open-drawer");
-  });
-
-
-  /*------------------------------------
-      Sidebar Toggle
-  --------------------------------------*/
-  $(".toggle-sidebar").click(function () {
-    $("body").toggleClass("sidebar-open");
-  });
-
-  $(".overlay").click(function () {
-    $("body").removeClass("sidebar-open is-open-drawer");
-  });
-
-
-  /*------------------------------------
-      Select2 Initialization
-      - Supports usage inside modals
-  --------------------------------------*/
-  $('.select2').each(function () {
-    $(this).select2({
-      width: "100%",
-      dropdownParent: $(this).closest('.modal').length
-        ? $(this).closest('.modal')
-        : null
+      $(this).addClass("active");
+      $(".grid-view").removeClass("active");
     });
-  });
+
+    $(".grid-view").on("click", function () {
+      $(".view-mode .tab-pane.active,.view-mode")
+        .addClass("grid-view-mode")
+        .removeClass("list-view-mode");
+
+      $(this).addClass("active");
+      $(".list-view").removeClass("active");
+    });
 
 
-  /*------------------------------------
-      File Input Handling (No Images Allowed)
-  --------------------------------------*/
-  $('#fileInput').on('change', function (e) {
-    const file = e.target.files[0];
+    /*------------------------------------
+        Initialize Summernote Editor
+    --------------------------------------*/
+    $('#summernote').summernote({
+      height: 300,
+      lang: 'ar-AR'
+    });
 
-    if (file) {
-      $(".upload-placeholder").hide();
-      $(".file-list").empty();
 
-      // Allow only non-image files
-      if (!file.type.startsWith("image/")) {
-        const fileElement = `
-          <div class="file-item d-flex align-items-center border rounded p-2" style="gap:8px;">
-            <i class="fa fa-file text-main me-2"></i>
-            <span>${file.name}</span>
-          </div>
-        `;
-        $(".file-list").append(fileElement);
-      } else {
-        alert("يُرجى رفع ملفات فقط، وليس صور.");
-        $(".upload-placeholder").show();
+    /*------------------------------------
+        Drawer Toggle
+    --------------------------------------*/
+    $(".drawer-toggle").on("click", function () {
+      $("body").toggleClass("is-open-drawer");
+    });
+
+
+    /*------------------------------------
+        Sidebar Toggle
+    --------------------------------------*/
+    $(".toggle-sidebar").click(function () {
+      $("body").toggleClass("sidebar-open");
+    });
+
+    $(".overlay").click(function () {
+      $("body").removeClass("sidebar-open is-open-drawer");
+    });
+
+
+    /*------------------------------------
+        Select2 Initialization
+        - Supports usage inside modals
+    --------------------------------------*/
+    $('.select2').each(function () {
+      $(this).select2({
+        width: "100%",
+        dropdownParent: $(this).closest('.modal').length
+          ? $(this).closest('.modal')
+          : null
+      });
+    });
+
+
+    /*------------------------------------
+        File Input Handling (No Images Allowed)
+    --------------------------------------*/
+    $('#fileInput').on('change', function (e) {
+      const file = e.target.files[0];
+
+      if (file) {
+        $(".upload-placeholder").hide();
+        $(".file-list").empty();
+
+        // Allow only non-image files
+        if (!file.type.startsWith("image/")) {
+          const fileElement = `
+            <div class="file-item d-flex align-items-center border rounded p-2" style="gap:8px;">
+              <i class="fa fa-file text-main me-2"></i>
+              <span>${file.name}</span>
+            </div>
+          `;
+          $(".file-list").append(fileElement);
+        } else {
+          alert("يُرجى رفع ملفات فقط، وليس صور.");
+          $(".upload-placeholder").show();
+        }
       }
-    }
 
-    // Reset input value
-    //$(this).val("");
+      // Reset input value
+      $(this).val("");
+    });
+
   });
-
-});
 
 
 /* =========================================================

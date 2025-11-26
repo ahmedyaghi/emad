@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Nationality;
 use Illuminate\Database\Seeder;
 
 class NationalitySeeder extends Seeder
@@ -11,6 +12,8 @@ class NationalitySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Nationality::create([
+            'name' => 'سعودي',
+        ]);
     }
 }

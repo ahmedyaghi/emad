@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('training_id')->constrained('training_opportunities')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('slug')->unique();
             $table->string('cv');
             $table->text('cover_letter');
             $table->tinyInteger('status')->nullable()->default(0);
