@@ -8,7 +8,7 @@
         <ul class="d-flex align-items-center">
             <li> <a href=""> <img src="{{asset('assets/images/moon.svg')}}" alt=""/></a></li>
             <li> <a href=""> <img src="{{asset('assets/images/notification.svg')}}" alt=""/></a></li>
-            <li class="d-flex"><a href="{{route('individual.profile')}}"> <img class="user-avatar" src="{{asset('assets/images/avatar.png')}}" alt=""/></a></li>
+            <li class="d-flex"><a href="{{route($role.'.profile')}}"> <img class="user-avatar" src="{{asset('assets/images/avatar.png')}}" alt=""/></a></li>
             <li class="toggle-sidebar d-lg-none"><img src="{{asset('assets/images/menu.svg')}}" alt=""/></li>
         </ul>
         </div>

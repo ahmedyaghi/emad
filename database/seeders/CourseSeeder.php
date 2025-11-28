@@ -23,6 +23,7 @@ class CourseSeeder extends Seeder
                 'slug' => 'course-'.$i,
                 'published_at' => now(),
             ]);
+            $course->lecturers()->attach([1]);
             for ($j = 1; $j <= 5; $j++) {
                 $course_unit = $course->units()->create(['name' => 'الوحدة'.$j]);
                 for ($k = 1; $k <= 5; $k++) {
@@ -34,6 +35,7 @@ class CourseSeeder extends Seeder
                     ]);
                 }
             }
+
         }
     }
 }

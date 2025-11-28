@@ -63,7 +63,7 @@
       </div>
       <main>
         <main class="main-content">
-            <x-common.header />
+            <x-common.header :role="$role"/>
             {{ $slot }}
         </main>
       </main>

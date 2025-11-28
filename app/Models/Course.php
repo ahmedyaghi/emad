@@ -42,4 +42,9 @@ class Course extends Model
     {
         return $this->hasMany(CourseCertificate::class);
     }
+
+    public function lecturers()
+    {
+        return $this->belongsToMany(Lecturer::class);
+    }
 }
