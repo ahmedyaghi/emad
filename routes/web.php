@@ -27,6 +27,7 @@ Route::middleware('guest')->group(function () {
     })->name('login');
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {});
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -37,7 +38,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/exams', [App\Http\Controllers\Admin\ExamController::class, 'exams'])->name('exams');
         Route::get('/courses', [App\Http\Controllers\Admin\CourseController::class, 'courses'])->name('courses');
         Route::get('/courses/{slug}', [App\Http\Controllers\Admin\CourseController::class, 'course_details'])->name('course.details');
-
         Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'reports'])->name('reports');
         Route::get('/packages', [App\Http\Controllers\Admin\PackageController::class, 'packages'])->name('packages');
         Route::get('/associations', [App\Http\Controllers\Admin\AssociationController::class, 'associations'])->name('associations');
@@ -54,7 +54,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/training-opportunity-applications/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_application_details'])->name('training-opportunity-application-details');
         Route::get('/courses', [App\Http\Controllers\Individual\CourseController::class, 'courses'])->name('courses');
         Route::get('/courses/{slug}', [App\Http\Controllers\Individual\CourseController::class, 'course_details'])->name('course.details');
-
         Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
         Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
     });
@@ -88,5 +87,3 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/notes', [App\Http\Controllers\Consultant\NoteController::class, 'notes'])->name('notes');
     });
 });
-
-Route::middleware(['auth', 'verified'])->group(function () {});

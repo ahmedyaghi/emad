@@ -6,7 +6,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">22</h2>
+                        <h2 class="font-semi-bold">{{$users_count}}</h2>
                         <h6 class="text-gray">عدد المسجلين</h6>
                       </div>
                       <div class="col-auto"> <img src="../assets/images/user-group3.svg" alt=""/></div>
@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">{{$trainees_count}}</h2>
                         <h6 class="text-gray">عدد المتدربين</h6>
                       </div>
                       <div class="col-auto"> <img src="../assets/images/file2.svg" alt=""/></div>
@@ -32,7 +32,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">96</h2>
+                        <h2 class="font-semi-bold">{{$associations_count}}</h2>
                         <h6 class="text-gray"> عدد الجمعيات</h6>
                       </div>
                       <div class="col-auto"> <img src="../assets/images/catalogue3.svg" alt=""/></div>
@@ -54,6 +54,7 @@
                 </div>
               </div>
             </div>
+            @if(!$individuals->isEmpty())
             <div class="row">
               <div class="col-12">
                 <div class="pannel">
@@ -68,14 +69,15 @@
                   </div>
                   <div class="pannel-body">
                     <div class="row"> 
-                      <div class="col-lg-4 col-md-6">
+                      @foreach ($individuals as $individual )
+                              <div class="col-lg-4 col-md-6">
                         <div class="widget_item-card p-4 bg-white">
                           <div class="d-flex align-items-start">
                             <div class="col">
                               <div class="widget_item-user d-flex align-items-center">
                                 <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
                                 <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
+                                  <h6 class="mb-1 font-medium">{{$individual->name}}</h6>
                                   <h6 class="text-gray"> اسم الجهة</h6>
                                 </div>
                               </div>
@@ -95,48 +97,10 @@
                               <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">المؤهل العلمي<span class="font-bold d-block text-black mt-2">البكالوريوس</span></span></div>
                             </div>
                             <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">{{$individual->created_at}}</span></span></div>
                             </div>
                             <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/call.svg" alt=""/><span class="info-title text-gray">رقم الجوال <span class="font-bold d-block text-black mt-2">  069762865</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city2.svg" alt=""/><span class="info-title text-gray"> المدينة<span class="font-bold d-block text-black mt-2"> الرياض</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="d-flex align-items-start">
-                            <div class="col">
-                              <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                                  <h6 class="text-gray"> اسم الجهة</h6>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <div class="d-flex align-items-center"> 
-                                <div class="dropdown ms-2">
-                                  <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                  <div class="dropdown-menu"><a class="dropdown-item" href="trainings-profile.html"> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap border-0">
-                            <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">المؤهل العلمي<span class="font-bold d-block text-black mt-2">البكالوريوس</span></span></div>
-                            </div>
-                            <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/call.svg" alt=""/><span class="info-title text-gray">رقم الجوال <span class="font-bold d-block text-black mt-2">  069762865</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/call.svg" alt=""/><span class="info-title text-gray">رقم الجوال <span class="font-bold d-block text-black mt-2">  {{$individual->phone}}</span></span></div>
                             </div>
                             <div class="col-6">
                               <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city2.svg" alt=""/><span class="info-title text-gray"> المدينة<span class="font-bold d-block text-black mt-2"> الرياض</span></span></div>
@@ -144,49 +108,13 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6">
-                        <div class="widget_item-card p-4 bg-white">
-                          <div class="d-flex align-items-start">
-                            <div class="col">
-                              <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                                  <h6 class="text-gray"> اسم الجهة</h6>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <div class="d-flex align-items-center"> 
-                                <div class="dropdown ms-2">
-                                  <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                  <div class="dropdown-menu"><a class="dropdown-item" href="trainings-profile.html"> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap border-0">
-                            <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">المؤهل العلمي<span class="font-bold d-block text-black mt-2">البكالوريوس</span></span></div>
-                            </div>
-                            <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/call.svg" alt=""/><span class="info-title text-gray">رقم الجوال <span class="font-bold d-block text-black mt-2">  069762865</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city2.svg" alt=""/><span class="info-title text-gray"> المدينة<span class="font-bold d-block text-black mt-2"> الرياض</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            @endif
             <div class="row">
               <div class="col-12">
                 <div class="pannel">
