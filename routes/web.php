@@ -70,6 +70,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['prefix' => 'faculty-member', 'as' => 'faculty-member.', 'middleware' => ['role:faculty-member']], function () {
         Route::get('/', [App\Http\Controllers\FacultyMember\DashboardController::class, 'dashboard'])->name('dashboard');
+        Route::get('/trainees', [App\Http\Controllers\FacultyMember\TraineeController::class, 'trainees'])->name('trainees');
+        Route::get('/reports', [App\Http\Controllers\FacultyMember\ReportController::class, 'reports'])->name('reports');
+        Route::get('/profile', [App\Http\Controllers\FacultyMember\ProfileController::class, 'profile'])->name('profile');
+        Route::get('/assessments', [App\Http\Controllers\FacultyMember\AssessmentController::class, 'assessments'])->name('assessments');
+        Route::get('/notes', [App\Http\Controllers\FacultyMember\NoteController::class, 'notes'])->name('notes');
     });
 
     Route::group(['prefix' => 'consultant', 'as' => 'consultant.', 'middleware' => ['role:consultant']], function () {
