@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enums\UserStatusEnum;
 use App\Enums\UserTypeEnum;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,6 +30,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'id_number',
         'phone',
         'type',
+        'status',
     ];
 
     /**
@@ -52,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'type' => UserTypeEnum::class,
+            'status' => UserStatusEnum::class,
         ];
     }
 

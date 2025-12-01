@@ -47,7 +47,7 @@
                           <div class="col-12"> 
                             <hr/>
                             <div class="d-flex align-items-center justify-content-between"> 
-                              <button class="btn btn-white" type="reset">إعادة تعيين</button>
+                              <a class="btn btn-white"  href="{{route('individual.training-opportunities')}}">إعادة تعيين</a>
                               <button class="btn btn-primary" type="submit">تطبيق</button>
                             </div>
                           </div>

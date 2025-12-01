@@ -47,404 +47,69 @@
             <div class="col-12">
               <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="tab-1">
+                  @if(!$pending_associations->isEmpty())
                   <div class="row gx-lg-3">
-                    <div class="col-lg-4 col-ms-6">
+
+                    @foreach ($pending_associations as $user)
+                      <div class="col-lg-4 col-ms-6">
                       <div class="card widget_item-card p-4 rounded-4 mb-3">
                         <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
+                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.association.profile', $user)}}">{{$user->name}}</a></h4>
+                          <h6 class="widget_item-desc text-gray mb-3">{{$user->profile->bio}}</h6>
                           <div class="widget_item-info d-flex align-items-center border-0">
                             <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">{{$user->created_at}}</span></span></div>
                             </div>
                             <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/city.svg')}}" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
                             </div>
                           </div>
                           <hr/>
                           <div class="row gx-2">
                             <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
+                              <a class="btn btn-light-danger w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatusEnum::REJECTED, 'id' => $user->id])}}">رفض</a>
                             </div>
                             <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
+                              <a class="btn btn-light-success w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatusEnum::ACCEPTED, 'id' => $user->id])}}">قبول</a>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info d-flex align-items-center border-0">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="row gx-2">
-                            <div class="col-6">
-                              <button class="btn btn-light-danger w-100">رفض</button>
-                            </div>
-                            <div class="col-6">
-                              <button class="btn btn-light-success w-100">قبول</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
+                  @endif
                   <div class="row">
-                    <div class="col-12"> 
-                      <div class="pannel p-2">
-                        <ul class="pagination justify-content-end">
-                          <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 5</a></li>
-                        </ul>
-                      </div>
-                    </div>
+                   {{ $pending_associations->links('common.pagination') }}
                   </div>
                 </div>
                 <div class="tab-pane fade" id="tab-2">
+                  @if(!$accepted_associations->isEmpty())
                   <div class="row gx-lg-3">
-                    <div class="col-lg-4 col-ms-6">
+                    @foreach ($accepted_associations as $user)
+                     <div class="col-lg-4 col-ms-6">
                       <div class="card widget_item-card p-4 rounded-4 mb-3">
                         <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
+                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.association.profile', $user)}}"> {{$user->name}}</a></h4>
+                          <h6 class="widget_item-desc text-gray mb-3">{{$user->profile->bio}}</h6>
                           <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
                             <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">{{$user->created_at}}</span></span></div>
                             </div>
                             <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/city.svg')}}" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-ms-6">
-                      <div class="card widget_item-card p-4 rounded-4 mb-3">
-                        <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="profile-company.html"> اسم الجمعية</a></h4>
-                          <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية</h6>
-                          <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ الانضمام<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/city.svg" alt=""/><span class="info-title text-gray">المجال<span class="font-bold d-block text-black mt-2"> لخدمات الحج والعمرة</span></span></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
                   </div>
+                  @endif
                   <div class="row">
                     <div class="col-12"> 
                       <div class="pannel p-2">
-                        <ul class="pagination justify-content-end">
-                          <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 5</a></li>
-                        </ul>
+                      {{ $accepted_associations->links('common.pagination') }}
                       </div>
                     </div>
                   </div>

@@ -2,7 +2,7 @@
     <div class="row mb-4">
             <div class="col-12"> 
               <ol class="breadcrumb">
-                <div class="breadcrumb-item"><a href="{{route('admin.courses')}}"> الدورات</a></div>
+                <div class="breadcrumb-item"><a href="{{route('admin.courses.index')}}"> الدورات</a></div>
                 <div class="breadcrumb-item">{{$course->title}}</div>
 
               </ol>

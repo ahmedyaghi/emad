@@ -3,11 +3,44 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CreateUserRequest;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function users()
+    public function index()
     {
+        $users = User::paginate(9);
+
         return view('admin.users.index', get_defined_vars());
+    }
+
+    public function create()
+    {
+        $roles = Role::all();
+
+        return view('admin.users.create', get_defined_vars());
+    }
+
+    public function store(CreateUserRequest $request)
+    {
+        $data = $request->validated();
+
+        unset($data['role_id']);
+        $user = User::create($data);
+        $user->roles()->attach([$request->role_id]);
+
+        return redirect()->route('admin.users.index')->with('success', 'تم إضافة المستخدم بنجاح');
+    }
+
+    public function update_status($status, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->update([
+            'status' => $status,
+        ]);
+
+        return redirect()->route('admin.associations')->with('success', 'تم تعديل الحالة بنجاح');
     }
 }

@@ -27,8 +27,10 @@
     <meta name="keywords" content=""/>
     <meta name="author" content=""/>
     <meta name="copyright" content=" "/>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&amp;display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/smart_wizard_all.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/tempus-dominus.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/plyr.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css')}}"/>
@@ -49,7 +51,49 @@
       <aside class="sidebar">
           <div class="sidebar-header d-none d-lg-block"><img class="logo" src="{{asset('assets/images/logo-white.svg')}}" alt=""/></div>
           <ul class="sidebar-menu">
-          @includeIf("components.$role.sidebar",['role' => $role])  
+            @switch($role)
+              @case('admin')
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.courses.*') ? 'active' : '' }} menu-link" href="{{route($role.'.courses.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/audio-book.svg')}}" alt=""/></span><span class="menu-text"> الدورات</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.exams') ? 'active' : '' }} menu-link" href="{{route($role.'.exams')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">  الاختبارات</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.packages.*') ? 'active' : '' }} menu-link" href="{{route($role.'.packages.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/subtitle.svg')}}" alt=""/></span><span class="menu-text"> الباقات</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.associations') ? 'active' : '' }} menu-link" href="{{route($role.'.associations')}}"><span class="menu-icon"><img src="{{asset('assets/images/city3.svg')}}" alt=""/></span><span class="menu-text">  الجمعيات</span></a></li>
+                <li class="menu-item"><a class="{{ ( request()->routeIs($role.'.users.*') ||  request()->routeIs($role.'.roles.*')) ? 'active' : '' }} menu-link" href="{{route($role.'.users.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/user3.svg')}}" alt=""/></span><span class="menu-text">  إدارة المستخدمين</span></a></li>
+                @break
+              @case('association')
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.training-opportunities.index') ? 'active' : '' }} menu-link" href="{{route($role.'.training-opportunities.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/briefcase2.svg')}}" alt=""/></span><span class="menu-text">  تدريباتي المنشورة</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.trainees') ? 'active' : '' }} menu-link" href="{{route($role.'.trainees')}}"><span class="menu-icon"><img src="{{asset('assets/images/agreement.svg')}}" alt=""/></span><span class="menu-text"> المتدربين</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.assessments') ? 'active' : '' }} menu-link" href="{{route($role.'.assessments')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text"> التقييم النهائي</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.articles') ? 'active' : '' }} menu-link" href="{{route($role.'.articles')}}"><span class="menu-icon"><img src="{{asset('assets/images/book.svg')}}" alt=""/></span><span class="menu-text"> المقالات</span></a></li>
+              @break
+              @case('consultant')
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="assets/images/home.svg" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.trainees') ? 'active' : '' }} menu-link" href="{{route($role.'.trainees')}}"><span class="menu-icon"><img src="../assets/images/agreement.svg" alt=""/></span><span class="menu-text"> المتدربين</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="../assets/images/file.svg" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.assessments') ? 'active' : '' }} menu-link" href="{{route($role.'.assessments')}}"><span class="menu-icon"><img src="../assets/images/catalogue.svg" alt=""/></span><span class="menu-text"> التقييم النهائي</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.notes') ? 'active' : '' }} menu-link" href="{{route($role.'.notes')}}"><span class="menu-icon"><img src="../assets/images/property-edit.svg" alt=""/></span><span class="menu-text">  ملاحظات</span></a></li>
+                @break
+              @case('faculty-member')
+              <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="../assets/images/home.svg" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
+              <li class="menu-item"><a class="{{ request()->routeIs($role.'.trainees') ? 'active' : '' }} menu-link" href="{{route($role.'.trainees')}}"><span class="menu-icon"><img src="../assets/images/agreement.svg" alt=""/></span><span class="menu-text"> المتدربين</span></a></li>
+              <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="../assets/images/file.svg" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
+              <li class="menu-item"><a class="{{ request()->routeIs($role.'.assessments') ? 'active' : '' }} menu-link" href="{{route($role.'.assessments')}}"><span class="menu-icon"><img src="../assets/images/catalogue.svg" alt=""/></span><span class="menu-text"> التقييم النهائي</span></a></li>
+              <li class="menu-item"><a class="{{ request()->routeIs($role.'.notes') ? 'active' : '' }} menu-link" href="{{route($role.'.notes')}}"><span class="menu-icon"><img src="../assets/images/property-edit.svg" alt=""/></span><span class="menu-text">  ملاحظات</span></a></li>
+              @break
+              @case('individual')
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.training-opportunities') ? 'active' : '' }} menu-link" href="{{route($role.'.training-opportunities')}}"><span class="menu-icon"><img src="{{asset('assets/images/briefcase2.svg')}}" alt=""/></span><span class="menu-text"> استكشف الفرص التدريبية</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.training-opportunity-applications') ? 'active' : '' }} menu-link" href="{{route($role.'.training-opportunity-applications')}}"><span class="menu-icon"><img src="{{asset('assets/images/catalogue.svg')}}" alt=""/></span><span class="menu-text">طلباتي</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">التقييمات والتقارير</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.courses') ? 'active' : '' }} menu-link" href="{{route($role.'.courses')}}"><span class="menu-icon"><img src="{{asset('assets/images/audio-book.svg')}}" alt=""/></span><span class="menu-text">دوراتي</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.exams') ? 'active' : '' }} menu-link" href="{{route($role.'.exams')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">الاختبارات</span></a></li>
+                @break
+            
+              @default
+            @endswitch
           </ul>
           <div class="sidebar-footer"><a class="profile d-flex align-items-center gap-2" href="{{route($role.'.profile')}}">
               <div class="profile-image col-auto"><img src="{{asset('assets/images/avatar.png')}}" alt=""/></div>
@@ -63,7 +107,22 @@
       </div>
       <main>
         <main class="main-content">
-            <x-common.header :role="$role"/>
+        <header class="header">
+          <div class="d-flex align-items-center justify-content-between">
+              <div class="logo d-lg-none"> <img src="{{asset('assets/images/logo.svg')}}" alt=""/></div>
+              <div class="search-box d-none d-lg-block">
+              <input class="form-control" type="text" placeholder="بحث..."/><span class="search-box-icon"> <img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
+              </div>
+              <div class="header-user-info">
+              <ul class="d-flex align-items-center">
+                  <li> <a href=""> <img src="{{asset('assets/images/moon.svg')}}" alt=""/></a></li>
+                  <li> <a href=""> <img src="{{asset('assets/images/notification.svg')}}" alt=""/></a></li>
+                  <li class="d-flex"><a href="{{route($role.'.profile')}}"> <img class="user-avatar" src="{{asset('assets/images/avatar.png')}}" alt=""/></a></li>
+                  <li class="toggle-sidebar d-lg-none"><img src="{{asset('assets/images/menu.svg')}}" alt=""/></li>
+              </ul>
+              </div>
+          </div>
+        </header>
             {{ $slot }}
         </main>
       </main>
@@ -79,7 +138,9 @@
     <script src="{{ asset('assets/js/summernote-bs5.min.js') }}"></script>
     <script src="{{ asset('assets/js/summernote-ar-AR.min.js') }}"></script>
     <script src="{{asset('assets/js/toastr.min.js')}}"></script>
+    <script src="{{asset('assets/js/smartWizard.min.js')}}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    @yield('scripts')
     <script>
         @if(session('success'))
             toastr.success("{{session('success')}}");
@@ -96,6 +157,6 @@
         @if(session('warning'))
             toastr.warning("{{ session('warning') }}");
         @endif
-      </script>
+    </script>
   </body>
 </html>

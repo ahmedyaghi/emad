@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\UserStatusEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -17,7 +18,7 @@ class UserService
             'type' => $type->value,
             'phone' => $data['phone'],
             'password' => Hash::make(123456),
-
+            'status' => UserStatusEnum::PENDING,
         ]);
 
         $user->profile()->create([]);

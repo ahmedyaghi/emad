@@ -22,7 +22,7 @@ class TrainingOpportunitySeeder extends Seeder
                 'location' => 'مكة المكرمة – المنطقة المركزية ',
                 'duration' => 'دوام كامل – 8 ساعات',
                 'attendance' => '10 أيام (من 1 ذو الحجة حتى 10 ذو الحجة)',
-                'salaray' => rand(500, 2000).' USD/month',
+                'salary' => rand(500, 2000).' USD/month',
                 'responsibilities' => 'Responsibilities for training opportunity ',
                 'conditions' => 'Conditions for training opportunity ',
                 'features' => 'Features of training opportunity ',

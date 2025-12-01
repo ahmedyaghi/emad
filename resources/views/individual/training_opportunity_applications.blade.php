@@ -81,15 +81,15 @@
                   <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="{{route('individual.training-opportunity-application-details', $application->slug)}}">{{$application->training->title}}</a></h4>
                   <h6 class="widget_item-desc text-gray mb-3">{{$application->training->short_description}}</h6>
                   <div class="widget_item-campany mb-4 d-flex align-items-center">
-                    <div class="campany-image me-2"><img src="../assets/images/logo.svg" alt=""/></div>
+                    <div class="campany-image me-2"><img src="{{asset('assets/images/logo.svg')}}" alt=""/></div>
                     <h6 class="campany-name">{{$application->training->association->name}} </h6>
                   </div>
                   <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
                     <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">{{$application->training->created_at}}</span></span></div>
+                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">{{$application->training->created_at}}</span></span></div>
                     </div>
                     <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">{{$application->training->updated_at}}</span></span></div>
+                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">{{$application->training->updated_at}}</span></span></div>
                     </div>
                   </div>
                 </div>

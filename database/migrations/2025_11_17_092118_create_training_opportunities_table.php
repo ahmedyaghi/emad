@@ -16,18 +16,23 @@ return new class extends Migration
             $table->foreignId('association_id')->constrained('associations')->onDelete('cascade');
             $table->foreignId('type_id')->nullable()->constrained('training_opportunity_types')->onDelete('cascade');
             $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
+            $table->foreignId('qualification_id')->nullable()->constrained('qualifications')->onDelete('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->integer('vacancies_count')->nullable();
             $table->text('short_description')->nullable();
             $table->string('location')->nullable();
             $table->string('duration')->nullable();
             $table->string('attendance')->nullable();
-            $table->string('salaray')->nullable();
+            $table->string('salary')->nullable();
             $table->text('responsibilities')->nullable();
             $table->text('conditions')->nullable();
             $table->text('features')->nullable();
             $table->boolean('for_male')->nullable()->default(0);
             $table->boolean('for_female')->nullable()->default(0);
+            $table->tinyInteger('status')->nullable()->default(0);
             $table->timestamps();
         });
     }

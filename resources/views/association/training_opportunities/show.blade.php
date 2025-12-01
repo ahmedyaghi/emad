@@ -4,8 +4,8 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href=""> استكشف الوظائف</a></div>
-                    <div class="breadcrumb-item">مشرف حجاج</div>
+                    <div class="breadcrumb-item"><a href="{{route('association.training-opportunities.index')}}"> استكشف الفرص التدريبية</a></div>
+                    <div class="breadcrumb-item">{{$training_opportunity->title}}</div>
                   </ol>
                 </div>
               </div>
@@ -26,13 +26,13 @@
                   <div class="pannel">
                     <div class="d-flex align-items-center mb-4">
                       <div class="col"> 
-                        <h3 class="font-bold">مشرف حجاج</h3>
+                        <h3 class="font-bold">{{$training_opportunity->title}}</h3>
                       </div>
                       <div class="col-atuo"> 
-                        <h6 class="accepted-text accepted-bg font-medium px-4 py-2 rounded-3">نشرت</h6>
+                        <h6 class="{{$training_opportunity->getStatusClass()}} font-medium px-4 py-2 rounded-3">{{$training_opportunity->getStatus()}}</h6>
                       </div>
                     </div>
-                    <h6>تبحث شركة الإسناد الموسمي لخدمات الحجاج عن أفراد مؤهلين للانضمام إلى فريقها كمشرفين ميدانيين خلال موسم الحج. ستكون مسؤولاً عن تنظيم وإرشاد مجموعة من الحجاج أثناء تنقلهم بين المشاعر المقدسة، وضمان التزامهم بالتعليمات والخطط التشغيلية.</h6>
+                    <h6>{{$training_opportunity->short_description}}</h6>
                   </div>
                   <div class="card">
                     <div class="card-head">
@@ -40,11 +40,7 @@
                     </div>
                     <div class="card-body">
                       <ul class="description-list">
-                        <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                        <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                        <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                        <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                        <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                        {!! $training_opportunity->responsibilities !!}
                       </ul>
                     </div>
                   </div>
@@ -54,11 +50,7 @@
                     </div>
                     <div class="card-body">
                       <ul class="description-list">
-                        <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                        <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                        <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                        <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                        <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                         {!! $training_opportunity->conditions !!}
                       </ul>
                     </div>
                   </div>
@@ -68,11 +60,7 @@
                     </div>
                     <div class="card-body">
                       <ul class="description-list">
-                        <li>الإشراف اليومي على مجموعة محددة من الحجاج.</li>
-                        <li>التأكد من التزام الحجاج بخطط التنقل وجدول الحركة بين المشاعر.</li>
-                        <li>التنسيق المستمر مع فرق النقل والدعم اللوجستي.</li>
-                        <li>التعامل مع الحالات الطارئة ورفع التقارير إلى المسؤول المباشر.</li>
-                        <li>ضمان سلامة وراحة الحجاج خلال تنقلهم وإقامتهم.</li>
+                        {!! $training_opportunity->features !!}
                       </ul>
                     </div>
                   </div>

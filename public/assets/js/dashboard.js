@@ -113,7 +113,7 @@
       }
 
       // Reset input value
-      $(this).val("");
+      //$(this).val("");
     });
 
   });

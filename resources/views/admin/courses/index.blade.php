@@ -15,10 +15,10 @@
             @foreach($courses as $course)
             <div class="col-lg-4 col-sm-6">
               <div class="widget_item-card bg-white">
-                <div class="widget_item-image mb-3"><a href="{{route('admin.course.details', ['slug' => $course->slug])}}"> 
+                <div class="widget_item-image mb-3"><a href="{{route('admin.courses.show', ['course' => $course])}}"> 
                     <picture> <img src="{{asset('assets/images/image.png')}}" alt=""/></picture></a></div>
                 <div class="widget_item-content">
-                  <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('admin.course.details', ['slug' => $course->slug])}}">{{$course->title}}</a></h4>
+                  <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('admin.courses.show', ['course' => $course])}}">{{$course->title}}</a></h4>
                   <h6 class="widget_item-desc text-gray mb-3">{{$course->short_description}}</h6>
                   <div class="widget_item-details">
                     <div class="widget_item-info border-0 d-flex align-items-center">
