@@ -10,31 +10,31 @@
                   </h2>
                   <div class="accordion-collapse collapse show" id="collapseOne">
                     <div class="accordion-body px-0">
-                      <form action="" method="post">
+                      <form action="{{route('association.trainees.index')}}" method="get">
                         <div class="row"> 
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">تاريخ التسجيل </label>
-                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ التسجيل"/>
+                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ التسجيل" name="created_at" value="{{request('created_at')}}"/>
                             </div>
                           </div>
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">اسم الدورة </label>
-                              <input class="form-control" type="text" placeholder="اسم الدورة"/>
+                              <input class="form-control" type="text" placeholder="اسم الدورة" name="course_title" value="{{request('course_title')}}"/>
                             </div>
                           </div>
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">اسم المتدرب </label>
-                              <input class="form-control" type="text" placeholder="اسم المتدرب"/>
+                              <input class="form-control" type="text" placeholder="اسم المتدرب" name="trainee_name" value="{{request('trainee_name')}}"/>
                             </div>
                           </div>
                           <div class="col-12"> 
                             <hr/>
                             <div class="d-flex align-items-center justify-content-between"> 
-                              <button class="btn btn-white">إعادة تعيين</button>
-                              <button class="btn btn-primary">تطبيق</button>
+                              <a class="btn btn-white" type="reset" href="{{route('association.trainees.index')}}">إعادة تعيين</a>
+                              <button class="btn btn-primary" type="submit">تطبيق</button>
                             </div>
                           </div>
                         </div>

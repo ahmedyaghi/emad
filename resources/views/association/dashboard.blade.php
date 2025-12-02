@@ -9,7 +9,7 @@
                         <h2 class="font-semi-bold">{{count($training_opportunities)}}</h2>
                         <h6 class="text-gray">وظائفي المنشورة</h6>
                       </div>
-                      <div class="col-auto"> <img src="../assets/images/briefcase3.svg" alt=""/></div>
+                      <div class="col-auto"> <img src="{{asset('assets/images/briefcase3.svg')}}" alt=""/></div>
                     </div>
                   </div>
                 </div>
@@ -19,10 +19,10 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">{{$trainees_count}}</h2>
                         <h6 class="text-gray">عدد المتدربين</h6>
                       </div>
-                      <div class="col-auto"> <img src="../assets/images/user-switch.svg" alt=""/></div>
+                      <div class="col-auto"> <img src="{{asset('assets/images/user-switch.svg')}}" alt=""/></div>
                     </div>
                   </div>
                 </div>
@@ -32,10 +32,10 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">{{$applications_count}}</h2>
                         <h6 class="text-gray">عدد طلبات التدريب</h6>
                       </div>
-                      <div class="col-auto"> <img src="../assets/images/permanent-job.svg" alt=""/></div>
+                      <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
                     </div>
                   </div>
                 </div>
