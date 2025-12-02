@@ -24,6 +24,7 @@ class TraineeController extends Controller
         }
 
         $trainees = $query->paginate(9);
+
         return view('association.trainees.index', get_defined_vars());
     }
 }
