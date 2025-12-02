@@ -49,7 +49,7 @@
               </div>
             </div>
           </div>
-          @if(!$training_opportunities->isEmpty())
+          
           <div class="row"> 
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
@@ -60,7 +60,7 @@
                 <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('association.training-opportunities.create')}}">نشر تدريب جديد</a></div>
               </div>
             </div>
-
+            @if(!$training_opportunities->isEmpty())
             @foreach ($training_opportunities as $training_opportunity)
               <div class="col-lg-4 col-md-6">
                 <div class="widget_item-card p-4 bg-white">
@@ -86,8 +86,8 @@
                 </div>
               </div>
             @endforeach
+            @endif
           </div>
-          @endif
           <div class="row"> 
             <div class="col-12"> 
               {{$training_opportunities->links('common.pagination')}}

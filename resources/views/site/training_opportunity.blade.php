@@ -97,7 +97,9 @@
                   </ul>
                   <hr/>
                   @auth
-                    <a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a>
+                    @if(auth()->user()->hasRole('individual'))
+                    <a class="btn btn-primary w-100" href="{{route('individual.training-opportunity', $training_opportunity->slug)}}">قدّم الآن </a>
+                    @endif
                   @else
                     <a class="btn btn-primary w-100" href="" data-bs-toggle="modal" data-bs-target="#loginModal">قدّم الآن </a>
                   @endauth

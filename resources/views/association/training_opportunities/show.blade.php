@@ -71,16 +71,16 @@
                       <div class="pannel">
                         <ul class="nav nav-tabs nav-clip-path mb-3 gap-3" id="pills-tab" role="tablist">
                           <li class="nav-item">
-                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-2-1" type="button" role="tab">المتقدمين (124)</button>
+                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-2-1" type="button" role="tab">المتقدمين ({{count($applied_applications)}})</button>
                           </li>
                           <li class="nav-item">
-                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-2" type="button" role="tab">المرشحين (82)</button>
+                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-2" type="button" role="tab">المرشحين ({{count($reviewed_applications)}})</button>
                           </li>
                           <li class="nav-item">
-                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-3" type="button" role="tab">وافق (3)</button>
+                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-3" type="button" role="tab">وافق ({{count($accepted_applications)}})</button>
                           </li>
                           <li class="nav-item">
-                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-4" type="button" role="tab">رفض (1)</button>
+                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-4" type="button" role="tab">رفض ({{count($rejected_applications)}})</button>
                           </li>
                         </ul>
                         <div class="toolbar-action">
@@ -88,9 +88,9 @@
                             <input class="form-control" type="text" placeholder="البحث عن المرشحين ..."/><span class="search-icon"><img src="../assets/images/search.svg" alt=""/></span>
                           </div>
                           <div class="action-buttons">
-                            <button class="btn btn-icon border rounded-4"><img src="../assets/images/file-import.svg" alt=""/></button>
-                            <button class="btn btn-icon border rounded-4"><img src="../assets/images/file-export.svg" alt=""/></button>
-                            <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="../assets/images/filter.svg" alt=""/></button>
+                            <button class="btn btn-icon border rounded-4"><img src="{{asset('assets/images/file-import.svg')}}" alt=""/></button>
+                            <button class="btn btn-icon border rounded-4"><img src="{{asset('assets/images/file-export.svg')}}" alt=""/></button>
+                            <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="{{asset('assets/images/filter.svg')}}" alt=""/></button>
                           </div>
                           <div class="action-buttons">
                             <select class="select2">
@@ -99,8 +99,8 @@
                             </select>
                           </div>
                           <div class="action-buttons view-switch-buttons">
-                            <button class="btn btn-icon border rounded-4 list-view"><img src="../assets/images/row-vertical.svg" alt=""/></button>
-                            <button class="btn btn-icon border rounded-4 grid-view active"><img src="../assets/images/categoray.svg" alt=""/></button>
+                            <button class="btn btn-icon border rounded-4 list-view"><img src="{{asset('assets/images/row-vertical.svg')}}" alt=""/></button>
+                            <button class="btn btn-icon border rounded-4 grid-view active"><img src="{{asset('assets/images/categoray.svg')}}" alt=""/></button>
                           </div>
                         </div>
                       </div>
@@ -110,376 +110,52 @@
                     <div class="col-12">
                       <div class="tab-content view-mode" id="myTabContent">
                         <div class="tab-pane fade show active" id="tab-2-1">
+                          @if(!$applied_applications->isEmpty())
                           <div class="row"> 
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="accepted-text accepted-bg font-medium px-3 py-1 rounded-2"> تم قبول العقد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="new-text new-bg font-medium px-3 py-1 rounded-2">جديد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            @foreach ($applied_applications as $application)
+                              <x-common.training_application :application="$application"/>
+                            @endforeach
                           </div>
                           <div class="row"> 
-                            <div class="col-12"> 
-                              <ul class="pagination justify-content-end">
-                                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 5</a></li>
-                              </ul>
-                            </div>
+                              {{$applied_applications->links('common.pagination')}}
                           </div>
+                          @endif
                         </div>
                         <div class="tab-pane fade " id="tab-2-2">
+                          @if(!$reviewed_applications->isEmpty())
                           <div class="row"> 
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="new-text new-bg font-medium px-3 py-1 rounded-2">جديد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="new-text new-bg font-medium px-3 py-1 rounded-2">جديد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            @foreach ($reviewed_applications as $application)
+                              <x-common.training_application :application="$application"/>
+                            @endforeach
                           </div>
                           <div class="row"> 
-                            <div class="col-12"> 
-                              <ul class="pagination justify-content-end">
-                                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 5   </a></li>
-                              </ul>
-                            </div>
+                             {{$reviewed_applications->links('common.pagination')}}
                           </div>
+                          @endif
                         </div>
                         <div class="tab-pane fade " id="tab-2-3">
+                          @if(!$accepted_applications->isEmpty())
                           <div class="row"> 
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="new-text new-bg font-medium px-3 py-1 rounded-2">جديد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="new-text new-bg font-medium px-3 py-1 rounded-2">جديد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                           @foreach ($accepted_applications as $application)
+                            <x-common.training_application :application="$application"/>
+                           @endforeach
                           </div>
                           <div class="row"> 
-                            <div class="col-12"> 
-                              <ul class="pagination justify-content-end">
-                                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 5</a></li>
-                              </ul>
-                            </div>
+                            {{$accepted_applications->links('common.pagination')}}
                           </div>
+                          @endif
                         </div>
                         <div class="tab-pane fade " id="tab-2-4">
+                          @if(!$rejected_applications->isEmpty())
                           <div class="row"> 
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="new-text new-bg font-medium px-3 py-1 rounded-2">جديد</div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="pannel">
-                                <div class="d-flex align-items-start">
-                                  <div class="col">
-                                    <div class="widget_item-user d-flex align-items-center">
-                                      <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                      <div class="widget_item-user-info">
-                                        <h5 class="mb-1 font-medium">عبدالله محمود القحطاني</h5>
-                                        <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-auto">
-                                    <div class="d-flex align-items-center"> 
-                                      <div class="ended-text ended-bg font-medium px-3 py-1 rounded-2"> تم رفض العقد </div>
-                                      <div class="dropdown ms-2">
-                                        <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                        <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <hr/>
-                                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap">
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                                  </div>
-                                  <div class="col-6 mb-4">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">12 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                  <div class="col-6">
-                                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                             @foreach ($rejected_applications as $application)
+                             <x-common.training_application :application="$application"/>
+                            @endforeach
                           </div>
                           <div class="row"> 
-                            <div class="col-12"> 
-                              <ul class="pagination justify-content-end">
-                                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                                <li class="page-item"><a class="page-link" href=""> 5            </a></li>
-                              </ul>
-                            </div>
+                             {{$rejected_applications->links('common.pagination')}}
                           </div>
+                          @endif
                         </div>
                       </div>
                     </div>
@@ -492,7 +168,7 @@
             <div class="drawer-head mb-4">
               <div class="d-flex align-items-center justify-content-between"> 
                 <h4 class="font-bold">فلترة المتقدمين</h4>
-                <button class="btn btn-icon btn-light h-auto w-auto p-1 rounded-pull drawer-toggle"><img src="../assets/images/close.svg" alt=""/></button>
+                <button class="btn btn-icon btn-light h-auto w-auto p-1 rounded-pull drawer-toggle"><img src="{{asset('assets/images/close.svg')}}" alt=""/></button>
               </div>
             </div>
             <div class="drawer-body mb-4">

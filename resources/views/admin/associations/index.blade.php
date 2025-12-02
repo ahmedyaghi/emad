@@ -67,10 +67,10 @@
                           <hr/>
                           <div class="row gx-2">
                             <div class="col-6">
-                              <a class="btn btn-light-danger w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatusEnum::REJECTED, 'id' => $user->id])}}">رفض</a>
+                              <a class="btn btn-light-danger w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatus::REJECTED, 'id' => $user->id])}}">رفض</a>
                             </div>
                             <div class="col-6">
-                              <a class="btn btn-light-success w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatusEnum::ACCEPTED, 'id' => $user->id])}}">قبول</a>
+                              <a class="btn btn-light-success w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatus::ACCEPTED, 'id' => $user->id])}}">قبول</a>
                             </div>
                           </div>
                         </div>

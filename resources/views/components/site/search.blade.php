@@ -16,19 +16,19 @@
                 @endif
             </div>
             </div>
+            @if(!$associations->isEmpty())
             <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="200">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2">المنطقة</label>
-                @if(!$associations->isEmpty())
                 <select class="form-control select2" data-placeholder="اختار" name="city_id">
                     @foreach($cities as $city)
                     <option value=""> </option>
                     <option value="{{$city->id}}">{{$city->name}}</option>
                     @endforeach
                 </select>
-                @endif
             </div>
             </div>
+            @endif
             <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="300">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2">الجنس</label>
@@ -39,19 +39,19 @@
                 </select>
             </div>
             </div>
+            @if(!$associations->isEmpty())
             <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="400">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2"> الجهة</label>
-                @if(!$associations->isEmpty())
                 <select class="form-control select2" data-placeholder="اختار" name="association_id">
                     @foreach($associations as $association)
                     <option value=""> </option>
                     <option value="{{$association->id}}">{{$association->name}}</option>
                     @endforeach
                 </select>
-                @endif
             </div>
             </div>
+            @endif
             <div class="col-12 col-lg-auto" data-aos="fade-up" data-aos-delay="500">
             <div class="form-group mb-3 mb-lg-0">
                 <button class="btn btn-primary w-100" type="submit">البحث</button>

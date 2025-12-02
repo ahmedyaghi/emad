@@ -15,7 +15,7 @@
                 <form action="{{route('admin.packages.index')}}" method="GET">
                   <div class="toolbar-action">
                   <div class="search-bar">
-                    <input class="form-control" type="text" placeholder="البحث عن الباقات ..." name="keyword"/><span class="search-icon"><img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
+                    <input class="form-control" type="text" placeholder="البحث عن الباقات ..." name="keyword" value="{{request('keyword')}}"/><span class="search-icon"><img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
                   </div>
                   <div class="action-buttons">
                     <select class="select2" name="order">

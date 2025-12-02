@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\UserTypeEnum;
+use App\Enums\UserType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@emadpro.com',
             'id_number' => '803218141',
-            'type' => UserTypeEnum::ADMIN,
+            'type' => UserType::ADMIN,
             'password' => Hash::make(123456),
         ]);
 
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'name' => 'Individual',
             'email' => 'individual@emadpro.com',
             'id_number' => '803218142',
-            'type' => UserTypeEnum::INDIVIDUAL,
+            'type' => UserType::INDIVIDUAL,
             'password' => Hash::make(123456),
         ]);
 
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             'name' => 'Association',
             'email' => 'association@emadpro.com',
             'id_number' => '803218143',
-            'type' => UserTypeEnum::ASSOCIATION,
+            'type' => UserType::ASSOCIATION,
             'password' => Hash::make(123456),
         ]);
 
@@ -55,7 +55,7 @@ class UserSeeder extends Seeder
             'name' => 'Faculty Member',
             'email' => 'faculty-member@emadpro.com',
             'id_number' => '803218144',
-            'type' => UserTypeEnum::FACULTY_MEMBER,
+            'type' => UserType::FACULTY_MEMBER,
             'password' => Hash::make(123456),
         ]);
 
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
             'name' => 'Consultant',
             'email' => 'consultant@emadpro.com',
             'id_number' => '803218145',
-            'type' => UserTypeEnum::CONSULTANT,
+            'type' => UserType::CONSULTANT,
             'password' => Hash::make(123456),
         ]);
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Enums\UserTypeEnum;
+use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Auth\LoginRequest;
 use App\Http\Requests\Site\Auth\RegisterAssociationRequest;
@@ -41,7 +41,7 @@ class AuthController extends Controller
     public function handle_register(Request $request, $type)
     {
 
-        $enum_type = UserTypeEnum::from($type);
+        $enum_type = UserType::from($type);
         $type = Str::lower($enum_type->name);
 
         $form_request_class = match ($type) {
@@ -54,6 +54,10 @@ class AuthController extends Controller
 
         $form_request = app($form_request_class);
         $data = $form_request->validated();
+
+        if ($form_request->hasFile('image')) {
+            $data['image'] = $form_request->file('image')->store('users/profile', 'public');
+        }
 
         return UserService::register($data, $enum_type);
     }

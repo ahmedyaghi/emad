@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Individual;
 
+use App\Enums\TrainingApplicationStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Individual\ApplyTrainingOpportunityRequest;
 use App\Models\Association;
@@ -82,10 +83,10 @@ class TrainingOpportunityController extends Controller
             unset($data['cv']);
             $data['cv'] = $request->file('cv')->store('training-opportunities/applications', 'public');
         }
-        $data['status'] = 1;
+        $data['status'] = TrainingApplicationStatus::APPLIED;
         TrainingOpportunityApplication::create($data);
 
-        return redirect()->back()->with('success', 'تم التقديم على التدريب بنجاح!');
+        return redirect()->route('individual.training-opportunity-applications')->with('success', 'تم التقديم على التدريب بنجاح!');
     }
 
     public function training_opportunity_application_details($slug)

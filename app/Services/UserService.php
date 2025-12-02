@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Enums\UserStatusEnum;
+use App\Enums\UserStatus;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -18,10 +18,12 @@ class UserService
             'type' => $type->value,
             'phone' => $data['phone'],
             'password' => Hash::make(123456),
-            'status' => UserStatusEnum::PENDING,
+            'status' => UserStatus::PENDING,
         ]);
 
-        $user->profile()->create([]);
+        $user->profile()->create([
+            'image' => $data['image'] ?? null,
+        ]);
         $user->assignRole(Str::lower(str_replace('_', '-', $type->name)));
 
         return view('site.auth.registration_success');

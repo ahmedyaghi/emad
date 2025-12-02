@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('association_id')->constrained('associations')->onDelete('cascade');
+            $table->foreignId('association_id')->constrained('users')->onDelete('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->text('short_description')->nullable();

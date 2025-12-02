@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Association;
 
+use App\Enums\TrainingApplicationStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Association\TrainingOpportunityRequest;
 use App\Models\City;
 use App\Models\Qualification;
 use App\Models\TrainingOpportunity;
+use App\Models\TrainingOpportunityApplication;
 use App\Models\TrainingOpportunityType;
 use Illuminate\Support\Str;
 
@@ -34,6 +36,26 @@ class TrainingOpportunityController extends Controller
 
     public function show(TrainingOpportunity $training_opportunity)
     {
+        $applied_applications = TrainingOpportunityApplication::with(['user'])
+            ->where('training_id', $training_opportunity->id)
+            ->where('status', TrainingApplicationStatus::APPLIED)
+            ->paginate(9);
+
+        $reviewed_applications = TrainingOpportunityApplication::with(['user'])
+            ->where('training_id', $training_opportunity->id)
+            ->where('status', TrainingApplicationStatus::REVIEWED)
+            ->paginate(9);
+
+        $accepted_applications = TrainingOpportunityApplication::with(['user'])
+            ->where('training_id', $training_opportunity->id)
+            ->where('status', TrainingApplicationStatus::ACCEPTED)
+            ->paginate(9);
+
+        $rejected_applications = TrainingOpportunityApplication::with(['user'])
+            ->where('training_id', $training_opportunity->id)
+            ->where('status', TrainingApplicationStatus::REJECTED)
+            ->paginate(9);
+
         return view('association.training_opportunities.show', get_defined_vars());
     }
 

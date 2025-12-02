@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class ReportController extends Controller
 {
-    public function reports()
+    public function index()
     {
-        return view('association.reports');
+        return view('association.reports.index');
     }
 }

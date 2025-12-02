@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TrainingApplicationStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class TrainingOpportunityApplication extends Model
@@ -18,13 +19,20 @@ class TrainingOpportunityApplication extends Model
         return $this->belongsTo(User::class);
     }
 
+    protected function casts(): array
+    {
+        return [
+            'status' => TrainingApplicationStatus::class,
+        ];
+    }
+
     public function getStatus()
     {
         return match ($this->status) {
-            1 => 'تم التقديم',
-            2 => 'قيد المراجعة',
-            3 => 'تم القبول المبدئي',
-            4 => 'تم القبول',
+            TrainingApplicationStatus::APPLIED => 'تم التقديم',
+            TrainingApplicationStatus::REVIEWED => 'قيد المراجعة',
+            TrainingApplicationStatus::ACCEPTED => 'تم القبول',
+            TrainingApplicationStatus::REJECTED => 'تم الرفض',
             default => 'غير محدد'
         };
     }
@@ -32,10 +40,10 @@ class TrainingOpportunityApplication extends Model
     public function getStatusClass()
     {
         return match ($this->status) {
-            1 => 'submitted-bg submitted-text',
-            2 => 'pending-text pending-bg',
-            3 => 'status-preliminary',
-            4 => 'accepted-text accepted-bg',
+            TrainingApplicationStatus::APPLIED => 'submitted-bg submitted-text',
+            TrainingApplicationStatus::REVIEWED => 'pending-text pending-bg',
+            TrainingApplicationStatus::ACCEPTED => 'accepted-text accepted-bg',
+            TrainingApplicationStatus::REJECTED => 'ended-text ended-bg',
             default => ''
         };
     }
@@ -43,10 +51,10 @@ class TrainingOpportunityApplication extends Model
     public function getStatusLabel()
     {
         return match ($this->status) {
-            1 => 'submitted',
-            2 => 'pending',
-            3 => 'preliminary',
-            4 => 'accepted',
+            TrainingApplicationStatus::APPLIED => 'submitted',
+            TrainingApplicationStatus::REVIEWED => 'pending',
+            TrainingApplicationStatus::ACCEPTED => 'accepted',
+            TrainingApplicationStatus::REJECTED => 'ended',
             default => ''
         };
     }
@@ -54,10 +62,10 @@ class TrainingOpportunityApplication extends Model
     public function getStatusText()
     {
         return match ($this->status) {
-            1 => '>🎉 تهانينا، تم قبولك! لقد تم قبولك نهائيًا.',
-            2 => 'pending',
-            3 => 'preliminary',
-            4 => 'accepted',
+            TrainingApplicationStatus::APPLIED => 'submitted',
+            TrainingApplicationStatus::REVIEWED => 'pending',
+            TrainingApplicationStatus::ACCEPTED => 'accepted',
+            TrainingApplicationStatus::REJECTED => 'ended',
             default => ''
         };
     }

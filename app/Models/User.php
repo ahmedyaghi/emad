@@ -4,8 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Enums\UserStatusEnum;
-use App\Enums\UserTypeEnum;
+use App\Enums\UserStatus;
+use App\Enums\UserType;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,8 +53,8 @@ class User extends Authenticatable implements MustVerifyEmail
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'type' => UserTypeEnum::class,
-            'status' => UserStatusEnum::class,
+            'type' => UserType::class,
+            'status' => UserStatus::class,
         ];
     }
 

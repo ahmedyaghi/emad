@@ -9,8 +9,8 @@
                       <div class="profile-logo"><img src="{{asset('assets/images/logo.svg')}}" alt=""/></div>
                       <div class="text-end mb-3">
                         <div class="d-inline-flex align-items-center gap-2">
-                            <a class="btn btn-light-danger" href="{{route('admin.users.update.status', ['status' => App\Enums\UserStatusEnum::REJECTED, 'id' => $user->id])}}">رفض</a>
-                            <a class="btn btn-light-success" href="{{route('admin.users.update.status', ['status' => App\Enums\UserStatusEnum::ACCEPTED, 'id' => $user->id])}}">قبول </a></div>
+                            <a class="btn btn-light-danger" href="{{route('admin.users.update.status', ['status' => App\Enums\UserStatus::REJECTED, 'id' => $user->id])}}">رفض</a>
+                            <a class="btn btn-light-success" href="{{route('admin.users.update.status', ['status' => App\Enums\UserStatus::ACCEPTED, 'id' => $user->id])}}">قبول </a></div>
                       </div>
                       <div class="profile-info">
                         <h3 class="font-semi-bold mb-2">{{$user->name}} </h3>

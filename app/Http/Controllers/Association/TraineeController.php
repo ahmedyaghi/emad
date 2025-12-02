@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class TraineeController extends Controller
 {
-    public function trainees()
+    public function index()
     {
-        return view('association.trainees');
+        return view('association.trainees.index');
     }
 }

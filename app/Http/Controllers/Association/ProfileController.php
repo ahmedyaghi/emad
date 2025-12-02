@@ -8,6 +8,8 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('association.profile');
+        $association = auth()->user();
+
+        return view('association.profile', get_defined_vars());
     }
 }

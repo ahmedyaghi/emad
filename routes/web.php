@@ -66,13 +66,11 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'association', 'as' => 'association.', 'middleware' => ['role:association']], function () {
         Route::get('/', [App\Http\Controllers\Association\DashboardController::class, 'dashboard'])->name('dashboard');
         Route::get('/profile', [App\Http\Controllers\Association\ProfileController::class, 'profile'])->name('profile');
-        Route::resource('/training-opportunities', App\Http\Controllers\Association\TrainingOpportunityController::class)->names('training-opportunities');
-        // Route::get('/training-opportunities', [App\Http\Controllers\Association\TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
-        // Route::get('/training-opportunities/{slug}', [App\Http\Controllers\Association\TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
-        Route::get('/trainees', [App\Http\Controllers\Association\TraineeController::class, 'trainees'])->name('trainees');
-        Route::get('/reports', [App\Http\Controllers\Association\ReportController::class, 'reports'])->name('reports');
-        Route::get('/articles', [App\Http\Controllers\Association\ArticleController::class, 'articles'])->name('articles');
-        Route::get('/assessments', [App\Http\Controllers\Association\AssessmentController::class, 'assessments'])->name('assessments');
+        Route::resource('training-opportunities', App\Http\Controllers\Association\TrainingOpportunityController::class)->names('training-opportunities');
+        Route::resource('reports', App\Http\Controllers\Association\ReportController::class)->names('reports');
+        Route::resource('articles', App\Http\Controllers\Association\ArticleController::class)->names('articles');
+        Route::resource('assessments', App\Http\Controllers\Association\AssessmentController::class)->names('assessments');
+        Route::resource('trainees', App\Http\Controllers\Association\TraineeController::class)->names('trainees');
     });
 
     Route::group(['prefix' => 'faculty-member', 'as' => 'faculty-member.', 'middleware' => ['role:faculty-member']], function () {

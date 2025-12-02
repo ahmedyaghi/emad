@@ -9,7 +9,7 @@ class ArticleController extends Controller
 {
     public function articles()
     {
-        $articles = Article::paginate(9);
+        $articles = Article::with(['association'])->paginate(9);
 
         return view('site.articles', compact('articles'));
     }

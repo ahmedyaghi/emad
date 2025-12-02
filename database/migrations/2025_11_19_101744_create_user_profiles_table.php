@@ -25,6 +25,7 @@ return new class extends Migration
             // $table->foreignId('course_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('position_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('bio')->nullable();
+            $table->string('image')->nullable();
             $table->string('website')->nullable();
             $table->string('twitter')->nullable();
             $table->string('facebook')->nullable();
