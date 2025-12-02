@@ -36,6 +36,7 @@ class RegisterIndividualRequest extends FormRequest
             'skill_id' => 'required|string|max:255',
             'course_id' => 'required|string|max:255',
             'file' => 'nullable|file|mimes:pdf,doc,docx',
+            'password' => 'required|confirmed|min:6',
 
         ];
     }

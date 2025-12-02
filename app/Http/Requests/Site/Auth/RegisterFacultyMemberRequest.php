@@ -34,6 +34,7 @@ class RegisterFacultyMemberRequest extends FormRequest
             'facebook' => 'required|string|max:255',
             'youtube' => 'required|string|max:255',
             'id_number' => 'required|string|max:255',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 }

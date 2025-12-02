@@ -37,6 +37,7 @@ class RegisterAssociationRequest extends FormRequest
             'manager_name' => 'required|string|max:255',
             'manager_phone' => 'required|string|max:255',
             'manager_email' => 'required|string|max:255',
+            'password' => 'required|confirmed|min:6',
 
         ];
     }

@@ -17,7 +17,7 @@ class UserService
             'id_number' => $data['id_number'] ?? null,
             'type' => $type->value,
             'phone' => $data['phone'],
-            'password' => Hash::make(123456),
+            'password' => Hash::make($data['password']),
             'status' => UserStatus::PENDING,
         ]);
 

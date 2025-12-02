@@ -62,6 +62,26 @@
                         </div>
                       </div>
 
+                        <div class="col-md-6">
+                        <div class="form-group"> 
+                          <label class="mb-2">كلمة المرور</label>
+                          <input class="form-control" type="password" placeholder="****************" name="password" />
+                        @if ($errors->has('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group"> 
+                          <label class="mb-2">تأكيد كلمة المرور</label>
+                          <input class="form-control" type="password" placeholder="****************" name="password_confirmation" />
+                        @if ($errors->has('password_confirmation'))
+                            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                        @endif
+                        </div>
+                      </div>
+                      
+
                      <div class="col-md-6">
                       <div class="form-group">
                         <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
