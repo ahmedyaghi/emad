@@ -12,7 +12,7 @@
               <div class="row mb-4"> 
                 <div class="col-12">
                   <div class="pannel position-relative">
-                    <div class="widget_item-status accepted-text accepted-bg font-medium">تم القبول</div>
+                    <div class="widget_item-status {{$application->getStatusClass()}} font-medium">{{$application->getStatus()}}</div>
                     <h2 class="mb-3 font-semi-bold font-24">{{$application->training->title}}</h2>
                     <h6 class="text-gray">{{$application->training->short_description}}</h6>
                   </div>

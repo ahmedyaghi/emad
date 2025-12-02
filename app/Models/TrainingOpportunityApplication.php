@@ -62,10 +62,10 @@ class TrainingOpportunityApplication extends Model
     public function getStatusText()
     {
         return match ($this->status) {
-            TrainingApplicationStatus::APPLIED => 'submitted',
-            TrainingApplicationStatus::REVIEWED => 'pending',
-            TrainingApplicationStatus::ACCEPTED => 'accepted',
-            TrainingApplicationStatus::REJECTED => 'ended',
+            TrainingApplicationStatus::APPLIED => 'نص يصف الحالة المقدمة',
+            TrainingApplicationStatus::REVIEWED => 'نص يصف الحالة المقدمة',
+            TrainingApplicationStatus::ACCEPTED => 'نص يصف الحالة المقدمة',
+            TrainingApplicationStatus::REJECTED => 'نص يصف الحالة المقدمة',
             default => ''
         };
     }
