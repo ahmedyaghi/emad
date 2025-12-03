@@ -9,9 +9,12 @@ use App\Http\Requests\Site\Auth\RegisterAssociationRequest;
 use App\Http\Requests\Site\Auth\RegisterConsultantRequest;
 use App\Http\Requests\Site\Auth\RegisterFacultyMemberRequest;
 use App\Http\Requests\Site\Auth\RegisterIndividualRequest;
+use App\Http\Requests\Site\Auth\VerifyCodeRequest;
+use App\Mail\VerifyUserMail;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -88,5 +91,55 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('main')->with('success', 'رافقتك السلامة');
+    }
+
+    public function notice()
+    {
+        if (Auth::user()->email_verified_at == null) {
+            return view('site.auth.verify');
+        }
+
+        return match (Auth::user()->getRoleNames()->first()) {
+            'admin' => redirect()->route('admin.dashboard'),
+            'individual' => redirect()->route('individual.dashboard'),
+            'association' => redirect()->route('association.dashboard'),
+            'faculty-member' => redirect()->route('faculty-member.dashboard'),
+            'consultant' => redirect()->route('consultant.dashboard'),
+            default => redirect()->route('main')
+        };
+    }
+
+    public function verify(VerifyCodeRequest $request)
+    {
+        $code = implode('', $request->code);
+        if (Auth::user()->verification_code()->where('code', $code)->exists()) {
+            Auth::user()->update(['email_verified_at' => now()]);
+            Auth::user()->verification_code()->where('code', $code)->delete();
+
+            return match (Auth::user()->getRoleNames()->first()) {
+                'admin' => redirect()->route('admin.dashboard'),
+                'individual' => redirect()->route('individual.dashboard')->with('success', 'تم التحقق من حسابك بنجاح'),
+                'association' => redirect()->route('association.dashboard')->with('success', 'تم التحقق من حسابك بنجاح'),
+                'faculty-member' => redirect()->route('faculty-member.dashboard')->with('success', 'تم التحقق من حسابك بنجاح'),
+                'consultant' => redirect()->route('consultant.dashboard')->with('success', 'تم التحقق من حسابك بنجاح'),
+                default => redirect()->route('main')->with('success', 'تم التحقق من حسابك بنجاح')
+            };
+        }
+        throw ValidationException::withMessages(['invalid_code' => 'رمز التحقق غير صحيح']);
+    }
+
+    public function resend_cdoe()
+    {
+
+        if (Auth::user()->email_verified_at != null) {
+            return redirect()->route('main');
+        }
+
+        Auth::user()->verification_code()->delete();
+        $code = rand(1111, 9999);
+        Auth::user()->verification_code()->create(['code' => $code]);
+        // Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
+
+        return redirect()->route('verification.verify')->with('success', 'تم ارسال رمز جديد لبريدك الالكتروني');
     }
 }

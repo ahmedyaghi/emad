@@ -70,7 +70,7 @@
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2"> عرض 84 تقرير</h3>
+                  <h3 class="font-semi-bold mb-2"> عرض {{count($reports)}} تقرير</h3>
                   <h6 class="text-gray">بناءً على طلبات التدريب الخاصة بك</h6>
                 </div>
                 <div class="col-lg-auto">
@@ -84,155 +84,14 @@
               </div>
             </div>
           </div>
+          @if(!$reports->isEmpty())
           <div class="row"> 
-            <div class="col-lg-4 col-md-6">
-              <div class="card widget_item-card p-4 rounded-4">
-                <div class="widget_item-content">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h4 class="widget_item-title font-semi-bold"><a href="">اسم التقرير</a></h4>
-                    <button class="btn btn-light p-1 rounded"><img src="../assets/images/download2.svg" alt=""/></button>
-                  </div>
-                  <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                  <div class="widget_item-profile mb-4 d-flex align-items-center">
-                    <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                    <h6 class="font-medium">عبدالله احمد القحطاني</h6>
-                  </div>
-                  <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card widget_item-card p-4 rounded-4">
-                <div class="widget_item-content">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h4 class="widget_item-title font-semi-bold"><a href="">اسم التقرير</a></h4>
-                    <button class="btn btn-light p-1 rounded"><img src="../assets/images/download2.svg" alt=""/></button>
-                  </div>
-                  <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                  <div class="widget_item-profile mb-4 d-flex align-items-center">
-                    <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                    <h6 class="font-medium">عبدالله احمد القحطاني</h6>
-                  </div>
-                  <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card widget_item-card p-4 rounded-4">
-                <div class="widget_item-content">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h4 class="widget_item-title font-semi-bold"><a href="">اسم التقرير</a></h4>
-                    <button class="btn btn-light p-1 rounded"><img src="../assets/images/download2.svg" alt=""/></button>
-                  </div>
-                  <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                  <div class="widget_item-profile mb-4 d-flex align-items-center">
-                    <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                    <h6 class="font-medium">عبدالله احمد القحطاني</h6>
-                  </div>
-                  <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card widget_item-card p-4 rounded-4">
-                <div class="widget_item-content">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h4 class="widget_item-title font-semi-bold"><a href="">اسم التقرير</a></h4>
-                    <button class="btn btn-light p-1 rounded"><img src="../assets/images/download2.svg" alt=""/></button>
-                  </div>
-                  <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                  <div class="widget_item-profile mb-4 d-flex align-items-center">
-                    <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                    <h6 class="font-medium">عبدالله احمد القحطاني</h6>
-                  </div>
-                  <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card widget_item-card p-4 rounded-4">
-                <div class="widget_item-content">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h4 class="widget_item-title font-semi-bold"><a href="">اسم التقرير</a></h4>
-                    <button class="btn btn-light p-1 rounded"><img src="../assets/images/download2.svg" alt=""/></button>
-                  </div>
-                  <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                  <div class="widget_item-profile mb-4 d-flex align-items-center">
-                    <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                    <h6 class="font-medium">عبدالله احمد القحطاني</h6>
-                  </div>
-                  <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card widget_item-card p-4 rounded-4">
-                <div class="widget_item-content">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h4 class="widget_item-title font-semi-bold"><a href="">اسم التقرير</a></h4>
-                    <button class="btn btn-light p-1 rounded"><img src="../assets/images/download2.svg" alt=""/></button>
-                  </div>
-                  <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
-                  <div class="widget_item-profile mb-4 d-flex align-items-center">
-                    <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                    <h6 class="font-medium">عبدالله احمد القحطاني</h6>
-                  </div>
-                  <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                    </div>
-                    <div class="col">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          @foreach($reports as $report)
+            <x-common.report :report="$report"/>
+          @endforeach
           </div>
+          @endif
           <div class="row"> 
-            <div class="col-12"> 
-              <ul class="pagination justify-content-end">
-                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                <li class="page-item"><a class="page-link" href=""> 5</a></li>
-              </ul>
-            </div>
+           {{$reports->links('common.pagination')}}
           </div>
 </x-common.layout>

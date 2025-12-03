@@ -46,6 +46,5 @@ class ReportController extends Controller
     public function show(Report $report)
     {
         return view('association.reports.show', get_defined_vars());
-
     }
 }

@@ -27,10 +27,15 @@ Route::middleware('guest')->group(function () {
     })->name('login');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {});
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/email/verify', [AuthController::class, 'notice'])->name('verification.notice');
+    Route::post('/email/verify', [AuthController::class, 'verify'])->name('verification.verify');
+    Route::get('/email/resend-cdoe', [AuthController::class, 'resend_cdoe'])->name('verification.resend.code');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
@@ -46,12 +51,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/associations/{id}', [App\Http\Controllers\Admin\AssociationController::class, 'association_profile'])->name('association.profile');
 
         Route::get('/users/update-status/{status}/{id}', [App\Http\Controllers\Admin\UserController::class, 'update_status'])->name('users.update.status');
-
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
         Route::get('/', [App\Http\Controllers\Individual\DashboardController::class, 'dashboard'])->name('dashboard');
         Route::get('/profile', [App\Http\Controllers\Individual\ProfileController::class, 'profile'])->name('profile');
+        Route::post('/profile/add-qualifications', [App\Http\Controllers\Individual\ProfileController::class, 'profile'])->name('profile.add.qualification');
         Route::get('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
         Route::get('/training-opportunities/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
         Route::post('/training-opportunities', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'apply_training_opportunities'])->name('training-opportunities.apply');

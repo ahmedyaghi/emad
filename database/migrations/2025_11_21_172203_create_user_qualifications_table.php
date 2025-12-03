@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('qualification_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('university_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('specialization_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('grade_id')->nullable()->constrained()->onDelete('cascade');
             $table->year('graduation_year');
-            $table->string('graduation_grade');
             $table->timestamps();
         });
     }

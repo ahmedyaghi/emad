@@ -54,4 +54,12 @@ class UserProfile extends Model
     {
         return $this->belongsTo(Nationality::class);
     }
+    public function getSexLabel()
+    {
+        return match ($this->sex) {
+            1 => 'ذكر',
+            2 => 'أنثى',
+            default => 'غير محدد'
+        };
+    }
 }

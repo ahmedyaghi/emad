@@ -157,7 +157,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/globe.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الجنسية</h6>
-                            <h6 class="font-12 font-semi-bold">سعودي</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->nationality?->name}}</h6>
                           </div>
                         </div>
                       </div>
@@ -166,7 +166,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/passport.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">رقم الهوية</h6>
-                            <h6 class="font-12 font-semi-bold">90127903891</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->id_number}}</h6>
                           </div>
                         </div>
                       </div>
@@ -175,16 +175,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/calendar.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">تاريخ الميلاد</h6>
-                            <h6 class="font-12 font-semi-bold">8 مارس 1993</h6>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-3 col-md-4 col-6 mb-4">
-                        <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/calendar2.svg" alt=""/></div>
-                          <div class="col">
-                            <h6 class="font-light mb-1 text-gray">تاريخ الميلاد</h6>
-                            <h6 class="font-12 font-semi-bold">8 مارس 1993</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->date_of_birth}}</h6>
                           </div>
                         </div>
                       </div>
@@ -193,7 +184,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/graduate-male.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الجنس</h6>
-                            <h6 class="font-12 font-semi-bold">ذكر</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->getSexLabel()}}</h6>
                           </div>
                         </div>
                       </div>
@@ -202,7 +193,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/mail.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">البريد الالكتروني</h6>
-                            <h6 class="font-12 font-semi-bold">example@example.com</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->email}}</h6>
                           </div>
                         </div>
                       </div>
@@ -211,7 +202,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/call.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">رقم الجوال</h6>
-                            <h6 class="font-12 font-semi-bold">+966 555 5555</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->phone}}</h6>
                           </div>
                         </div>
                       </div>
@@ -247,7 +238,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/road.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">اسم الشارع</h6>
-                            <h6 class="font-12 font-semi-bold">شارع الملك فهد</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->street_name}}</h6>
                           </div>
                         </div>
                       </div>
@@ -256,7 +247,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/distribution.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الرمز البريدي</h6>
-                            <h6 class="font-12 font-semi-bold">675671</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->postal_code}}</h6>
                           </div>
                         </div>
                       </div>
@@ -512,62 +503,70 @@
                   <h6 class="text-gray">أدخل بيانات مؤهلك العلمي بدقة لعرضها ضمن ملفك الشخصي. تساعد المؤهلات الجهات في تقييم مدى توافقك مع الوظائف المتاحة.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action=""> 
+                  <form action="{{route('individual.profile.add.qualification')}}" method="POST">
+                    @csrf 
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
                           <div class="row"> 
+                            @if(!$qualifications->isEmpty())
                             <div class="col-12">
                               <div class="form-group"> 
                                 <label class="form-label">نوع المؤهل <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="بكالوريوس / دبلوم / ثانوية عامة / شهادة مهنية ">
-                                  <option> </option>
-                                  <option value="1">بكالوريوس   </option>
-                                  <option value="2">دبلوم</option>
-                                  <option value="3">ثانوية عامة</option>
-                                  <option value="4">شهادة مهنية</option>
+                                <select class="select2" data-placeholder="بكالوريوس / دبلوم / ثانوية عامة / شهادة مهنية " name="qualification_id">
+                                  <option value="">اختر</option>
+                                  @foreach ($qualifications as $qualification)
+                                    <option value="{{$qualification->id}}">{{$qualification->name}}</option>
+                                  @endforeach
                                 </select>
                               </div>
                             </div>
+                            @endif
+                            @if(!$specializations->isEmpty())
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">التخصص الدراسي <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="اختر">
-                                  <option> </option>
-                                  <option value="1">إدارة أعمال   </option>
-                                  <option value="2">هندسة</option>
-                                  <option value="3">علوم الحاسب</option>
+                                <select class="select2" data-placeholder="اختر" name="specialization_id">
+                                  <option value="">اختر</option>
+                                  @foreach ($specializations as $specialization)
+                                    <option value="{{$specialization->id}}">{{$specialization->name}}</option>
+                                  @endforeach
                                 </select>
                               </div>
                             </div>
+                           @endif
+                           @if(!$universities->isEmpty())
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">الجهة التعليمية  <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="اختر الجهة">
-                                  <option> </option>
-                                  <option value="1">الجهة 1   </option>
-                                  <option value="2">الجهة 2</option>
-                                  <option value="3">الجهة 3</option>
+                                <select class="select2" data-placeholder="اختر الجهة" name="university_id">
+                                    <option value="">اختر</option>
+                                    @foreach ($universities as $university)
+                                      <option value="{{$university->id}}">{{$university->name}}</option>
+                                    @endforeach
                                 </select>
                               </div>
                             </div>
+                            @endif
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">سنة التخرج <span class="text-danger">* </span></label>
-                                <input class="form-control yearpicker" type="text" placeholder="اختر سنة التخرج"/>
+                                <input class="form-control yearpicker" type="text" placeholder="اختر سنة التخرج" name="graduation_year"/>
                               </div>
                             </div>
+                            @if(!$grades->isEmpty())
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">التقدير <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="اختر">
-                                  <option> </option>
-                                  <option value="1">التقدير 1   </option>
-                                  <option value="2">التقدير 2</option>
-                                  <option value="3">التقدير 3</option>
+                                <select class="select2" data-placeholder="اختر" name="grade_id">
+                                  <option value="">اختر</option>
+                                    @foreach ($grades as $grade)
+                                      <option value="{{$grade->id}}">{{$grade->name}}</option>
+                                    @endforeach
                                 </select>
                               </div>
                             </div>
+                             @endif
                           </div>
                         </div>
                       </div>
