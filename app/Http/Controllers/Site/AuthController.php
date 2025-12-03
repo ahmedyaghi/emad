@@ -138,7 +138,7 @@ class AuthController extends Controller
         Auth::user()->verification_code()->delete();
         $code = rand(1111, 9999);
         Auth::user()->verification_code()->create(['code' => $code]);
-        Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
+        //Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
 
         return redirect()->route('verification.verify')->with('success', 'تم ارسال رمز جديد لبريدك الالكتروني');
     }
