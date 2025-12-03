@@ -54,6 +54,7 @@ class UserProfile extends Model
     {
         return $this->belongsTo(Nationality::class);
     }
+
     public function getSexLabel()
     {
         return match ($this->sex) {

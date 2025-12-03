@@ -25,6 +25,7 @@ class ProfileController extends Controller
         $financial_data = UserFinancialData::where('user_id', auth()->id())->get();
         $attachments = UserAttachment::where('user_id', auth()->id())->get();
         $user = auth()->user();
+
         return view('individual.profile', get_defined_vars());
     }
 }

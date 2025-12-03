@@ -30,7 +30,7 @@ class UserService
 
         $code = rand(1111, 9999);
         $user->verification_code()->create(['code' => $code]);
-        // Mail::to($user->email)->send(new VerifyUserMail($user->name, $code));
+        Mail::to($user->email)->send(new VerifyUserMail($user->name, $code));
 
         return view('site.auth.registration_success');
     }

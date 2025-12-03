@@ -10,6 +10,7 @@ class AssessmentController extends Controller
     {
         return view('association.assessments.index');
     }
+
     public function create()
     {
         return view('association.assessments.create');

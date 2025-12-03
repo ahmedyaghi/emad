@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Grade;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GradeSeeder extends Seeder
@@ -18,6 +17,6 @@ class GradeSeeder extends Seeder
         Grade::create(['name' => 'جيد جدا']);
         Grade::create(['name' => 'ممتاز']);
         Grade::create(['name' => 'ممتاز جدا']);
-      
+
     }
 }
