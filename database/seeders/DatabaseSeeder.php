@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         $this->call(CountrySeeder::class);
+        $this->call(GradeSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(SettingSeeder::class);
@@ -30,6 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LecturerSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(NewsSeeder::class);
-        $this->call(GradeSeeder::class);
+
     }
 }
