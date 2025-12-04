@@ -6,8 +6,14 @@ use App\Http\Controllers\Site\ContactUsController;
 use App\Http\Controllers\Site\MainController;
 use App\Http\Controllers\Site\NewsController;
 use App\Http\Controllers\Site\TrainingOpportunityController;
+use App\Mail\VerifyUserMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/cehck-mail',function(){
+    Mail::to('yaghiahmed91@gmail.com')->send(new VerifyUserMail('Ahmed Yaghi','123456'));
+});
 Route::get('/', [MainController::class, 'main'])->name('main');
 Route::get('/training-opportunities', [TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
 Route::get('/training-opportunities/{slug}', [TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
