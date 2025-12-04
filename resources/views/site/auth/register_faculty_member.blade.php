@@ -10,8 +10,9 @@
                     <h5>املأ النموذج أدناه ليتم تسجيل حساب جديد والانضمام إلى منصة عماد.</h5>
                   </div>
                   <hr/>
-                  <form action="{{route('handle.register', App\Enums\UserType::FACULTY_MEMBER)}}" method="POST">
+                  <form action="{{route('handle.register')}}" method="POST">
                   @csrf
+                  <input type="hidden" name="type" value="{{App\Enums\UserType::FACULTY_MEMBER}}">
                   <div class="row">
                    <div class="col-lg-6">
                       <div class="form-group"> 

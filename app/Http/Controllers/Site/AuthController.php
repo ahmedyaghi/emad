@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Enums\UserStatus;
 use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Auth\LoginRequest;
-use App\Http\Requests\Site\Auth\RegisterAssociationRequest;
-use App\Http\Requests\Site\Auth\RegisterConsultantRequest;
-use App\Http\Requests\Site\Auth\RegisterFacultyMemberRequest;
-use App\Http\Requests\Site\Auth\RegisterIndividualRequest;
+use App\Http\Requests\Site\Auth\RegisterRequest;
 use App\Http\Requests\Site\Auth\VerifyCodeRequest;
 use App\Mail\VerifyUserMail;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -41,26 +41,38 @@ class AuthController extends Controller
         }
     }
 
-    public function handle_register(Request $request, $type)
+    public function handle_register(RegisterRequest $request)
     {
 
-        $enum_type = UserType::from($type);
-        $type = Str::lower($enum_type->name);
+        $data = $request->validated();
 
-        $form_request_class = match ($type) {
-            'individual' => RegisterIndividualRequest::class,
-            'association' => RegisterAssociationRequest::class,
-            'faculty_member' => RegisterFacultyMemberRequest::class,
-            'consultant' => RegisterConsultantRequest::class,
-            default => throw new \InvalidArgumentException('Invalid type'),
-        };
-
-        $form_request = app($form_request_class);
-        $data = $form_request->validated();
-
-        if ($form_request->hasFile('image')) {
-            $data['image'] = $form_request->file('image')->store('users/profile', 'public');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('users/profile', 'public');
         }
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'id_number' => $data['id_number'] ?? null,
+            'type' => $data['type'],
+            'phone' => $data['phone'],
+            'password' => Hash::make($data['password']),
+            'status' => UserStatus::PENDING,
+        ]);
+
+        $user->profile()->create([
+            'image' => $data['image'] ?? null,
+        ]);
+
+        $enum_type = UserType::from($data['type']);
+
+        $user->assignRole(Str::lower(str_replace('_', '-', $enum_type->name)));
+
+        $code = rand(1111, 9999);
+        $user->verification_code()->create(['code' => $code]);
+        Mail::to($user->email)->send(new VerifyUserMail($user->name, $code));
+
+        return view('site.auth.registration_success');
 
         return UserService::register($data, $enum_type);
     }
@@ -138,7 +150,7 @@ class AuthController extends Controller
         Auth::user()->verification_code()->delete();
         $code = rand(1111, 9999);
         Auth::user()->verification_code()->create(['code' => $code]);
-        // Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
+        Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
 
         return redirect()->route('verification.verify')->with('success', 'تم ارسال رمز جديد لبريدك الالكتروني');
     }

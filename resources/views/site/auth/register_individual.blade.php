@@ -15,8 +15,9 @@
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <form action="{{route('handle.register', App\Enums\UserType::INDIVIDUAL)}}" method="POST" enctype="multipart/form-data">
+                      <form action="{{route('handle.register')}}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" name="type" value="{{App\Enums\UserType::INDIVIDUAL}}">
                         <div class="row"> 
                           <div class="col-lg-6">
                             <div class="form-group"> 

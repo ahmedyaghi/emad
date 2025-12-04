@@ -6,14 +6,8 @@ use App\Http\Controllers\Site\ContactUsController;
 use App\Http\Controllers\Site\MainController;
 use App\Http\Controllers\Site\NewsController;
 use App\Http\Controllers\Site\TrainingOpportunityController;
-use App\Mail\VerifyUserMail;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/cehck-mail',function(){
-    Mail::to('yaghiahmed91@gmail.com')->send(new VerifyUserMail('Ahmed Yaghi','123456'));
-});
 Route::get('/', [MainController::class, 'main'])->name('main');
 Route::get('/training-opportunities', [TrainingOpportunityController::class, 'training_opportunities'])->name('training-opportunities');
 Route::get('/training-opportunities/{slug}', [TrainingOpportunityController::class, 'training_opportunity'])->name('training-opportunity');
@@ -26,7 +20,7 @@ Route::get('/news/{slug}', [NewsController::class, 'news_details'])->name('news.
 
 Route::middleware('guest')->group(function () {
     Route::get('/register/{type}', [AuthController::class, 'register'])->name('register');
-    Route::post('/register/{type}', [AuthController::class, 'handle_register'])->name('handle.register');
+    Route::post('/register', [AuthController::class, 'handle_register'])->name('handle.register');
     Route::post('/login', [AuthController::class, 'handle_login'])->name('handle.login');
     Route::get('/login', function () {
         return redirect('/');
