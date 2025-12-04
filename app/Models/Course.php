@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
@@ -13,6 +15,7 @@ class Course extends Model
         'start_date',
         'end_date',
         'qualification_id',
+        'target_id',
         'video_url',
         'image',
         'description',
@@ -20,6 +23,20 @@ class Course extends Model
         'goals',
         'published_at',
     ];
+
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
+    protected function updatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
 
     public function users()
     {

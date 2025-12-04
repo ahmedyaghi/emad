@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->foreignId('qualification_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('target_id')->nullable()->constrained()->onDelete('cascade');
             $table->string('short_description')->nullable();
             $table->string('video_url')->nullable();
             $table->string('image')->nullable();

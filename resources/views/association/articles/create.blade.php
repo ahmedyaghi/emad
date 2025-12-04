@@ -51,7 +51,7 @@
             </div>
             <div class="form-group">
             <label class="mb-2">محتوي المقال </label>
-            <textarea id="summernote" name="description"> </textarea>
+            <textarea class="summernote" name="description"> </textarea>
              @if ($errors->has('description'))
                 <span class="text-danger">{{ $errors->first('description') }}</span>
              @endif

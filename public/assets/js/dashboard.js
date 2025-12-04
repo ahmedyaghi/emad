@@ -47,7 +47,7 @@
     /*------------------------------------
         Initialize Summernote Editor
     --------------------------------------*/
-    $('#summernote').summernote({
+    $('.summernote').summernote({
       height: 300,
       lang: 'ar-AR'
     });

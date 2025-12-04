@@ -49,57 +49,72 @@
                                       @foreach($qualifications as $qualification)
                                         <option value="{{ $qualification->id }}">{{ $qualification->name }}</option>
                                       @endforeach
+                                     @endif
                                   </select>
-                                  @endif
                                 </div>
                               </div>
                               <div class="col-md-6"> 
                                 <div class="form-group"> 
                                   <label class="mb-2">الفئة المستهدفة   </label>
-                                  <select class="select2 form-control" data-placeholder="اختر">
-                                    <option> </option>
-                                    <option value="1">فئة 2</option>
-                                    <option value="2">فئة 3</option>
+                                 <select class="select2 form-control required" data-placeholder="اختر" name="target_id">
+                                    @if(!$targets->isEmpty())
+                                        <option></option>
+                                      @foreach($targets as $target)
+                                        <option value="{{ $target->id }}">{{ $target->name }}</option>
+                                      @endforeach
+                                     @endif
                                   </select>
                                 </div>
                               </div>
                               <div class="col-12">
                                 <div class="form-group"> 
                                   <label class="mb-2">وصف الدورة<span class="text-danger"> *</span></label>
-                                  <textarea class="form-control" rows="5" name="description"></textarea>
+                                  <textarea class="form-control summernote" rows="5" name="description"></textarea>
                                 </div>
                               </div>
-                              <div class="col-md-6"> 
+                              <div class="col-md-12"> 
                                 <div class="form-group"> 
                                   <label class="mb-2">محاور الدورة</label>
-                                  <textarea class="form-control" rows="5" name="topics"></textarea>
+                                  <textarea class="form-control summernote" rows="5" name="topics"></textarea>
                                 </div>
                               </div>
-                              <div class="col-md-6"> 
+                              <div class="col-md-12"> 
                                 <div class="form-group"> 
                                   <label class="mb-2">الأهداف</label>
-                                  <textarea class="form-control" rows="5" name="goals"></textarea>
+                                  <textarea class="form-control summernote" rows="5" name="goals"></textarea>
                                 </div>
                               </div>
                               <hr/>
-                              <div class="col-12"> 
-                                <div class="form-group"> 
-                                  <label class="mb-2"> اسم المحاضر <span class="text-danger"> *</span></label>
-                                  <input class="form-control" type="text" name='lecturers[0][name]' placeholder="مثال: مشرف حجاج، منظم صفوف، مرشد ميداني…"/>
+
+                                <div class="row mb-3" id="lecturers-container">
+
+                                    <div class="row mb-4 lecturer-item">
+
+                                       <div class="col-12"> 
+                                        <div class="form-group"> 
+                                          <label class="mb-2"> اسم المحاضر <span class="text-danger"> *</span></label>
+                                          <input class="form-control" type="text" name='lecturers[0][name]' placeholder="مثال: مشرف حجاج، منظم صفوف، مرشد ميداني…"/>
+                                        </div>
+                                      </div>
+                                      <div class="col-12">
+                                        <div class="form-group"> 
+                                          <label class="mb-2">وصف المحاضر<span class="text-danger"> *</span></label>
+                                          <textarea class="form-control" rows="6" placeholder="أدخل وصف المحاضر..." name='lecturers[0][bio]'></textarea>
+                                        </div>
+                                      </div>
+
+
+                                       <div class="col-12">
+                                          <div class="form-group"> 
+                                            <button class="btn btn-white px-4" type="button" id="add-lecturer">  +  اضافة محاضر</button>
+                                          </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                              </div>
-                              <div class="col-12">
-                                <div class="form-group"> 
-                                  <label class="mb-2">وصف المحاضر<span class="text-danger"> *</span></label>
-                                  <textarea class="form-control" rows="6" placeholder="أدخل وصف الدورة..." name='lecturers[0][bio]'></textarea>
-                                </div>
-                              </div>
-                              <div id="lecturers-container"></div>
-                              <div class="col-12">
-                                <div class="form-group"> 
-                                  <button class="btn btn-white px-4" type="button" id="add-lecturer">  +  اضافة محاضر</button>
-                                </div>
-                              </div>
+
+                            
+                             
                             </div>
                           </div>
                         </div>
@@ -112,26 +127,18 @@
                               <div class="bg-gray p-4 rounded-4">
                                 <div class="form-group">
                                   <label class="mb-2">اسم الوحدة   <span class="text-danger"> *</span></label>
-                                  <input class="form-control bg-white" type="text" placeholder="مثال: الوحدة 1"/>
+                                  <input class="form-control bg-white" type="text" placeholder="مثال: الوحدة 1" name='unit[0][name]'/>
                                 </div>
                                 <div class="lessons-container">
                                   <div class="bg-white border p-4 rounded-4 mb-3">
                                     <div class="lesson">
                                       <div class="form-group">
                                         <label class="mb-2">اسم الدرس   <span class="text-danger"> *</span></label>
-                                        <select class="select2 form-control required" data-placeholder="اختر">
-                                          <option></option>
-                                          <option value="1">درس 2</option>
-                                          <option value="2">درس 3</option>
-                                        </select>
+                                       <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[0][lessons][0][name]'/>
                                       </div>
                                       <div class="form-group">
                                         <label class="mb-2">لينك الدرس   <span class="text-danger"> *</span></label>
-                                        <select class="select2 form-control required" data-placeholder="اختر">
-                                          <option></option>
-                                          <option value="1">لينك 2</option>
-                                          <option value="2">لينك 3</option>
-                                        </select>
+                                      <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[0][lessons][0][link]'/>
                                       </div>
                                     </div>
                                   </div>
@@ -160,7 +167,7 @@
                                 <div class="col">
                                   <div class="form-group mb-2">
                                     <label class="mb-2"> اسم المتدرب  <span class="text-danger"> *</span></label>
-                                    <input class="form-control bg-white required" id="trainee-name" type="text" placeholder="اسم المتدرب"/>
+                                    <input class="form-control bg-white" id="trainee-name" type="text" placeholder="اسم المتدرب"/>
                                   </div>
                                 </div>
                                 <div class="col-auto"> 
@@ -169,7 +176,7 @@
                                 <div class="col">
                                   <div class="form-group mb-2">
                                     <label class="mb-2">رقم هوية المتدرب   <span class="text-danger"> *</span></label>
-                                    <input class="form-control bg-white required" id="trainee-id" type="text" placeholder="رقم الهوية"/>
+                                    <input class="form-control bg-white" id="trainee-id" type="text" placeholder="رقم الهوية"/>
                                   </div>
                                 </div>
                                 <div class="col-auto d-flex align-items-end">
@@ -194,6 +201,7 @@
 @section('scripts')
   <script>
     var url = @js(route('admin.courses.store'));
+    var search_trainee_url = @js(route('admin.courses.search.trainee'));
       $(document).ready(function () {
       
         // Initialize SmartWizard
@@ -310,7 +318,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label class="mb-2">وصف المحاضر <span class="text-danger">*</span></label>
-                  <textarea rows="6" class="form-control" placeholder="أدخل وصف الدورة..."
+                  <textarea rows="6" class="form-control" placeholder="أدخل وصف المحاضر..."
                   name='lecturers[${index}][bio]'></textarea>
                 </div>
               </div>
@@ -322,150 +330,196 @@
         });
       
         // Add new lesson
-        $(document).on('click', '.add-lesson', function(){
-      
-          var lesson = `
+       $(document).on('click', '.add-lesson', function(){
+        let $unit = $(this).closest('.unit');
+        let unitIndex = $('#units-container .unit').index($unit); // رقم الوحدة
+        let lessonIndex = $unit.find('.lessons-container .lesson').length; // رقم الدرس الجديد داخل الوحدة
+
+        var lesson = `
             <div class="bg-white border p-4 rounded-4 mb-3">
               <div class="lesson">
                 <div class="form-group">
                   <label class="mb-2">اسم الدرس <span class="text-danger">*</span></label>
-                  <select class="select2 form-control" data-placeholder="اختر">
-                    <option></option>
-                    <option value="1">درس 2</option>
-                    <option value="2">درس 3</option>
-                  </select>
+                  <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[${unitIndex}][lessons][${lessonIndex}][name]'/>
                 </div>
-      
+
                 <div class="form-group">
                   <label class="mb-2">لينك الدرس <span class="text-danger">*</span></label>
-                  <select class="select2 form-control" data-placeholder="اختر">
-                    <option></option>
-                    <option value="1">لينك 2</option>
-                    <option value="2">لينك 3</option>
-                  </select>
+                  <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[${unitIndex}][lessons][${lessonIndex}][link]'/>
                 </div>
               </div>
             </div>
-          `;
-      
-          $(this).closest('.unit').find('.lessons-container').append(lesson);
-      
-          // Initialize Select2 for new lesson
-          $('.select2').select2({ width: '100%' });
-          $('#smartwizard').smartWizard("fixHeight");
-        });
-      
-        // Add new unit
-        $('#add-unit').on('click', function(){
-      
-          var unit = `
-            <div class="col-12 unit mt-4">
-              <div class="bg-gray p-4 rounded-4">
-                <div class="form-group">
-                  <label class="mb-2">اسم الوحدة <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control bg-white">
-                </div>
-      
-                <div class="lessons-container">
-                  <div class="bg-white border p-4 rounded-4 mb-3">
-                    <div class="lesson">
-                      <div class="form-group">
-                        <label class="mb-2">اسم الدرس <span class="text-danger">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر">
-                          <option></option>
-                          <option value="1">درس 2</option>
-                          <option value="2">درس 3</option>
-                        </select>
-                      </div>
-      
-                      <div class="form-group">
-                        <label class="mb-2">لينك الدرس <span class="text-danger">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر">
-                          <option></option>
-                          <option value="1">لينك 2</option>
-                          <option value="2">لينك 3</option>
-                        </select>
-                      </div>
-                    </div>
+        `;
+
+        $unit.find('.lessons-container').append(lesson);
+        $('#smartwizard').smartWizard("fixHeight");
+    });
+     // Add new unit
+    $('#add-unit').on('click', function(){
+
+    let unitIndex = $('#units-container .unit').length; // رقم الوحدة الجديدة
+
+    var unit = `
+        <div class="col-12 unit mt-4">
+          <div class="bg-gray p-4 rounded-4">
+            <div class="form-group">
+              <label class="mb-2">اسم الوحدة <span class="text-danger">*</span></label>
+              <input type="text" class="form-control bg-white" placeholder="مثال: الوحدة 1" name='unit[${unitIndex}][name]'/>
+            </div>
+
+            <div class="lessons-container">
+              <div class="bg-white border p-4 rounded-4 mb-3">
+                <div class="lesson">
+                  <div class="form-group">
+                    <label class="mb-2">اسم الدرس <span class="text-danger">*</span></label>
+                    <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[${unitIndex}][lessons][0][name]'/>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="mb-2">لينك الدرس <span class="text-danger">*</span></label>
+                    <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[${unitIndex}][lessons][0][link]'/>
                   </div>
                 </div>
-      
-                <button class="btn btn-white px-4 add-lesson mt-2" type="button">+ اضافة درس جديد</button>
               </div>
             </div>
-          `;
-      
-          $('#units-container').append(unit);
-      
-          // Initialize Select2 for new unit
-          $('.select2').select2({ width: '100%' });
-          $('#smartwizard').smartWizard("fixHeight");
-        });
-      
-        // Add trainee
-        $('#add-trainee').on('click', function(){
-          let name = $('#trainee-name').val().trim();
-          let id   = $('#trainee-id').val().trim();
-      
-          if(name === "" || id === ""){
-            alert("يرجى إدخال اسم المتدرب ورقم الهوية");
-            return;
-          }
-      
-          let card = `
-            <div class="bg-gray p-3 rounded-4 mb-2 trainee-card">
-              <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray rounded-4">
-                <div class="widget_item-user-avatar col-auto me-2 image-small">
-                  <img src="../assets/images/avatar.png" alt="">
-                </div>
-                <div class="widget_item-user-info me-auto">
-                  <h6 class="font-bold font-12">${name}</h6>
-                  <p class="font-12 text-gray">${id}</p>
-                </div>
-                <button class="btn btn-white px-2 rounded py-2 delete-trainee">
-                  <img src="../assets/images/delete2.svg">
-                </button>
-              </div>
-            </div>
-          `;
-          
-          $('#trainees-list').append(card);
-          $('#trainee-name').val('');
-          $('#trainee-id').val('');
-          $('#smartwizard').smartWizard("fixHeight");
-        });
-      
-        // Delete trainee
-        $(document).on('click', '.delete-trainee', function(){
-          $(this).closest('.trainee-card').remove();
-          $('#smartwizard').smartWizard("fixHeight");
-        });
+
+                      <button class="btn btn-white px-4 add-lesson mt-2" type="button">+ اضافة درس جديد</button>
+                    </div>
+                  </div>
+              `;
+
+              $('#units-container').append(unit);
+              $('#smartwizard').smartWizard("fixHeight");
+          });
+
+                
+              // Add / Search trainee
+          $('#add-trainee').on('click', function(){
+              let name = $('#trainee-name').val().trim();
+              let id   = $('#trainee-id').val().trim();
+
+              if(name === "" && id === ""){
+                  alert("يرجى إدخال اسم المتدرب أو رقم الهوية للبحث");
+                  return;
+              }
+
+              // AJAX request to search trainee
+              $.ajax({
+                  url: search_trainee_url,
+                  type: 'GET',
+                  data: { name: name, id: id },
+                  success: function(response){
+                      // response يجب أن يكون مصفوفة من المتدربين { name, id, avatar(optional) }
+                      if(response.length === 0){
+                          alert('لم يتم العثور على متدربين مطابقين');
+                          return;
+                      }
+
+                      $('#trainees-list').empty(); // يمكنك الإبقاء على السابق إذا أردت إضافة بدون مسح
+                      response.forEach(function(user){
+                        let image = "{{Storage::url('${user->profile->image}')}}";
+                        let name = user.name;
+                        let id_number = user.id_number;
+                        let id = user.id; 
+                        let card = `
+                          <div class="bg-gray p-3 rounded-4 mb-2 trainee-card"  data-user-id="${id}">
+                            <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray rounded-4">
+                              <div class="widget_item-user-avatar col-auto me-2 image-small">
+                                <img src="${image}" alt="">
+                              </div>
+                              <div class="widget_item-user-info me-auto">
+                                <h6 class="font-bold font-12">${name}</h6>
+                                <p class="font-12 text-gray">${id_number}</p>
+                              </div>
+                              <button class="btn btn-white px-2 rounded py-2 delete-trainee">
+                                <img src="{{asset('assets/images/delete2.svg')}}">
+                              </button>
+                            </div>
+                          </div>
+                          `;
+                          $('#trainees-list').append(card);
+                      });
+
+                      $('#trainee-name').val('');
+                      $('#trainee-id').val('');
+                      $('#smartwizard').smartWizard("fixHeight");
+                  },
+                  error: function(xhr){
+                      alert('حدث خطأ أثناء البحث عن المتدربين. حاول مرة أخرى.');
+                  }
+              });
+          });
+
+          // Delete trainee card
+          $(document).on('click', '.delete-trainee', function(){
+              $(this).closest('.trainee-card').remove();
+              $('#smartwizard').smartWizard("fixHeight");
+          });
+
       
       });
-
       function get_data(){
-        let data = {};
-        // Course Information
-        data.title = $('input[name="title"]').val();
-        data.start_date = $('input[name="start_date"]').val();
-        data.end_date = $('input[name="end_date"]').val();
-        data.qualification_id = $('select[name="qualification_id"]').val();
-        data.description = $('textarea[name="description"]').val();
-        data.topics = $('textarea[name="topics"]').val();
-        data.goals = $('textarea[name="goals"]').val();
-        
-        // Lecturers
-        data.lecturers = [];
-        $('#lecturers-container .lecturer-item').each(function(){
-          let lecturer = {};
-          lecturer.name = $(this).find('input[type="text"]').val();
-          lecturer.bio = $(this).find('textarea').val();
-          data.lecturers.push(lecturer);
+    let data = {};
+    
+    // Course Information
+    data.title = $('input[name="title"]').val();
+    data.start_date = $('input[name="start_date"]').val();
+    data.end_date = $('input[name="end_date"]').val();
+    data.qualification_id = $('select[name="qualification_id"]').val();
+    data.target_id = $('select[name="target_id"]').val();
+    data.description = $('textarea[name="description"]').val();
+    data.topics = $('textarea[name="topics"]').val();
+    data.goals = $('textarea[name="goals"]').val();
+
+    // Lecturers — fix: include the first lecturer outside the container
+    data.lecturers = [];
+
+    // First lecturer (outside container)
+    // let firstLecturerName = $('input[name="lecturers[0][name]"]').val();
+    // let firstLecturerBio = $('textarea[name="lecturers[0][bio]"]').val();
+    // if(firstLecturerName || firstLecturerBio){
+    //     data.lecturers.push({
+    //         name: firstLecturerName,
+    //         bio: firstLecturerBio
+    //     });
+    // }
+
+    // Additional lecturers (inside #lecturers-container)
+    $('#lecturers-container .lecturer-item').each(function(){
+        let lecturer = {};
+        lecturer.name = $(this).find('input[type="text"]').val();
+        lecturer.bio = $(this).find('textarea').val();
+        data.lecturers.push(lecturer);
+    });
+
+    // Units and Lessons
+    data.units = [];
+    $('#units-container .unit').each(function(unitIndex){
+        let unit = {};
+        unit.name = $(this).find('input[name^="unit"][name$="[name]"]').val();
+        unit.lessons = [];
+
+        $(this).find('.lessons-container .lesson').each(function(lessonIndex){
+            let lesson = {};
+            lesson.name = $(this).find('input[name$="[name]"]').val();
+            lesson.link = $(this).find('input[name$="[link]"]').val();
+            unit.lessons.push(lesson);
         });
-        
-        console.log('Collected Data:', data);
-        return data;
-      }
+
+        data.units.push(unit);
+    });
+
+    // Trainees
+    data.trainees = [];
+    $('#trainees-list .trainee-card').each(function(){
+        data.trainees.push($(this).data('user-id'));
+    });
+
+    console.log('Collected Data:', data);
+    return data;
+}
+
+
 
       function send_data(url, data, method = 'POST'){
         $.ajax({
@@ -476,8 +530,17 @@
             _token: $('meta[name="csrf-token"]').attr('content')
         },
           success: function(response){
-            alert('تم إضافة الدورة بنجاح!');
-            //- يمكنك إعادة التوجيه أو تحديث الصفحة هنا إذا لزم الأمر
+
+              if (response.success) {
+             toastr.success(response.message);
+
+            setTimeout(() => {
+                window.location.href = response.redirect;
+            }, 1200); 
+        }
+
+
+          //  window.location.href = @js(route('admin.courses.index'));
           },
           error: function(xhr, status, error){
             alert('حدث خطأ أثناء إضافة الدورة. يرجى المحاولة مرة أخرى.');

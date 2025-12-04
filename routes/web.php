@@ -45,6 +45,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('/packages', App\Http\Controllers\Admin\PackageController::class)->names('packages');
 
         Route::get('/exams', [App\Http\Controllers\Admin\ExamController::class, 'exams'])->name('exams');
+        Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
         Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'reports'])->name('reports');
         Route::get('/associations', [App\Http\Controllers\Admin\AssociationController::class, 'associations'])->name('associations');

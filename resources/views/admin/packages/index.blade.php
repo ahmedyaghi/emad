@@ -6,6 +6,7 @@
                   <h3 class="font-semi-bold mb-2">الباقات</h3>
                   <h6 class="text-gray">الاطلاع على الباقات</h6>
                 </div>
+                <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('admin.packages.create')}}">اضافة باقة</a></div>
               </div>
             </div>
           </div>

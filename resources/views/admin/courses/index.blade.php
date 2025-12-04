@@ -6,7 +6,7 @@
                   <h3 class="font-semi-bold mb-2"> عرض {{count($courses)}} دورات</h3>
                   <h6 class="text-gray">بناءً على الدورات الخاصة بك</h6>
                 </div>
-                <div class="col-lg-auto"></div>
+                <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('admin.courses.create')}}">اضافة دورة</a></div>
               </div>
             </div>
           </div>

@@ -43,7 +43,7 @@
                       </div>
                       <div class="form-group"> 
                         <label class="form-label"> تفاصيل الباقة</label>
-                        <textarea class="form-control" rows="7" placeholder="تفاصيل الباقة" name="description"></textarea>
+                        <textarea class="form-control summernote" rows="7" placeholder="تفاصيل الباقة" name="description"></textarea>
                         @if ($errors->has('description'))
                             <span class="text-danger">{{ $errors->first('description') }}</span>
                         @endif
