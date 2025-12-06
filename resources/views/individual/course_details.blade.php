@@ -107,33 +107,19 @@
                   @endif
                 </div>
                 <div class="tab-pane fade" id="tab-3">
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col-auto me-2 lecturer-image"><img class="rounded-circle" src="../assets/images/avatar.png" alt=""/></div>
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">د. أحمد السالم</h5>
-                        <h6 class="text-gray">خبير في إدارة المنظمات غير الربحية، لديه خبرة تزيد عن 15 عامًا في مجال الحوكمة والاستدامة، وقدم استشارات للعديد من الجمعيات الخيرية والمؤسسات المجتمعية.</h6>
+                  @if(!is_null($course->lecturers()->get()))   
+                  @foreach ($course->lecturers()->get() as $lecturer)
+                       <div class="card"> 
+                        <div class="d-flex align-items-center"> 
+                          <div class="col-auto me-2 lecturer-image"><img class="rounded-circle" src="{{asset('assets/images/avatar.png')}}" alt=""/></div>
+                          <div class="col">
+                            <h5 class="font-semi-bold mb-2">{{$lecturer->name}}</h5>
+                            <h6 class="text-gray">{{$lecturer->bio}}</h6>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col-auto me-2 lecturer-image"><img class="rounded-circle" src="../assets/images/avatar.png" alt=""/></div>
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">د. أحمد السالم</h5>
-                        <h6 class="text-gray">خبير في إدارة المنظمات غير الربحية، لديه خبرة تزيد عن 15 عامًا في مجال الحوكمة والاستدامة، وقدم استشارات للعديد من الجمعيات الخيرية والمؤسسات المجتمعية.</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col-auto me-2 lecturer-image"><img class="rounded-circle" src="../assets/images/avatar.png" alt=""/></div>
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">د. أحمد السالم</h5>
-                        <h6 class="text-gray">خبير في إدارة المنظمات غير الربحية، لديه خبرة تزيد عن 15 عامًا في مجال الحوكمة والاستدامة، وقدم استشارات للعديد من الجمعيات الخيرية والمؤسسات المجتمعية.</h6>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
+                  @endif
                 </div>
                 <div class="tab-pane fade" id="tab-4">
                   <div class="card"> 

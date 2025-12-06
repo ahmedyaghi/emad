@@ -43,12 +43,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('/users', App\Http\Controllers\Admin\UserController::class)->names('users');
         Route::resource('/roles', App\Http\Controllers\Admin\RoleController::class)->names('roles');
         Route::resource('/packages', App\Http\Controllers\Admin\PackageController::class)->names('packages');
+        Route::resource('/exams', App\Http\Controllers\Admin\ExamController::class)->names('exams');
+        Route::resource('/reports', App\Http\Controllers\Admin\ReportController::class)->names('reports');
+        Route::resource('/associations', App\Http\Controllers\Admin\AssociationController::class)->names('associations');
 
-        Route::get('/exams', [App\Http\Controllers\Admin\ExamController::class, 'exams'])->name('exams');
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
-        Route::get('/reports', [App\Http\Controllers\Admin\ReportController::class, 'reports'])->name('reports');
-        Route::get('/associations', [App\Http\Controllers\Admin\AssociationController::class, 'associations'])->name('associations');
         Route::get('/associations/{id}', [App\Http\Controllers\Admin\AssociationController::class, 'association_profile'])->name('association.profile');
 
         Route::get('/users/update-status/{status}/{id}', [App\Http\Controllers\Admin\UserController::class, 'update_status'])->name('users.update.status');

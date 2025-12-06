@@ -10,12 +10,12 @@
                   </h2>
                   <div class="accordion-collapse collapse show" id="collapseOne">
                     <div class="accordion-body px-0">
-                      <form action="" method="post">
+                      <form action{{route('admin.exams.create')}} method="get">
                         <div class="row"> 
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">تاريخ الاختبار </label>
-                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ الاختبار "/>
+                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ الاختبار " name="start_date"/>
                             </div>
                           </div>
                           <div class="col-md-4"> 
@@ -62,16 +62,19 @@
                   <h3 class="font-semi-bold mb-2">عرض 8 الاختبارات</h3>
                   <h6 class="text-gray">بناءً على الاختبارات الخاصة بك</h6>
                 </div>
-                <div class="col-auto"> <a class="btn btn-primary" href="testing-add.html">اضافة اختبار </a></div>
+                <div class="col-auto"> <a class="btn btn-primary" href="{{route('admin.exams.create')}}">اضافة اختبار </a></div>
               </div>
             </div>
           </div>
+          @if(!$exams->isEmpty())
           <div class="row"> 
             <div class="col-12">
+              @foreach ($exams as $exam)
+
               <div class="card mb-2">
                 <div class="row align-items-center"> 
                   <div class="col-lg-6 mb-2 mb-lg-0">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
+                    <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
                     <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
                   </div>
                   <div class="col-lg-6">
@@ -88,57 +91,14 @@
                   </div>
                 </div>
               </div>
-              <div class="card mb-2">
-                <div class="row align-items-center"> 
-                  <div class="col-lg-6 mb-2 mb-lg-0">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                      <div class="row"> 
-                        <div class="col-6">
-                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
-                        </div>
-                        <div class="col-6">
-                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-check.svg" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mb-2">
-                <div class="row align-items-center"> 
-                  <div class="col-lg-6 mb-2 mb-lg-0">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                      <div class="row"> 
-                        <div class="col-6">
-                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
-                        </div>
-                        <div class="col-6">
-                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-check.svg" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+              @endforeach
             </div>
           </div>
           <div class="row"> 
             <div class="col-12"> 
-              <ul class="pagination justify-content-end">
-                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                <li class="page-item"><a class="page-link" href=""> 5</a></li>
-              </ul>
+              {{$exams->links('common.pagination')}}
             </div>
           </div>
+          @endif
 </x-common.layout>

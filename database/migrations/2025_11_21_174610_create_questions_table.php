@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
+            $table->foreignId('type_id')->constrained('question_types')->onDelete('cascade');
+            $table->foreignId('exam_id')->constrained()->onDelete('cascade');
+            $table->integer('score');
+            $table->integer('correct_answer');
             $table->timestamps();
         });
     }

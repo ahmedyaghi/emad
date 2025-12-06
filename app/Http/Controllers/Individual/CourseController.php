@@ -9,9 +9,6 @@ class CourseController extends Controller
 {
     public function courses()
     {
-        Auth::user()->courses()->attach([
-            'course_id' => 1,
-        ]);
         $courses = Auth::user()->courses()->paginate(9);
 
         return view('individual.courses', get_defined_vars());
