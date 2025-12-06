@@ -13,7 +13,6 @@ class ExamController extends Controller
     public function index()
     {
         $exams = Exam::paginate(9);
-
         return view('admin.exams.index', get_defined_vars());
     }
 
