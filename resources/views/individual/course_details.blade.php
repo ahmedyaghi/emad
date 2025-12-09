@@ -122,62 +122,43 @@
                   @endif
                 </div>
                 <div class="tab-pane fade" id="tab-4">
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                        <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                      </div>
-                      <div class="col-auto"><a class="disabled btn btn-primary" href="">بدء الاختبار </a></div>
-                    </div>
-                  </div>
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                        <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                      </div>
-                      <div class="col-auto"><a class="btn btn-primary" href="testing.html">بدء الاختبار </a></div>
-                    </div>
-                  </div>
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                        <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                      </div>
-                      <div class="col-auto">
+                  @if(!is_null($course->exams()->get()))   
+                  @foreach ($course->exams()->get() as $exam)
+                    <div class="card"> 
+                      <div class="d-flex align-items-center"> 
+                        <div class="col">
+                          <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
+                          <h6 class="text-gray">{{$exam->datetime}}</h6>
+                        </div>
+                        <div class="col-auto"><a class="btn btn-primary" href="{{route('individual.exam.start', $exam)}}">بدء الاختبار </a></div>
+                        <div class="col-auto"><a class="disabled btn btn-primary" href="{{route('individual.exam.start', $exam)}}">بدء الاختبار </a></div>
+                        <div class="col-auto">
                         <div class="widget_item-card rounded-3 p-3 test-result mb-0">
                           <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
                           <h6 class="font-light font-12">نتيجة الاختبار </h6>
                         </div>
                       </div>
+                      </div>
                     </div>
-                  </div>
+                  @endforeach
+                  @endif
                 </div>
                 <div class="tab-pane fade" id="tab-5">
+                  @if(!is_null($course->certificates()->get())) 
+                  @foreach ($course->certificates()->get() as $certificate)  
                   <div class="card rounded-4">
                     <div class="d-flex align-items-center gap-3">
-                      <div class="col-auto certificate-image"><img src="../assets/images/img1.png" alt=""/></div>
+                      <div class="col-auto certificate-image"><img src="{{asset('assets/images/img1.png')}}" alt=""/></div>
                       <div class="col">
-                        <h5 class="font-semi-bold mb-1">اسم الشهادة</h5>
+                        <h5 class="font-semi-bold mb-1">{{$certificate->title}}</h5>
                         <h5 class="text-gray mb-1"> 2.67 ميجابايت </h5>
                         <h6 class="text-gray">PDF</h6>
                       </div>
-                      <div class="col-auto"><a class="btn btn-primary px-4" href="">تحميل الشهادة<img class="ms-2 filter-icon-white" src="../assets/images/download.svg" alt=""/></a></div>
+                      <div class="col-auto"><a class="btn btn-primary px-4" href="{{Storage::url($certificate->file)}}">تحميل الشهادة<img class="ms-2 filter-icon-white" src="{{asset('assets/images/download.svg')}}" alt=""/></a></div>
                     </div>
                   </div>
-                  <div class="card rounded-4">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="col-auto certificate-image"><img src="../assets/images/img1.png" alt=""/></div>
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-1">اسم الشهادة</h5>
-                        <h5 class="text-gray mb-1"> 2.67 ميجابايت </h5>
-                        <h6 class="text-gray">PDF</h6>
-                      </div>
-                      <div class="col-auto"><a class="btn btn-primary px-4" href="">تحميل الشهادة<img class="ms-2 filter-icon-white" src="../assets/images/download.svg" alt=""/></a></div>
-                    </div>
-                  </div>
+                   @endforeach
+                  @endif
                 </div>
               </div>
             </div>
