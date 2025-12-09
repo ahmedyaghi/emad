@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class ReportController extends Controller
 {
-    public function reports()
+    public function index()
     {
-        return view('consultant.reports');
+        return view('consultant.reports.index');
     }
 }

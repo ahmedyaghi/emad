@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class AssessmentController extends Controller
 {
-    public function assessments()
+    public function index()
     {
-        return view('consultant.assessments');
+        return view('consultant.assessments.index');
     }
 }

@@ -20,7 +20,7 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-auto"> <a class="btn btn-primary" href="permission-add.html">  اضافة دور</a></div>
+                <div class="col-auto"> <a class="btn btn-primary" href="{{route('admin.roles.create')}}">  اضافة دور</a></div>
               </div>
             </div>
           </div>
