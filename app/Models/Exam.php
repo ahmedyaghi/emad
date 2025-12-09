@@ -12,4 +12,14 @@ class Exam extends Model
     {
         return $this->belongsToMany(Course::class);
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function examAnswers()
+    {
+        return $this->hasMany(ExamAnswer::class);
+    }
 }

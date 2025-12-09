@@ -50,7 +50,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
-
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
@@ -66,6 +65,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/courses/{slug}', [App\Http\Controllers\Individual\CourseController::class, 'course_details'])->name('course.details');
         Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
         Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
+        Route::get('/exams/start/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'start_exam'])->name('exam.start');
+        Route::post('exam/{exam}/submit', [App\Http\Controllers\Individual\ExamController::class, 'submit'])->name('exams.submit');
+        Route::get('/exams/result/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'exam_result'])->name('exams.result');
+
     });
 
     Route::group(['prefix' => 'association', 'as' => 'association.', 'middleware' => ['role:association']], function () {

@@ -39,19 +39,20 @@ class ExamController extends Controller
             ]);
             $exam->courses()->attach($data['course_id']);
 
-            foreach ($request->questions as $item) {
+            foreach ($data['questions'] as $item) {
 
                 $question = Question::create([
                     'name' => $item['name'],
                     'type_id' => $item['type_id'],
                     'score' => $item['score'],
-                    'correct_answer' => $item['correct'],
                     'exam_id' => $exam->id,
                 ]);
 
-                foreach ($item['answers'] as $answer) {
+                foreach ($item['answers'] as $aIndex => $answer) {
                     $question->answers()->create([
                         'title' => $answer['title'],
+                        'order' => $aIndex + 1,
+                        'is_correct' => ($aIndex + 1) == $item['correct'] ? true : false,
                     ]);
                 }
             }

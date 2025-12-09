@@ -59,85 +59,39 @@
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2">عرض 8 الاختبارات</h3>
+                  <h3 class="font-semi-bold mb-2">عرض {{count($exams)}} الاختبارات</h3>
                   <h6 class="text-gray">بناءً على الاختبارات الخاصة بك</h6>
                 </div>
               </div>
             </div>
           </div>
+          @if(!$exams->isEmpty())
           <div class="row"> 
             <div class="col-12">
-              <div class="card"> 
+              @foreach ($exams as $exam)
+                <div class="card"> 
                 <div class="d-flex align-items-center"> 
                   <div class="col">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                  </div>
-                  <div class="col-auto"><a class="disabled btn btn-primary" href="">بدء الاختبار </a></div>
-                </div>
-              </div>
-              <div class="card"> 
-                <div class="d-flex align-items-center"> 
-                  <div class="col">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                  </div>
-                  <div class="col-auto"><a class="btn btn-primary" href="testing-single.html">بدء الاختبار </a></div>
-                </div>
-              </div>
-              <div class="card"> 
-                <div class="d-flex align-items-center"> 
-                  <div class="col">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
+                    <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
+                    <h6 class="text-gray">{{$exam->datetime}}</h6>
                   </div>
                   <div class="col-auto">
-                    <div class="widget_item-card rounded-3 p-3 test-result mb-0">
+                    <a class="btn btn-primary" href="{{route('individual.exam.start', $exam)}}">بدء الاختبار </a>
+                    {{-- <a class="disabled btn btn-primary" href="">بدء الاختبار </a>
+
+                     <div class="widget_item-card rounded-3 p-3 test-result mb-0">
                       <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
                       <h6 class="font-light font-12">نتيجة الاختبار </h6>
-                    </div>
+                    </div> --}}
+
                   </div>
                 </div>
-              </div>
-              <div class="card"> 
-                <div class="d-flex align-items-center"> 
-                  <div class="col">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                  </div>
-                  <div class="col-auto">
-                    <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                      <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
-                      <h6 class="font-light font-12">نتيجة الاختبار </h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card"> 
-                <div class="d-flex align-items-center"> 
-                  <div class="col">
-                    <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                  </div>
-                  <div class="col-auto">
-                    <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                      <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
-                      <h6 class="font-light font-12">نتيجة الاختبار </h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div>   
+              @endforeach
             </div>
           </div>
           <div class="row"> 
-            <div class="col-12"> 
-              <ul class="pagination justify-content-end">
-                <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                <li class="page-item"><a class="page-link" href=""> 5</a></li>
-              </ul>
-            </div>
+            {{$exams->links('common.pagination')}}
           </div>
+          @endif
 </x-common.layout>

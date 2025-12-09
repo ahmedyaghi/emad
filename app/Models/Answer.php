@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    protected $fillable = ['question_id', 'title'];
+    protected $fillable = ['question_id', 'title', 'is_correct', 'order'];
 }
