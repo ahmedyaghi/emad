@@ -15,7 +15,36 @@
     </div>
     <div class="row"> 
         <div class="col-12">
-                 <form action="" method="POST">
+        <form action="" method="POST">
+
+            <hr>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">عنوان الاختبار <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control bg-white" id="exam-title" name="title" placeholder="عنوان الاختبار" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="form-label">تاريخ ووقت الاختبار <span class="text-danger">*</span></label>
+                        <input type="datetime-local" class="form-control bg-white " id="exam-datetime" name="datetime" required>
+                    </div>
+                </div>
+
+                 <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label">اختر الدورة <span class="text-danger">*</span></label>
+                    <select class="form-control select2" name="course_id" data-placeholder="اختر الدورة" required id="exam-course_id">
+                        <option value=""></option>
+                        @foreach($courses as $course)
+                            <option value="{{ $course->id }}">{{ $course->title }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            </div>
+
         <div class="accordion accordion-testing" id="accordion">
             <div class="accordion-item mb-2">
             <h2 class="accordion-header">
@@ -73,7 +102,6 @@
             </div>
         @endfor
 
-        <!-- Correct Answer -->
         <div class="col-12 mt-3">
             <label class="form-label">الإجابة الصحيحة <span class="text-danger">*</span></label>
             <select class="form-control" name="correct_answer" required>
@@ -86,7 +114,6 @@
 
               
             </div>
-        </form>
 
                 </div>
             </div>
@@ -237,6 +264,15 @@ $(document).ready(function(){
     $('#save-exam').click(function(e){
         e.preventDefault();
 
+
+         let title = $('#exam-title').val();
+        let datetime = $('#exam-datetime').val();
+        let course_id = $('#exam-course_id').val();
+
+        if (!title || !datetime) {
+            toastr.error('يرجى إدخال عنوان الاختبار والتاريخ والوقت');
+            return;
+        }
         let questions = [];
         let valid = true;
         let firstError = '';
@@ -288,33 +324,28 @@ $(document).ready(function(){
             return;
         }
 
-        // إذا أردت رؤية البينات في الكونسول
-        console.log(questions);
-
-                $.ajax({
+        $.ajax({
             url: "{{ route('admin.exams.store') }}",
             method: "POST",
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
-                questions: questions
+                questions: questions,
+                title: title,
+                datetime: datetime,
+                course_id : course_id
             },
-                 success: function(response){
+            success: function(response){
 
-              if (response.success) {
-             toastr.success(response.message);
-
-            setTimeout(() => {
-                window.location.href = response.redirect;
-            }, 1200); 
-        }
-
-
-          //  window.location.href = @js(route('admin.courses.index'));
-          },
-          error: function(xhr, status, error){
-            alert('حدث خطأ أثناء إضافة الدورة. يرجى المحاولة مرة أخرى.');
-          }
-
+            if (response.success) {
+                toastr.success(response.message);
+                setTimeout(() => {
+                    window.location.href = response.redirect;
+                }, 1200); 
+            }
+            },
+            error: function(xhr, status, error){
+                toastr.error(xhr.responseText);
+            }
         
         });
 

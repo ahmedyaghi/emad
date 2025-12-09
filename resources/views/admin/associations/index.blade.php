@@ -54,7 +54,7 @@
                       <div class="col-lg-4 col-ms-6">
                       <div class="card widget_item-card p-4 rounded-4 mb-3">
                         <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.association.profile', $user)}}">{{$user->name}}</a></h4>
+                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.associations.show', $user->id)}}">{{$user->name}}</a></h4>
                           <h6 class="widget_item-desc text-gray mb-3">{{$user->profile->bio}}</h6>
                           <div class="widget_item-info d-flex align-items-center border-0">
                             <div class="col">
@@ -90,7 +90,7 @@
                      <div class="col-lg-4 col-ms-6">
                       <div class="card widget_item-card p-4 rounded-4 mb-3">
                         <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.association.profile', $user)}}"> {{$user->name}}</a></h4>
+                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.associations.show', $user->id)}}"> {{$user->name}}</a></h4>
                           <h6 class="widget_item-desc text-gray mb-3">{{$user->profile->bio}}</h6>
                           <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
                             <div class="col">

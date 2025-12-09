@@ -9,7 +9,7 @@ use App\Models\User;
 
 class AssociationController extends Controller
 {
-    public function associations()
+    public function index()
     {
         $pending_associations = User::with(['profile'])->where('status', UserStatus::PENDING)->where('type', UserType::ASSOCIATION)->paginate(9);
         $accepted_associations = User::with(['profile'])->where('status', UserStatus::ACCEPTED)->where('type', UserType::ASSOCIATION)->paginate(9);
@@ -17,11 +17,10 @@ class AssociationController extends Controller
         return view('admin.associations.index', get_defined_vars());
     }
 
-    public function association_profile($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);
         $user->load('profile');
 
-        return view('admin.associations.profile', get_defined_vars());
+        return view('admin.associations.show', get_defined_vars());
     }
 }

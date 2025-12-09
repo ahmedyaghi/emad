@@ -59,7 +59,7 @@
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2">عرض 8 الاختبارات</h3>
+                  <h3 class="font-semi-bold mb-2">عرض {{count($exams)}} الاختبارات</h3>
                   <h6 class="text-gray">بناءً على الاختبارات الخاصة بك</h6>
                 </div>
                 <div class="col-auto"> <a class="btn btn-primary" href="{{route('admin.exams.create')}}">اضافة اختبار </a></div>
@@ -75,7 +75,7 @@
                 <div class="row align-items-center"> 
                   <div class="col-lg-6 mb-2 mb-lg-0">
                     <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
-                    <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
+                    <h6 class="text-gray">{{$exam->datetime}}</h6>
                   </div>
                   <div class="col-lg-6">
                     <div class="widget_item-card rounded-3 p-3 test-result mb-0">

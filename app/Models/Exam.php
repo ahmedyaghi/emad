@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'datetime'];
 
     public function courses()
     {

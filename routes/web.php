@@ -40,6 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
         Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'profile'])->name('profile');
+        Route::get('/users/update-status/{status}/{id}', [App\Http\Controllers\Admin\UserController::class, 'update_status'])->name('users.update.status');
         Route::resource('/users', App\Http\Controllers\Admin\UserController::class)->names('users');
         Route::resource('/roles', App\Http\Controllers\Admin\RoleController::class)->names('roles');
         Route::resource('/packages', App\Http\Controllers\Admin\PackageController::class)->names('packages');
@@ -49,9 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
-        Route::get('/associations/{id}', [App\Http\Controllers\Admin\AssociationController::class, 'association_profile'])->name('association.profile');
 
-        Route::get('/users/update-status/{status}/{id}', [App\Http\Controllers\Admin\UserController::class, 'update_status'])->name('users.update.status');
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {

@@ -3,62 +3,74 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ExamRequest;
+use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Question;
 use App\Models\QuestionType;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ExamController extends Controller
 {
     public function index()
     {
         $exams = Exam::paginate(9);
+
         return view('admin.exams.index', get_defined_vars());
     }
 
     public function create()
     {
         $types = QuestionType::all();
+        $courses = Course::all();
 
         return view('admin.exams.create', get_defined_vars());
     }
 
-    public function store(Request $request)
+    public function store(ExamRequest $request)
     {
-        $request->validate([
-            'questions' => 'required|array|min:1',
-            'questions.*.name' => 'required|string|max:255',
-            'questions.*.type_id' => 'required|exists:question_types,id',
-            'questions.*.score' => 'required|numeric',
-            'questions.*.correct' => 'required|integer|min:1|max:4',
-            'questions.*.answers' => 'required|array|size:4',
-            'questions.*.answers.*.title' => 'required|string|max:255',
-        ]);
+        $data = $request->validated();
+        DB::beginTransaction();
+        try {
 
-        $exam = Exam::create([
-            'title' => 'Exam',
-        ]);
-
-        foreach ($request->questions as $qData) {
-            $question = Question::create([
-                'name' => $qData['name'],
-                'type_id' => $qData['type_id'],
-                'score' => $qData['score'],
-                'correct_answer' => $qData['correct'],
-                'exam_id' => $exam->id,
+            $exam = Exam::create([
+                'title' => $data['title'],
+                'datetime' => $data['datetime'],
             ]);
+            $exam->courses()->attach($data['course_id']);
 
-            foreach ($qData['answers'] as $answer) {
-                $question->answers()->create([
-                    'title' => $answer['title'],
+            foreach ($request->questions as $item) {
+
+                $question = Question::create([
+                    'name' => $item['name'],
+                    'type_id' => $item['type_id'],
+                    'score' => $item['score'],
+                    'correct_answer' => $item['correct'],
+                    'exam_id' => $exam->id,
                 ]);
-            }
-        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'تم حفظ الاختبار بنجاح!',
-            'redirect' => route('admin.exams.index'),
-        ]);
+                foreach ($item['answers'] as $answer) {
+                    $question->answers()->create([
+                        'title' => $answer['title'],
+                    ]);
+                }
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'تم إضافة الاختبار بنجاح',
+                'redirect' => route('admin.exams.index'),
+
+            ], 201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return response()->json([
+                'success' => false,
+                'message' => 'حدث خطأ أثناء الحفظ: '.$e->getMessage(),
+            ], 500);
+        }
     }
 }

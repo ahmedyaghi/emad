@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\UserType;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CourseRequest;
 use App\Models\Course;
 use App\Models\CourseUnit;
 use App\Models\CourseUnitLesson;
@@ -11,7 +12,6 @@ use App\Models\Lecturer;
 use App\Models\Qualification;
 use App\Models\Target;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -37,9 +37,9 @@ class CourseController extends Controller
         return view('admin.courses.show', get_defined_vars());
     }
 
-    public function store(Request $request)
+    public function store(CourseRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
         DB::beginTransaction();
 

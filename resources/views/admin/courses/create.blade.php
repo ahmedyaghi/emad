@@ -85,11 +85,8 @@
                                 </div>
                               </div>
                               <hr/>
-
                                 <div class="row mb-3" id="lecturers-container">
-
                                     <div class="row mb-4 lecturer-item">
-
                                        <div class="col-12"> 
                                         <div class="form-group"> 
                                           <label class="mb-2"> اسم المحاضر <span class="text-danger"> *</span></label>
@@ -102,19 +99,13 @@
                                           <textarea class="form-control" rows="6" placeholder="أدخل وصف المحاضر..." name='lecturers[0][bio]'></textarea>
                                         </div>
                                       </div>
-
-
                                        <div class="col-12">
                                           <div class="form-group"> 
                                             <button class="btn btn-white px-4" type="button" id="add-lecturer">  +  اضافة محاضر</button>
                                           </div>
                                         </div>
-
                                     </div>
                                 </div>
-
-                            
-                             
                             </div>
                           </div>
                         </div>
@@ -231,10 +222,9 @@
           if(allOk){
             let data = get_data();
             send_data(url, data);
-
-            
           }
         });
+
         $("#smartwizard").on("showStep", function (e, anchorObject, stepIndex, stepDirection, stepPosition) {
           $(".btn-submit").toggle(stepPosition === 'last');
           $(".btn-submit").prop('disabled', stepPosition !== 'last');
@@ -282,14 +272,14 @@
               }
           });
       
-          //- if(ok && step === 1 && $('.unit').length === 0){
-          //-     alert("يجب إضافة وحدة واحدة على الأقل");
-          //-     ok = false;
-          //- }
-          //- if(ok && step === 2 && $('.trainee-card').length === 0){
-          //-     alert("يجب إضافة متدرب واحد على الأقل");
-          //-     ok = false;
-          //- }
+           if(ok && step === 1 && $('.unit').length === 0){
+               alert("يجب إضافة وحدة واحدة على الأقل");
+               ok = false;
+           }
+           if(ok && step === 2 && $('.trainee-card').length === 0){
+              alert("يجب إضافة متدرب واحد على الأقل");
+               ok = false;
+           }
       
           $('#smartwizard').smartWizard('fixHeight');
           if(!ok) $('html, body').animate({ scrollTop: 0 }, 500);
@@ -306,7 +296,6 @@
               <div class="col-12">
                 <hr>
               </div>
-      
               <div class="col-12">
                 <div class="form-group">
                   <label class="mb-2">اسم المحاضر <span class="text-danger">*</span></label>
@@ -314,7 +303,6 @@
                    name='lecturers[${index}][name]'/>
                 </div>
               </div>
-      
               <div class="col-12">
                 <div class="form-group">
                   <label class="mb-2">وصف المحاضر <span class="text-danger">*</span></label>
@@ -329,71 +317,66 @@
           $('#smartwizard').smartWizard("fixHeight");
         });
       
-        // Add new lesson
-       $(document).on('click', '.add-lesson', function(){
-        let $unit = $(this).closest('.unit');
-        let unitIndex = $('#units-container .unit').index($unit); // رقم الوحدة
-        let lessonIndex = $unit.find('.lessons-container .lesson').length; // رقم الدرس الجديد داخل الوحدة
+          // Add new lesson
+        $(document).on('click', '.add-lesson', function(){
+          let $unit = $(this).closest('.unit');
+          let unitIndex = $('#units-container .unit').index($unit); // رقم الوحدة
+          let lessonIndex = $unit.find('.lessons-container .lesson').length; // رقم الدرس الجديد داخل الوحدة
 
-        var lesson = `
-            <div class="bg-white border p-4 rounded-4 mb-3">
-              <div class="lesson">
-                <div class="form-group">
-                  <label class="mb-2">اسم الدرس <span class="text-danger">*</span></label>
-                  <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[${unitIndex}][lessons][${lessonIndex}][name]'/>
-                </div>
-
-                <div class="form-group">
-                  <label class="mb-2">لينك الدرس <span class="text-danger">*</span></label>
-                  <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[${unitIndex}][lessons][${lessonIndex}][link]'/>
-                </div>
-              </div>
-            </div>
-        `;
-
-        $unit.find('.lessons-container').append(lesson);
-        $('#smartwizard').smartWizard("fixHeight");
-    });
-     // Add new unit
-    $('#add-unit').on('click', function(){
-
-    let unitIndex = $('#units-container .unit').length; // رقم الوحدة الجديدة
-
-    var unit = `
-        <div class="col-12 unit mt-4">
-          <div class="bg-gray p-4 rounded-4">
-            <div class="form-group">
-              <label class="mb-2">اسم الوحدة <span class="text-danger">*</span></label>
-              <input type="text" class="form-control bg-white" placeholder="مثال: الوحدة 1" name='unit[${unitIndex}][name]'/>
-            </div>
-
-            <div class="lessons-container">
+          var lesson = `
               <div class="bg-white border p-4 rounded-4 mb-3">
                 <div class="lesson">
                   <div class="form-group">
                     <label class="mb-2">اسم الدرس <span class="text-danger">*</span></label>
-                    <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[${unitIndex}][lessons][0][name]'/>
+                    <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[${unitIndex}][lessons][${lessonIndex}][name]'/>
                   </div>
-
                   <div class="form-group">
                     <label class="mb-2">لينك الدرس <span class="text-danger">*</span></label>
-                    <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[${unitIndex}][lessons][0][link]'/>
+                    <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[${unitIndex}][lessons][${lessonIndex}][link]'/>
                   </div>
                 </div>
               </div>
-            </div>
+          `;
 
-                      <button class="btn btn-white px-4 add-lesson mt-2" type="button">+ اضافة درس جديد</button>
+          $unit.find('.lessons-container').append(lesson);
+          $('#smartwizard').smartWizard("fixHeight");
+      });
+
+      // Add new unit
+      $('#add-unit').on('click', function(){
+
+      let unitIndex = $('#units-container .unit').length; // رقم الوحدة الجديدة
+      var unit = `
+          <div class="col-12 unit mt-4">
+            <div class="bg-gray p-4 rounded-4">
+              <div class="form-group">
+                <label class="mb-2">اسم الوحدة <span class="text-danger">*</span></label>
+                <input type="text" class="form-control bg-white" placeholder="مثال: الوحدة 1" name='unit[${unitIndex}][name]'/>
+              </div>
+              <div class="lessons-container">
+                <div class="bg-white border p-4 rounded-4 mb-3">
+                  <div class="lesson">
+                    <div class="form-group">
+                      <label class="mb-2">اسم الدرس <span class="text-danger">*</span></label>
+                      <input class="form-control bg-white" type="text" placeholder="اسم الدرس" name='unit[${unitIndex}][lessons][0][name]'/>
+                    </div>
+                    <div class="form-group">
+                      <label class="mb-2">لينك الدرس <span class="text-danger">*</span></label>
+                      <input class="form-control bg-white" type="text" placeholder="لينك الدرس" name='unit[${unitIndex}][lessons][0][link]'/>
                     </div>
                   </div>
-              `;
+                </div>
+              </div>
+               <button class="btn btn-white px-4 add-lesson mt-2" type="button">+ اضافة درس جديد</button>
+            </div>
+          </div>`;
 
-              $('#units-container').append(unit);
-              $('#smartwizard').smartWizard("fixHeight");
-          });
+                $('#units-container').append(unit);
+                $('#smartwizard').smartWizard("fixHeight");
+            });
 
                 
-              // Add / Search trainee
+           // Add / Search trainee
           $('#add-trainee').on('click', function(){
               let name = $('#trainee-name').val().trim();
               let id   = $('#trainee-id').val().trim();
@@ -459,65 +442,53 @@
       
       });
       function get_data(){
-    let data = {};
-    
-    // Course Information
-    data.title = $('input[name="title"]').val();
-    data.start_date = $('input[name="start_date"]').val();
-    data.end_date = $('input[name="end_date"]').val();
-    data.qualification_id = $('select[name="qualification_id"]').val();
-    data.target_id = $('select[name="target_id"]').val();
-    data.description = $('textarea[name="description"]').val();
-    data.topics = $('textarea[name="topics"]').val();
-    data.goals = $('textarea[name="goals"]').val();
+          let data = {};
+          
+          // Course Information
+          data.title = $('input[name="title"]').val();
+          data.start_date = $('input[name="start_date"]').val();
+          data.end_date = $('input[name="end_date"]').val();
+          data.qualification_id = $('select[name="qualification_id"]').val();
+          data.target_id = $('select[name="target_id"]').val();
+          data.description = $('textarea[name="description"]').val();
+          data.topics = $('textarea[name="topics"]').val();
+          data.goals = $('textarea[name="goals"]').val();
 
-    // Lecturers — fix: include the first lecturer outside the container
-    data.lecturers = [];
+          data.lecturers = [];
 
-    // First lecturer (outside container)
-    // let firstLecturerName = $('input[name="lecturers[0][name]"]').val();
-    // let firstLecturerBio = $('textarea[name="lecturers[0][bio]"]').val();
-    // if(firstLecturerName || firstLecturerBio){
-    //     data.lecturers.push({
-    //         name: firstLecturerName,
-    //         bio: firstLecturerBio
-    //     });
-    // }
+       
+          $('#lecturers-container .lecturer-item').each(function(){
+              let lecturer = {};
+              lecturer.name = $(this).find('input[type="text"]').val();
+              lecturer.bio = $(this).find('textarea').val();
+              data.lecturers.push(lecturer);
+          });
 
-    // Additional lecturers (inside #lecturers-container)
-    $('#lecturers-container .lecturer-item').each(function(){
-        let lecturer = {};
-        lecturer.name = $(this).find('input[type="text"]').val();
-        lecturer.bio = $(this).find('textarea').val();
-        data.lecturers.push(lecturer);
-    });
+          // Units and Lessons
+          data.units = [];
+          $('#units-container .unit').each(function(unitIndex){
+              let unit = {};
+              unit.name = $(this).find('input[name^="unit"][name$="[name]"]').val();
+              unit.lessons = [];
 
-    // Units and Lessons
-    data.units = [];
-    $('#units-container .unit').each(function(unitIndex){
-        let unit = {};
-        unit.name = $(this).find('input[name^="unit"][name$="[name]"]').val();
-        unit.lessons = [];
+              $(this).find('.lessons-container .lesson').each(function(lessonIndex){
+                  let lesson = {};
+                  lesson.name = $(this).find('input[name$="[name]"]').val();
+                  lesson.link = $(this).find('input[name$="[link]"]').val();
+                  unit.lessons.push(lesson);
+              });
 
-        $(this).find('.lessons-container .lesson').each(function(lessonIndex){
-            let lesson = {};
-            lesson.name = $(this).find('input[name$="[name]"]').val();
-            lesson.link = $(this).find('input[name$="[link]"]').val();
-            unit.lessons.push(lesson);
-        });
+              data.units.push(unit);
+          });
 
-        data.units.push(unit);
-    });
+          // Trainees
+          data.trainees = [];
+          $('#trainees-list .trainee-card').each(function(){
+              data.trainees.push($(this).data('user-id'));
+          });
 
-    // Trainees
-    data.trainees = [];
-    $('#trainees-list .trainee-card').each(function(){
-        data.trainees.push($(this).data('user-id'));
-    });
-
-    console.log('Collected Data:', data);
-    return data;
-}
+          return data;
+      }
 
 
 
@@ -529,21 +500,19 @@
             ...data,
             _token: $('meta[name="csrf-token"]').attr('content')
         },
-          success: function(response){
-
-              if (response.success) {
-             toastr.success(response.message);
-
-            setTimeout(() => {
-                window.location.href = response.redirect;
-            }, 1200); 
-        }
-
-
-          //  window.location.href = @js(route('admin.courses.index'));
-          },
-          error: function(xhr, status, error){
-            alert('حدث خطأ أثناء إضافة الدورة. يرجى المحاولة مرة أخرى.');
+        success: function(response){
+          if (response.success) {
+              toastr.success(response.message);
+              setTimeout(() => {
+                  window.location.href = response.redirect;
+              }, 1200); 
+          }
+        },
+        error: function(xhr, status, error){
+          console.log(error);
+              if (error.success) {
+                 toastr.error(response.message);
+              }
           }
         });
       }
