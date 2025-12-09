@@ -10,4 +10,9 @@ class ReportController extends Controller
     {
         return view('consultant.reports.index');
     }
+
+    public function create()
+    {
+        return view('consultant.reports.create');
+    }
 }
