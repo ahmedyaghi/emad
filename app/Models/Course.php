@@ -27,14 +27,31 @@ class Course extends Model
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
+    protected function videoUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value) {
+                if (!$value) return null;
+
+                parse_str(parse_url($value, PHP_URL_QUERY), $query);
+
+                if (isset($query['v'])) {
+                    return "https://www.youtube.com/embed/{$query['v']}";
+                }
+
+                return null;
+            }
         );
     }
 

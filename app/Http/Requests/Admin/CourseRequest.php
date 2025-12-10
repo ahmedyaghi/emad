@@ -23,7 +23,8 @@ class CourseRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'start_date' => 'required|date',
+            'video_url' => 'required|url',
+            'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after_or_equal:start_date',
             'qualification_id' => 'required|exists:qualifications,id',
             'target_id' => 'required|exists:targets,id',

@@ -22,10 +22,16 @@
                         <div class="row">
                           <div class="col-12">
                             <div class="row"> 
-                              <div class="col-12"> 
+                              <div class="col-6"> 
                                 <div class="form-group"> 
                                   <label class="mb-2"> اسم الدورة <span class="text-danger"> *</span></label>
                                   <input class="form-control required" type="text" name="title" placeholder="مثال: مشرف حجاج…"/>
+                                </div>
+                              </div>
+                              <div class="col-6"> 
+                                <div class="form-group"> 
+                                  <label class="mb-2"> رابط الدورة <span class="text-danger"> *</span></label>
+                                  <input class="form-control required" type="text" name="video_url" placeholder="https://www.youtube.com/watch?v=uTmhyEABZ1k"/>
                                 </div>
                               </div>
                               <div class="col-md-6"> 
@@ -446,6 +452,7 @@
           
           // Course Information
           data.title = $('input[name="title"]').val();
+          data.video_url = $('input[name="video_url"]').val();
           data.start_date = $('input[name="start_date"]').val();
           data.end_date = $('input[name="end_date"]').val();
           data.qualification_id = $('select[name="qualification_id"]').val();
@@ -509,10 +516,9 @@
           }
         },
         error: function(xhr, status, error){
-          console.log(error);
-              if (error.success) {
-                 toastr.error(response.message);
-              }
+
+          toastr.error(xhr.responseText || 'حدث خطأ أثناء إضافة الدورة. حاول مرة أخرى.');
+              
           }
         });
       }

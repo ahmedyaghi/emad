@@ -11,9 +11,19 @@
           <div class="row mb-4">
             <div class="col-12"> 
               <div class="video-container">
-                <video id="player" controls="controls">
+                {{-- <video id="player" controls="controls">
                   <source src="{{asset('assets/images/video.mp4')}}" type="video/mp4"/>
-                </video>
+                </video> --}}
+                <iframe 
+                  id="course-player"
+                  width="100%" 
+                  height="450" 
+                  src="{{$course->video_url}}" 
+                  title="YouTube video player" 
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+              </iframe>
               </div>
             </div>
           </div>
@@ -85,13 +95,19 @@
                         @if(!is_null($course->units()->get()))   
                         <div class="accordion-body px-0">
                             @foreach ( $unit->lessons()->get() as $lesson)
-                            <div class="widget_item-lesson d-flex align-items-center gap-2 @if($lesson->id == 1) active @endif">
+                             <div class="widget_item-lesson d-flex align-items-center gap-2">
                                 <div class="col-auto">
-                                <div class="widget_item-icon"><img src="{{asset('assets/images/video.svg')}}" alt="{{$lesson->title}}"/></div>
+                                <div class="widget_item-icon">
+                                  <a href="#" class="lesson-link" data-url="{{$lesson->video_url}}">
+                                  <img src="{{asset('assets/images/video.svg')}}" alt="{{$lesson->title}}"/>
+                                  </a>
+                                </div>
                                 </div>
                                 <div class="col">
                                 <div class="widget_item-content">
+                                 <a href="#" class="lesson-link" data-url="{{$lesson->video_url}}">
                                     <h6 class="widget_item-title">{{$lesson->title}}</h6>
+                                  </a>
                                 </div>
                                 </div>
                                 <div class="col-auto">
@@ -396,4 +412,27 @@
               </div>
             </div>
           </div>
+
+
+  @section('scripts')
+      <script>
+    $(document).ready(function () {
+        const player = $("#course-player");
+
+        $(".lesson-link").on("click", function (e) {
+            e.preventDefault();
+
+            const videoUrl = $(this).data("url");
+
+            if (videoUrl) {
+                player.attr("src", videoUrl);
+            }
+
+            $(".widget_item-lesson").removeClass("active");
+            $(this).closest(".widget_item-lesson").addClass("active");
+
+        });
+    });
+    </script>
+  @endsection
 </x-common.layout>

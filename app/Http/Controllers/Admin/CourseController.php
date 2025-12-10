@@ -47,6 +47,7 @@ class CourseController extends Controller
 
             $course = Course::create([
                 'title' => $data['title'],
+                'video_url' => $data['video_url'],
                 'start_date' => date('Y-m-d', strtotime($data['start_date'])),
                 'end_date' => date('Y-m-d', strtotime($data['end_date'])),
                 'qualification_id' => $data['qualification_id'],
