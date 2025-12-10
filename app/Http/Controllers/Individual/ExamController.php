@@ -22,8 +22,9 @@ class ExamController extends Controller
     public function start_exam(Exam $exam)
     {
         $exam->load('questions.answers');
+        $exam_answer = ExamAnswer::where('user_id', auth()->id())->where('exam_id', $exam->id)->count() > 0;
 
-        return view('individual.exams.start', compact('exam'));
+        return view('individual.exams.start', compact('exam', 'exam_answer'));
     }
 
     public function submit(Request $request, Exam $exam)
@@ -38,6 +39,13 @@ class ExamController extends Controller
         $score = 0;
         $total = $exam->questions()->sum('score');
 
+        $exam_answer = ExamAnswer::where('user_id', $user->id)->where('exam_id', $exam->id)->first();
+        if ($exam_answer->exists()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'تم تقديم الاختبار',
+            ]);
+        }
         foreach ($request->answers as $q => $a) {
             $isCorrect = false;
             $question = $exam->questions->find($q);
@@ -47,18 +55,14 @@ class ExamController extends Controller
                 $isCorrect = true;
             }
 
-            ExamAnswer::updateOrCreate(
-                [
-                    'user_id' => $user->id,
-                    'exam_id' => $exam->id,
-                    'question_id' => $q,
-                ],
-                [
-                    'answer_id' => $a,
-                    'is_correct' => $isCorrect,
-                    'score' => $score,
-                ]
-            );
+            ExamAnswer::create([
+                'user_id' => $user->id,
+                'exam_id' => $exam->id,
+                'question_id' => $q,
+                'answer_id' => $a,
+                'is_correct' => $isCorrect,
+                'score' => $score,
+            ]);
         }
 
         return response()->json([

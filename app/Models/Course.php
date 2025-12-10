@@ -27,14 +27,14 @@ class Course extends Model
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
@@ -42,7 +42,9 @@ class Course extends Model
     {
         return Attribute::make(
             get: function ($value) {
-                if (!$value) return null;
+                if (! $value) {
+                    return null;
+                }
 
                 parse_str(parse_url($value, PHP_URL_QUERY), $query);
 
@@ -83,5 +85,26 @@ class Course extends Model
     public function lecturers()
     {
         return $this->belongsToMany(Lecturer::class);
+    }
+
+    public function progress()
+    {
+
+        $lessonIds = $this->units()->with('lessons')->get()
+            ->pluck('lessons.*.id')
+            ->flatten();
+
+        $totalLessons = $lessonIds->count();
+
+        if ($totalLessons == 0) {
+            return 0;
+        }
+
+        $completedLessons = UserLessonProgress::where('user_id', auth()->id())
+            ->whereIn('lesson_id', $lessonIds)
+            ->where('is_completed', 1)
+            ->count();
+
+        return round(($completedLessons / $totalLessons) * 100);
     }
 }

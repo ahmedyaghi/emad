@@ -68,6 +68,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/exams/start/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'start_exam'])->name('exam.start');
         Route::post('exam/{exam}/submit', [App\Http\Controllers\Individual\ExamController::class, 'submit'])->name('exams.submit');
         Route::get('/exams/result/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'exam_result'])->name('exams.result');
+        Route::post('/progress/update', [App\Http\Controllers\Individual\ProgressController::class, 'update'])->name('progress.update');
 
     });
 

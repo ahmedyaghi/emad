@@ -9,11 +9,13 @@ class CourseUnitLesson extends Model
 {
     protected $fillable = ['unit_id', 'video_url', 'title', 'content', 'duration'];
 
-      protected function videoUrl(): Attribute
+    protected function videoUrl(): Attribute
     {
         return Attribute::make(
             get: function ($value) {
-                if (!$value) return null;
+                if (! $value) {
+                    return null;
+                }
 
                 parse_str(parse_url($value, PHP_URL_QUERY), $query);
 

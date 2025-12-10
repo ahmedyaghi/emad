@@ -97,14 +97,14 @@
                             <div class="widget_item-lesson d-flex align-items-center gap-2">
                                 <div class="col-auto">
                                 <div class="widget_item-icon">
-                                  <a href="#" class="lesson-link" data-url="{{$lesson->video_url}}">
+                                  <a href="#" class="lesson-link" data-url="{{$lesson->video_url}}" data-id="{{$lesson->id}}">
                                   <img src="{{asset('assets/images/video.svg')}}" alt="{{$lesson->title}}"/>
                                   </a>
                                 </div>
                                 </div>
                                 <div class="col">
                                 <div class="widget_item-content">
-                                 <a href="#" class="lesson-link" data-url="{{$lesson->video_url}}">
+                                 <a href="#" class="lesson-link" data-url="{{$lesson->video_url}}" data-id="{{$lesson->id}}">
                                     <h6 class="widget_item-title">{{$lesson->title}}</h6>
                                   </a>
                                 </div>
@@ -184,12 +184,12 @@
                 <hr/>
                 <div class="d-flex align-items-center justify-content-between mb-2">
                   <h6 class="font-light">نسبة التقدم</h6>
-                  <h6 class="font-bold">30%</h6>
+                  <h6 class="font-bold">{{ $course->progress() }}%</h6>
                 </div>
                 <div class="progress mb-3">
-                  <div class="progress-bar" div="div" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  <div class="progress-bar" div="div" role="progressbar" style="width: {{ $course->progress() }}%" aria-valuenow="{{ $course->progress() }}" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <h6 class="font-light text-gray">تاريخ البدء: 7 يوليو 2025</h6>
+                <h6 class="font-light text-gray">تاريخ البدء: {{ $course->start_date }}</h6>
               </div>
               <div class="pannel">
                 <h5 class="mb-3 font-bold">الاختبارات القادمة</h5>
@@ -217,6 +217,7 @@
             e.preventDefault();
 
             const videoUrl = $(this).data("url");
+            const lessonId = $(this).data("id");
 
             if (videoUrl) {
                 player.attr("src", videoUrl);
@@ -224,6 +225,12 @@
 
             $(".widget_item-lesson").removeClass("active");
             $(this).closest(".widget_item-lesson").addClass("active");
+
+
+            $.post("{{ route('individual.progress.update') }}", {
+              _token: "{{ csrf_token() }}",
+              lesson_id: lessonId
+          });
 
         });
     });

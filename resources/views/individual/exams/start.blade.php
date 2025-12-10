@@ -31,7 +31,7 @@
                     <div class="question-footer mt-3">
                         <div class="d-flex align-items-center justify-content-between"> 
                             <a class="btn btn-white" href="{{route('individual.exams')}}">إلغاء </a>
-                            <button type="button" class="btn btn-primary px-4" id="submit-exam">تسليم الاختبار</button>
+                            <button type="button" class="btn btn-primary px-4 @disabled($exam_answer)" id="submit-exam">تسليم الاختبار</button>
                         </div>
                     </div>
                 </form>
@@ -127,7 +127,10 @@ $(document).ready(function(){
 
                     $('#QuizAnswerModal').modal('show');
                     $('#QuizAnswerModal .total-result').text(response.score + ' / ' + response.total);
+                }else if(response.success == false){
+                  toastr.error(response.message);
                 }
+
             },
             error: function(xhr){
                 toastr.error(xhr.responseText);
