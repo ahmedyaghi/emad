@@ -1,270 +1,312 @@
-<x-site.layout :internal="false">
-    <!-- start:: section -->  
-        <section class="section section-bg-light">
-          <div class="container"> 
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="section-content">
-                  <div class="mb-4">
-                    <h2 class="font-bold mb-3">إنشاء حساب جديد</h2>
-                    <h5>املأ النموذج أدناه ليتم تسجيل حساب جديد والانضمام إلى منصة عماد.</h5>
-                  </div>
-                  <hr/>
-                  <form action="{{route('handle.register')}}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  <input type="hidden" name="type" value="{{App\Enums\UserType::ASSOCIATION}}">
+<x-common.layout>
+  <div class="row mb-lg-2">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-12">
+          <ol class="breadcrumb">
+            <div class="breadcrumb-item"><a href="{{route('association.trainees.index')}}">المتدربين</a></div>
+            <div class="breadcrumb-item">إضافة تقييم المتدرب</div>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                  <div class="row">
-                     <div class="col-12">
-                        <div class="form-group">
-                        <label class="form-label">شعار الجمعية<span class="text-danger ms-1">*</span></label>
-                        <div class="logo-upload">
-                            <input id="association-logo" type="file" accept="image/*" hidden="hidden" name="image"/>
-                            <div class="logo-preview"><img src="{{asset('assets/images/upload.svg')}}" alt=""/></div>
-                        </div>
-                        </div>
-                        @if ($errors->has('image'))
-                            <span class="text-danger">{{ $errors->first('image') }}</span>
-                        @endif
-                    </div>
-                   <div class="col-lg-6">
-                      <div class="form-group"> 
-                        <label class="mb-2">اسم الجمعية <span class="text-danger ms-1">*</span></label>
-                        <input class="form-control" type="text" placeholder="أدخل اسم الجمعية" name="name" value="{{old('name')}}"/>
-                          @if ($errors->has('name'))
-                              <span class="text-danger">{{ $errors->first('name') }}</span>
-                          @endif
-                      </div>
-                    </div>
+  <div class="row">
+    <div class="col-12">
+      <form action="{{route('association.trainees.handle_assessment')}}" method="POST">
+        @csrf
 
-                       <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="mb-2">رقم الجوال<span class="text-danger ms-1">*</span></label>
-                          <div class="row flex-nowrap gx-2">
-                            <div class="col">
-                              <input class="form-control text-end" type="text" placeholder="00" name="phone" value="{{old('phone')}}"/>
-                              @if ($errors->has('phone'))
-                                <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-auto">
-                              <select class="form-control  select2 " data-width="100px" data-placeholder="اختر" name="code">
-                                <option value="+966">966</option>
-                                <option value="+968">968</option>
-                                <option value="+969">969</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                     <div class="col-md-6">
-                        <div class="form-group"> 
-                          <label class="mb-2">البريد الاكتروني</label>
-                          <input class="form-control" type="text" placeholder="email@example.com" name="email" value="{{old('email')}}"/>
-                        @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                        @endif
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group"> 
-                          <label class="mb-2">كلمة المرور</label>
-                          <input class="form-control" type="password" placeholder="****************" name="password" />
-                        @if ($errors->has('password'))
-                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                        @endif
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group"> 
-                          <label class="mb-2">تأكيد كلمة المرور</label>
-                          <input class="form-control" type="password" placeholder="****************" name="password_confirmation" />
-                        @if ($errors->has('password_confirmation'))
-                            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
-                        @endif
-                        </div>
-                      </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
-                          <option></option>
-                          <option value="1">اﻟﺘﺨﺼﺺ 1</option>
-                          <option value="2">اﻟﺘﺨﺼﺺ 2</option>
-                        </select>
-                        @if ($errors->has('specilization_id'))
-                              <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
-                        @endif
-                      </div>
-                     </div>
-                    
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="mb-2"> القطاع<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر" name="section_type_id">
-                          <option></option>
-                          <option value="1">القطاع 1</option>
-                          <option value="2">القطاع 2</option>
-                        </select>
-                        @if ($errors->has('section_type_id'))
-                              <span class="text-danger">{{ $errors->first('section_type_id') }}</span>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="mb-2">الدولة</label>
-                        <select class="select2 form-control" data-placeholder="اختر"  name="country_id">
-                          <option></option>
-                          <option value="1">الدولة 1</option>
-                          <option value="2">الدولة 2</option>
-                        </select>
-                         @if ($errors->has('country_id'))
-                              <span class="text-danger">{{ $errors->first('country_id') }}</span>
-                        @endif
-                      </div>
-                    </div>
+        <!-- رأس الفورم -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="d-lg-flex justify-content-between">
+              <div class="col-lg-7 mb-3 mb-lg-0">
+                <h3 class="font-semi-bold mb-3">إضافة تقييم المتدرب</h3>
+                <h6 class="text-gray">قم بتعبئة التقييم بناءً على أداء الطلاب خلال هذا الأسبوع.</h6>
+              </div>
+              <div class="col-auto">
+                <a class="btn btn-white" href="{{route('association.trainees.index')}}">رجوع</a>
+                <button class="btn btn-primary px-3 ms-2" type="submit">إضافة التقييم</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="mb-2">المدينة</label>
-                        <select class="select2 form-control" data-placeholder="اختر"  name="city_id">
-                          <option></option>
-                          <option value="1">المدينة 1</option>
-                          <option value="2">المدينة 2</option>
-                        </select>
-                         @if ($errors->has('city_id'))
-                              <span class="text-danger">{{ $errors->first('city_id') }}</span>
-                        @endif
+        <!-- معلومات الطالب -->
+        <div class="row">
+          <div class="col-12">
+            <div class="pannel">
+              <h3 class="font-semi-bold">معلومات الطالب</h3>
+              <hr/>
+              <div class="card pb-0">
+                <div class="d-flex align-items-start">
+                  <div class="col">
+                    <div class="widget_item-user d-flex align-items-center">
+                      <div class="widget_item-user-avatar col-auto me-2">
+                        <img src="{{Storage::url($application->user->profile?->image)}}" alt=""/>
                       </div>
-                    </div>
-                   
-                    <div class="col-12"> 
-                      <hr/>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group"> 
-                        <label class="form-label">موقعك الإلكتروني </label>
-                        <input class="form-control" type="text" placeholder="www.capitalx.com" name="website" value="{{old('website')}}"/>
-                        @if ($errors->has('website'))
-                            <span class="text-danger">{{ $errors->first('website') }}</span>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group"> 
-                        <label class="form-label">موقع x  (تويتر)</label>
-                        <input class="form-control" type="text" placeholder="twitter.com/CapitalX" name="twitter" value="{{old('twitter')}}"/>
-                         @if ($errors->has('twitter'))
-                            <span class="text-danger">{{ $errors->first('twitter') }}</span>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group"> 
-                        <label class="form-label">فيسبوك</label>
-                        <input class="form-control" type="text" placeholder="Facebook.com/CapitalX" name="facebook" value="{{old('facebook')}}"/>
-                         @if ($errors->has('facebook'))
-                            <span class="text-danger">{{ $errors->first('facebook') }}</span>
-                        @endif
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group"> 
-                        <label class="form-label">يوتيوب</label>
-                        <input class="form-control" type="text" placeholder="YouTube.com/CapitalX" name="youtube" value="{{old('youtube')}}"/>
-                         @if ($errors->has('youtube'))
-                            <span class="text-danger">{{ $errors->first('youtube') }}</span>
-                        @endif
-                      </div>
-                    </div>
-
-                     <div class="col-12 mb-3">
-                        <hr/>
-                    </div>
-                    <div class="col-12 mb-4">
-                        <h3 class="font-medium">مسئول التواصل</h3>
-                    </div>
-
-
-                    <div class="col-12">
-                        <div class="form-group"> 
-                        <label class="form-label">الإسم<span class="text-danger">*</span></label>
-                        <input class="form-control required" type="text" placeholder="اسم مسئول التواصل " name="manager_name"/>
-                         @if ($errors->has('manager_name'))
-                            <span class="text-danger">{{ $errors->first('manager_name') }}</span>
-                        @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label class="mb-2"> المنصب<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control required" data-placeholder="اختر" name="position_id">
-                            <option></option>
-                            <option value="1">المنصب 1</option>
-                            <option value="2">المنصب 2</option>
-                        </select>
-                        @if ($errors->has('position_id'))
-                            <span class="text-danger">{{ $errors->first('position_id') }}</span>
-                        @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                        <label class="mb-2"> الجنسية<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control required" data-placeholder="اختر" name="nationality_id">
-                            <option></option>
-                            <option value="1">الجنسية 1</option>
-                            <option value="2">الجنسية 2</option>
-                        </select>
-                         @if ($errors->has('nationality_id'))
-                            <span class="text-danger">{{ $errors->first('nationality_id') }}</span>
-                        @endif
-                        </div>
-                    </div>
-                  <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="mb-2">رقم الجوال<span class="text-danger ms-1">*</span></label>
-                          <div class="row flex-nowrap gx-2">
-                            <div class="col">
-                              <input class="form-control text-end" type="text" placeholder="00" name="manager_phone" value="{{old('manager_phone')}}"/>
-                              @if ($errors->has('manager_phone'))
-                                <span class="text-danger">{{ $errors->first('manager_phone') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-auto">
-                              <select class="form-control  select2 " data-width="100px" data-placeholder="اختر" name="code">
-                                <option value="+966">966</option>
-                                <option value="+968">968</option>
-                                <option value="+969">969</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                       <div class="col-md-6">
-                        <div class="form-group"> 
-                          <label class="mb-2">البريد الاكتروني</label>
-                          <input class="form-control" type="text" placeholder="email@example.com" name="manager_email" value="{{old('manager_email')}}"/>
-                        @if ($errors->has('manager_email'))
-                            <span class="text-danger">{{ $errors->first('manager_email') }}</span>
-                        @endif
-                        </div>
-                      </div>
-
-
-                    <div class="col-12">
-                      <div class="form-group text-end"> 
-                          <button class="btn btn-primary btn-lg font-medium" type="submit">إنشاء الحساب</button>
-                        {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#otpModal"> إنشاء حساب</button> --}}
+                      <div class="widget_item-user-info">
+                        <h6 class="mb-1 font-medium">{{$application->user->name}}</h6>
+                        <h6 class="text-gray">{{$application->user->profile?->bio}}</h6>
                       </div>
                     </div>
                   </div>
-                  </form>
+                </div>
+                <hr/>
+                <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
+                  <div class="col-6 col-lg-3">
+                    <div class="d-flex align-items-start mb-4">
+                      <img class="info-icon me-2" src="{{asset('assets/images/city2.svg')}}" alt=""/>
+                      <span class="info-title text-gray">الجهة
+                        <span class="font-bold d-block text-black mt-2">اسم الجهة</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <div class="d-flex align-items-start mb-4">
+                      <img class="info-icon me-2" src="{{asset('assets/images/student-card.svg')}}" alt=""/>
+                      <span class="info-title text-gray">الرقم الجامعي
+                        <span class="text-black font-bold d-block mt-2">90127903891</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <div class="d-flex align-items-start mb-4">
+                      <img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/>
+                      <span class="info-title text-gray">اسم عضو هيئة التدريس المشرف
+                        <span class="text-black font-bold d-block mt-2">د. فلان فلان</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <div class="d-flex align-items-start mb-4">
+                      <img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/>
+                      <span class="info-title text-gray">اسم المستشار الميداني
+                        <span class="text-black font-bold d-block mt-2">د. فلان فلان</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <div class="d-flex align-items-start mb-4">
+                      <img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/>
+                      <span class="info-title text-gray">تاريخ البداية
+                        <span class="text-black font-bold d-block mt-2">25 مايو 2024</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-6 col-lg-3">
+                    <div class="d-flex align-items-start">
+                      <img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/>
+                      <span class="info-title text-gray">تاريخ النهاية
+                        <span class="text-black font-bold d-block mt-2">25 مايو 2024</span>
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        <!-- end:: section -->   
-</x-site.layout>
+        </div>
+
+        @if(!$general_criterias->isEmpty())
+
+        <div class="row">
+          <div class="col-12">
+            <div class="pannel">
+              <h3 class="font-semi-bold">معلومات عامة عن تقدم الطالب</h3>
+              <hr/>
+              <div class="row d-none d-lg-flex fw-bold mb-2 py-2">
+                <div class="col-4"><h5>المعيار</h5></div>
+                <div class="col-4"><h5>التقييم</h5></div>
+                <div class="col-4"><h5>الملاحظات</h5></div>
+              </div>
+
+              @foreach($general_criterias->where('type', 1) as $criteria)
+              <div class="row align-items-center list-rows mb-3 mb-lg-0">
+                <div class="col-12 col-lg-4">
+                  <div class="form-group">
+                    <h5 class="d-lg-none">المعيار</h5>
+                    <h5 class="my-3 my-lg-0 form-control">{{$criteria->title}}</h5>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">التقييم</label>
+                    @if(!$evaluations->isEmpty())
+                    <select class="form-select select2" name="progress[{{$criteria->id}}][evaluation_id]" data-placeholder="اختر">
+                      <option></option>
+                      @foreach($evaluations as $evaluation)
+                      <option value="{{$evaluation->id}}" {{ old('progress.'.$criteria->id.'.evaluation_id') == $evaluation->id ? 'selected' : '' }}>{{$evaluation->title}}</option>
+                      @endforeach
+                    </select>
+                    @endif
+                    @if ($errors->has('progress.'.$criteria->id.'.evaluation_id'))
+                        <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.evaluation_id') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">الملاحظات</label>
+                    <input class="form-control" type="text" name="progress[{{$criteria->id}}][notes]" placeholder="حقل نصي اختياري" value="{{ old('progress.'.$criteria->id.'.notes') }}"/>
+                    @if ($errors->has('progress.'.$criteria->id.'.notes'))
+                        <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.notes') }}</span>
+                    @endif
+                  </div>
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="pannel">
+              <h3 class="font-semi-bold">المهام المنفذة خلال الفترة</h3>
+              <hr/>
+              <div class="row row-cols-lg-5 mb-3 d-none d-lg-flex">
+                <div class="col"><h5>اليوم / التاريخ</h5></div>
+                <div class="col"><h5>وصف المهمة</h5></div>
+                <div class="col"><h5>عدد الساعات</h5></div>
+                <div class="col"><h5>مستوى الانجاز</h5></div>
+                <div class="col"><h5>ملاحظات الجمعية</h5></div>
+              </div>
+
+              @for($i = 0; $i < 5; $i++)
+              <div class="row row-cols-lg-5 list-rows mb-3 mb-lg-0">
+                  @php $fields = ['date','description','hours','achievement_level','notes']; @endphp
+                  @foreach($fields as $field)
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label class="form-label d-md-none">{{ ucfirst(str_replace('_',' ',$field)) }}</label>
+                      <input class="form-control" type="text" name="tasks[{{$i}}][{{$field}}]" placeholder="{{ ucfirst(str_replace('_',' ',$field)) }}" value="{{ old('tasks.'.$i.'.'.$field) }}">
+                      @if ($errors->has('tasks.'.$i.'.'.$field))
+                        <span class="text-danger">{{ $errors->first('tasks.'.$i.'.'.$field) }}</span>
+                      @endif
+                    </div>
+                  </div>
+                  @endforeach
+              </div>
+              @endfor
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="pannel">
+              <h3 class="font-semi-bold">التقييم الرقمي</h3>
+              <hr/>
+              <div class="row row-cols-lg-4 mb-3 d-none d-lg-flex">
+                <div class="col"><h5>المعيار</h5></div>
+                <div class="col"><h5>الوزن النسبي</h5></div>
+                <div class="col"><h5>مستوى الانجاز</h5></div>
+                <div class="col"><h5>الملاحظات</h5></div>
+              </div>
+
+              @foreach($general_criterias->where('type', 2) as $criteria)
+              <div class="row row-cols-lg-4 list-rows mb-3 mb-lg-0">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">المعيار</label>
+                    <h5 class="my-3 my-lg-0 form-control">{{$criteria->title}}</h5>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">الوزن النسبي</label>
+                    <div class="input-icon icon-left">
+                      <input class="form-control" type="text" name="progress[{{$criteria->id}}][hours]" placeholder="00" value="{{ old('progress.'.$criteria->id.'.hours') }}"/>
+                      <div class="icon">%</div>
+                    </div>
+                    @if ($errors->has('progress.'.$criteria->id.'.hours'))
+                      <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.hours') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">مستوى الانجاز</label>
+                    <input class="form-control" type="text" name="progress[{{$criteria->id}}][achievement_level]" placeholder="مستوى الانجاز" value="{{ old('progress.'.$criteria->id.'.achievement_level') }}"/>
+                    @if ($errors->has('progress.'.$criteria->id.'.achievement_level'))
+                      <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.achievement_level') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">الملاحظات</label>
+                    <input class="form-control" type="text" name="progress[{{$criteria->id}}][notes]" placeholder="الملاحظات" value="{{ old('progress.'.$criteria->id.'.notes') }}"/>
+                    @if ($errors->has('progress.'.$criteria->id.'.notes'))
+                      <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.notes') }}</span>
+                    @endif
+                  </div>
+                </div>
+              </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+        <!-- التوصيات والمتابعة القادمة -->
+        <div class="row">
+          <div class="col-12">
+            <div class="pannel">
+              <h3 class="font-semi-bold">التوصيات والمتابعة القادمة</h3>
+              <hr/>
+              <div class="row d-none d-lg-flex fw-bold mb-2 py-2">
+                <div class="col-3"><h5>المجال</h5></div>
+                <div class="col-3"><h5>التوصية</h5></div>
+                <div class="col-3"><h5>الجهة المسؤولة</h5></div>
+                <div class="col-3"><h5>الإجراء المطلوب</h5></div>
+              </div>
+
+              @foreach($general_criterias->where('type', 3) as $criteria)
+              <div class="row align-items-center list-rows mb-3 mb-lg-0">
+                <div class="col-12 col-lg-3">
+                  <div class="form-group">
+                    <h5 class="d-lg-none">المجال</h5>
+                    <h5 class="my-3 my-lg-0 form-control">{{$criteria->title}}</h5>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">التوصية</label>
+                    <input class="form-control" type="text" name="progress[{{$criteria->id}}][recommendation]" placeholder="التوصية" value="{{ old('progress.'.$criteria->id.'.recommendation') }}"/>
+                    @if ($errors->has('progress.'.$criteria->id.'.recommendation'))
+                      <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.recommendation') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">الجهة المسؤولة</label>
+                    <input class="form-control" type="text" name="progress[{{$criteria->id}}][responsible]" placeholder="الجهة المسؤولة" value="{{ old('progress.'.$criteria->id.'.responsible') }}"/>
+                    @if ($errors->has('progress.'.$criteria->id.'.responsible'))
+                      <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.responsible') }}</span>
+                    @endif
+                  </div>
+                </div>
+                <div class="col-12 col-lg-3">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">الإجراء المطلوب</label>
+                    <input class="form-control" type="text" name="progress[{{$criteria->id}}][action]" placeholder="الإجراء المطلوب" value="{{ old('progress.'.$criteria->id.'.action') }}"/>
+                    @if ($errors->has('progress.'.$criteria->id.'.action'))
+                      <span class="text-danger">{{ $errors->first('progress.'.$criteria->id.'.action') }}</span>
+                    @endif
+                  </div>
+                </div>
+              </div>
+              @endforeach
+
+            </div>
+          </div>
+        </div>
+
+        @endif
+      </form>
+    </div>
+  </div>
+</x-common.layout>

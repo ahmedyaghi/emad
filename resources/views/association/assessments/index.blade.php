@@ -39,10 +39,10 @@
                   </div>
                   <div class="col-auto">
                     <div class="d-flex align-items-center"> 
-                      <div class="dropdown ms-2">
+                      {{-- <div class="dropdown ms-2">
                         <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
                         <div class="dropdown-menu"><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                      </div>
+                      </div> --}}
                     </div>
                   </div>
                 </div>
@@ -51,10 +51,10 @@
                 <hr/>
                 <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3 border-0">
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">  تاريخ الإغلاق<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">  تاريخ الإغلاق<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
                   </div>
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/system-update.svg" alt=""/><span class="info-title text-gray"> اخر تحديث<span class="font-bold d-block text-black mt-2">22 مايو 2025</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray"> اخر تحديث<span class="font-bold d-block text-black mt-2">22 مايو 2025</span></span></div>
                   </div>
                 </div>
               </div>
