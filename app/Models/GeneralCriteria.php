@@ -8,6 +8,6 @@ class GeneralCriteria extends Model
 {
     protected $fillable = [
         'title',
-        'type'
+        'type',
     ];
 }

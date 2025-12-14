@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-   protected $fillable = [
-       'title'
-   ];
+    protected $fillable = [
+        'title',
+    ];
 }

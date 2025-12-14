@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class TraineeTask extends Model
 {
-
     protected $fillable = [
         'application_id',
         'evaluation_id',

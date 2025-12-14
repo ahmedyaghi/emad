@@ -30,13 +30,13 @@ class TraineeController extends Controller
 
         if (! empty(request('course_title'))) {
             $query = $query->whereHas('training', function ($q) {
-                $q->where('title', 'like', '%' . request('course_title') . '%');
+                $q->where('title', 'like', '%'.request('course_title').'%');
             });
         }
 
         if (! empty(request('trainee_name'))) {
             $query = $query->whereHas('user', function ($q) {
-                $q->where('name', 'like', '%' . request('trainee_name') . '%');
+                $q->where('name', 'like', '%'.request('trainee_name').'%');
             });
         }
         $query->where('status', TrainingApplicationStatus::ACCEPTED);
@@ -45,18 +45,18 @@ class TraineeController extends Controller
         return view('association.trainees.index', get_defined_vars());
     }
 
-
     public function add_assessment()
     {
         $application = TrainingOpportunityApplication::findOrfail(request('application_id'));
         $general_criterias = GeneralCriteria::all();
         $evaluations = Evaluation::all();
+
         return view('association.trainees.add_assessment', get_defined_vars());
     }
 
     public function handle_assessment(TraineeAssessmentRequest $request)
     {
-        
+
         $application_id = $request->application_id;
 
         if ($request->has('progress')) {
@@ -106,6 +106,7 @@ class TraineeController extends Controller
     {
         return view('association.trainees.show_profile');
     }
+
     public function remove_from_training()
     {
         return view('association.trainees');

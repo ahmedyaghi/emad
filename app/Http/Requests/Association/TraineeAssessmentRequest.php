@@ -20,27 +20,27 @@ class TraineeAssessmentRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules()
-{
-    $rules = [];
+    {
+        $rules = [];
 
-    if($this->has('progress')) {
-        foreach ($this->input('progress') as $criteria_id => $data) {
-            // إذا فيه evaluation_id (Type 1)
-            if(isset($data['evaluation_id'])) {
-                $rules["progress.$criteria_id.evaluation_id"] = 'required|exists:evaluations,id';
+        if ($this->has('progress')) {
+            foreach ($this->input('progress') as $criteria_id => $data) {
+                // إذا فيه evaluation_id (Type 1)
+                if (isset($data['evaluation_id'])) {
+                    $rules["progress.$criteria_id.evaluation_id"] = 'required|exists:evaluations,id';
+                }
+                // ساعات و achievement_level يمكن تركها nullable
+                $rules["progress.$criteria_id.hours"] = 'nullable|numeric';
+                $rules["progress.$criteria_id.achievement_level"] = 'nullable|string';
+                $rules["progress.$criteria_id.notes"] = 'nullable|string';
+                $rules["progress.$criteria_id.recommendation"] = 'nullable|string';
+                $rules["progress.$criteria_id.responsible"] = 'nullable|string';
+                $rules["progress.$criteria_id.action"] = 'nullable|string';
             }
-            // ساعات و achievement_level يمكن تركها nullable
-            $rules["progress.$criteria_id.hours"] = 'nullable|numeric';
-            $rules["progress.$criteria_id.achievement_level"] = 'nullable|string';
-            $rules["progress.$criteria_id.notes"] = 'nullable|string';
-            $rules["progress.$criteria_id.recommendation"] = 'nullable|string';
-            $rules["progress.$criteria_id.responsible"] = 'nullable|string';
-            $rules["progress.$criteria_id.action"] = 'nullable|string';
         }
-    }
 
-    return $rules;
-}
+        return $rules;
+    }
 
     public function messages()
     {
