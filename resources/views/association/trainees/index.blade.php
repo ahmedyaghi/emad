@@ -63,7 +63,7 @@
                 <div class="d-flex align-items-start">
                   <div class="col">
                     <div class="widget_item-user d-flex align-items-center">
-                      <div class="widget_item-user-avatar col-auto me-2"><img src="{{Storage::url($trainee->user->profile?->image)}}" alt=""/></div>
+                      <div class="widget_item-user-avatar col-auto me-2"><img src="{{$trainee->user->profile?->image}}" alt=""/></div>
                       <div class="widget_item-user-info">
                         <h6 class="mb-1 font-medium">{{$trainee->user->name}}</h6>
                         <h6 class="text-gray">{{$trainee->user->profile?->bio}}</h6>

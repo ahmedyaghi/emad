@@ -406,7 +406,7 @@
 
                       $('#trainees-list').empty(); // يمكنك الإبقاء على السابق إذا أردت إضافة بدون مسح
                       response.forEach(function(user){
-                        let image = "{{Storage::url('${user->profile->image}')}}";
+                        let image = "{{$user->profile->image}}";
                         let name = user.name;
                         let id_number = user.id_number;
                         let id = user.id; 

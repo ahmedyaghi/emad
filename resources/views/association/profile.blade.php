@@ -6,7 +6,7 @@
                   <div class="profile-header">
                     <div class="profile-banner" style="background: url({{asset('assets/images/banner.png')}});background-size: cover; background-position: center;"></div>
                     <div class="profile-content">
-                      <div class="profile-logo"><img src="{{Storage::url($association->profile?->image)}}" alt=""/></div>
+                      <div class="profile-logo"><img src="{{$association->profile?->image}}" alt=""/></div>
                       <div class="text-end mb-3"><a class="btn btn-light px-4" href=""><img class="me-2" src="{{asset('assets/images/edit.svg')}}" alt=""/>تعديل الملف الشخصي </a></div>
                       <div class="profile-info">
                         <h3 class="font-semi-bold mb-2">{{$association->name}}</h3>

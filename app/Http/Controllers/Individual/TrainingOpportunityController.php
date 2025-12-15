@@ -38,9 +38,9 @@ class TrainingOpportunityController extends Controller
 
     public function show(TrainingOpportunity $training_opportunity)
     {
-      //  dd($training_opportunity);
+        //  dd($training_opportunity);
         $training_opportunity->load(['association']);
-        //$model = TrainingOpportunity::with(['association'])->where('slug', $slug)->firstOrFail();
+        // $model = TrainingOpportunity::with(['association'])->where('slug', $slug)->firstOrFail();
         $has_applied = TrainingOpportunityApplication::where('training_id', $training_opportunity->id)
             ->where('user_id', auth()->id())
             ->exists();
@@ -77,8 +77,6 @@ class TrainingOpportunityController extends Controller
 
         return view('individual.training_opportunity_applications', get_defined_vars());
     }
-
-
 
     public function store(ApplyTrainingOpportunityRequest $request)
     {

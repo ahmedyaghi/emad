@@ -10,7 +10,6 @@ use App\Http\Requests\Site\Auth\RegisterRequest;
 use App\Http\Requests\Site\Auth\VerifyCodeRequest;
 use App\Mail\VerifyUserMail;
 use App\Models\User;
-use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;

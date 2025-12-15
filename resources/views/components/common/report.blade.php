@@ -7,7 +7,7 @@
         </div>
         <h6 class="widget_item-desc text-gray mb-3">{{$report->description}}</h6>
         <div class="widget_item-profile mb-4 d-flex align-items-center">
-        <div class="profile-image me-3"><img src="{{Storage::url($report->application->user->profile?->image)}}" alt=""/></div>
+        <div class="profile-image me-3"><img src="{{$report->application->user->profile?->image}}" alt=""/></div>
         <h6 class="font-medium">{{$report->application->user->name}}</h6>
         </div>
         <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">

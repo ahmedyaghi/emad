@@ -29,7 +29,7 @@
                   <div class="d-flex align-items-start">
                     <div class="col">
                       <div class="widget_item-user d-flex align-items-center">
-                        <div class="widget_item-user-avatar col-auto me-2"><img src="{{Storage::url($report->application->user->profile?->image)}}" alt=""/></div>
+                        <div class="widget_item-user-avatar col-auto me-2"><img src="{{$report->application->user->profile?->image}}" alt=""/></div>
                         <div class="widget_item-user-info">
                           <h6 class="mb-1 font-medium">{{$report->application->user->name}}</h6>
                           <h6 class="text-gray">{{$report->application->user->profile?->bio}}</h6>
@@ -88,7 +88,7 @@
                       </div>
                     </div>
                     <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                      <a class="btn btn-white border-0 btn-icon" href="{{Storage::url($report->file)}}"><img src="{{asset('assets/images/download2.svg')}}" alt=""/></a>
+                      <a class="btn btn-white border-0 btn-icon" href="{{$report->file)}}"><img src="{{asset('assets/images/download2.svg')}}" alt=""/></a>
                     </div>
                   </div>
                 </div>

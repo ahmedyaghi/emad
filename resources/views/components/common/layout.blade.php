@@ -96,7 +96,7 @@
             @endswitch
           </ul>
           <div class="sidebar-footer"><a class="profile d-flex align-items-center gap-2" href="{{route($role.'.profile')}}">
-              <div class="profile-image col-auto"><img src="{{asset('assets/images/avatar.png')}}" alt=""/></div>
+              <div class="profile-image col-auto"><img src="{{Auth::user()->profile?->image}}" alt=""/></div>
               <div class="col"> 
               <h6 class="text-white">{{Auth::user()->name}}</h6>
               <h6 class="text-white font-light font-12">عرض الملف الشخصي</h6>
@@ -116,7 +116,7 @@
               <div class="header-user-info">
               <ul class="d-flex align-items-center">
                   <li> <a href=""> <img src="{{asset('assets/images/notification.svg')}}" alt=""/></a></li>
-                  <li class="d-flex"><a href="{{route($role.'.profile')}}"> <img class="user-avatar" src="{{asset('assets/images/avatar.png')}}" alt=""/></a></li>
+                  <li class="d-flex"><a href="{{route($role.'.profile')}}"> <img class="user-avatar" src="{{Auth::user()->profile?->image}}" alt=""/></a></li>
                   <li class="toggle-sidebar d-lg-none"><img src="{{asset('assets/images/menu.svg')}}" alt=""/></li>
               </ul>
               </div>
