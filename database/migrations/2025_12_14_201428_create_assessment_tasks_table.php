@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainee_tasks', function (Blueprint $table) {
+        Schema::create('assessment_tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('training_opportunity_applications')->onDelete('cascade');
-            $table->foreignId('evaluation_id')->nullable()->constrained('evaluations')->onDelete('set null');
+            $table->foreignId('assessment_id')->constrained('assessments')->onDelete('cascade');
             $table->string('name')->nullable();
+            $table->date('date')->nullable();
             $table->text('description')->nullable();
-            $table->decimal('number_of_hours', 8, 2)->nullable();
+            $table->integer('number_of_hours')->nullable();
             $table->string('achievement_level')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainee_tasks');
+        Schema::dropIfExists('assessment_tasks');
     }
 };

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Association;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TraineeAssessmentRequest extends FormRequest
+class AssessmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,7 +21,11 @@ class TraineeAssessmentRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [];
+        $rules = [
+            'application_id' => 'required|exists:training_opportunity_applications,id',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+        ];
 
         if ($this->has('progress')) {
             foreach ($this->input('progress') as $criteria_id => $data) {

@@ -78,11 +78,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('reports', App\Http\Controllers\Association\ReportController::class)->names('reports');
         Route::resource('articles', App\Http\Controllers\Association\ArticleController::class)->names('articles');
         Route::resource('assessments', App\Http\Controllers\Association\AssessmentController::class)->names('assessments');
-        Route::get('/trainees/add_assessment', [App\Http\Controllers\Association\TraineeController::class, 'add_assessment'])->name('trainees.add_assessment');
-        Route::post('/trainees/handle_assessment', [App\Http\Controllers\Association\TraineeController::class, 'handle_assessment'])->name('trainees.handle_assessment');
-        Route::get('/trainees/add_report', [App\Http\Controllers\Association\TraineeController::class, 'add_report'])->name('trainees.add_report');
-        Route::get('/trainees/show_profile', [App\Http\Controllers\Association\TraineeController::class, 'show_profile'])->name('trainees.show_profile');
-        Route::get('/trainees/remove_from_training', [App\Http\Controllers\Association\TraineeController::class, 'remove_from_training'])->name('trainees.remove_from_training');
         Route::resource('trainees', App\Http\Controllers\Association\TraineeController::class)->names('trainees');
     });
 

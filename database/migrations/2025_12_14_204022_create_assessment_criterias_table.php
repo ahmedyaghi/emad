@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainee_progress', function (Blueprint $table) {
+        Schema::create('assessment_criterias', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('application_id')->constrained('training_opportunity_applications')->onDelete('cascade');
+            $table->foreignId('assessment_id')->constrained('assessments')->onDelete('cascade');
             $table->foreignId('criteria_id')->constrained('general_criterias')->onDelete('cascade');
             $table->foreignId('evaluation_id')->nullable()->constrained('evaluations')->onDelete('set null');
             $table->text('notes')->nullable();
-            $table->decimal('hours', 8, 2)->nullable(); // الوزن النسبي
+            $table->tinyInteger('type')->nullable();
+            $table->integer('weight_percentage')->nullable();
             $table->string('achievement_level')->nullable();
-            $table->string('recommendation')->nullable();
-            $table->string('responsible')->nullable();
-            $table->string('action')->nullable();
+            $table->string('recommendations')->nullable();
+            $table->string('responsible_side')->nullable();
+            $table->string('action_required')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainee_progress');
+        Schema::dropIfExists('assessment_criterias');
     }
 };

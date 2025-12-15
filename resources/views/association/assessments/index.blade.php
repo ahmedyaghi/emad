@@ -30,8 +30,10 @@
               </div>
             </div>
           </div>
+          @if(!$assessments->isEmpty())
           <div class="row">
-            <div class="col-lg-4 col-md-6">
+            @foreach ($assessments as $assessment)
+             <div class="col-lg-4 col-md-6">
               <div class="widget_item-card bg-white p-4">
                 <div class="d-flex align-items-start mb-3">
                   <div class="col">
@@ -46,31 +48,27 @@
                     </div>
                   </div>
                 </div>
-                <h4 class="widget_item-title font-semi-bold mb-3"><a href="final-report.html"> اسم التقييم</a></h4>
+                <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('association.assessments.show', $assessment)}}"> اسم التقييم</a></h4>
                 <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
                 <hr/>
                 <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3 border-0">
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">  تاريخ الإغلاق<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">  تاريخ الإغلاق<span class="font-bold d-block text-black mt-2">{{$assessment->created_at}}</span></span></div>
                   </div>
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray"> اخر تحديث<span class="font-bold d-block text-black mt-2">22 مايو 2025</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray"> اخر تحديث<span class="font-bold d-block text-black mt-2">{{$assessment->updated_at}}</span></span></div>
                   </div>
                 </div>
               </div>
             </div>
+            @endforeach
           </div>
           <div class="row"> 
             <div class="col-12"> 
               <div class="pannel p-3">
-                <ul class="pagination justify-content-end">
-                  <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                  <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                  <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                  <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                  <li class="page-item"> <a class="page-link" href=""> 5</a></li>
-                </ul>
+                {{$assessments->links('common.pagination')}}
               </div>
             </div>
           </div>
+          @endif
 </x-common.layout>

@@ -4,8 +4,8 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href="">  الدورات</a></div>
-                    <div class="breadcrumb-item">   التقييم النهائي</div>
+                    <div class="breadcrumb-item"><a href="{{route('association.assessments.index')}}">التقييمات</a></div>
+                    <div class="breadcrumb-item">التقييم النهائي</div>
                   </ol>
                 </div>
               </div>
@@ -15,7 +15,7 @@
             <div class="col-12 mb-4">
               <div class="d-lg-flex justify-content-between">
                 <div class="col-lg-7 mb-3 mb-lg-0">
-                  <h3 class="font-semi-bold mb-3">   التقييم النهائي</h3>
+                  <h3 class="font-semi-bold mb-3">التقييم النهائي</h3>
                 </div>
               </div>
             </div>
@@ -99,26 +99,16 @@
                       <div class="row-cell">الملاحظات</div>
                     </div>
                     <div class="table-body table-row-group">
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">الالتزام بالحضور والانصراف</div>
-                        <div class="row-cell" data-label="التقييم"> <span class="status-badge status-success">منتظم</span></div>
-                        <div class="row-cell" data-label="الملاحظات"> </div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">الالتزام بالحضور والانصراف</div>
-                        <div class="row-cell" data-label="التقييم"> <span class="status-badge status-warning">يحتاج تحسين</span></div>
-                        <div class="row-cell" data-label="الملاحظات"> </div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">الالتزام بالحضور والانصراف</div>
-                        <div class="row-cell" data-label="التقييم"> <span class="status-badge status-danger">يحتاج تنبيه</span></div>
-                        <div class="row-cell" data-label="الملاحظات"> </div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">الالتزام بالحضور والانصراف</div>
-                        <div class="row-cell" data-label="التقييم"> <span class="status-badge status-info">جيد</span></div>
-                        <div class="row-cell" data-label="الملاحظات"> </div>
-                      </div>
+                      @foreach($assessment->criterias as $criteria)
+                        @if($criteria->criteria->type == 1)
+                          <div class="table-row">
+                              <div class="row-cell" data-label="المعيار">{{$criteria->criteria?->title}}</div>
+                              <div class="row-cell" data-label="التقييم"> <span class="status-badge status-success">{{$criteria->evaluation->title}}</span></div>
+                              <!-- status-success status-warning status-danger status-info -->
+                            <div class="row-cell" data-label="الملاحظات">{{$criteria->notes}}</div>
+                          </div>
+                        @endif
+                      @endforeach
                     </div>
                   </div>
                 </div>
@@ -138,20 +128,15 @@
                       <div class="row-cell">ملاحظات الجمعية</div>
                     </div>
                     <div class="table-body table-row-group">
-                      <div class="table-row">
-                        <div class="row-cell" data-label="اليوم / التاريخ">25 مايو 2025</div>
-                        <div class="row-cell" data-label="وصف المهمة">إعداد تقرير أسبوعي</div>
-                        <div class="row-cell" data-label="عدد الساعات">3</div>
-                        <div class="row-cell" data-label="مستوى الإنجاز"> <span class="status-badge status-success">مكتمل</span></div>
-                        <div class="row-cell" data-label="ملاحظات الجمعية"> أنجز بدقة</div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="اليوم / التاريخ">25 مايو 2025</div>
-                        <div class="row-cell" data-label="وصف المهمة">إعداد تقرير أسبوعي</div>
-                        <div class="row-cell" data-label="عدد الساعات">3</div>
-                        <div class="row-cell" data-label="مستوى الإنجاز"> <span class="status-badge status-success">مكتمل</span></div>
-                        <div class="row-cell" data-label="ملاحظات الجمعية"> أنجز بدقة</div>
-                      </div>
+                      @foreach($assessment->tasks as $task)
+                        <div class="table-row">
+                          <div class="row-cell" data-label="اليوم / التاريخ">{{$task->date}}</div>
+                          <div class="row-cell" data-label="وصف المهمة">{{$task->name}}</div>
+                          <div class="row-cell" data-label="عدد الساعات">{{$task->number_of_hours}}</div>
+                          <div class="row-cell" data-label="مستوى الإنجاز"> <span class="status-badge status-success">{{$task->achievement_level}}</span></div>
+                          <div class="row-cell" data-label="ملاحظات الجمعية"> {{$task->notes}}</div>
+                        </div>
+                      @endforeach
                     </div>
                   </div>
                 </div>
@@ -170,36 +155,16 @@
                       <div class="row-cell">الملاحظات</div>
                     </div>
                     <div class="table-body table-row-group">
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">الانضباط</div>
-                        <div class="row-cell" data-label="الوزن النسبي">20%</div>
-                        <div class="row-cell" data-label="التقييم (من 5)">3</div>
-                        <div class="row-cell" data-label="الملاحظات"> <span class="status-badge status-success">ممتاز</span></div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">المبادرة</div>
-                        <div class="row-cell" data-label="الوزن النسبي">20%</div>
-                        <div class="row-cell" data-label="التقييم (من 5)">3</div>
-                        <div class="row-cell" data-label="الملاحظات"> <span class="status-badge status-warning">جيد جدًا</span></div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">جودة التنفيذ</div>
-                        <div class="row-cell" data-label="الوزن النسبي">20%</div>
-                        <div class="row-cell" data-label="التقييم (من 5)">3</div>
-                        <div class="row-cell" data-label="الملاحظات"> <span class="status-badge status-success">ممتاز</span></div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">التواصل والتعاون</div>
-                        <div class="row-cell" data-label="الوزن النسبي">20%</div>
-                        <div class="row-cell" data-label="التقييم (من 5)">3</div>
-                        <div class="row-cell" data-label="الملاحظات"> <span class="status-badge status-success">ممتاز</span></div>
-                      </div>
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المعيار">تحمل المسؤولية</div>
-                        <div class="row-cell" data-label="الوزن النسبي">20%</div>
-                        <div class="row-cell" data-label="التقييم (من 5)">3</div>
-                        <div class="row-cell" data-label="الملاحظات"> <span class="status-badge status-success">ممتاز</span></div>
-                      </div>
+                      @foreach($assessment->criterias as $criteria)
+                        @if($criteria->criteria->type == 2)
+                         <div class="table-row">
+                            <div class="row-cell" data-label="المعيار">{{$criteria->criteria?->title}}</div>
+                            <div class="row-cell" data-label="الوزن النسبي">{{$criteria->weight_percentage}}%</div>
+                            <div class="row-cell" data-label="التقييم (من 5)">{{$criteria->evaluation_id}}</div>
+                            <div class="row-cell" data-label="الملاحظات">{{$criteria->notes}}</div>
+                         </div>
+                        @endif
+                      @endforeach
                       <div class="table-row-divider"></div>
                       <div class="table-row table-row-footer">
                         <div class="row-cell" data-label="المعيار">المجموع النهائي</div>
@@ -225,12 +190,16 @@
                       <div class="row-cell">الإجراء المطلوب</div>
                     </div>
                     <div class="table-body table-row-group">
-                      <div class="table-row">
-                        <div class="row-cell" data-label="المجال">مهارات العرض</div>
-                        <div class="row-cell" data-label="التوصية">تدريب إضافي داخلي</div>
-                        <div class="row-cell" data-label="الجهة المسؤولة">الجمعية</div>
-                        <div class="row-cell" data-label="الإجراء المطلوب"> تنسيق جلسة تدريب</div>
-                      </div>
+                       @foreach($assessment->criterias as $criteria)
+                        @if($criteria->criteria->type == 3)
+                          <div class="table-row">
+                            <div class="row-cell" data-label="المجال">{{$criteria->criteria?->title}}</div>
+                            <div class="row-cell" data-label="التوصية">{{$criteria->recommendations}}</div>
+                            <div class="row-cell" data-label="الجهة المسؤولة">{{$criteria->responsible_side}}</div>
+                            <div class="row-cell" data-label="الإجراء المطلوب">{{$criteria->action_required}}</div>
+                          </div>
+                        @endif
+                      @endforeach
                     </div>
                   </div>
                 </div>

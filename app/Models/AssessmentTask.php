@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TraineeTask extends Model
+class AssessmentTask extends Model
 {
     protected $fillable = [
-        'application_id',
-        'evaluation_id',
+        'assessment_id',
         'name',
+        'date',
         'description',
         'number_of_hours',
         'achievement_level',
