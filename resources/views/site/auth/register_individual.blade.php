@@ -49,13 +49,13 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="mb-2"> الجنس</label>
-                              <select class="select2 form-control" data-placeholder="اختر" name="sex">
+                              <select class="select2 form-control" data-placeholder="اختر" name="gender">
                                 <option></option>
                                 <option value="1">ذكر</option>
                                 <option value="2">انثى</option>
                               </select>
-                               @if ($errors->has('sex'))
-                                    <span class="text-danger">{{ $errors->first('sex') }}</span>
+                               @if ($errors->has('gender'))
+                                    <span class="text-danger">{{ $errors->first('gender') }}</span>
                                 @endif
                             </div>
                           </div>

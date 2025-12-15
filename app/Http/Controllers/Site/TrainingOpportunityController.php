@@ -22,11 +22,11 @@ class TrainingOpportunityController extends Controller
         if (! empty(request('association_id'))) {
             $query = $query->where('association_id', request('association_id'));
         }
-        if (! empty(request('sex'))) {
-            if (request('sex') == 1) {
+        if (! empty(request('gender'))) {
+            if (request('gender') == 1) {
                 $query = $query->where('for_male', 1);
             }
-            if (request('sex') == 2) {
+            if (request('gender') == 2) {
                 $query = $query->where('for_female', 1);
             }
         }

@@ -182,7 +182,7 @@ return [
         'experience' => 'الخبرة',
         'duration' => 'المدة',
         'short_description' => 'الوصف القصير',
-        'sex' => 'الجنس',
+        'gender' => 'الجنس',
 
     ],
 ];

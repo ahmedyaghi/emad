@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();
             $table->integer('age')->nullable();
-            $table->integer('sex')->nullable();
+            $table->integer('gender')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('manager_name')->nullable();
             $table->string('manager_phone')->nullable();

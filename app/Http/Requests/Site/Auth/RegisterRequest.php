@@ -24,8 +24,8 @@ class RegisterRequest extends FormRequest
     {
         $rules = [
             'name' => 'required|string|max:255',
-            'id_number' => 'required|string|max:255',
-            'phone' => 'required|string|max:255',
+            'id_number' => 'required|string|max:255|unique:users',
+            'phone' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'specilization_id' => 'required|string|max:255',
@@ -37,7 +37,7 @@ class RegisterRequest extends FormRequest
 
                 $rules = array_merge($rules, [
                     'age' => 'required|integer',
-                    'sex' => 'required|integer|in:1,2',
+                    'gender' => 'required|integer|in:1,2',
                     'university_id' => 'required|string|max:255',
                     'file' => 'nullable|file|mimes:pdf,doc,docx',
                     'city_id' => 'required|string|max:255',
@@ -81,7 +81,7 @@ class RegisterRequest extends FormRequest
             case UserType::CONSULTANT->value:
 
                 $rules = array_merge($rules, [
-                    'sex' => 'required|integer|in:1,2',
+                    'gender' => 'required|integer|in:1,2',
                     'work_type_id' => 'required|string|max:255',
                     'nationality_id' => 'required|string|max:255',
                     'place_type_id' => 'required|string|max:255',

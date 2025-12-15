@@ -16,7 +16,7 @@
                 @endif
             </div>
             </div>
-            @if(!$associations->isEmpty())
+            @if(!$cities->isEmpty())
             <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="200">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2">المنطقة</label>
@@ -32,7 +32,7 @@
             <div class="col-12 col-lg" data-aos="fade-up" data-aos-delay="300">
             <div class="form-group mb-3 mb-lg-0">
                 <label class="label-form font-medium mb-2">الجنس</label>
-                <select class="form-control select2" data-placeholder="اختار" name="sex">
+                <select class="form-control select2" data-placeholder="اختار" name="gender">
                 <option value=""> </option>
                 <option value="1"> ذكر</option>
                 <option value="2">انثى</option>

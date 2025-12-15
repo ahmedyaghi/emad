@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserStatus;
 use App\Enums\UserType;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -23,6 +24,7 @@ class UserSeeder extends Seeder
             'id_number' => '803218141',
             'type' => UserType::ADMIN,
             'password' => Hash::make(123456),
+            'status' => UserStatus::ACCEPTED,
             'email_verified_at' => now(),
         ]);
 
@@ -36,6 +38,7 @@ class UserSeeder extends Seeder
             'id_number' => '803218142',
             'type' => UserType::INDIVIDUAL,
             'password' => Hash::make(123456),
+            'status' => UserStatus::ACCEPTED,
             'email_verified_at' => now(),
         ]);
 
@@ -49,6 +52,7 @@ class UserSeeder extends Seeder
             'id_number' => '803218143',
             'type' => UserType::ASSOCIATION,
             'password' => Hash::make(123456),
+            'status' => UserStatus::ACCEPTED,
             'email_verified_at' => now(),
         ]);
 
@@ -62,6 +66,7 @@ class UserSeeder extends Seeder
             'id_number' => '803218144',
             'type' => UserType::FACULTY_MEMBER,
             'password' => Hash::make(123456),
+            'status' => UserStatus::ACCEPTED,
             'email_verified_at' => now(),
         ]);
 
@@ -75,6 +80,7 @@ class UserSeeder extends Seeder
             'id_number' => '803218145',
             'type' => UserType::CONSULTANT,
             'password' => Hash::make(123456),
+            'status' => UserStatus::ACCEPTED,
             'email_verified_at' => now(),
         ]);
 

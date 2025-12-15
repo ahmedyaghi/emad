@@ -184,7 +184,7 @@
                           <div class="col-auto me-3"><img src="../assets/images/graduate-male.svg" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الجنس</h6>
-                            <h6 class="font-12 font-semi-bold">{{$user->profile?->getSexLabel()}}</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->getGenderLabel()}}</h6>
                           </div>
                         </div>
                       </div>

@@ -19,7 +19,7 @@ class UserProfile extends Model
         'facebook',
         'youtube',
         'age',
-        'sex',
+        'gender',
         'linkedin',
         'manager_name',
         'manager_phone',
@@ -55,9 +55,9 @@ class UserProfile extends Model
         return $this->belongsTo(Nationality::class);
     }
 
-    public function getSexLabel()
+    public function getGenderLabel()
     {
-        return match ($this->sex) {
+        return match ($this->gender) {
             1 => 'ذكر',
             2 => 'أنثى',
             default => 'غير محدد'
