@@ -45,12 +45,13 @@ class RegisterRequest extends FormRequest
                     'linkedin' => 'required|string|max:255',
                     'skill_id' => 'required|string|max:255',
                     'course_id' => 'required|string|max:255',
-                    'type' => 'required|in:'.UserType::INDIVIDUAL->value,
+                    'type' => 'required|in:' . UserType::INDIVIDUAL->value,
                 ]);
                 break;
             case UserType::ASSOCIATION->value:
 
                 $rules = array_merge($rules, [
+                    'id_number' => 'nullable|string|max:255|unique:users',
                     'image' => 'nullable|file|mimes:png,jpg,jpeg',
                     'section_type_id' => 'required|string|max:255',
                     'country_id' => 'required|string|max:255',
@@ -62,7 +63,7 @@ class RegisterRequest extends FormRequest
                     'manager_name' => 'required|string|max:255',
                     'manager_phone' => 'required|string|max:255',
                     'manager_email' => 'required|string|max:255',
-                    'type' => 'required|in:'.UserType::ASSOCIATION->value,
+                    'type' => 'required|in:' . UserType::ASSOCIATION->value,
                 ]);
                 break;
             case UserType::FACULTY_MEMBER->value:
@@ -75,7 +76,7 @@ class RegisterRequest extends FormRequest
                     'twitter' => 'required|string|max:255',
                     'facebook' => 'required|string|max:255',
                     'youtube' => 'required|string|max:255',
-                    'type' => 'required|in:'.UserType::FACULTY_MEMBER->value,
+                    'type' => 'required|in:' . UserType::FACULTY_MEMBER->value,
                 ]);
                 break;
             case UserType::CONSULTANT->value:
@@ -85,7 +86,7 @@ class RegisterRequest extends FormRequest
                     'work_type_id' => 'required|string|max:255',
                     'nationality_id' => 'required|string|max:255',
                     'place_type_id' => 'required|string|max:255',
-                    'type' => 'required|in:'.UserType::CONSULTANT->value,
+                    'type' => 'required|in:' . UserType::CONSULTANT->value,
                 ]);
                 break;
 

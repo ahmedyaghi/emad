@@ -74,7 +74,6 @@ class AuthController extends Controller
 
         return view('site.auth.registration_success');
 
-        return UserService::register($data, $enum_type);
     }
 
     public function handle_login(LoginRequest $request)
