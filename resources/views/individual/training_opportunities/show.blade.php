@@ -4,16 +4,16 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href="{{route('individual.training-opportunities')}}"> الفرص التدريبية</a></div>
-                    <div class="breadcrumb-item">{{$model->title}}</div>
+                    <div class="breadcrumb-item"><a href="{{route('individual.training-opportunities.index')}}"> الفرص التدريبية</a></div>
+                    <div class="breadcrumb-item">{{$training_opportunity->title}}</div>
                   </ol>
                 </div>
               </div>
               <div class="row mb-4"> 
                 <div class="col-12">
                   <div class="pannel">
-                    <h2 class="mb-3 font-semi-bold font-24">{{$model->title}}</h2>
-                    <h6 class="text-gray">{{$model->short_description}}</h6>
+                    <h2 class="mb-3 font-semi-bold font-24">{{$training_opportunity->title}}</h2>
+                    <h6 class="text-gray">{{$training_opportunity->short_description}}</h6>
                   </div>
                 </div>
               </div>
@@ -38,7 +38,7 @@
                         </div>
                         <div class="card-body">
                           <ul class="description-list">
-                             {!! $model->responsibilities !!}
+                             {!! $training_opportunity->responsibilities !!}
                           </ul>
                         </div>
                       </div>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="card-body">
                           <ul class="description-list">
-                            {!! $model->conditions !!}
+                            {!! $training_opportunity->conditions !!}
                           </ul>
                         </div>
                       </div>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="card-body">
                           <ul class="description-list">
-                            {!! $model->features !!}
+                            {!! $training_opportunity->features !!}
                           </ul>
                         </div>
                       </div>
@@ -76,17 +76,17 @@
                 <h5 class="mb-3 font-bold">تفاصيل التدريب</h5>
                 <hr/>
                 <ul class="description-list-2">
-                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/location.svg')}}" alt=""/></span>{{$model->location}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/briefcase.svg')}}" alt=""/></span> {{$model->attendance}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></span>{{$model->duration}}</li>
-                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/riyal-circular.svg')}}" alt=""/></span> {{$model->salary}}</li>
+                  <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/location.svg')}}" alt=""/></span>{{$training_opportunity->location}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/briefcase.svg')}}" alt=""/></span> {{$training_opportunity->attendance}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></span>{{$training_opportunity->duration}}</li>
+                    <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/riyal-circular.svg')}}" alt=""/></span> {{$training_opportunity->salary}}</li>
                     <li class="d-flex align-items-start"><span class="description-icon me-2"><img src="{{asset('assets/images/user2.svg')}}" alt=""/></span>
                       @php
-                        if($model->for_male == 1){
+                        if($training_opportunity->for_male == 1){
                           echo "الذكور فقط لهذه الوظيفة.";
-                        } elseif($model->for_female == 2){
+                        } elseif($training_opportunity->for_female == 2){
                           echo "الإناث فقط لهذه الوظيفة.";
-                        } elseif($model->for_male == 1 && $model->for_female == 2) {
+                        } elseif($training_opportunity->for_male == 1 && $training_opportunity->for_female == 2) {
                           echo "الذكور والإناث لهذه الوظيفة.";
                         }
                       @endphp
@@ -110,9 +110,9 @@
                   <h6 class="text-gray">أنت على بُعد خطوة واحدة من التقديم على هذه التدريب.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action="{{route('individual.training-opportunities.apply')}}" method="POST" enctype="multipart/form-data">
+                  <form action="{{route('individual.training-opportunities.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="training_id" value="{{$model->id}}">
+                    <input type="hidden" name="training_id" value="{{$training_opportunity->id}}">
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">

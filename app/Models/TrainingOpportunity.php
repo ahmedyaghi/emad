@@ -6,9 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class TrainingOpportunity extends Model
 {
-    protected $fillable = ['association_id', 'type_id', 'city_id', 'title', 'slug', 'salary',
-        'short_description', 'location', 'duration', 'attendance',  'responsibilities', 'conditions', 'features', 'for_male', 'for_female',
-        'vacancies_count', 'start_date', 'end_date', 'qualification_id', 'status',
+    protected $fillable = [
+        'association_id',
+        'type_id',
+        'city_id',
+        'title',
+        'slug',
+        'salary',
+        'short_description',
+        'location',
+        'duration',
+        'attendance',
+        'responsibilities',
+        'conditions',
+        'features',
+        'for_male',
+        'for_female',
+        'vacancies_count',
+        'start_date',
+        'end_date',
+        'qualification_id',
+        'status',
     ];
 
     public function association()

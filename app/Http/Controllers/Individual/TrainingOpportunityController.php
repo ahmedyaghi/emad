@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Individual;
 
 use App\Enums\TrainingApplicationStatus;
+use App\Enums\UserStatus;
+use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Individual\ApplyTrainingOpportunityRequest;
 use App\Models\Association;
 use App\Models\City;
 use App\Models\TrainingOpportunity;
 use App\Models\TrainingOpportunityApplication;
+use App\Models\User;
 use Illuminate\Support\Str;
 
 class TrainingOpportunityController extends Controller
 {
-    public function training_opportunities()
+    public function index()
     {
         $query = TrainingOpportunity::query();
         if (! empty(request('city_id'))) {
@@ -27,10 +30,22 @@ class TrainingOpportunityController extends Controller
         }
         $training_opportunities = $query->with('association');
         $training_opportunities = $query->paginate(9);
-        $associations = Association::all();
+        $associations = User::where('status', UserStatus::ACCEPTED)->where('type', UserType::ASSOCIATION)->get();
         $cities = City::all();
 
-        return view('individual.training_opportunities', get_defined_vars());
+        return view('individual.training_opportunities.index', get_defined_vars());
+    }
+
+    public function show(TrainingOpportunity $training_opportunity)
+    {
+      //  dd($training_opportunity);
+        $training_opportunity->load(['association']);
+        //$model = TrainingOpportunity::with(['association'])->where('slug', $slug)->firstOrFail();
+        $has_applied = TrainingOpportunityApplication::where('training_id', $training_opportunity->id)
+            ->where('user_id', auth()->id())
+            ->exists();
+
+        return view('individual.training_opportunities.show', get_defined_vars());
     }
 
     public function training_opportunity_applications()
@@ -63,17 +78,9 @@ class TrainingOpportunityController extends Controller
         return view('individual.training_opportunity_applications', get_defined_vars());
     }
 
-    public function training_opportunity($slug)
-    {
-        $model = TrainingOpportunity::with(['association'])->where('slug', $slug)->firstOrFail();
-        $has_applied = TrainingOpportunityApplication::where('training_id', $model->id)
-            ->where('user_id', auth()->id())
-            ->exists();
 
-        return view('individual.training_opportunity', get_defined_vars());
-    }
 
-    public function apply_training_opportunities(ApplyTrainingOpportunityRequest $request)
+    public function store(ApplyTrainingOpportunityRequest $request)
     {
 
         $data = $request->validated();
@@ -94,6 +101,5 @@ class TrainingOpportunityController extends Controller
         $application = TrainingOpportunityApplication::with(['training', 'user', 'training.association'])->where('slug', $slug)->firstOrFail();
 
         return view('individual.training_opportunity_application_details', get_defined_vars());
-
     }
 }

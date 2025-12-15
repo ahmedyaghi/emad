@@ -10,7 +10,7 @@
                   </h2>
                   <div class="accordion-collapse collapse show" id="collapseOne">
                     <div class="accordion-body px-0">
-                      <form action="{{route('individual.training-opportunities')}}" method="get">
+                      <form action="{{route('individual.training-opportunities.index')}}" method="get">
                         <div class="row"> 
                           <div class="col-md-4"> 
                             <div class="form-group"> 
@@ -47,7 +47,7 @@
                           <div class="col-12"> 
                             <hr/>
                             <div class="d-flex align-items-center justify-content-between"> 
-                              <a class="btn btn-white"  href="{{route('individual.training-opportunities')}}">إعادة تعيين</a>
+                              <a class="btn btn-white"  href="{{route('individual.training-opportunities.index')}}">إعادة تعيين</a>
                               <button class="btn btn-primary" type="submit">تطبيق</button>
                             </div>
                           </div>
@@ -67,7 +67,7 @@
                   <h3 class="font-semi-bold mb-2">عرض {{count($training_opportunities)}} نتيجة فرصة تدريبية</h3>
                   <h6 class="text-gray">بناءً على ملفك الشخصي وتفضيلاتك</h6>
                 </div>
-                <div class="col-lg-auto"><a class="btn btn-white" href="{{route('individual.training-opportunities')}}">مشاهدة الكل </a></div>
+                <div class="col-lg-auto"><a class="btn btn-white" href="{{route('individual.training-opportunities.index')}}">مشاهدة الكل </a></div>
               </div>
             </div>
             <div class="col-12">  
@@ -76,11 +76,11 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="widget_item-card widget-2">
                     <div class="widget_item-content">
-                        <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('individual.training-opportunity', $training_opportunity->slug)}}">{{$training_opportunity->title}}</a></h4>
+                        <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('individual.training-opportunities.show', $training_opportunity)}}">{{$training_opportunity->title}}</a></h4>
                         <h6 class="widget_item-desc text-gray mb-3">{{$training_opportunity->short_description}}</h6>
                         <div class="widget_item-campany mb-4 d-flex align-items-center">
-                        <div class="campany-image me-2"><img src="../assets/images/logo.svg" alt=""/></div>
-                        <h6 class="campany-name">شركة عماد </h6>
+                        <div class="campany-image me-2"><img src="{{Storage::url($training_opportunity->association->profile?->image)}}" alt=""/></div>
+                        <h6 class="campany-name">{{$training_opportunity->association->name}}</h6>
                         </div>
                         <div class="widget_item-info mt-3 pt-3 mb-4">
                         <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="{{asset('assets/images/location.svg')}}" alt=""/><span class="info-title text-gray">{{$training_opportunity->location}}</span></div>
@@ -89,8 +89,8 @@
     
                     </div>
                         <div class="widget_item-action row gx-2">
-                        <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="{{route('individual.training-opportunity', $training_opportunity->slug)}}">عرض تفاصيل </a></div>
-                        <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="{{route('individual.training-opportunity', $training_opportunity->slug)}}">قدّم الآن </a></div>
+                        <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="{{route('individual.training-opportunities.show', $training_opportunity)}}">عرض تفاصيل </a></div>
+                        <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="{{route('individual.training-opportunities.show', $training_opportunity)}}">قدّم الآن </a></div>
                         </div>
                     </div>
                     </div>
