@@ -5,13 +5,13 @@
                 <div class="widget_item-card">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="profile-completion mb-4">
-                      <div class="profile-image"><img src="../assets/images/avatar.png" alt=""/></div>
+                      <div class="profile-image"><img src="{{Auth::user()->profile->image}}" alt=""/></div>
                       <div class="profile-percentage text-white font-semi-bold">76%</div>
-                      <div class="profile-progress"><img src="../assets/images/circle.png" alt=""/></div>
-                    </div><a class="btn btn-white btn-icon border-0 rounded-pill" href=""><img src="../assets/images/edit.svg" alt=""/></a>
+                      <div class="profile-progress"><img src="{{asset('assets/images/circle.png')}}" alt=""/></div>
+                    </div><a class="btn btn-white btn-icon border-0 rounded-pill" href=""><img src="{{asset('assets/images/edit.svg')}}" alt=""/></a>
                   </div>
-                  <h3 class="mb-3 font-semi-bold"> عبدالله محمد الحربي</h3>
-                  <h6>متدرب</h6>
+                  <h3 class="mb-3 font-semi-bold">{{Auth::user()->name}}</h3>
+                  <h6>{{Auth::user()->getType()}}</h6>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -44,7 +44,7 @@
                         </div>
                         <hr/>
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/calendar.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">تاريخ التقييم</h6>
                             <h6 class="font-12 font-semi-bold">8 مارس 1993</h6>
@@ -62,7 +62,7 @@
                         </div>
                         <hr/>
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/calendar.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">تاريخ التقييم</h6>
                             <h6 class="font-12 font-semi-bold">8 مارس 1993</h6>
@@ -80,7 +80,7 @@
                         </div>
                         <hr/>
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/calendar.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">تاريخ التقييم</h6>
                             <h6 class="font-12 font-semi-bold">8 مارس 1993</h6>
@@ -154,7 +154,7 @@
                     <div class="row"> 
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/globe.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/globe.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الجنسية</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->profile?->nationality?->name}}</h6>
@@ -163,7 +163,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/passport.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/passport.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">رقم الهوية</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->id_number}}</h6>
@@ -172,7 +172,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/calendar.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/calendar.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">تاريخ الميلاد</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->profile?->date_of_birth}}</h6>
@@ -181,7 +181,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/graduate-male.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/graduate-male.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الجنس</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->profile?->getGenderLabel()}}</h6>
@@ -190,7 +190,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/mail.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/mail.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">البريد الالكتروني</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->email}}</h6>
@@ -199,7 +199,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/call.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/call.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">رقم الجوال</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->phone}}</h6>
@@ -208,7 +208,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/city2.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/city2.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">المدينة</h6>
                             <h6 class="font-12 font-semi-bold">الرياض</h6>
@@ -217,7 +217,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/city.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/city.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">المنطقة</h6>
                             <h6 class="font-12 font-semi-bold">الرياض</h6>
@@ -226,7 +226,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/building2.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/building2.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الحي</h6>
                             <h6 class="font-12 font-semi-bold">النرجس</h6>
@@ -235,7 +235,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/road.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/road.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">اسم الشارع</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->profile?->street_name}}</h6>
@@ -244,7 +244,7 @@
                       </div>
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
-                          <div class="col-auto me-3"><img src="../assets/images/distribution.svg" alt=""/></div>
+                          <div class="col-auto me-3"><img src="{{asset('assets/images/distribution.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الرمز البريدي</h6>
                             <h6 class="font-12 font-semi-bold">{{$user->profile?->postal_code}}</h6>
@@ -283,8 +283,8 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
@@ -313,8 +313,8 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
@@ -345,8 +345,8 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
@@ -371,8 +371,8 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
@@ -403,8 +403,8 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
@@ -419,7 +419,7 @@
                         <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <div class="d-flex align-items-center">
-                              <div class="bg-white p-2 rounded"><img src="../assets/images/pdf-file.svg" alt=""/></div>
+                              <div class="bg-white p-2 rounded"><img src="{{asset('assets/images/pdf-file.svg')}}" alt=""/></div>
                               <div class="ms-3">
                                 <h6 class="mb-2 font-bold font-12">السيرة الذاتية.pdf</h6>
                                 <h6 class="font-light text-gray font-12">2.67 ميجابايت </h6>
@@ -428,65 +428,8 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="qualification-card mb-3 p-3">
-                      <div class="d-lg-flex align-items-center">
-                        <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <div class="d-flex align-items-center">
-                              <div class="bg-white p-2 rounded"><img src="../assets/images/pdf-file.svg" alt=""/></div>
-                              <div class="ms-3">
-                                <h6 class="mb-2 font-bold font-12">السيرة الذاتية.pdf</h6>
-                                <h6 class="font-light text-gray font-12">2.67 ميجابايت </h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="qualification-card mb-3 p-3">
-                      <div class="d-lg-flex align-items-center">
-                        <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <div class="d-flex align-items-center">
-                              <div class="bg-white p-2 rounded"><img src="../assets/images/pdf-file.svg" alt=""/></div>
-                              <div class="ms-3">
-                                <h6 class="mb-2 font-bold font-12">السيرة الذاتية.pdf</h6>
-                                <h6 class="font-light text-gray font-12">2.67 ميجابايت </h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="qualification-card mb-3 p-3">
-                      <div class="d-lg-flex align-items-center">
-                        <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <div class="d-flex align-items-center">
-                              <div class="bg-white p-2 rounded"><img src="../assets/images/pdf-file.svg" alt=""/></div>
-                              <div class="ms-3">
-                                <h6 class="mb-2 font-bold font-12">السيرة الذاتية.pdf</h6>
-                                <h6 class="font-light text-gray font-12">2.67 ميجابايت </h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/edit2.svg" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="../assets/images/delete.svg" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
@@ -583,8 +526,10 @@
                 </div>
               </div>
             </div>
-          </div><!-- end:: modal -->
-<!-- start:: modal -->
+          </div>
+          <!-- end:: modal -->
+
+          <!-- start:: modal -->
           <div class="modal fade" id="experienceModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content border-0">
@@ -659,8 +604,10 @@
                 </div>
               </div>
             </div>
-          </div><!-- end:: modal -->
-<!-- start:: modal -->
+          </div>
+          <!-- end:: modal -->
+
+          <!-- start:: modal -->
           <div class="modal fade" id="cvModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content border-0">
@@ -677,7 +624,7 @@
                             <label class="form-label">السيرة الذاتية</label>
                             <div class="upload-box">
                               <input id="fileInput" type="file" accept=".pdf,.doc,.docx"/>
-                              <div class="upload-placeholder"><img class="mb-3" src="../assets/images/upload.svg"/>
+                              <div class="upload-placeholder"><img class="mb-3" src="{{asset('assets/images/upload.svg')}}"/>
                                 <h3 class="font-bold mb-2 text-main">اسحب وأفلِت أو اختر الملف الذي تريد تحميله</h3>
                                 <h6 class="mb-2 text-sub">الحد الأقصى للحجم 5 ميجا بايت</h6>
                               </div>

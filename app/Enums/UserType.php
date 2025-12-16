@@ -14,7 +14,7 @@ enum UserType: int
     {
         return match ($this) {
             self::ADMIN => 'آدمن',
-            self::INDIVIDUAL => 'فرد',
+            self::INDIVIDUAL => 'فرد مستقل',
             self::ASSOCIATION => 'جمعية',
             self::FACULTY_MEMBER => 'عضو تدريس',
             self::CONSULTANT => 'مستشار',

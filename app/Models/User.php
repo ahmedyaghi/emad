@@ -81,4 +81,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(VerificationCode::class);
     }
+
+    public function getType()
+    {
+        return $this->type->label();
+    }
 }
