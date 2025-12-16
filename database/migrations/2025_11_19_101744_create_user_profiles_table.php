@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('section_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('place_type_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('work_type_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('neighabourhood_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('neighborhood_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('nationality_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('skill_id')->nullable()->constrained()->onDelete('cascade');
             // $table->foreignId('course_id')->nullable()->constrained()->onDelete('cascade');

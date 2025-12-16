@@ -14,6 +14,7 @@ class UserProfile extends Model
         'nationality_id',
         'city_id',
         'country_id',
+        'neighborhood_id',
         'bio',
         'website',
         'image',
@@ -55,6 +56,11 @@ class UserProfile extends Model
     public function nationality()
     {
         return $this->belongsTo(Nationality::class);
+    }
+
+    public function neighborhood()
+    {
+        return $this->belongsTo(Neighborhood::class);
     }
 
     public function getGenderLabel()

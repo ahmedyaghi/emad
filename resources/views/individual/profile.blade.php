@@ -211,7 +211,7 @@
                           <div class="col-auto me-3"><img src="{{asset('assets/images/city2.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">المدينة</h6>
-                            <h6 class="font-12 font-semi-bold">الرياض</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->city?->name}}</h6>
                           </div>
                         </div>
                       </div>
@@ -220,7 +220,7 @@
                           <div class="col-auto me-3"><img src="{{asset('assets/images/city.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">المنطقة</h6>
-                            <h6 class="font-12 font-semi-bold">الرياض</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->country?->name}}</h6>
                           </div>
                         </div>
                       </div>
@@ -229,7 +229,7 @@
                           <div class="col-auto me-3"><img src="{{asset('assets/images/building2.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الحي</h6>
-                            <h6 class="font-12 font-semi-bold">النرجس</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->neighbor    hood?->name}}</h6>
                           </div>
                         </div>
                       </div>
