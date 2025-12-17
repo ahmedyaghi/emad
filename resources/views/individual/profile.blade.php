@@ -285,7 +285,16 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon edit-qualification"
+                              data-bs-toggle="modal"
+                              data-bs-target="#academicModal"
+                              data-id="{{ $qualification->id }}"
+                              data-qualification="{{ $qualification->qualification_id }}"
+                              data-specialization="{{ $qualification->specialization_id }}"
+                              data-university="{{ $qualification->university_id }}"
+                              data-year="{{ $qualification->graduation_year }}"
+                              data-grade="{{ $qualification->grade_id }}">
+                              <img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
                           <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
@@ -321,7 +330,15 @@
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon edit-experience"
+                                   data-bs-toggle="modal"
+                                  data-bs-target="#experienceModal"
+                                  data-id="{{ $experience->id }}"
+                                  data-position="{{ $experience->position_id }}"
+                                  data-company="{{ $experience->company_name }}"
+                                  data-city="{{ $experience->city_id }}"
+                                  data-start="{{ $experience->start_date }}"
+                                  data-end="{{ $experience->end_date }}"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
                           <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
@@ -403,8 +420,9 @@
                   <h6 class="text-gray">أدخل بيانات مؤهلك العلمي بدقة لعرضها ضمن ملفك الشخصي. تساعد المؤهلات الجهات في تقييم مدى توافقك مع الوظائف المتاحة.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action="{{route('individual.profile.add.qualification')}}" method="POST">
+                  <form action="{{route('individual.profile.add.qualification')}}" method="POST" id="qualificationForm">
                     @csrf 
+                      <input type="hidden" name="qualification_form_id" id="qualification_form_id">
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
@@ -490,7 +508,7 @@
                       <div class="col-12">
                         <div class="modal-footer d-flex align-items-center justify-content-between"> 
                           <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
-                          <button class="btn btn-primary" type="submit">إضافة</button>
+                          <button class="btn btn-primary action_button" type="submit">إضافة</button>
                         </div>
                       </div>
                     </div>
@@ -510,8 +528,10 @@
                   <h6 class="text-gray">أضف خبراتك السابقة في العمل، سواء كانت موسمية أو دائمة. تساعد الخبرات الجهات في التعرف على مهاراتك العملية ومدى جاهزيتك للوظائف المعروضة.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action="{{route('individual.profile.add.experience')}}" method="POST">
+                  <form action="{{route('individual.profile.add.experience')}}" method="POST" id="experienceForm">
                     @csrf 
+                    <input type="hidden" name="experience_form_id" id="experience_form_id">
+
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
@@ -579,7 +599,7 @@
                       <div class="col-12">
                         <div class="modal-footer d-flex align-items-center justify-content-between"> 
                           <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
-                          <button class="btn btn-primary" type="submit">إضافة</button>
+                          <button class="btn btn-primary action_button" type="submit">إضافة</button>
                         </div>
                       </div>
                     </div>
@@ -647,4 +667,80 @@
               </div>
             </div>
           </div><!-- end:: modal -->
+
+@section('scripts')
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    document.querySelectorAll('.edit-qualification').forEach(button => {
+      button.addEventListener('click', function () {
+
+        document.querySelector('#academicModal h3').innerText = 'تعديل المؤهل العلمي';
+        document.querySelector('#academicModal .action_button').innerText = 'تعديل ';
+
+        let form = document.getElementById('qualificationForm');
+        form.action = "{{ route('individual.profile.update.qualification') }}";
+
+        document.getElementById('qualification_form_id').value = this.dataset.id;
+        document.querySelector('[name="qualification_id"]').value = this.dataset.qualification;
+        document.querySelector('[name="specialization_id"]').value = this.dataset.specialization;
+        document.querySelector('[name="university_id"]').value = this.dataset.university;
+        document.querySelector('[name="graduation_year"]').value = this.dataset.year;
+        document.querySelector('[name="grade_id"]').value = this.dataset.grade;
+
+        $('.select2').trigger('change');
+      });
+    });
+
+    document.getElementById('academicModal').addEventListener('hidden.bs.modal', function () {
+
+      document.querySelector('#academicModal h3').innerText = 'إضافة مؤهل علمي جديد';
+      document.querySelector('#academicModal .action_button').innerText = 'إضافة ';
+
+      let form = document.getElementById('qualificationForm');
+      form.action = "{{ route('individual.profile.add.qualification') }}";
+      form.reset();
+
+      $('.select2').val(null).trigger('change');
+
+    });
+
+
+    document.querySelectorAll('.edit-experience').forEach(button => {
+      button.addEventListener('click', function () {
+
+        document.querySelector('#experienceModal h3').innerText = 'تعديل الخبرة';
+        document.querySelector('#experienceModal .action_button').innerText = 'تعديل';
+
+        let form = document.getElementById('experienceForm');
+        form.action = "{{ route('individual.profile.update.experience') }}";
+
+        document.getElementById('experience_form_id').value = this.dataset.id;
+        document.querySelector('[name="position_id"]').value = this.dataset.position;
+        document.querySelector('[name="company_name"]').value = this.dataset.company;
+        document.querySelector('[name="city_id"]').value = this.dataset.city;
+        document.querySelector('[name="start_date"]').value = this.dataset.start;
+        document.querySelector('[name="end_date"]').value = this.dataset.end;
+
+        $('.select2').trigger('change');
+      });
+    });
+
+    document.getElementById('experienceModal').addEventListener('hidden.bs.modal', function () {
+
+      document.querySelector('#experienceModal h3').innerText = 'إضافة الخبرات';
+      document.querySelector('#experienceModal .action_button').innerText = 'إضافة';
+
+      let form = document.getElementById('experienceForm');
+      form.action = "{{ route('individual.profile.add.experience') }}";
+      form.reset();
+
+      $('.select2').val(null).trigger('change');
+    });
+
+
+  });
+</script>
+
+@endsection
 </x-common.layout>

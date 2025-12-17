@@ -55,9 +55,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [App\Http\Controllers\Individual\DashboardController::class, 'dashboard'])->name('dashboard');
         Route::get('/profile', [App\Http\Controllers\Individual\ProfileController::class, 'profile'])->name('profile');
         Route::post('/profile/add-qualifications', [App\Http\Controllers\Individual\ProfileController::class, 'add_qualification'])->name('profile.add.qualification');
+        Route::post('/profile/update-qualifications', [App\Http\Controllers\Individual\ProfileController::class, 'update_qualification'])->name('profile.update.qualification');
         Route::post('/profile/add-experiences', [App\Http\Controllers\Individual\ProfileController::class, 'add_experience'])->name('profile.add.experience');
+        Route::post('/profile/update-experiences', [App\Http\Controllers\Individual\ProfileController::class, 'update_experience'])->name('profile.update.experience');
         Route::post('/profile/add-attachments', [App\Http\Controllers\Individual\ProfileController::class, 'add_attachment'])->name('profile.add.attachment');
-
         Route::get('/training-opportunity-applications', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_applications'])->name('training-opportunity-applications');
         Route::get('/training-opportunity-applications/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_application_details'])->name('training-opportunity-application-details');
         Route::resource('training-opportunities', App\Http\Controllers\Individual\TrainingOpportunityController::class)->names('training-opportunities');

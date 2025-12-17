@@ -63,4 +63,22 @@ class ProfileController extends Controller
 
         return redirect()->route('individual.profile')->with('success', 'تم إضافة المرفق بنجاح');
     }
+
+    public function update_qualification(QualificationRequest $request)
+    {
+        $user_qualification = UserQualification::findOrfail($request->qualification_form_id);
+        $data = $request->validated();
+        $user_qualification->update($data);
+
+        return redirect()->route('individual.profile')->with('success', 'تم تعديل المؤهل العلمي بنجاح');
+    }
+
+    public function update_experience(ExperienceRequest $request)
+    {
+        $user_experience = UserExperience::findOrfail($request->experience_form_id);
+        $data = $request->validated();
+        $user_experience->update($data);
+
+        return redirect()->route('individual.profile')->with('success', 'تم تعديل الخبرة بنجاح');
+    }
 }
