@@ -198,6 +198,23 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+   document.querySelectorAll(".datepicker_db").forEach((picker) => {
+    new tempusDominus.TempusDominus(picker, {
+      useCurrent: false,
+      localization: { locale: "ar", format: "yyyy-MM-dd" },
+      display: {
+        components: {
+          calendar: true,
+          date: true,
+          month: true,
+          year: true,
+          decades: true,
+          clock: false
+        }
+      }
+    });
+  });
 });
 
 

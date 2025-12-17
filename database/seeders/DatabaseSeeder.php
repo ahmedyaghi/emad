@@ -21,20 +21,15 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(SettingSeeder::class);
         $this->call(TrainingOpportunityTypeSeeder::class);
-        // $this->call(AssociationSeeder::class);
-        // $this->call(TrainingOpportunitySeeder::class);
-        // $this->call(ArticleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(QualificationSeeder::class);
         $this->call(SpecializationSeeder::class);
         $this->call(UniversitySeeder::class);
         $this->call(BankSeeder::class);
-        $this->call(LecturerSeeder::class);
-        // $this->call(CourseSeeder::class);
-        $this->call(NewsSeeder::class);
         $this->call(QuestionTypeSeeder::class);
         $this->call(NoteTypeSeeder::class);
         $this->call(EvaluationSeeder::class);
         $this->call(GeneralCriteriaSeeder::class);
+        $this->call(PositionSeeder::class);
     }
 }

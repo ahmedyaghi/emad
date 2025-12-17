@@ -5,13 +5,13 @@
                 <div class="widget_item-card">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="profile-completion mb-4">
-                      <div class="profile-image"><img src="{{Auth::user()->profile->image}}" alt=""/></div>
+                      <div class="profile-image"><img src="{{$user->profile->image}}" alt=""/></div>
                       <div class="profile-percentage text-white font-semi-bold">76%</div>
                       <div class="profile-progress"><img src="{{asset('assets/images/circle.png')}}" alt=""/></div>
                     </div><a class="btn btn-white btn-icon border-0 rounded-pill" href=""><img src="{{asset('assets/images/edit.svg')}}" alt=""/></a>
                   </div>
-                  <h3 class="mb-3 font-semi-bold">{{Auth::user()->name}}</h3>
-                  <h6>{{Auth::user()->getType()}}</h6>
+                  <h3 class="mb-3 font-semi-bold">{{$user->name}}</h3>
+                  <h6>{{$user->getType()}}</h6>
                 </div>
               </div>
               <div class="col-lg-6">
@@ -229,7 +229,7 @@
                           <div class="col-auto me-3"><img src="{{asset('assets/images/building2.svg')}}" alt=""/></div>
                           <div class="col">
                             <h6 class="font-light mb-1 text-gray">الحي</h6>
-                            <h6 class="font-12 font-semi-bold">{{$user->profile?->neighbor    hood?->name}}</h6>
+                            <h6 class="font-12 font-semi-bold">{{$user->profile?->neighborhood?->name}}</h6>
                           </div>
                         </div>
                       </div>
@@ -258,28 +258,30 @@
                       <h5 class="font-bold">المؤهلات</h5><a class="btn btn-primary px-4" href="" data-bs-toggle="modal" data-bs-target="#academicModal">اضافة مؤهل </a>
                     </div>
                     <hr/>
-                    <div class="qualification-card mb-3 p-3">
+                    @if(!$user_qualifications->isEmpty())
+                    @foreach ($user_qualifications as $qualification)
+                      <div class="qualification-card mb-3 p-3">
                       <div class="d-lg-flex align-items-center">
                         <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">المؤهل العلمي</h6>
-                            <h6 class="font-light text-gray font-12">بكالوريوس</h6>
+                            <h6 class="font-light text-gray font-12">{{$qualification->qualification->name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">التخصص</h6>
-                            <h6 class="font-light text-gray font-12">إدارة أعمال</h6>
+                            <h6 class="font-light text-gray font-12">{{$qualification->specialization->name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">الجهة التعليمية</h6>
-                            <h6 class="font-light text-gray font-12">جامعة أم القرى</h6>
+                            <h6 class="font-light text-gray font-12">{{$qualification->university->name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">سنة التخرج</h6>
-                            <h6 class="font-light text-gray font-12">2025</h6>
+                            <h6 class="font-light text-gray font-12">{{$qualification->graduation_year}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">التقدير</h6>
-                            <h6 class="font-light text-gray font-12"> جيد جدًا</h6>
+                            <h6 class="font-light text-gray font-12"> {{$qualification->grade->name}}</h6>
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
@@ -288,60 +290,34 @@
                         </div>
                       </div>
                     </div>
-                    <div class="qualification-card mb-3 p-3">
-                      <div class="d-lg-flex align-items-center">
-                        <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">المؤهل العلمي</h6>
-                            <h6 class="font-light text-gray font-12">بكالوريوس</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">التخصص</h6>
-                            <h6 class="font-light text-gray font-12">إدارة أعمال</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">الجهة التعليمية</h6>
-                            <h6 class="font-light text-gray font-12">جامعة أم القرى</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">سنة التخرج</h6>
-                            <h6 class="font-light text-gray font-12">2025</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">التقدير</h6>
-                            <h6 class="font-light text-gray font-12"> جيد جدًا</h6>
-                          </div>
-                        </div>
-                        <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
+                    @endif
                   </div>
                   <div class="tab-pane fade" id="tab-3">
                     <div class="d-flex align-items-center justify-content-between mb-3">
                       <h5 class="font-bold">الخبرات</h5><a class="btn btn-primary px-4" href="" data-bs-toggle="modal" data-bs-target="#experienceModal">اضافة الخبرات </a>
                     </div>
                     <hr/>
-                    <div class="qualification-card mb-3 p-3">
+                    @if(!$user_experiences->isEmpty())
+                    @foreach ($user_experiences as $experience)
+                      <div class="qualification-card mb-3 p-3">
                       <div class="d-lg-flex align-items-center">
                         <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">المسمي الوظيفي</h6>
-                            <h6 class="font-light text-gray font-12">مشرف ميداني</h6>
+                            <h6 class="font-light text-gray font-12">{{$experience->position->name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">الجهة</h6>
-                            <h6 class="font-light text-gray font-12">شركة التنظيم الموسمي</h6>
+                            <h6 class="font-light text-gray font-12">{{$experience->company_name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">الفترة</h6>
-                            <h6 class="font-light text-gray font-12">من ذو القعدة 1444هـ إلى ذو الحجة 1444هـ</h6>
+                            <h6 class="font-light text-gray font-12">{{$experience->start_date}} - {{$experience->end_date}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">الموقع</h6>
-                            <h6 class="font-light text-gray font-12"> مكة المكرمة</h6>
+                            <h6 class="font-light text-gray font-12">{{$experience->city->name}}</h6>
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
@@ -350,32 +326,8 @@
                         </div>
                       </div>
                     </div>
-                    <div class="qualification-card mb-3 p-3">
-                      <div class="d-lg-flex align-items-center">
-                        <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">المسمي الوظيفي</h6>
-                            <h6 class="font-light text-gray font-12">مشرف ميداني</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">الجهة</h6>
-                            <h6 class="font-light text-gray font-12">شركة التنظيم الموسمي</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">الفترة</h6>
-                            <h6 class="font-light text-gray font-12">من ذو القعدة 1444هـ إلى ذو الحجة 1444هـ</h6>
-                          </div>
-                          <div class="col-lg col-4 mb-4 mb-lg-0">
-                            <h6 class="mb-2 font-bold font-12">الموقع</h6>
-                            <h6 class="font-light text-gray font-12"> مكة المكرمة</h6>
-                          </div>
-                        </div>
-                        <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
-                        </div>
-                      </div>
-                    </div>
+                    @endforeach
+                    @endif
                   </div>
                   <div class="tab-pane fade" id="tab-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
@@ -414,6 +366,8 @@
                       <h5 class="font-bold">المرفقات</h5><a class="btn btn-primary px-4" href="" data-bs-toggle="modal" data-bs-target="#cvModal">اضافة مرفق </a>
                     </div>
                     <hr/>
+                    @if(!$user_attachments->isEmpty())
+                    @foreach ($user_attachments as $attachment)
                     <div class="qualification-card mb-3 p-3">
                       <div class="d-lg-flex align-items-center">
                         <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
@@ -421,7 +375,7 @@
                             <div class="d-flex align-items-center">
                               <div class="bg-white p-2 rounded"><img src="{{asset('assets/images/pdf-file.svg')}}" alt=""/></div>
                               <div class="ms-3">
-                                <h6 class="mb-2 font-bold font-12">السيرة الذاتية.pdf</h6>
+                                <h6 class="mb-2 font-bold font-12">{{$attachment->title}}</h6>
                                 <h6 class="font-light text-gray font-12">2.67 ميجابايت </h6>
                               </div>
                             </div>
@@ -433,11 +387,14 @@
                         </div>
                       </div>
                     </div>
+                    @endforeach
+                    @endif
                   </div>
                 </div>
               </div>
             </div>
-          </div><!-- start:: modal -->
+          </div>
+          <!-- start:: modal -->
           <div class="modal fade" id="academicModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content border-0">
@@ -462,6 +419,9 @@
                                     <option value="{{$qualification->id}}">{{$qualification->name}}</option>
                                   @endforeach
                                 </select>
+                                 @error('qualification_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             @endif
@@ -475,6 +435,9 @@
                                     <option value="{{$specialization->id}}">{{$specialization->name}}</option>
                                   @endforeach
                                 </select>
+                                 @error('specialization_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                            @endif
@@ -488,6 +451,9 @@
                                       <option value="{{$university->id}}">{{$university->name}}</option>
                                     @endforeach
                                 </select>
+                                @error('university_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             @endif
@@ -495,6 +461,9 @@
                               <div class="form-group"> 
                                 <label class="form-label">سنة التخرج <span class="text-danger">* </span></label>
                                 <input class="form-control yearpicker" type="text" placeholder="اختر سنة التخرج" name="graduation_year"/>
+                                @error('graduation_year')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             @if(!$grades->isEmpty())
@@ -507,6 +476,9 @@
                                       <option value="{{$grade->id}}">{{$grade->name}}</option>
                                     @endforeach
                                 </select>
+                                 @error('grade_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                              @endif
@@ -538,7 +510,8 @@
                   <h6 class="text-gray">أضف خبراتك السابقة في العمل، سواء كانت موسمية أو دائمة. تساعد الخبرات الجهات في التعرف على مهاراتك العملية ومدى جاهزيتك للوظائف المعروضة.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action=""> 
+                  <form action="{{route('individual.profile.add.experience')}}" method="POST">
+                    @csrf 
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
@@ -546,46 +519,56 @@
                             <div class="col-12">
                               <div class="form-group"> 
                                 <label class="form-label">المسمى الوظيفي <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="اختر">
-                                  <option> </option>
-                                  <option value="1">مشرف ميداني   </option>
-                                  <option value="2">مسؤول تنظيم</option>
-                                  <option value="3">مندوب توجيه</option>
+                                <select class="select2" data-placeholder="اختر" name="position_id">
+                                  <option value="">اختر</option>
+                                  @foreach ($positions as $position)
+                                    <option value="{{$position->id}}">{{$position->name}}</option>
+                                  @endforeach
                                 </select>
+                                 @error('position_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">اسم الجهة  <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="اختر الجهة">
-                                  <option> </option>
-                                  <option value="1">الجهة 1   </option>
-                                  <option value="2">الجهة 2</option>
-                                  <option value="3">الجهة 3</option>
-                                </select>
+                               <input class="form-control" type="text" placeholder="اختر اسم الجهة" name="company_name"/>
+                                @error('company_name')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">موقع العمل <span class="text-danger">* </span></label>
-                                <select class="select2" data-placeholder="اختر">
-                                  <option> </option>
-                                  <option value="1">الرياض   </option>
-                                  <option value="2">جدة</option>
-                                  <option value="3">مكة</option>
+                                <select class="select2" data-placeholder="اختر" name="city_id">
+                                  <option value="">اختر</option>
+                                  @foreach ($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                  @endforeach
                                 </select>
+                                 @error('city_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">فترة العمل من <span class="text-danger">* </span></label>
-                                <input class="form-control datepicker" type="text" placeholder="فترة العمل من"/>
+                                <input class="form-control datepicker_db" type="text" placeholder="فترة العمل من" name="start_date"/>
+                                @error('start_date')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                             <div class="col-lg-6">
                               <div class="form-group"> 
                                 <label class="form-label">فترة العمل الى <span class="text-danger">* </span></label>
-                                <input class="form-control datepicker" type="text" placeholder="فترة العمل الى"/>
+                                <input class="form-control datepicker_db" type="text" placeholder="فترة العمل الى" name="end_date"/>
+                                @error('end_date')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                             </div>
                           </div>
@@ -616,20 +599,37 @@
                   <h6 class="text-gray">أرفق سيرتك الذاتية لتُعرض ضمن ملفك الشخصي، مما يساعد الجهات في تقييم خبراتك ومهاراتك بشكل احترافي. يُفضل رفع الملف بصيغة PDF وبحجم لا يتجاوز 5 ميغابايت.</h6>
                 </div>
                 <div class="modal-body p-0">
-                  <form action=""> 
+                   <form action="{{route('individual.profile.add.attachment')}}" method="POST" enctype="multipart/form-data">
+                    @csrf 
                     <div class="row">
+
+                      <div class="col-lg-12">
+                        <div class="p-4">
+                        <div class="form-group"> 
+                          <label class="form-label">عنوان المرفق<span class="text-danger">* </span></label>
+                          <input class="form-control" type="text" placeholder="عنوان المرفق" name="title"/>
+                          @error('title')
+                            <span class="text-danger">{{ $message }}</span>
+                          @enderror
+                        </div>
+                        </div>
+                      </div>
+
                       <div class="col-12">
                         <div class="p-4">
                           <div class="form-group"> 
                             <label class="form-label">السيرة الذاتية</label>
                             <div class="upload-box">
-                              <input id="fileInput" type="file" accept=".pdf,.doc,.docx"/>
+                              <input id="fileInput" type="file" accept=".pdf,.doc,.docx" name="file"/>
                               <div class="upload-placeholder"><img class="mb-3" src="{{asset('assets/images/upload.svg')}}"/>
                                 <h3 class="font-bold mb-2 text-main">اسحب وأفلِت أو اختر الملف الذي تريد تحميله</h3>
                                 <h6 class="mb-2 text-sub">الحد الأقصى للحجم 5 ميجا بايت</h6>
                               </div>
                               <div class="file-list"></div>
                             </div>
+                            @error('file')
+                              <span class="text-danger">{{ $message }}</span>
+                            @enderror
                           </div>
                         </div>
                       </div>

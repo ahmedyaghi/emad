@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('user_experiences', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('country_id')->constrained()->onDelete('cascade');
-            $table->string('position_name');
+            $table->foreignId('city_id')->constrained()->onDelete('cascade');
+            $table->foreignId('position_id')->constrained()->onDelete('cascade');
             $table->string('company_name');
-            $table->string('period');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
