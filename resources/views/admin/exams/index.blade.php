@@ -97,7 +97,7 @@
           </div>
           <div class="row"> 
             <div class="col-12"> 
-              {{$exams->links('common.pagination')}}
+              {{$exams->links('components.common.pagination')}}
             </div>
           </div>
           @endif

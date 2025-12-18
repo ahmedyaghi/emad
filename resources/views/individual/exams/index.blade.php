@@ -76,8 +76,9 @@
                     <h6 class="text-gray">{{$exam->datetime}}</h6>
                   </div>
                   <div class="col-auto">
-                    <a class="btn btn-primary" href="{{route('individual.exam.start', $exam)}}">بدء الاختبار </a>
-                    {{-- <a class="disabled btn btn-primary" href="">بدء الاختبار </a>
+                    <a class="btn btn-primary  @disabled(!$exam->examAnswers->isEmpty())" href="{{route('individual.exams.create', ['exam' => $exam])}}">بدء الاختبار </a>
+                
+                    {{-- 
 
                      <div class="widget_item-card rounded-3 p-3 test-result mb-0">
                       <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
@@ -91,7 +92,7 @@
             </div>
           </div>
           <div class="row"> 
-            {{$exams->links('common.pagination')}}
+            {{$exams->links('components.common.pagination')}}
           </div>
           @endif
 </x-common.layout>

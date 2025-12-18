@@ -28,10 +28,10 @@
               <div class="pannel">
                 <div class="toolbar-action">
                   <div class="search-bar">
-                    <input class="form-control" type="text" placeholder="البحث عن الجمعيات ..."/><span class="search-icon"><img src="../assets/images/search.svg" alt=""/></span>
+                    <input class="form-control" type="text" placeholder="البحث عن الجمعيات ..."/><span class="search-icon"><img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
                   </div>
                   <div class="action-buttons">
-                    <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="../assets/images/filter.svg" alt=""/></button>
+                    <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="{{asset('assets/images/filter.svg')}}" alt=""/></button>
                   </div>
                   <div class="action-buttons">
                     <select class="select2">
@@ -54,7 +54,7 @@
                       <div class="col-lg-4 col-ms-6">
                       <div class="card widget_item-card p-4 rounded-4 mb-3">
                         <div class="widget_item-content">
-                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.associations.show', $user->id)}}">{{$user->name}}</a></h4>
+                          <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('admin.associations.show', $user)}}">{{$user->name}}</a></h4>
                           <h6 class="widget_item-desc text-gray mb-3">{{$user->profile->bio}}</h6>
                           <div class="widget_item-info d-flex align-items-center border-0">
                             <div class="col">
@@ -66,12 +66,14 @@
                           </div>
                           <hr/>
                           <div class="row gx-2">
+                            @if($user->status == App\Enums\UserStatus::PENDING)
                             <div class="col-6">
                               <a class="btn btn-light-danger w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatus::REJECTED, 'id' => $user->id])}}">رفض</a>
                             </div>
                             <div class="col-6">
                               <a class="btn btn-light-success w-100" href="{{route('admin.users.update.status', ['status' =>App\Enums\UserStatus::ACCEPTED, 'id' => $user->id])}}">قبول</a>
                             </div>
+                            @endif
                           </div>
                         </div>
                       </div>
@@ -80,7 +82,7 @@
                   </div>
                   @endif
                   <div class="row">
-                   {{ $pending_associations->links('common.pagination') }}
+                   {{ $pending_associations->links('components.common.pagination') }}
                   </div>
                 </div>
                 <div class="tab-pane fade" id="tab-2">
@@ -109,7 +111,7 @@
                   <div class="row">
                     <div class="col-12"> 
                       <div class="pannel p-2">
-                      {{ $accepted_associations->links('common.pagination') }}
+                      {{ $accepted_associations->links('components.common.pagination') }}
                       </div>
                     </div>
                   </div>

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class TrainingOpportunity extends Model
@@ -34,6 +36,11 @@ class TrainingOpportunity extends Model
         return $this->belongsTo(User::class, 'association_id', 'id');
     }
 
+    public function applications()
+    {
+        return $this->hasMany(TrainingOpportunityApplication::class, 'training_id', 'id');
+    }
+
     public function getStatus()
     {
         return match ($this->status) {
@@ -50,5 +57,26 @@ class TrainingOpportunity extends Model
             2 => 'ended-text ended-bg',
             default => ''
         };
+    }
+
+    protected function createdAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
+    protected function updatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
+    protected function endDate(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
     }
 }

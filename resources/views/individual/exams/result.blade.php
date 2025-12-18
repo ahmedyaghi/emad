@@ -55,8 +55,8 @@
 
   <div class="question-footer">
     <div class="d-flex align-items-center justify-content-between">
-      <a class="btn btn-white" href="{{ route('individual.exams') }}">إلغاء</a>
-      <a class="btn btn-primary px-4" href="{{ route('individual.exams') }}">الرجوع الي صفحة الاختبارات</a>
+      <a class="btn btn-white" href="{{ route('individual.exams.index') }}">إلغاء</a>
+      <a class="btn btn-primary px-4" href="{{ route('individual.exams.index') }}">الرجوع الي صفحة الاختبارات</a>
     </div>
   </div>
 </x-common.layout>

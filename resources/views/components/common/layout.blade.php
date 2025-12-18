@@ -49,7 +49,9 @@
           $role = auth()->user()->getRoleNames()->first();
       @endphp
       <aside class="sidebar">
-          <div class="sidebar-header d-none d-lg-block"><img class="logo" src="{{asset('assets/images/logo-white.svg')}}" alt=""/></div>
+          <div class="sidebar-header d-none d-lg-block text-center">
+            <a href="{{route('main')}}"><img class="logo" src="{{asset('assets/images/logo-white.svg')}}" alt=""/></a>
+          </div>
           <ul class="sidebar-menu">
             @switch($role)
               @case('admin')
@@ -89,7 +91,7 @@
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.training-opportunity-applications') ? 'active' : '' }} menu-link" href="{{route($role.'.training-opportunity-applications')}}"><span class="menu-icon"><img src="{{asset('assets/images/catalogue.svg')}}" alt=""/></span><span class="menu-text">طلباتي</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">التقييمات والتقارير</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.courses') ? 'active' : '' }} menu-link" href="{{route($role.'.courses')}}"><span class="menu-icon"><img src="{{asset('assets/images/audio-book.svg')}}" alt=""/></span><span class="menu-text">دوراتي</span></a></li>
-                <li class="menu-item"><a class="{{ request()->routeIs($role.'.exams') ? 'active' : '' }} menu-link" href="{{route($role.'.exams')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">الاختبارات</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.exams.*') ? 'active' : '' }} menu-link" href="{{route($role.'.exams.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">الاختبارات</span></a></li>
                 @break
             
               @default

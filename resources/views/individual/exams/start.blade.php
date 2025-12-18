@@ -30,7 +30,7 @@
                     @endforeach
                     <div class="question-footer mt-3">
                         <div class="d-flex align-items-center justify-content-between"> 
-                            <a class="btn btn-white" href="{{route('individual.exams')}}">إلغاء </a>
+                            <a class="btn btn-white" href="{{route('individual.exams.index')}}">إلغاء </a>
                             <button type="button" class="btn btn-primary px-4 @disabled($exam_answer)" id="submit-exam">تسليم الاختبار</button>
                         </div>
                     </div>
@@ -77,8 +77,8 @@
               <div class="row">
                 <div class="col-12">
                   <div class="modal-footer d-flex align-items-center justify-content-between"> 
-                    <a class="btn btn-white" href="{{route('individual.exams.result', $exam)}}">الاطلاع على الأسئلة</a>
-                    <a class="btn btn-primary px-3" href="{{route('individual.exams')}}">الرجوع الي صفحة الاختبارات</a>
+                    <a class="btn btn-white" href="{{route('individual.exams.show', $exam->id)}}">الاطلاع على الأسئلة</a>
+                    <a class="btn btn-primary px-3" href="{{route('individual.exams.index')}}">الرجوع الي صفحة الاختبارات</a>
                   </div>
                 </div>
               </div>
@@ -90,6 +90,7 @@
 @section('scripts')
 <script>
 $(document).ready(function(){
+    let exam_id = "{{$exam->id}}";
 
     $('input[type=radio]').on('change', function(){
         let answered = $('input[type=radio]:checked').length;
@@ -112,10 +113,11 @@ $(document).ready(function(){
         });
 
         $.ajax({
-            url: "{{ route('individual.exams.submit', $exam->id) }}",
+            url: "{{ route('individual.exams.store') }}",
             method: "POST",
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
+                exam_id: exam_id,
                 answers: answers
             },
             success: function(response){
@@ -132,8 +134,12 @@ $(document).ready(function(){
                 }
 
             },
-            error: function(xhr){
-                toastr.error(xhr.responseText);
+            error: function(result){
+                var msg = 'حدث خطأ أثناء الإضافة';
+              $.each(result.responseJSON.errors, function (key, value) {
+                    msg += '<br>' + value;
+                });
+                toastr.error(msg);
             }
         });
     });

@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $training_opportunities = TrainingOpportunity::where('association_id', auth()->id())->take(6)->get();
+        $training_opportunities = TrainingOpportunity::withCount('applications')->where('association_id', auth()->id())->take(6)->get();
         $trainees_count = TrainingOpportunityApplication::where('status', TrainingApplicationStatus::ACCEPTED)
             ->whereHas('training', function ($q) {
                 $q->where('association_id', auth()->id());

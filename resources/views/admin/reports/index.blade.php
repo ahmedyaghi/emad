@@ -59,7 +59,7 @@
           </div>
           <div class="row"> 
             <div class="col-12"> 
-             {{$reports->links('common.pagination')}}
+             {{$reports->links('components.common.pagination')}}
             </div>
           </div>
           @endif

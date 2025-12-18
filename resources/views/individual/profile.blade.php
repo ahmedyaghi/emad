@@ -331,7 +331,7 @@
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
                           <button class="btn btn-white border-0 btn-icon edit-experience"
-                                   data-bs-toggle="modal"
+                                  data-bs-toggle="modal"
                                   data-bs-target="#experienceModal"
                                   data-id="{{ $experience->id }}"
                                   data-position="{{ $experience->position_id }}"
@@ -348,35 +348,47 @@
                   </div>
                   <div class="tab-pane fade" id="tab-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">
-                      <h5 class="font-bold">المعلومات المالية</h5>
+                      <h5 class="font-bold">المعلومات المالية</h5><a class="btn btn-primary px-4" href="" data-bs-toggle="modal" data-bs-target="#financial_dataModal">اضافة المعلومات المالية </a>
                     </div>
                     <hr/>
+                     @if(!$user_financial_data->isEmpty())
+                    @foreach ($user_financial_data as $financial_data)
                     <div class="qualification-card mb-3 p-3">
                       <div class="d-lg-flex align-items-center">
                         <div class="qualification-details w-100 row gx-2 mb-2 mb-lg-0">
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">رقم الايبان</h6>
-                            <h6 class="font-light text-gray font-12">2189 0239 0132 9888</h6>
+                            <h6 class="font-light text-gray font-12">{{$financial_data->iban_number}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">اسم البنك</h6>
-                            <h6 class="font-light text-gray font-12">الراجحي</h6>
+                            <h6 class="font-light text-gray font-12">{{$financial_data->bank->name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">اسم صاحب الحساب البنكي</h6>
-                            <h6 class="font-light text-gray font-12">عبدالله محمد الحربي</h6>
+                            <h6 class="font-light text-gray font-12">{{$financial_data->account_owner_name}}</h6>
                           </div>
                           <div class="col-lg col-4 mb-4 mb-lg-0">
                             <h6 class="mb-2 font-bold font-12">رقم هوية صاحب الحساب البنكي</h6>
-                            <h6 class="font-light text-gray font-12"> 90127903891</h6>
+                            <h6 class="font-light text-gray font-12"> {{$financial_data->account_owner_id_num}}</h6>
                           </div>
                         </div>
                         <div class="action-buttons ms-4 d-flex gap-3 col-auto">
-                          <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
+                          <button class="btn btn-white border-0 btn-icon edit-financial_data"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#financial_dataModal"
+                                  data-id="{{ $financial_data->id }}"
+                                  data-bank_id="{{ $financial_data->bank_id }}"
+                                  data-iban_number="{{ $financial_data->iban_number }}"
+                                  data-account_owner_name="{{ $financial_data->account_owner_name }}"
+                                  data-account_owner_id_num="{{ $financial_data->account_owner_id_num }}">
+                                  <img src="{{asset('assets/images/edit2.svg')}}" alt=""/></button>
                           <button class="btn btn-white border-0 btn-icon"><img src="{{asset('assets/images/delete.svg')}}" alt=""/></button>
                         </div>
                       </div>
                     </div>
+                     @endforeach
+                    @endif
                   </div>
                   <div class="tab-pane fade" id="tab-5">
                     <div class="d-flex align-items-center justify-content-between mb-3">
@@ -666,7 +678,87 @@
                 </div>
               </div>
             </div>
-          </div><!-- end:: modal -->
+          </div>
+          <!-- end:: modal -->
+
+
+          <!-- start:: modal -->
+          <div class="modal fade" id="financial_dataModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content border-0">
+                <div class="modal-header flex-column align-items-start">
+                  <h3 class="mb-2 font-semi-bold">إضافة المعلومات المالية</h3>
+                  <h6 class="text-gray">أضف خبراتك السابقة في العمل، سواء كانت موسمية أو دائمة. تساعد الخبرات الجهات في التعرف على مهاراتك العملية ومدى جاهزيتك للوظائف المعروضة.</h6>
+                </div>
+                <div class="modal-body p-0">
+                  <form action="{{route('individual.profile.add.financial_data')}}" method="POST" id="financial_dataForm">
+                    @csrf 
+                    <input type="hidden" name="financial_data_form_id" id="financial_data_form_id">
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="p-4">
+                          <div class="row"> 
+                            <div class="col-12">
+                              <div class="form-group"> 
+                                <label class="form-label">البنك <span class="text-danger">* </span></label>
+                                <select class="select2" data-placeholder="اختر" name="bank_id">
+                                  <option value="">اختر</option>
+                                  @foreach ($banks as $bank)
+                                    <option value="{{$bank->id}}">{{$bank->name}}</option>
+                                  @endforeach
+                                </select>
+                                 @error('bank_id')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group"> 
+                                <label class="form-label">رقم الايبان  <span class="text-danger">* </span></label>
+                               <input class="form-control" type="text" placeholder="رقم الايبان" name="iban_number"/>
+                                @error('iban_number')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group"> 
+                                <label class="form-label">اسم صاحب الحساب البنكي  <span class="text-danger">* </span></label>
+                               <input class="form-control" type="text" placeholder="اسم صاحب الحساب البنكي" name="account_owner_name"/>
+                                @error('account_owner_name')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group"> 
+                                <label class="form-label">رقم هوية صاحب الحساب البنكي  <span class="text-danger">* </span></label>
+                               <input class="form-control" type="text" placeholder="رقم هوية صاحب الحساب البنكي" name="account_owner_id_num"/>
+                                @error('account_owner_id_num')
+                                  <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="modal-footer d-flex align-items-center justify-content-between"> 
+                          <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
+                          <button class="btn btn-primary action_button" type="submit">إضافة</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end:: modal -->
+
 
 @section('scripts')
 <script>
@@ -737,6 +829,38 @@
 
       $('.select2').val(null).trigger('change');
     });
+
+     document.querySelectorAll('.edit-financial_data').forEach(button => {
+      button.addEventListener('click', function () {
+
+        document.querySelector('#financial_dataModal h3').innerText = 'تعديل المعلومات المالية';
+        document.querySelector('#financial_dataModal .action_button').innerText = 'تعديل';
+
+        let form = document.getElementById('financial_dataForm');
+        form.action = "{{ route('individual.profile.update.financial_data') }}";
+
+        document.getElementById('financial_data_form_id').value = this.dataset.id;
+        document.querySelector('[name="bank_id"]').value = this.dataset.bank_id;
+        document.querySelector('[name="iban_number"]').value = this.dataset.iban_number;
+        document.querySelector('[name="account_owner_name"]').value = this.dataset.account_owner_name;
+        document.querySelector('[name="account_owner_id_num"]').value = this.dataset.account_owner_id_num;
+
+        $('.select2').trigger('change');
+      });
+    });
+
+    document.getElementById('financial_dataModal').addEventListener('hidden.bs.modal', function () {
+
+      document.querySelector('#financial_dataModal h3').innerText = 'إضافة المعلومات المالية';
+      document.querySelector('#financial_dataModal .action_button').innerText = 'إضافة';
+
+      let form = document.getElementById('financial_dataForm');
+      form.action = "{{ route('individual.profile.add.financial_data') }}";
+      form.reset();
+
+      $('.select2').val(null).trigger('change');
+    });
+
 
 
   });

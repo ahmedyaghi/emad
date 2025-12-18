@@ -117,7 +117,7 @@
                             @endforeach
                           </div>
                           <div class="row"> 
-                              {{$applied_applications->links('common.pagination')}}
+                              {{$applied_applications->links('components.common.pagination')}}
                           </div>
                           @endif
                         </div>
@@ -129,7 +129,7 @@
                             @endforeach
                           </div>
                           <div class="row"> 
-                             {{$reviewed_applications->links('common.pagination')}}
+                             {{$reviewed_applications->links('components.common.pagination')}}
                           </div>
                           @endif
                         </div>
@@ -141,7 +141,7 @@
                            @endforeach
                           </div>
                           <div class="row"> 
-                            {{$accepted_applications->links('common.pagination')}}
+                            {{$accepted_applications->links('components.common.pagination')}}
                           </div>
                           @endif
                         </div>
@@ -153,7 +153,7 @@
                             @endforeach
                           </div>
                           <div class="row"> 
-                             {{$rejected_applications->links('common.pagination')}}
+                             {{$rejected_applications->links('components.common.pagination')}}
                           </div>
                           @endif
                         </div>

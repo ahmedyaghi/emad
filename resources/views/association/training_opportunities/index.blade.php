@@ -62,35 +62,13 @@
             </div>
             @if(!$training_opportunities->isEmpty())
             @foreach ($training_opportunities as $training_opportunity)
-              <div class="col-lg-4 col-md-6">
-                <div class="widget_item-card p-4 bg-white">
-                  <div class="widget_item-status {{$training_opportunity->getStatusClass()}} font-medium">{{$training_opportunity->getStatus()}}</div>
-                  <div class="widget_item-content">
-                    <h4 class="widget_item-title font-semi-bold mb-2 mt-3"><a href="{{route('association.training-opportunities.show', ['training_opportunity' => $training_opportunity])}}">{{$training_opportunity->title}}</a></h4>
-                    <h6 class="widget_item-desc text-gray mb-3">{{$training_opportunity->short_description}}</h6>
-                    <div class="widget_item-info mt-3 pt-3 d-flex align-items-center flex-wrap">
-                      <div class="col-6 mb-4">
-                        <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/user-group2.svg')}}" alt=""/><span class="info-title text-gray">متقدم<span class="font-bold d-block text-black mt-2">89</span></span></div>
-                      </div>
-                      <div class="col-6 mb-4">
-                        <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">{{$training_opportunity->updated_at}}</span></span></div>
-                      </div>
-                      <div class="col-6">
-                        <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ النشر<span class="font-bold d-block text-black mt-2">{{$training_opportunity->created_at}}</span></span></div>
-                      </div>
-                      <div class="col-6">
-                        <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ الانتهاء<span class="font-bold d-block text-black mt-2">{{$training_opportunity->end_date}}</span></span></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <x-association.training-card :model="$training_opportunity"/>
             @endforeach
             @endif
           </div>
           <div class="row"> 
             <div class="col-12"> 
-              {{$training_opportunities->links('common.pagination')}}
+              {{$training_opportunities->links('components.common.pagination')}}
             </div>
           </div>
 </x-common.layout>

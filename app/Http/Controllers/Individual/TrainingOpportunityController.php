@@ -29,6 +29,8 @@ class TrainingOpportunityController extends Controller
             $query = $query->where('association_id', request('association_id'));
         }
         $training_opportunities = $query->with('association');
+        $training_opportunities = $query->withCount('applications');
+
         $training_opportunities = $query->paginate(9);
         $associations = User::where('status', UserStatus::ACCEPTED)->where('type', UserType::ASSOCIATION)->get();
         $cities = City::all();
@@ -72,7 +74,7 @@ class TrainingOpportunityController extends Controller
         $applications = $query->where('user_id', auth()->id())->paginate(6);
         $applications = $query->paginate(9);
 
-        $associations = Association::all();
+        $associations = User::where('type', UserType::ASSOCIATION)->where('status', UserStatus::ACCEPTED)->get();
         $cities = City::all();
 
         return view('individual.training_opportunity_applications', get_defined_vars());
@@ -82,6 +84,10 @@ class TrainingOpportunityController extends Controller
     {
 
         $data = $request->validated();
+
+        if (TrainingOpportunityApplication::where('user_id', auth()->id())->where('training_id', $request->training_id)->exists()) {
+            return redirect()->route('individual.training-opportunity-applications')->with('error', 'تم التقديم مسبقاَ علي التدريب !');
+        }
         $data['user_id'] = auth()->id();
         $data['slug'] = Str::slug(TrainingOpportunity::find($request->training_id)->title);
         if ($request->hasFile('cv')) {

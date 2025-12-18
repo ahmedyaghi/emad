@@ -107,7 +107,7 @@
             @endforeach
           </div>
           <div class="row"> 
-            {{$trainees->links('common.pagination')}}
+            {{$trainees->links('components.common.pagination')}}
           </div>
           @endif
 </x-common.layout>

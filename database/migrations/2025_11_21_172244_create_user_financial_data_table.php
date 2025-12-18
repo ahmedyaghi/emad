@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('bank_id')->constrained()->onDelete('cascade');
             $table->string('iban_number');
             $table->string('account_owner_name');
-            $table->string('account_owner_id');
+            $table->string('account_owner_id_num')->unique();
             $table->timestamps();
         });
     }

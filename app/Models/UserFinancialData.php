@@ -11,6 +11,11 @@ class UserFinancialData extends Model
         'bank_id',
         'iban_number',
         'account_owner_name',
-        'account_owner_id',
+        'account_owner_id_num',
     ];
+
+    public function bank()
+    {
+        return $this->belongsTo(Bank::class);
+    }
 }

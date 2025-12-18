@@ -17,9 +17,9 @@ class AssociationController extends Controller
         return view('admin.associations.index', get_defined_vars());
     }
 
-    public function show(User $user)
+    public function show($id)
     {
-        $user->load('profile');
+        $user = User::with('profile')->findOrFail($id);
 
         return view('admin.associations.show', get_defined_vars());
     }

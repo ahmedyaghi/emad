@@ -71,7 +71,7 @@
           </div>
           @endif
           <div class="row">
-            {{$roles->links('common.pagination')}}
+            {{$roles->links('components.common.pagination')}}
           </div>
           <div class="drawer bg-white p-4">
             <div class="drawer-head mb-4">

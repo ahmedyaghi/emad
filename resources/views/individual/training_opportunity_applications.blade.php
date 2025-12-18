@@ -101,7 +101,7 @@
           @endif
           <div class="row"> 
             <div class="col-12"> 
-              {{$applications->links('common.pagination')}}
+              {{$applications->links('components.common.pagination')}}
             </div>
           </div>
 </x-common.layout>

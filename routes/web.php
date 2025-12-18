@@ -59,17 +59,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/profile/add-experiences', [App\Http\Controllers\Individual\ProfileController::class, 'add_experience'])->name('profile.add.experience');
         Route::post('/profile/update-experiences', [App\Http\Controllers\Individual\ProfileController::class, 'update_experience'])->name('profile.update.experience');
         Route::post('/profile/add-attachments', [App\Http\Controllers\Individual\ProfileController::class, 'add_attachment'])->name('profile.add.attachment');
+        Route::post('/profile/add-financial_data', [App\Http\Controllers\Individual\ProfileController::class, 'add_financial_data'])->name('profile.add.financial_data');
+        Route::post('/profile/update-financial_data', [App\Http\Controllers\Individual\ProfileController::class, 'update_financial_data'])->name('profile.update.financial_data');
+
         Route::get('/training-opportunity-applications', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_applications'])->name('training-opportunity-applications');
         Route::get('/training-opportunity-applications/{slug}', [App\Http\Controllers\Individual\TrainingOpportunityController::class, 'training_opportunity_application_details'])->name('training-opportunity-application-details');
         Route::resource('training-opportunities', App\Http\Controllers\Individual\TrainingOpportunityController::class)->names('training-opportunities');
         Route::get('/courses', [App\Http\Controllers\Individual\CourseController::class, 'courses'])->name('courses');
         Route::get('/courses/{slug}', [App\Http\Controllers\Individual\CourseController::class, 'course_details'])->name('course.details');
         Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
-        Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
         Route::get('/exams/start/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'start_exam'])->name('exam.start');
         Route::post('exam/{exam}/submit', [App\Http\Controllers\Individual\ExamController::class, 'submit'])->name('exams.submit');
         Route::get('/exams/result/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'exam_result'])->name('exams.result');
         Route::post('/progress/update', [App\Http\Controllers\Individual\ProgressController::class, 'update'])->name('progress.update');
+        Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
+
+        Route::resource('exams', App\Http\Controllers\Individual\ExamController::class)->names('exams');
+
     });
 
     Route::group(['prefix' => 'association', 'as' => 'association.', 'middleware' => ['role:association']], function () {

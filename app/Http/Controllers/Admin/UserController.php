@@ -41,6 +41,6 @@ class UserController extends Controller
             'status' => $status,
         ]);
 
-        return redirect()->route('admin.associations')->with('success', 'تم تعديل الحالة بنجاح');
+        return redirect()->route('admin.associations.index')->with('success', 'تم تعديل الحالة بنجاح');
     }
 }

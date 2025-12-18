@@ -90,7 +90,11 @@
                     </div>
                         <div class="widget_item-action row gx-2">
                         <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="{{route('individual.training-opportunities.show', $training_opportunity)}}">عرض تفاصيل </a></div>
-                        <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="{{route('individual.training-opportunities.show', $training_opportunity)}}">قدّم الآن </a></div>
+                         @if($training_opportunity->applications_count == 0) 
+                        <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="" data-bs-toggle="modal" data-bs-target="#profileCompletionFormModal">قدّم الآن </a></div>
+                        @else
+                           <div class="col-lg-5"><a class="btn btn-primary w-100" disabled>تم التقديم</a></div>
+                        @endif
                         </div>
                     </div>
                     </div>
@@ -98,9 +102,10 @@
                 @endforeach
               </div>
               <div class="row"> 
-                {{$training_opportunities->links('common.pagination')}}
+                {{$training_opportunities->links('components.common.pagination')}}
               </div>
             </div>
           </div>
           @endif
+@include('association.training_opportunities.modals')
 </x-common.layout>

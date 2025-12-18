@@ -406,7 +406,8 @@
 
                       $('#trainees-list').empty(); // يمكنك الإبقاء على السابق إذا أردت إضافة بدون مسح
                       response.forEach(function(user){
-                        let image = "{{$user->profile->image}}";
+                      
+                        let image = user.profile.image;
                         let name = user.name;
                         let id_number = user.id_number;
                         let id = user.id; 
@@ -515,11 +516,13 @@
               }, 1200); 
           }
         },
-        error: function(xhr, status, error){
-
-          toastr.error(xhr.responseText || 'حدث خطأ أثناء إضافة الدورة. حاول مرة أخرى.');
-              
-          }
+        error: function(result){
+         var msg = 'حدث خطأ أثناء الإضافة';
+          $.each(result.responseJSON.errors, function (key, value) {
+                msg += '<br>' + value;
+            });
+            toastr.error(msg);
+        }
         });
       }
  </script>

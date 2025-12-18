@@ -35,6 +35,6 @@
           </div>
           @endif
           <div class="row"> 
-            {{$reports->links('common.pagination')}}
+            {{$reports->links('components.common.pagination')}}
           </div>
 </x-common.layout>

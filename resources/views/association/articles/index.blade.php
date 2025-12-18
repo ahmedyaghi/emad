@@ -54,7 +54,7 @@
           <div class="row"> 
             <div class="col-12"> 
               <div class="pannel p-3">
-                {{$articles->links('common.pagination')}}
+                {{$articles->links('components.common.pagination')}}
               </div>
             </div>
           </div>

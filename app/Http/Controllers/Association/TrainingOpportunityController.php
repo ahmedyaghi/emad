@@ -28,6 +28,7 @@ class TrainingOpportunityController extends Controller
         }
 
         $training_opportunities = $query->with('association');
+        $training_opportunities = $query->withCount('applications');
         $training_opportunities = $query->where('association_id', auth()->id());
         $training_opportunities = $query->paginate(9);
 

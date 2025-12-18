@@ -72,7 +72,7 @@
                     <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ الانضمام <span class="font-bold d-block text-black mt-2">  {{$user->created_at}}</span></span></div>
                   </div>
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/city.svg')}}" alt=""/><span class="info-title text-gray"> الدور<span class="font-bold d-block text-black mt-2"> {{$user->getRoleNames()->first()}}</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/city.svg')}}" alt=""/><span class="info-title text-gray"> الدور<span class="font-bold d-block text-black mt-2"> {{$user->getType()}}</span></span></div>
                   </div>
                 </div>
               </div>
@@ -83,7 +83,7 @@
           <div class="row">
             <div class="col-12"> 
               <div class="pannel p-2">
-                {{$users->links('common.pagination')}}
+                {{$users->links('components.common.pagination')}}
               </div>
             </div>
           </div>

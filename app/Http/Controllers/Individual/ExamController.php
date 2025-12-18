@@ -10,28 +10,31 @@ use Illuminate\Support\Facades\Auth;
 
 class ExamController extends Controller
 {
-    public function exams()
+    public function index()
     {
-        $exams = Exam::whereHas('courses', function ($q) {
+        $exams = Exam::with('examAnswers')->whereHas('courses', function ($q) {
             $q->whereIn('courses.id', Auth::user()->courses->pluck('id'));
         })->paginate(9);
 
         return view('individual.exams.index', compact('exams'));
     }
 
-    public function start_exam(Exam $exam)
+    public function create()
     {
+        $exam = Exam::findOrfail(request('exam'));
         $exam->load('questions.answers');
         $exam_answer = ExamAnswer::where('user_id', auth()->id())->where('exam_id', $exam->id)->count() > 0;
 
         return view('individual.exams.start', compact('exam', 'exam_answer'));
     }
 
-    public function submit(Request $request, Exam $exam)
+    public function store(Request $request)
     {
         $request->validate([
             'answers' => 'required|array',
         ]);
+
+        $exam = Exam::findOrfail($request->exam_id);
 
         $exam->load('questions.answers');
 
@@ -40,7 +43,7 @@ class ExamController extends Controller
         $total = $exam->questions()->sum('score');
 
         $exam_answer = ExamAnswer::where('user_id', $user->id)->where('exam_id', $exam->id)->first();
-        if ($exam_answer->exists()) {
+        if (! is_null($exam_answer)) {
             return response()->json([
                 'success' => false,
                 'message' => 'تم تقديم الاختبار',
@@ -72,9 +75,11 @@ class ExamController extends Controller
         ]);
     }
 
-    public function exam_result(Exam $exam)
+    public function show($id)
     {
         $user = Auth::user();
+        $exam = Exam::findOrfail($id);
+
         $exam->load(['questions.answers', 'examAnswers' => function ($q) use ($user) {
             $q->where('user_id', $user->id);
         }]);

@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Individual;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Individual\AttachmentRequest;
 use App\Http\Requests\Individual\ExperienceRequest;
+use App\Http\Requests\Individual\FinancialDataRequest;
 use App\Http\Requests\Individual\QualificationRequest;
+use App\Models\Bank;
 use App\Models\City;
 use App\Models\Grade;
 use App\Models\Position;
@@ -27,9 +29,10 @@ class ProfileController extends Controller
         $grades = Grade::all();
         $positions = Position::all();
         $cities = City::all();
+        $banks = Bank::all();
         $user_qualifications = UserQualification::with(['qualification', 'university', 'specialization', 'grade'])->where('user_id', auth()->id())->get();
         $user_experiences = UserExperience::with(['city', 'position'])->where('user_id', auth()->id())->get();
-        $financial_data = UserFinancialData::where('user_id', auth()->id())->get();
+        $user_financial_data = UserFinancialData::with(['bank'])->where('user_id', auth()->id())->get();
         $user_attachments = UserAttachment::where('user_id', auth()->id())->get();
         $user = auth()->user();
 
@@ -64,6 +67,14 @@ class ProfileController extends Controller
         return redirect()->route('individual.profile')->with('success', 'تم إضافة المرفق بنجاح');
     }
 
+    public function add_financial_data(FinancialDataRequest $request)
+    {
+        $data = $request->validated();
+        auth()->user()->financial_data()->create($data);
+
+        return redirect()->route('individual.profile')->with('success', 'تم إضافة المعلومات المالية بنجاح');
+    }
+
     public function update_qualification(QualificationRequest $request)
     {
         $user_qualification = UserQualification::findOrfail($request->qualification_form_id);
@@ -78,6 +89,15 @@ class ProfileController extends Controller
         $user_experience = UserExperience::findOrfail($request->experience_form_id);
         $data = $request->validated();
         $user_experience->update($data);
+
+        return redirect()->route('individual.profile')->with('success', 'تم تعديل الخبرة بنجاح');
+    }
+
+    public function update_financial_data(FinancialDataRequest $request)
+    {
+        $user_financial_data = UserFinancialData::findOrfail($request->financial_data_form_id);
+        $data = $request->validated();
+        $user_financial_data->update($data);
 
         return redirect()->route('individual.profile')->with('success', 'تم تعديل الخبرة بنجاح');
     }

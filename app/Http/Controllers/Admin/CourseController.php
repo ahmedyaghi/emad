@@ -124,6 +124,7 @@ class CourseController extends Controller
             $query->orWhere('name', 'like', '%'.request('name').'%');
         }
         $query->where('type', UserType::INDIVIDUAL);
+        $query->with('profile');
         $trainees = $query->get();
 
         return response()->json($trainees);

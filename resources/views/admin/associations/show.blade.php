@@ -8,10 +8,12 @@
                     <div class="profile-content">
                       <div class="profile-logo"><img src="{{asset('assets/images/logo.svg')}}" alt=""/></div>
                       <div class="text-end mb-3">
+                        @if($user->status == App\Enums\UserStatus::PENDING)
                         <div class="d-inline-flex align-items-center gap-2">
                             <a class="btn btn-light-danger" href="{{route('admin.users.update.status', ['status' => App\Enums\UserStatus::REJECTED, 'id' => $user->id])}}">رفض</a>
                             <a class="btn btn-light-success" href="{{route('admin.users.update.status', ['status' => App\Enums\UserStatus::ACCEPTED, 'id' => $user->id])}}">قبول </a></div>
                       </div>
+                      @endif
                       <div class="profile-info">
                         <h3 class="font-semi-bold mb-2">{{$user->name}} </h3>
                         <h6 class="text-gray">{{$user->profile->bio}}</h6>
