@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Site;
 
+use App\Enums\UserStatus;
+use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Models\Association;
 use App\Models\City;
 use App\Models\TrainingOpportunity;
 use App\Models\TrainingOpportunityType;
+use App\Models\User;
 
 class TrainingOpportunityController extends Controller
 {
@@ -34,7 +37,7 @@ class TrainingOpportunityController extends Controller
         $training_opportunities = $query->paginate((request()->has('per_page') && ! empty(request('per_page')) ? request('per_page') : 9));
 
         $training_opportunity_types = TrainingOpportunityType::all();
-        $associations = Association::all();
+        $associations = User::with(['profile'])->where('status', UserStatus::ACCEPTED)->where('type', UserType::ASSOCIATION)->get();
         $cities = City::all();
 
         return view('site.training_opportunities', get_defined_vars());
