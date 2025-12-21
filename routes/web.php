@@ -28,7 +28,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-
     Route::get('/email/verify', [AuthController::class, 'notice'])->name('verification.notice');
     Route::post('/email/verify', [AuthController::class, 'verify'])->name('verification.verify');
     Route::get('/email/resend-cdoe', [AuthController::class, 'resend_cdoe'])->name('verification.resend.code');
