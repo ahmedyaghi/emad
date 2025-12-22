@@ -67,6 +67,13 @@ class User extends Authenticatable implements MustVerifyEmail
         );
     }
 
+    protected function updatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
     public function profile()
     {
         return $this->hasOne(UserProfile::class);

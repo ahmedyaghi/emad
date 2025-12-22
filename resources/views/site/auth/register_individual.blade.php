@@ -230,7 +230,6 @@
         $(document).ready(function() {
             $('#city_id').on('change', function() {
                 var cityId = $(this).val();
-                alert(cityId);
                 var url = "{{ route('cities.neighborhoods', ':city') }}";
                 url = url.replace(':city', cityId);
 
