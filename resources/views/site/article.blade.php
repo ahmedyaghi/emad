@@ -34,7 +34,7 @@
                   </div>
                 </div>
                 <div class="row mb-4">
-                   <div class="col-12"> <img class="w-100" src="{{Storage::url($article->image)}}" alt=""/></div>
+                   <div class="col-12"> <img class="w-100" src="{{$article->image}}" alt=""/></div>
                 </div>
                 <div class="row">
                   <div class="col-12">

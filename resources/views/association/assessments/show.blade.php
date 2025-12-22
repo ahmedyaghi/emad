@@ -21,7 +21,7 @@
             </div>
           </div>
           <div class="row"> 
-            <div class="col-12">
+              <div class="col-12">
               <div class="pannel">
                 <h3 class="font-semi-bold">معلومات الطالب</h3>
                 <hr/>
@@ -29,10 +29,10 @@
                   <div class="d-flex align-items-start">
                     <div class="col">
                       <div class="widget_item-user d-flex align-items-center">
-                        <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
+                        <div class="widget_item-user-avatar col-auto me-2"><img src="{{$assessment->application->user->profile?->image}}" alt=""/></div>
                         <div class="widget_item-user-info">
-                          <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                          <h6 class="text-gray">مشرف تنظيم حشود</h6>
+                          <h6 class="mb-1 font-medium">{{$assessment->application->user->name}}</h6>
+                          <h6 class="text-gray">{{$assessment->application->user->profile?->bio}}</h6>
                         </div>
                       </div>
                     </div>
@@ -40,28 +40,28 @@
                   <hr/>
                   <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="../assets/images/city2.svg" alt=""/><span class="info-title text-gray">  الجهة<span class="font-bold d-block text-black mt-2"> اسم الجهة</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/city2.svg')}}" alt=""/><span class="info-title text-gray">  الجهة<span class="font-bold d-block text-black mt-2"> اسم الجهة</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="../assets/images/student-card.svg" alt=""/><span class="info-title text-gray">  الرقم الجامعي<span class="text-black font-bold d-block mt-2"> 90127903891</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/student-card.svg')}}" alt=""/><span class="info-title text-gray">  الرقم الجامعي<span class="text-black font-bold d-block mt-2"> 90127903891</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="../assets/images/user2.svg" alt=""/><span class="info-title text-gray">   اسم عضو هيئة التدريس المشرف<span class="text-black font-bold d-block mt-2"> د. فلان فلان</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">   اسم عضو هيئة التدريس المشرف<span class="text-black font-bold d-block mt-2"> د. فلان فلان</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="../assets/images/user2.svg" alt=""/><span class="info-title text-gray">    اسم المستشار الميداني<span class="text-black font-bold d-block mt-2"> د. فلان فلان</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">    اسم المستشار الميداني<span class="text-black font-bold d-block mt-2"> د. فلان فلان</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">    تاريخ البداية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">    تاريخ البداية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">     تاريخ النهاية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>
+                      <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">     تاريخ النهاية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-12">
+            {{-- <div class="col-12">
               <div class="pannel border">
                 <h3 class="font-semi-bold">ملاحظات المشرف الميداني</h3>
                 <hr/>
@@ -70,14 +70,14 @@
                   <h6 class="font-medium">خلال هذا الأسبوع، تكرر تأخر عدد من الطلاب عن بداية الحلقة الصباحية بما يقارب 15 دقيقة. أقترح إرسال تذكير لأولياء الأمور بضرورة الالتزام بمواعيد الحضور لضمان انتظام الحلقة.</h6>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <div class="col-12">
               <div class="pannel border">
                 <div class="d-flex align-items-start justify-content-between"> 
                   <div class="col"> 
                     <h3 class="font-semi-bold"> معلومات عامة عن تقدم الطالب</h3>
                   </div>
-                  <div class="col-auto"> 
+                  {{-- <div class="col-auto"> 
                     <div class="bg-light rounded-4 p-4 row gx-lg-5 align-items-center">
                       <div class="col-auto">
                         <h6 class="mb-2 text-gray font-12 font-light">المعدل العام</h6>
@@ -88,7 +88,7 @@
                         <h6 class="font-12 font-semi-bold text-success">متوسط</h6>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                 </div>
                 <hr/>
                 <div class="responsive-wrapper">

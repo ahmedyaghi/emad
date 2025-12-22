@@ -17,6 +17,7 @@ Route::get('/contact-us', [ContactUsController::class, 'contact_us'])->name('con
 Route::post('/contact-us', [ContactUsController::class, 'handle_contact_us'])->name('handle.contact-us');
 Route::get('/news', [NewsController::class, 'news'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'news_details'])->name('news.details');
+Route::get('/cities/{city}/neighborhoods', [MainController::class, 'get_neighborhoods'])->name('cities.neighborhoods');
 
 Route::middleware('guest')->group(function () {
     Route::get('/register/{type}', [AuthController::class, 'register'])->name('register');

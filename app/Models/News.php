@@ -15,4 +15,9 @@ class News extends Model
         'description',
         'published_at',
     ];
+
+    public function association()
+    {
+        return $this->belongsTo(User::class, 'association_id', 'id');
+    }
 }

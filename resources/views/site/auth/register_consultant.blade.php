@@ -96,7 +96,7 @@
                         @endif
                       </div>
                      </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                       <div class="form-group">
                         <label class="mb-2"> ﻧﻮع اﻟﻌﻤﻞ <span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="work_type_id">
@@ -108,7 +108,7 @@
                               <span class="text-danger">{{ $errors->first('work_type_id') }}</span>
                         @endif
                       </div>
-                    </div>
+                    </div> --}}
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="mb-2">الجنسية<span class="text-danger ms-1">*</span></label>
@@ -153,7 +153,7 @@
                   <div class="row"> 
                     <div class="col-12"> </div>
                   </div>
-                  <div class="row"> 
+                  {{-- <div class="row"> 
                     <div class="col-12">
                       <div class="experience">
                         <div class="row align-items-end">
@@ -182,7 +182,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
                      <div class="row"> 
                     <div class="col-12">
                       <div class="form-group text-end"> 

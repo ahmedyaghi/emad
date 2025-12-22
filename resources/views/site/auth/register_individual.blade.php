@@ -64,8 +64,9 @@
                               <label class="mb-2"> اﻟﺠﺎﻣﻌﺔ<span class="text-danger ms-1">*</span></label>
                               <select class="select2 form-control" data-placeholder="اختر" name="university_id">
                                 <option></option>
-                                <option value="1">اﻟﺠﺎﻣﻌﺔ 1</option>
-                                <option value="2">اﻟﺠﺎﻣﻌﺔ 2</option>
+                                @foreach ($univerisities as $university)
+                                  <option value="{{$university->id}}">{{$university->name}}</option>
+                                @endforeach
                               </select>
                                @if ($errors->has('university_id'))
                                     <span class="text-danger">{{ $errors->first('university_id') }}</span>
@@ -77,8 +78,9 @@
                               <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
                               <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
                                 <option></option>
-                                <option value="1">اﻟﺘﺨﺼﺺ 1</option>
-                                <option value="2">اﻟﺘﺨﺼﺺ 2</option>
+                                @foreach ($specializations as $specialization)
+                                  <option value="{{$specialization->id}}">{{$specialization->name}}</option>
+                                @endforeach
                               </select>
                               @if ($errors->has('specilization_id'))
                                     <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
@@ -88,10 +90,11 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="mb-2">اﻟﻤﺪﻳﻨﺔ</label>
-                              <select class="select2 form-control" data-placeholder="اختر" name="city_id">
+                              <select class="select2 form-control" data-placeholder="اختر" name="city_id" id="city_id">
                                 <option></option>
-                                <option value="1">اﻟﻤﺪﻳﻨﺔ 1</option>
-                                <option value="2">اﻟﻤﺪﻳﻨﺔ 2</option>
+                               @foreach ($cities as $city)
+                                  <option value="{{$city->id}}">{{$city->name}}</option>  
+                               @endforeach
                               </select>
                               @if ($errors->has('city_id'))
                                     <span class="text-danger">{{ $errors->first('city_id') }}</span>
@@ -101,13 +104,11 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="mb-2"> اﻟﺤﻲ</label>
-                              <select class="select2 form-control" data-placeholder="اختر" name="neighabourhood_id">
+                              <select class="select2 form-control" data-placeholder="اختر" name="neighborhood_id" id="neighborhood_id">
                                 <option></option>
-                                <option value="1">اﻟﺤﻲ 1</option>
-                                <option value="2">اﻟﺤﻲ 2</option>
                               </select>
-                               @if ($errors->has('neighabourhood_id'))
-                                    <span class="text-danger">{{ $errors->first('neighabourhood_id') }}</span>
+                               @if ($errors->has('neighborhood_id'))
+                                    <span class="text-danger">{{ $errors->first('neighborhood_id') }}</span>
                               @endif
                             </div>
                           </div>
@@ -123,9 +124,7 @@
                                 </div>
                                 <div class="col-auto">
                                   <select class="form-control  select2 " data-width="100px" data-placeholder="اختر" name="code">
-                                    <option value="+966">966</option>
-                                    <option value="+968">968</option>
-                                    <option value="+969">969</option>
+                                    <option value="+966" selected>966</option>
                                   </select>
                                 </div>
                               </div>
@@ -158,7 +157,7 @@
                             @endif
                             </div>
                           </div>
-                          <div class="col-12">
+                          <div class="col-6">
                             <div class="form-group"> 
                               <label class="mb-2">حسابك في لينكدان (LinkedIn)</label>
                               <input class="form-control" type="text" placeholder="حسابك في لينكدان (LinkedIn)" name="linkedin" value="{{old('linkedin')}}"/>
@@ -172,15 +171,16 @@
                               <label class="mb-2">اﻟﻤﻬـﺎرات</label>
                               <select class="select2 form-control" data-placeholder="اختر" name="skill_id">
                                 <option></option>
-                                <option value="1">اﻟﻤﻬـﺎرات 1</option>
-                                <option value="2">اﻟﻤﻬـﺎرات 2</option>
+                                @foreach ($skills as $skill)
+                                  <option value="{{$skill->id}}">{{$skill->name}}</option>
+                                @endforeach
                               </select>
                               @if ($errors->has('skill_id'))
                                 <span class="text-danger">{{ $errors->first('skill_id') }}</span>
                             @endif
                             </div>
                           </div>
-                          <div class="col-md-6">
+                          {{-- <div class="col-md-6">
                             <div class="form-group">
                               <label class="mb-2"> الدورات اﻟﺘـﺪرﻳﺒﻴـﺔ</label>
                               <select class="select2 form-control" data-placeholder="اختر" name="course_id">
@@ -192,7 +192,7 @@
                                 <span class="text-danger">{{ $errors->first('course_id') }}</span>
                             @endif
                             </div>
-                          </div>
+                          </div> --}}
                           <div class="col-12">
                             <div class="form-group"> 
                               <div class="upload-box">
@@ -222,5 +222,37 @@
               </div>
             </div>
           </div>
-        </section><!-- end:: section --> 
+        </section>
+        <!-- end:: section --> 
+
+ @section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#city_id').on('change', function() {
+                var cityId = $(this).val();
+                alert(cityId);
+                var url = "{{ route('cities.neighborhoods', ':city') }}";
+                url = url.replace(':city', cityId);
+
+                if(cityId) {
+                    $.ajax({
+                        url: url,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('#neighborhood_id').empty().append('<option value="">اختر الحي</option>');
+                            $.each(data, function(key, value) {
+                                $('#neighborhood_id').append('<option value="'+ value.id +'">'+ value.name +'</option>');
+                            });
+                            $('#neighborhood_id').trigger('change.select2'); 
+                        }
+                    });
+                } else {
+                    $('#neighborhood_id').empty().append('<option value="">اختر الحي</option>');
+                    $('#neighborhood_id').trigger('change.select2');
+                }
+            });
+        });
+    </script>
+    @endsection
 </x-site.layout>

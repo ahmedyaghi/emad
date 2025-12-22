@@ -23,4 +23,11 @@ class MainController extends Controller
 
         return view('site.main', get_defined_vars());
     }
+
+    public function get_neighborhoods(City $city)
+    {
+        $neighborhoods = $city->neighborhoods()->select('id', 'name')->get();
+
+        return response()->json($neighborhoods);
+    }
 }

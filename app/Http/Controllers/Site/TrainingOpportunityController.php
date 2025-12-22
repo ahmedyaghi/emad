@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Site;
 use App\Enums\UserStatus;
 use App\Enums\UserType;
 use App\Http\Controllers\Controller;
-use App\Models\Association;
 use App\Models\City;
 use App\Models\TrainingOpportunity;
 use App\Models\TrainingOpportunityType;

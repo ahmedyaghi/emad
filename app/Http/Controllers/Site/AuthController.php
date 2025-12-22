@@ -9,6 +9,10 @@ use App\Http\Requests\Site\Auth\LoginRequest;
 use App\Http\Requests\Site\Auth\RegisterRequest;
 use App\Http\Requests\Site\Auth\VerifyCodeRequest;
 use App\Mail\VerifyUserMail;
+use App\Models\City;
+use App\Models\Skill;
+use App\Models\Specialization;
+use App\Models\University;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,21 +25,25 @@ class AuthController extends Controller
 {
     public function register($type)
     {
+        $univerisities = University::all();
+        $cities = City::all();
+        $specializations = Specialization::all();
+        $skills = Skill::all();
         switch ($type) {
             case 'individual':
-                return view('site.auth.register_individual');
+                return view('site.auth.register_individual', get_defined_vars());
                 exit;
             case 'association':
-                return view('site.auth.register_association');
+                return view('site.auth.register_association', get_defined_vars());
                 exit;
             case 'faculty-member':
-                return view('site.auth.register_faculty_member');
+                return view('site.auth.register_faculty_member', get_defined_vars());
                 exit;
             case 'consultant':
-                return view('site.auth.register_consultant');
+                return view('site.auth.register_consultant', get_defined_vars());
                 exit;
             default:
-                return view('site.auth.register_individual');
+                return view('site.auth.register_individual', get_defined_vars());
                 exit;
         }
     }
@@ -72,7 +80,6 @@ class AuthController extends Controller
         Mail::to($user->email)->send(new VerifyUserMail($user->name, $code));
 
         return view('site.auth.registration_success');
-
     }
 
     public function handle_login(LoginRequest $request)

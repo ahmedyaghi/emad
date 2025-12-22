@@ -63,6 +63,7 @@
     <script src="{{asset('assets/js/toastr.min.js')}}"></script>
     <script src="{{asset('assets/js/aos.js')}}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    @yield('scripts')
     <script>
       $(document).ready(function() {
           var $select = $('#per_page');
@@ -99,7 +100,7 @@
             toastr.warning("{{ session('warning') }}");
         @endif
       </script>
-
+    
 
 
   </body>

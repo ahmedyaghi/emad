@@ -34,7 +34,7 @@
                 <div class="form-group mb-0">
                   <div class=" gap-2 d-flex justify-content-between mt-4">
                     <button class="btn btn-white px-5" type="button" data-bs-dismiss="modal">إلغاء</button>
-                    <button class="btn btn-primary px-5" type="submit" data-bs-dismiss="modal"> تأكيد</button>
+                    <button class="btn btn-primary px-5" type="submit" data-bs-dismiss="modal"> ارسال</button>
                   </div>
                 </div>
               </form>

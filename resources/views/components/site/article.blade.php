@@ -1,7 +1,7 @@
 <div class="swiper-slide">
     <div class="widget_item-card m-2 widget_2">
         <div class="widget_item-image mb-3"><a href="{{route('article', $model->slug)}}">
-                <picture> <img src="{{Storage::url($model->image)}}" alt="" /></picture>
+                <picture> <img src="{{$model->image}}" alt="" /></picture>
             </a></div>
         <div class="widget_item-content">
             <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('article', $model->slug)}}">{{$model->title}}</a></h4>
