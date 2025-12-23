@@ -74,7 +74,7 @@
                             <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-2-1" type="button" role="tab">المتقدمين ({{count($applied_applications)}})</button>
                           </li>
                           <li class="nav-item">
-                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-2" type="button" role="tab">المرشحين ({{count($reviewed_applications)}})</button>
+                            <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-2" type="button" role="tab">قيد المراجعة ({{count($reviewed_applications)}})</button>
                           </li>
                           <li class="nav-item">
                             <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2-3" type="button" role="tab">وافق ({{count($accepted_applications)}})</button>

@@ -29,6 +29,8 @@ class TrainingOpportunityRequest extends FormRequest
             'city_id' => 'required|exists:cities,id',
             'type_id' => 'required|exists:training_opportunity_types,id',
             'qualification_id' => 'required|exists:qualifications,id',
+            'consultant_id' => 'required|exists:users,id',
+            'faculty_member_id' => 'required|exists:users,id',
             'target' => 'required|in:1,2,3',
             'salary' => 'required|string',
             'short_description' => 'required|string',

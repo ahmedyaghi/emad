@@ -28,6 +28,8 @@ class TrainingOpportunity extends Model
         'start_date',
         'end_date',
         'qualification_id',
+        'consultant_id',
+        'faculty_member_id',
         'status',
     ];
 
@@ -67,6 +69,13 @@ class TrainingOpportunity extends Model
     }
 
     protected function updatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
+    protected function startDate(): Attribute
     {
         return Attribute::make(
             get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')

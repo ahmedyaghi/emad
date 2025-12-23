@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('type_id')->nullable()->constrained('training_opportunity_types')->onDelete('cascade');
             $table->foreignId('city_id')->nullable()->constrained('cities')->onDelete('cascade');
             $table->foreignId('qualification_id')->nullable()->constrained('qualifications')->onDelete('cascade');
+            $table->foreignId('consultant_id')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('faculty_member_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->string('title')->unique();
             $table->string('slug')->unique();
             $table->date('start_date')->nullable();

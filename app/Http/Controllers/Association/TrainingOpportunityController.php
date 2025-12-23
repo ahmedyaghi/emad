@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Association;
 
 use App\Enums\TrainingApplicationStatus;
+use App\Enums\UserStatus;
+use App\Enums\UserType;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Association\TrainingOpportunityRequest;
 use App\Models\City;
@@ -10,6 +12,8 @@ use App\Models\Qualification;
 use App\Models\TrainingOpportunity;
 use App\Models\TrainingOpportunityApplication;
 use App\Models\TrainingOpportunityType;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class TrainingOpportunityController extends Controller
@@ -65,6 +69,8 @@ class TrainingOpportunityController extends Controller
         $types = TrainingOpportunityType::all();
         $cities = City::all();
         $qualifications = Qualification::all();
+        $consultants = User::with(['profile'])->where('status', UserStatus::ACCEPTED)->where('type', UserType::CONSULTANT)->get();
+        $faculty_members = User::with(['profile'])->where('status', UserStatus::ACCEPTED)->where('type', UserType::FACULTY_MEMBER)->get();
 
         return view('association.training_opportunities.create', get_defined_vars());
     }
@@ -87,13 +93,29 @@ class TrainingOpportunityController extends Controller
                     break;
             }
         }
-        $data['start_date'] = date('Y-m-d', strtotime($data['start_date']));
-        $data['end_date'] = date('Y-m-d', strtotime($data['end_date']));
+        // $data['start_date'] = date('Y-m-d', strtotime($data['start_date']));
+        // $data['end_date'] = date('Y-m-d', strtotime($data['end_date']));
         $data['slug'] = Str::slug($data['title']);
         $data['status'] = 1;
         unset($data['target']);
         TrainingOpportunity::create($data);
 
         return redirect()->route('association.training-opportunities.index')->with('success', 'تم إضافة الدورة التدريبية بنجاح');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required',
+        ]);
+
+        $application = TrainingOpportunityApplication::findOrFail($id);
+
+        $application->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->back()->with('success', 'تم تحديث حالة الطلب بنجاح');
+
     }
 }

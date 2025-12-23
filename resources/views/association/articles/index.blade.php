@@ -36,7 +36,7 @@
             <div class="col-lg-4 col-md-6">
               <div class="widget_item-card card">
                 <div class="widget_item-image mb-3"><a href="{{route('association.articles.show', $article)}}"> 
-                    <picture> <img src="{{Storage::url($article->image)}}" alt="{{$article->title}}"/></picture></a></div>
+                    <picture> <img src="{{$article->image}}" alt="{{$article->title}}"/></picture></a></div>
                 <div class="widget_item-content">
                   <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('association.articles.show', $article)}}">{{$article->title}}</a></h4>
                   <h6 class="widget_item-desc text-gray mb-3">{{$article->short_description}}</h6>

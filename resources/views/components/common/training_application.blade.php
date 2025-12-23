@@ -18,10 +18,71 @@
           <div class="dropdown ms-2">
             <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="{{asset('assets/images/more-vertical.svg')}}" alt=""/></button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/file-add.svg')}}" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a>
-              <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/file-add.svg')}}" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a>
-              <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/user.svg')}}" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a>
-              <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/delete2.svg')}}" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
+              @if($application->status == App\Enums\TrainingApplicationStatus::APPLIED)
+
+              <form method="POST" action="{{ route('association.training-opportunities.update', $application->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <input type="hidden" name="status"
+                        value="{{ App\Enums\TrainingApplicationStatus::REVIEWED }}">
+                  <button type="submit" class="dropdown-item">
+                      قيد المراجعة
+                  </button>
+              </form>
+
+              <form method="POST" action="{{ route('association.training-opportunities.update', $application->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <input type="hidden" name="status"
+                        value="{{ App\Enums\TrainingApplicationStatus::ACCEPTED }}">
+                  <button type="submit" class="dropdown-item">
+                      قبول
+                  </button>
+              </form>
+
+              <form method="POST" action="{{ route('association.training-opportunities.update', $application->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <input type="hidden" name="status"
+                        value="{{ App\Enums\TrainingApplicationStatus::REJECTED }}">
+                  <button type="submit" class="dropdown-item text-danger">
+                      رفض
+                  </button>
+              </form>
+
+
+              @elseif($application->status == App\Enums\TrainingApplicationStatus::REVIEWED)
+
+
+              <form method="POST" action="{{ route('association.training-opportunities.update', $application->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <input type="hidden" name="status"
+                        value="{{ App\Enums\TrainingApplicationStatus::ACCEPTED }}">
+                  <button type="submit" class="dropdown-item">
+                      قبول
+                  </button>
+              </form>
+
+              <form method="POST" action="{{ route('association.training-opportunities.update', $application->id) }}">
+                  @csrf
+                  @method('PUT')
+                  <input type="hidden" name="status"
+                        value="{{ App\Enums\TrainingApplicationStatus::REJECTED }}">
+                  <button type="submit" class="dropdown-item text-danger">
+                      رفض
+                  </button>
+              </form>
+
+              @elseif($application->status == App\Enums\TrainingApplicationStatus::ACCEPTED)
+
+                <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/file-add.svg')}}" alt=""/></span><span class="font-medium">تقييم المتدرب </span></a>
+                <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/file-add.svg')}}" alt=""/></span><span class="font-medium">اضافة تقرير  </span></a>
+                <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/user.svg')}}" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a>
+                <a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/delete2.svg')}}" alt=""/></span><span class="font-medium">حذف من التدريب </span></a>
+              
+                @endif
+            </div>
           </div>
         </div>
       </div>

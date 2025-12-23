@@ -4,7 +4,7 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href=""> استكشف الوظائف</a></div>
+                    <div class="breadcrumb-item"><a href="{{route('association.training-opportunities.index')}}"> استكشف الوظائف</a></div>
                     <div class="breadcrumb-item"> نشر تدريب جديد</div>
                   </ol>
                 </div>
@@ -60,10 +60,46 @@
                             @endif
                           </div>
                         </div>
+
+                        <div class="col-md-6"> 
+                          <div class="form-group"> 
+                            <label class="mb-2">  المستشار  <span class="text-danger"> *</span></label>
+                            <select class="select2 form-control" data-placeholder="اختر" name="consultant_id">
+                              @if(!$cities->isEmpty())
+                                    <option> </option>
+                                  @foreach($consultants as $consultant)
+                                    <option value="{{ $consultant->id }}">{{ $consultant->name }}</option>
+                                  @endforeach
+                             @endif
+                            </select>
+                             @if ($errors->has('consultant_id'))
+                             <span class="text-danger">{{ $errors->first('consultant_id') }}</span>
+                            @endif
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-6"> 
+                          <div class="form-group"> 
+                            <label class="mb-2">  عضو هيئة التدريس  <span class="text-danger"> *</span></label>
+                            <select class="select2 form-control" data-placeholder="اختر" name="faculty_member_id">
+                              @if(!$cities->isEmpty())
+                                    <option> </option>
+                                  @foreach($faculty_members as $faculty_member)
+                                    <option value="{{ $faculty_member->id }}">{{ $faculty_member->name }}</option>
+                                  @endforeach
+                             @endif
+                            </select>
+                             @if ($errors->has('faculty_member_id'))
+                             <span class="text-danger">{{ $errors->first('faculty_member_id') }}</span>
+                            @endif
+                          </div>
+                        </div>
+
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> تاريخ بدء التدريب  <span class="text-danger"> *</span></label>
-                            <input class="form-control datetimepicker" type="text" placeholder="تاريخ بدء التدريب" name="start_date"/>
+                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ بدء التدريب" name="start_date" autocomplete="off"/>
                              @if ($errors->has('start_date'))
                              <span class="text-danger">{{ $errors->first('start_date') }}</span>
                             @endif
@@ -72,7 +108,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> تاريخ نهاية التدريب   <span class="text-danger"> *</span></label>
-                            <input class="form-control datetimepicker" type="text" placeholder="تاريخ نهاية التدريب" name="end_date"/>
+                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ نهاية التدريب" name="end_date" autocomplete="off"  />
                              @if ($errors->has('end_date'))
                              <span class="text-danger">{{ $errors->first('end_date') }}</span>
                             @endif

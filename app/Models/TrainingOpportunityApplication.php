@@ -33,7 +33,7 @@ class TrainingOpportunityApplication extends Model
             TrainingApplicationStatus::REVIEWED => 'قيد المراجعة',
             TrainingApplicationStatus::ACCEPTED => 'تم القبول',
             TrainingApplicationStatus::REJECTED => 'تم الرفض',
-            default => 'غير محدد'
+            default => ''
         };
     }
 
@@ -62,10 +62,10 @@ class TrainingOpportunityApplication extends Model
     public function getStatusText()
     {
         return match ($this->status) {
-            TrainingApplicationStatus::APPLIED => 'نص يصف الحالة المقدمة',
-            TrainingApplicationStatus::REVIEWED => 'نص يصف الحالة المقدمة',
-            TrainingApplicationStatus::ACCEPTED => 'نص يصف الحالة المقدمة',
-            TrainingApplicationStatus::REJECTED => 'نص يصف الحالة المقدمة',
+            TrainingApplicationStatus::APPLIED => 'تم التقديم',
+            TrainingApplicationStatus::REVIEWED => 'قيد المراجعة',
+            TrainingApplicationStatus::ACCEPTED => 'تم القبول',
+            TrainingApplicationStatus::REJECTED => 'تم الرفض',
             default => ''
         };
     }

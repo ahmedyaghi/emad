@@ -15,6 +15,8 @@ class TrainingOpportunitySeeder extends Seeder
         for ($i = 1; $i <= 5; $i++) {
             TrainingOpportunity::create([
                 'association_id' => 3,
+                'consultant_id' => 5,
+                'faculty_member_id' => 4,
                 'type_id' => 1,
                 'city_id' => 1,
                 'title' => 'فرصة تدريب في القطاع غير الربحي'.$i,
