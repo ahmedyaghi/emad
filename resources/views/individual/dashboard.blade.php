@@ -6,7 +6,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">0</h2>
                         <h6 class="text-gray">عدد المهارات المكتسبة</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
@@ -19,7 +19,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">0</h2>
                         <h6 class="text-gray">عدد الدورات المكتملة</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
@@ -32,7 +32,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">0</h2>
                         <h6 class="text-gray">عدد الاختبارات</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
@@ -45,7 +45,7 @@
                   <div class="card-body">
                     <div class="d-flex">
                       <div class="col">
-                        <h2 class="font-semi-bold">10</h2>
+                        <h2 class="font-semi-bold">0</h2>
                         <h6 class="text-gray">عدد المهام والتقارير</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
