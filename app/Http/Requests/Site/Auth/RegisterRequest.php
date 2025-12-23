@@ -38,13 +38,13 @@ class RegisterRequest extends FormRequest
                 $rules = array_merge($rules, [
                     'age' => 'required|integer',
                     'gender' => 'required|integer|in:1,2',
-                    'university_id' => 'required|string|max:255',
+                    'university_id' => 'required|exists:universities,id',
                     'file' => 'nullable|file|mimes:pdf,doc,docx',
                     'city_id' => 'required|string|max:255',
-                    'neighabourhood_id' => 'required|string|max:255',
+                    'neighborhood_id' => 'required|exists:neighborhoods,id',
                     'linkedin' => 'required|string|max:255',
-                    'skill_id' => 'required|string|max:255',
-                    'course_id' => 'required|string|max:255',
+                    'skill_id' => 'required|exists:skills,id',
+                    // 'course_id' => 'required|string|max:255',
                     'type' => 'required|in:'.UserType::INDIVIDUAL->value,
                 ]);
                 break;
