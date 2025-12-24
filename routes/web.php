@@ -67,7 +67,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('training-opportunities', App\Http\Controllers\Individual\TrainingOpportunityController::class)->names('training-opportunities');
         Route::get('/courses', [App\Http\Controllers\Individual\CourseController::class, 'courses'])->name('courses');
         Route::get('/courses/{slug}', [App\Http\Controllers\Individual\CourseController::class, 'course_details'])->name('course.details');
-        Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
+        // Route::get('/reports', [App\Http\Controllers\Individual\ReportController::class, 'reports'])->name('reports');
         Route::get('/exams/start/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'start_exam'])->name('exam.start');
         Route::post('exam/{exam}/submit', [App\Http\Controllers\Individual\ExamController::class, 'submit'])->name('exams.submit');
         Route::get('/exams/result/{exam}', [App\Http\Controllers\Individual\ExamController::class, 'exam_result'])->name('exams.result');
@@ -75,6 +75,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/exams', [App\Http\Controllers\Individual\ExamController::class, 'exams'])->name('exams');
 
         Route::resource('exams', App\Http\Controllers\Individual\ExamController::class)->names('exams');
+        Route::resource('reports', App\Http\Controllers\Individual\ReportController::class)->names('reports');
+        Route::resource('assessments', App\Http\Controllers\Individual\AssessmentController::class)->names('assessments');
 
     });
 

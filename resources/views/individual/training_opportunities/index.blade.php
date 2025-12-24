@@ -15,7 +15,7 @@
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">تاريخ النشر </label>
-                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ النشر " name="published_at"/>
+                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ النشر " name="published_at" autocomplete="off"/>
                             </div>
                           </div>
                           <div class="col-md-4"> 

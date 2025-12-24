@@ -9,7 +9,7 @@
     <div class="modal-body p-0">
         <form action="{{route('individual.training-opportunities.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="training_id" value="{{$training_opportunity->id}}">
+        <input type="hidden" name="training_id" value="{{$training_opportunity->id ?? ''}}">
         <div class="row">
             <div class="col-12">
             <div class="p-4">

@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Report extends Model
 {
@@ -26,5 +27,22 @@ class Report extends Model
         return Attribute::make(
             get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
+    }
+
+    public function getFileSizeAttribute()
+    {
+        if (! $this->file || ! Storage::disk('public')->exists($this->file)) {
+            return '';
+        }
+
+        $bytes = Storage::disk('public')->size($this->file);
+
+        if ($bytes >= 1048576) {
+            return round($bytes / 1024 / 1024, 2).' ميجابايت';
+        } elseif ($bytes >= 1024) {
+            return round($bytes / 1024, 2).' كيلوبايت';
+        }
+
+        return $bytes.' بايت';
     }
 }

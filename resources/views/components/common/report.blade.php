@@ -1,8 +1,11 @@
 <div class="col-lg-4 col-md-6">
     <div class="card widget_item-card p-4 rounded-4">
     <div class="widget_item-content">
+        @php
+          $role = auth()->user()->getRoleNames()->first();
+        @endphp
         <div class="d-flex align-items-center justify-content-between mb-3">
-        <h4 class="widget_item-title font-semi-bold"><a href="{{route('association.reports.show', $report)}}">{{$report->title}}</a></h4>
+        <h4 class="widget_item-title font-semi-bold"><a href="{{route($role.'.reports.show', $report)}}">{{$report->title}}</a></h4>
         <a class="btn btn-light p-1 rounded" href="{{Storage::url($report->file)}}"><img src="{{asset('assets/images/download2.svg')}}" alt=""/></a>
         </div>
         <h6 class="widget_item-desc text-gray mb-3">{{$report->description}}</h6>

@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Association\ReportRequest;
 use App\Models\Report;
 use App\Models\TrainingOpportunityApplication;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ReportController extends Controller
@@ -46,20 +45,6 @@ class ReportController extends Controller
 
     public function show(Report $report)
     {
-        $size = Storage::disk('public')->size($report->file);
-        $report->file_size = $this->formatFileSize($size);
-
         return view('association.reports.show', get_defined_vars());
-    }
-
-    private function formatFileSize($bytes)
-    {
-        if ($bytes >= 1048576) {
-            return round($bytes / 1024 / 1024, 2).' ميجابايت';
-        } elseif ($bytes >= 1024) {
-            return round($bytes / 1024, 2).' كيلوبايت';
-        }
-
-        return $bytes.' بايت';
     }
 }
