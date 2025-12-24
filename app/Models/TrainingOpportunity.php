@@ -88,4 +88,14 @@ class TrainingOpportunity extends Model
             get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
+
+    public function consultant()
+    {
+        return $this->belongsTo(User::class, 'consultant_id', 'id');
+    }
+
+    public function faculty_member()
+    {
+        return $this->belongsTo(User::class, 'faculty_member_id', 'id');
+    }
 }

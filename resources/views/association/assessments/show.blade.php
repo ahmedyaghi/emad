@@ -40,37 +40,37 @@
                   <hr/>
                   <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/city2.svg')}}" alt=""/><span class="info-title text-gray">  الجهة<span class="font-bold d-block text-black mt-2"> اسم الجهة</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/city2.svg')}}" alt=""/><span class="info-title text-gray">  الجهة<span class="font-bold d-block text-black mt-2"> {{$assessment->application->training->association->name}} </span></span></div>
+                    </div>
+                    {{-- <div class="col-6 col-lg-3">
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/student-card.svg')}}" alt=""/><span class="info-title text-gray">  الرقم الجامعي<span class="text-black font-bold d-block mt-2">11</span></span></div>
+                    </div> --}}
+                    <div class="col-6 col-lg-3">
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">   اسم عضو هيئة التدريس المشرف<span class="text-black font-bold d-block mt-2">{{$assessment->application->training->faculty_member->name}}</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/student-card.svg')}}" alt=""/><span class="info-title text-gray">  الرقم الجامعي<span class="text-black font-bold d-block mt-2"> 90127903891</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">    اسم المستشار الميداني<span class="text-black font-bold d-block mt-2">{{$assessment->application->training->consultant->name}}</span></span></div>
                     </div>
-                    <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">   اسم عضو هيئة التدريس المشرف<span class="text-black font-bold d-block mt-2"> د. فلان فلان</span></span></div>
-                    </div>
-                    <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">    اسم المستشار الميداني<span class="text-black font-bold d-block mt-2"> د. فلان فلان</span></span></div>
-                    </div>
-                    <div class="col-6 col-lg-3">
+                    {{-- <div class="col-6 col-lg-3">
                       <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">    تاريخ البداية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
                       <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">     تاريخ النهاية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
               </div>
             </div>
-            {{-- <div class="col-12">
+            <div class="col-12">
               <div class="pannel border">
-                <h3 class="font-semi-bold">ملاحظات المشرف الميداني</h3>
+                <h3 class="font-semi-bold">معلومات التقييم</h3>
                 <hr/>
                 <div class="widget_item-card rounded-4 p-4">
-                  <h6 class="mb-3 font-light font-12">ملاحظات المشرف الميداني</h6>
-                  <h6 class="font-medium">خلال هذا الأسبوع، تكرر تأخر عدد من الطلاب عن بداية الحلقة الصباحية بما يقارب 15 دقيقة. أقترح إرسال تذكير لأولياء الأمور بضرورة الالتزام بمواعيد الحضور لضمان انتظام الحلقة.</h6>
+                  <h6 class="mb-3 font-light font-12">{{$assessment->name}}</h6>
+                  <h6 class="font-medium">{{$assessment->description}}</h6>
                 </div>
               </div>
-            </div> --}}
+            </div>
             <div class="col-12">
               <div class="pannel border">
                 <div class="d-flex align-items-start justify-content-between"> 
@@ -133,7 +133,8 @@
                           <div class="row-cell" data-label="اليوم / التاريخ">{{$task->date}}</div>
                           <div class="row-cell" data-label="وصف المهمة">{{$task->name}}</div>
                           <div class="row-cell" data-label="عدد الساعات">{{$task->number_of_hours}}</div>
-                          <div class="row-cell" data-label="مستوى الإنجاز"> <span class="status-badge status-success">{{$task->achievement_level}}</span></div>
+                          <div class="row-cell" data-label="مستوى الإنجاز">{{$task->achievement_level}}</div>
+                          {{-- <div class="row-cell" data-label="مستوى الإنجاز"> <span class="status-badge status-success">{{$task->achievement_level}}</span></div> --}}
                           <div class="row-cell" data-label="ملاحظات الجمعية"> {{$task->notes}}</div>
                         </div>
                       @endforeach
@@ -144,34 +145,64 @@
             </div>
             <div class="col-12">
               <div class="pannel border">
-                <h3 class="font-semi-bold">معلومات عامة عن تقدم الطالب</h3>
+                <h3 class="font-semi-bold">التقييم الرقمي</h3>
                 <hr/>
                 <div class="responsive-wrapper">
                   <div class="tasks-table-wrapper">
                     <div class="table-header table-row-group">
                       <div class="row-cell">المعيار</div>
                       <div class="row-cell">الوزن النسبي</div>
-                      <div class="row-cell">التقييم (من 5)</div>
+                      <div class="row-cell">مستوى الانجاز</div>
                       <div class="row-cell">الملاحظات</div>
                     </div>
                     <div class="table-body table-row-group">
+                      @php
+                          $finalScore = 0;
+                          $weight_percentage = 0;
+                      @endphp
                       @foreach($assessment->criterias as $criteria)
                         @if($criteria->criteria->type == 2)
+                        @php
+                            $finalScore += ($criteria->achievement_level / 100) * $criteria->weight_percentage;
+                            $weight_percentage  += $criteria->weight_percentage;
+                        @endphp
                          <div class="table-row">
                             <div class="row-cell" data-label="المعيار">{{$criteria->criteria?->title}}</div>
                             <div class="row-cell" data-label="الوزن النسبي">{{$criteria->weight_percentage}}%</div>
-                            <div class="row-cell" data-label="التقييم (من 5)">{{$criteria->evaluation_id}}</div>
+                            <div class="row-cell" data-label="مستوى الانجاز">{{$criteria->achievement_level}}</div>
                             <div class="row-cell" data-label="الملاحظات">{{$criteria->notes}}</div>
                          </div>
                         @endif
                       @endforeach
-                      <div class="table-row-divider"></div>
+                      {{-- <div class="table-row-divider"></div>
                       <div class="table-row table-row-footer">
                         <div class="row-cell" data-label="المعيار">المجموع النهائي</div>
                         <div class="row-cell" data-label="الوزن النسبي">100%</div>
                         <div class="row-cell" data-label="التقييم (من 5)">22/25 = 88%</div>
                         <div class="row-cell" data-label="الملاحظات"> <span class="status-badge status-warning">جيد جدًا</span></div>
-                      </div>
+                      </div> --}}
+
+                      <div class="table-row-divider"></div>
+
+                        <div class="table-row table-row-footer">
+                            <div class="row-cell" data-label="المعيار">المجموع النهائي</div>
+                            <div class="row-cell" data-label="الوزن النسبي">{{$weight_percentage}} %</div>
+                            <div class="row-cell" data-label="مستوى الإنجاز">
+                                {{ round($finalScore, 2) }}%
+                            </div>
+                            <div class="row-cell" data-label="الملاحظات">
+                                @if($finalScore >= 90)
+                                    <span class="status-badge status-success">ممتاز</span>
+                                @elseif($finalScore >= 75)
+                                    <span class="status-badge status-info">جيد جدًا</span>
+                                @elseif($finalScore >= 60)
+                                    <span class="status-badge status-warning">جيد</span>
+                                @else
+                                    <span class="status-badge status-danger">ضعيف</span>
+                                @endif
+                            </div>
+                        </div>
+
                     </div>
                   </div>
                 </div>
@@ -179,7 +210,7 @@
             </div>
             <div class="col-12">
               <div class="pannel border">
-                <h3 class="font-semi-bold">معلومات عامة عن تقدم الطالب</h3>
+                <h3 class="font-semi-bold">التوصيات والمتابعة القادمة</h3>
                 <hr/>
                 <div class="responsive-wrapper">
                   <div class="tasks-table-wrapper">

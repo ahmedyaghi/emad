@@ -9,7 +9,6 @@ use App\Models\Assessment;
 use App\Models\Evaluation;
 use App\Models\GeneralCriteria;
 use App\Models\TrainingOpportunityApplication;
-use Illuminate\Support\Str;
 
 class AssessmentController extends Controller
 {
@@ -70,11 +69,11 @@ class AssessmentController extends Controller
             foreach ($request->tasks as $taskData) {
                 $assessment->tasks()->create([
                     'assessment_id' => $assessment->id,
-                    'name' => Str::random(5),
                     'date' => date('Y-m-d', strtotime($taskData['date'])) ?? null,
-                    'description' => $taskData['description'] ?? null,
+                    'name' => $taskData['name'] ?? null,
                     'number_of_hours' => $taskData['number_of_hours'] ?? null,
                     'achievement_level' => $taskData['achievement_level'] ?? null,
+                    'description' => $taskData['description'] ?? null,
                     'notes' => $taskData['notes'] ?? null,
                 ]);
             }

@@ -3,7 +3,7 @@
             <div class="col-12 mb-3">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2">  التقييم النهائي</h3>
+                  <h3 class="font-semi-bold mb-2">التقييم النهائي</h3>
                   <h6 class="text-gray">  الاطلاع على التقيمات الميدانية يمكن حفظ التقييم وتعديله حتى تاريخ الإغلاق.</h6>
                 </div>
                 <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('association.assessments.create')}}">إضافة التقييم</a></div>
@@ -15,10 +15,10 @@
               <div class="pannel">
                 <div class="toolbar-action">
                   <div class="search-bar">
-                    <input class="form-control" type="text" placeholder="البحث عن التقييم ..."/><span class="search-icon"><img src="../assets/images/search.svg" alt=""/></span>
+                    <input class="form-control" type="text" placeholder="البحث عن التقييم ..."/><span class="search-icon"><img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
                   </div>
                   <div class="action-buttons">
-                    <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="../assets/images/filter.svg" alt=""/></button>
+                    <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="{{asset('assets/images/filter.svg')}}" alt=""/></button>
                   </div>
                   <div class="action-buttons">
                     <select class="select2">
@@ -36,9 +36,9 @@
              <div class="col-lg-4 col-md-6">
               <div class="widget_item-card bg-white p-4">
                 <div class="d-flex align-items-start mb-3">
-                  <div class="col">
+                  {{-- <div class="col">
                     <h6 class="accepted-text accepted-bg d-inline-block px-3 py-2 rounded-3 font-medium">معتمد</h6>
-                  </div>
+                  </div> --}}
                   <div class="col-auto">
                     <div class="d-flex align-items-center"> 
                       {{-- <div class="dropdown ms-2">
@@ -48,12 +48,12 @@
                     </div>
                   </div>
                 </div>
-                <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('association.assessments.show', $assessment)}}"> اسم التقييم</a></h4>
-                <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
+                <h4 class="widget_item-title font-semi-bold mb-3"><a href="{{route('association.assessments.show', $assessment)}}"> {{$assessment->name}}</a></h4>
+                <h6 class="widget_item-desc text-gray mb-3"> {{$assessment->description}}</h6>
                 <hr/>
                 <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3 border-0">
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">  تاريخ الإغلاق<span class="font-bold d-block text-black mt-2">{{$assessment->created_at}}</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">  تاريخ الانشاء<span class="font-bold d-block text-black mt-2">{{$assessment->created_at}}</span></span></div>
                   </div>
                   <div class="col-6">
                     <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray"> اخر تحديث<span class="font-bold d-block text-black mt-2">{{$assessment->updated_at}}</span></span></div>

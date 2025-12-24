@@ -176,7 +176,7 @@
                     <h5> اليوم / التاريخ </h5>
                   </div>
                   <div class="col"> 
-                    <h5> وصف المهمة </h5>
+                    <h5> عنوان المهمة </h5>
                   </div>
                   <div class="col">
                     <h5> عدد الساعات </h5>
@@ -195,7 +195,7 @@
                   $fields =
                    [
                     'date'=>'اليوم / التاريخ',
-                    'description'=>'وصف المهمة',
+                    'name'=>'عنوان المهمة',
                     'number_of_hours'=>'عدد الساعات',
                     'achievement_level'=>'مستوى الانجاز',
                     'notes'=>'ملاحظات الجمعية'
@@ -206,7 +206,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <label class="form-label d-md-none">{{$label}}</label>
-                    <input class="form-control {{ $field === 'date' ? 'datepicker' : '' }}"  type="text" name="tasks[{{$i}}][{{$field}}]" value="{{ old('tasks.'.$i.'.'.$field) }}" placeholder="{{$label}}"/>
+                    <input class="form-control {{ $field === 'date' ? 'datepicker' : '' }}"  autocomplete="off" type="text" name="tasks[{{$i}}][{{$field}}]" value="{{ old('tasks.'.$i.'.'.$field) }}" placeholder="{{$label}}"/>
                     @error('tasks.'.$i.'.'.$field)
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -224,8 +224,8 @@
                   </div>
                   <div class="col-12">
                     <div class="form-group">
-                      <label class="form-label d-md-none">  وصف المهمة </label>
-                      <input class="form-control" type="text" placeholder="وصف المهمة"/>
+                      <label class="form-label d-md-none">  عنوان المهمة </label>
+                      <input class="form-control" type="text" placeholder="عنوان المهمة"/>
                     </div>
                   </div>
                   <div class="col-12">
@@ -294,9 +294,9 @@
                   <div class="col-12">
                     <div class="form-group">
                       <label class="form-label d-md-none">{{$label}}</label>
-                      @if($field=='weight_percentage')
-                      <div class="input-icon icon-left">
-                        <input class="form-control" type="text" name="progress[{{$criteria->id}}][{{$field}}]" value="{{ old('progress.'.$criteria->id.'.'.$field) }}" placeholder="00"/>
+                      @if($field=='weight_percentage' || $field=='achievement_level')
+                      <div class="input-icon icon-right">
+                        <input class="form-control" type="number" name="progress[{{$criteria->id}}][{{$field}}]" value="{{ old('progress.'.$criteria->id.'.'.$field) }}" placeholder="00"/>
                         <div class="icon">%</div>
                       </div>
                       @else

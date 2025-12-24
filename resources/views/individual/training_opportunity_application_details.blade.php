@@ -82,7 +82,7 @@
                 </div>
                 <h6 class="font-12 text-gray">تم التقديم في تاريخ: {{ $application->created_at}}</h6>
               </div>
-              <div class="pannel">
+              {{-- <div class="pannel">
                 <h5 class="mb-3 font-bold">موعد المقابلة الشخصية</h5>
                 <hr/>
                 <div class="widget_item-card rounded-4 border-0">
@@ -116,7 +116,7 @@
                   </div>
                 </div>
                 <h6 class="mb-3 text-gray font-12">يجب توقيع العقد قبل تاريخ 15 ذو القعدة 1446هـ لتأكيد انضمامك رسميًا.</h6><a class="btn btn-primary w-100" href="">توقيع العقد إلكترونيً </a>
-              </div>
+              </div> --}}
               <div class="pannel">
                 <h5 class="mb-3 font-bold">تفاصيل التدريب</h5>
                 <hr/>
