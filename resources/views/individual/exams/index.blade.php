@@ -10,26 +10,26 @@
                   </h2>
                   <div class="accordion-collapse collapse show" id="collapseOne">
                     <div class="accordion-body px-0">
-                      <form action="" method="post">
+                     <form action="{{route('individual.exams.index')}}" method="get">
                         <div class="row"> 
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">تاريخ الاختبار </label>
-                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ الاختبار "/>
+                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ الاختبار " name="date" autocomplete="off" value="{{request('date')}}"/>
                             </div>
                           </div>
-                          <div class="col-md-4"> 
+                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">الدورة </label>
-                              <select class="form-control select2" data-placeholder="الدورة">
+                              <select class="form-control select2" data-placeholder="الدورة" name="course_id">
                                 <option value=""> </option>
-                                <option value="2"> الدورة 1</option>
-                                <option value="3"> الدورة 2</option>
-                                <option value="4"> الدورة 3</option>
+                                @foreach($courses as $course)
+                                <option value="{{$course->id}}" @selected(request('course_id') == $course->id)> {{$course->title}}</option>
+                                @endforeach
                               </select>
                             </div>
                           </div>
-                          <div class="col-md-4"> 
+                          {{-- <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">الحالة </label>
                               <select class="form-control select2" data-placeholder="الحالة">
@@ -39,12 +39,12 @@
                                 <option value="4"> الحالة 3</option>
                               </select>
                             </div>
-                          </div>
+                          </div> --}}
                           <div class="col-12"> 
                             <hr/>
                             <div class="d-flex align-items-center justify-content-between"> 
-                              <button class="btn btn-white">إعادة تعيين</button>
-                              <button class="btn btn-primary">تطبيق</button>
+                               <a href="{{ route('individual.exams.index') }}" class="btn btn-white">إعادة تعيين</a>
+                              <button type="submit" class="btn btn-primary">تطبيق</button>
                             </div>
                           </div>
                         </div>
@@ -73,18 +73,17 @@
                 <div class="d-flex align-items-center"> 
                   <div class="col">
                     <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
-                    <h6 class="text-gray">{{$exam->datetime}}</h6>
+                    <h6 class="text-gray">{{$exam->datetime->locale('ar')->translatedFormat('d F Y h:i A')}}</h6>
                   </div>
                   <div class="col-auto">
-                    <a class="btn btn-primary  @disabled(!$exam->examAnswers->isEmpty())" href="{{route('individual.exams.create', ['exam' => $exam])}}">بدء الاختبار </a>
-                
-                    {{-- 
-
-                     <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                      <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
+                    @if($exam->examAnswers->isNotEmpty())
+                         <div class="widget_item-card rounded-3 p-3 test-result mb-0">
+                      <h4 class="mb-2"><span class="total-score"> {{ $exam->totalScore }} / </span><span class="achieved-score">{{ $exam->achievedScore }}</span></h4>
                       <h6 class="font-light font-12">نتيجة الاختبار </h6>
-                    </div> --}}
-
+                    </div>
+                    @else
+                    <a class="btn btn-primary  @disabled(!$exam->canStart)" href="{{route('individual.exams.create', ['exam' => $exam])}}">بدء الاختبار </a>
+                    @endif
                   </div>
                 </div>
               </div>   

@@ -21,6 +21,7 @@
            
             @auth
             <ul class="navbar-nav align-items-lg-center col-auto">
+                <li class="nav-item mx-lg-2 mb-3 mb-lg-0"><a class="btn btn-white roubnded-pill" href="{{route(auth()->user()->getRoleNames()->first().'.dashboard')}}">لوحة التحكم</a></li>
                 <li class="nav-item"><a class="btn btn-primary roubnded-pill" href="{{route('logout')}}">تسجيل الخروج</a></li>
             </ul> 
             @endauth

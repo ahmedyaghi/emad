@@ -23,7 +23,7 @@
                   <div class="widget_item-details">
                     <div class="widget_item-info border-0 d-flex align-items-center">
                       <div class="col">
-                        <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ البدء<span class="font-bold d-block text-black mt-2">{{$course->published_at}}</span></span></div>
+                        <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ البدء<span class="font-bold d-block text-black mt-2">{{$course->created_at}}</span></span></div>
                       </div>
                       <div class="col">
                         <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">اخر تحديث<span class="font-bold d-block text-black mt-2">{{$course->updated_at}}</span></span></div>

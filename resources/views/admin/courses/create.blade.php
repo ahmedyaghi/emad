@@ -37,13 +37,13 @@
                               <div class="col-md-6"> 
                                 <div class="form-group"> 
                                   <label class="mb-2">تاريخ بدء الدورة  <span class="text-danger"> *</span></label>
-                                  <input class="form-control datetimepicker" type="text" name="start_date" placeholder="تاريخ بدء التدريب"/>
+                                  <input class="form-control datetimepicker" type="text" name="start_date" placeholder="تاريخ بدء التدريب" autocomplete="off"/>
                                 </div>
                               </div>
                               <div class="col-md-6"> 
                                 <div class="form-group"> 
                                   <label class="mb-2">تاريخ نهاية الدورة   <span class="text-danger"> *</span></label>
-                                  <input class="form-control datetimepicker" type="text" name="end_date" placeholder="تاريخ نهاية التدريب"/>
+                                  <input class="form-control datetimepicker" type="text" name="end_date" placeholder="تاريخ نهاية التدريب" autocomplete="off"/>
                                 </div>
                               </div>
                               <div class="col-md-6"> 

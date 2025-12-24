@@ -10,41 +10,41 @@
                   </h2>
                   <div class="accordion-collapse collapse show" id="collapseOne">
                     <div class="accordion-body px-0">
-                      <form action{{route('admin.exams.create')}} method="get">
+                      <form action="{{route('admin.exams.index')}}" method="get">
                         <div class="row"> 
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">تاريخ الاختبار </label>
-                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ الاختبار " name="start_date"/>
+                              <input class="form-control datetimepicker" type="text" placeholder="تاريخ الاختبار " name="date" autocomplete="off" value="{{request('date')}}"/>
                             </div>
                           </div>
                           <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">الدورة </label>
-                              <select class="form-control select2" data-placeholder="الدورة">
+                              <select class="form-control select2" data-placeholder="الدورة" name="course_id">
                                 <option value=""> </option>
-                                <option value="2"> الدورة 1</option>
-                                <option value="3"> الدورة 2</option>
-                                <option value="4"> الدورة 3</option>
+                                @foreach($courses as $course)
+                                <option value="{{$course->id}}" @selected(request('course_id') == $course->id)> {{$course->title}}</option>
+                                @endforeach
                               </select>
                             </div>
                           </div>
-                          <div class="col-md-4"> 
+                          {{-- <div class="col-md-4"> 
                             <div class="form-group"> 
                               <label class="form-label">الحالة </label>
-                              <select class="form-control select2" data-placeholder="الحالة">
+                              <select class="form-control select2" data-placeholder="الحالة" name="status">
                                 <option value=""> </option>
                                 <option value="2"> الحالة 1</option>
                                 <option value="3"> الحالة 2</option>
                                 <option value="4"> الحالة 3</option>
                               </select>
                             </div>
-                          </div>
+                          </div> --}}
                           <div class="col-12"> 
                             <hr/>
                             <div class="d-flex align-items-center justify-content-between"> 
-                              <button class="btn btn-white">إعادة تعيين</button>
-                              <button class="btn btn-primary">تطبيق</button>
+                              <a href="{{ route('admin.exams.index') }}" class="btn btn-white">إعادة تعيين</a>
+                              <button type="submit" class="btn btn-primary">تطبيق</button>
                             </div>
                           </div>
                         </div>
@@ -75,17 +75,17 @@
                 <div class="row align-items-center"> 
                   <div class="col-lg-6 mb-2 mb-lg-0">
                     <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
-                    <h6 class="text-gray">{{$exam->datetime}}</h6>
+                    <h6 class="text-gray">{{$exam->datetime->locale('ar')->translatedFormat('d F Y h:i A')}}</h6>
                   </div>
                   <div class="col-lg-6">
                     <div class="widget_item-card rounded-3 p-3 test-result mb-0">
                       <div class="row"> 
                         <div class="col-6">
-                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-group2.svg" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
+                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/user-group2.svg')}}" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2"> {{ $exam->examAnswers()->count()}}</span></span></div>
                         </div>
-                        <div class="col-6">
-                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/user-check.svg" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
-                        </div>
+                        {{-- <div class="col-6">
+                          <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/user-check.svg')}}" alt=""/><span class="font-12 font-light text-gray"> عدد المشاركين<span class="font-12 font-bold d-block text-black mt-2">566</span></span></div>
+                        </div> --}}
                       </div>
                     </div>
                   </div>

@@ -23,10 +23,10 @@
                     <div class="widget_item-details">
                       <div class="d-flex align-items-center justify-content-between mb-3">
                         <h6 class="font-light">نسبة التقدم</h6>
-                        <h6 class="font-bold">30%</h6>
+                        <h6 class="font-bold">{{$course->progress()}}%</h6>
                       </div>
                       <div class="progress">
-                        <div class="progress-bar" div="div" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" div="div" role="progressbar" style="width: {{$course->progress()}}%" aria-valuenow="{{$course->progress()}}" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                       <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
                         <div class="col">

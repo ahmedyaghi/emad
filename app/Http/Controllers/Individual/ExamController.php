@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Individual;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Exam;
 use App\Models\ExamAnswer;
 use Illuminate\Http\Request;
@@ -12,11 +13,27 @@ class ExamController extends Controller
 {
     public function index()
     {
-        $exams = Exam::with('examAnswers')->whereHas('courses', function ($q) {
-            $q->whereIn('courses.id', Auth::user()->courses->pluck('id'));
-        })->paginate(9);
 
-        return view('individual.exams.index', compact('exams'));
+        $courses = Course::all();
+
+        $query = Exam::query();
+
+        if (! empty(request('date'))) {
+            $query = $query->whereDate('datetime', 'like', request('date'));
+        }
+        if (! empty(request('course_id'))) {
+            $query = $query->whereHas('courses', function ($q) {
+                $q->where('courses.id', request('course_id'));
+            });
+        }
+
+        $query->with('examAnswers');
+        $query->whereHas('courses', function ($q) {
+            $q->whereIn('courses.id', Auth::user()->courses->pluck('id'));
+        });
+        $exams = $query->paginate(9);
+
+        return view('individual.exams.index', get_defined_vars());
     }
 
     public function create()

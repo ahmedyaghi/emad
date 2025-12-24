@@ -14,7 +14,18 @@ class ExamController extends Controller
 {
     public function index()
     {
-        $exams = Exam::paginate(9);
+        $courses = Course::all();
+
+        $query = Exam::query();
+        if (! empty(request('date'))) {
+            $query = $query->whereDate('datetime', 'like', request('date'));
+        }
+        if (! empty(request('course_id'))) {
+            $query = $query->whereHas('courses', function ($q) {
+                $q->where('courses.id', request('course_id'));
+            });
+        }
+        $exams = $query->paginate(9);
 
         return view('admin.exams.index', get_defined_vars());
     }

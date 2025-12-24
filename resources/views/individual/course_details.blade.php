@@ -138,22 +138,26 @@
                   @endif
                 </div>
                 <div class="tab-pane fade" id="tab-4">
-                  @if(!is_null($course->exams()->get()))   
-                  @foreach ($course->exams()->get() as $exam)
+                  @if(!is_null($course->exams))   
+                  @foreach ($course->exams as $exam)
                     <div class="card"> 
                       <div class="d-flex align-items-center"> 
                         <div class="col">
                           <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
-                          <h6 class="text-gray">{{$exam->datetime}}</h6>
+                          <h6 class="text-gray">{{$exam->datetime->locale('ar')->translatedFormat('d F Y h:i A')}}</h6>
                         </div>
-                        <div class="col-auto"><a class="btn btn-primary" href="{{route('individual.exam.start', $exam)}}">بدء الاختبار </a></div>
-                        <div class="col-auto"><a class="disabled btn btn-primary" href="{{route('individual.exam.start', $exam)}}">بدء الاختبار </a></div>
+                        @if($exam->examAnswers->isEmpty())
+                        <div class="col-auto"><a class="btn btn-primary  {{ $exam->canStart ? '' : 'disabled' }}" href="{{route('individual.exams.create',['exam' => $exam])}}">بدء الاختبار </a></div>
+                        @else
+                        
                         <div class="col-auto">
                         <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                          <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
+                          <h4 class="mb-2"><span class="total-score"> {{ $exam->totalScore }} / </span><span class="achieved-score">{{ $exam->achievedScore }}</span></h4>
                           <h6 class="font-light font-12">نتيجة الاختبار </h6>
                         </div>
-                      </div>
+                      </div> 
+                        @endif
+
                       </div>
                     </div>
                   @endforeach
@@ -191,7 +195,7 @@
                 </div>
                 <h6 class="font-light text-gray">تاريخ البدء: {{ $course->start_date }}</h6>
               </div>
-              <div class="pannel">
+              {{-- <div class="pannel">
                 <h5 class="mb-3 font-bold">الاختبارات القادمة</h5>
                 <hr/>
                 <div class="widget_item-card rounded-3">
@@ -204,7 +208,7 @@
                   <h6 class="font-light text-gray">وقت الاختبار: 7 يوليو 2025 - 12:00 مساء</h6>
                   <hr/><a class="btn btn-primary w-100" href="testing.html">بدء الاختبار </a>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
 
