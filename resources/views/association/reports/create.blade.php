@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-12">
                 <div class="pannel">
-                <h3 class="font-semi-bold">اختيار الطالب - الفرصة التدريبية</h3>
+                <h3 class="font-semi-bold">اختيار المتدرب - الفرصة التدريبية</h3>
                 <hr/>
                 <div class="form-group"> 
                   <select class="select2" name="application_id">

@@ -70,4 +70,19 @@ class Report extends Model
 
         return $bytes.' بايت';
     }
+
+    public function getSenderNameAttribute()
+    {
+        if ($this->consultant_id) {
+            return $this->application->training->consultant->name;
+        }
+
+        if ($this->association_id) {
+            return $this->application->training->association->name;
+        }
+
+        if ($this->faculty_member_id) {
+            return $this->application->training->facultyMember->name;
+        }
+    }
 }

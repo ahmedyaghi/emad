@@ -13,9 +13,7 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $reports = Report::whereHas('application.training', function ($q) {
-            $q->where('association_id', auth()->id());
-        })->paginate(9);
+        $reports = Report::with('application')->where('association_id', auth()->id())->paginate(9);
 
         return view('association.reports.index', get_defined_vars());
     }

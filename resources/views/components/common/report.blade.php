@@ -18,7 +18,7 @@
             <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">{{$report->created_at}}</span></span></div>
         </div>
         <div class="col">
-            <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">{{$report->application->training->association->name}}</span></span></div>
+            <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">{{$report->sender_name}}</span></span></div>
         </div>
         </div>
     </div>
