@@ -28,5 +28,5 @@ class Note extends Model
     public function recipient()
     {
         return $this->belongsTo(User::class, 'send_to');
-    }   
+    }
 }
