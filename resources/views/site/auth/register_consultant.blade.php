@@ -135,7 +135,7 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                       <div class="form-group">
                         <label class="mb-2">السكن<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="place_type_id">
@@ -147,7 +147,7 @@
                               <span class="text-danger">{{ $errors->first('place_type_id') }}</span>
                         @endif
                       </div>
-                    </div>
+                    </div> --}}
                   
                   </div>
                   <div class="row"> 

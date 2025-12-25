@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SectionType;
 use Illuminate\Database\Seeder;
 
 class SectionTypeSeeder extends Seeder
@@ -11,6 +12,7 @@ class SectionTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        SectionType::create(['name' => 'القطاع العام']);
+        SectionType::create(['name' => 'القطاع الخاص']);
     }
 }

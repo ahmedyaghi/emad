@@ -49,6 +49,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('/associations', App\Http\Controllers\Admin\AssociationController::class)->names('associations');
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
+        Route::resource('trainees', App\Http\Controllers\Admin\TraineeController::class)->names('trainees');
+
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {

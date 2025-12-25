@@ -12,9 +12,15 @@ class UserProfile extends Model
         'user_id',
         'position_id',
         'nationality_id',
+        'specialization_id',
+        'section_type_id',
         'city_id',
         'country_id',
         'neighborhood_id',
+        'university_id',
+        'skill_id',
+        'manager_position_id',
+        'manager_nationality_id',
         'bio',
         'website',
         'image',
@@ -30,7 +36,6 @@ class UserProfile extends Model
         'date_of_birth',
         'postal_code',
         'street_name',
-
     ];
 
     public function user()
@@ -61,6 +66,16 @@ class UserProfile extends Model
     public function neighborhood()
     {
         return $this->belongsTo(Neighborhood::class);
+    }
+
+    public function specialization()
+    {
+        return $this->belongsTo(Specialization::class);
+    }
+
+    public function section_type()
+    {
+        return $this->belongsTo(SectionType::class);
     }
 
     public function getGenderLabel()

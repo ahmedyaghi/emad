@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
         $this->call(NewsSeeder::class);
         $this->call(SkillSeeder::class);
         $this->call(SpecializationSeeder::class);
+        $this->call(SectionTypeSeeder::class);
     }
 }

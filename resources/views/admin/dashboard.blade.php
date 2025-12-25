@@ -54,31 +54,31 @@
                 </div>
               </div>
             </div>
-            @if(!$students->isEmpty())
+            @if(!$trainees->isEmpty())
             <div class="row">
               <div class="col-12">
                 <div class="pannel">
                   <div class="pannel-head">
                     <div class="d-flex justify-content-between">
                       <div class="col-lg-7">
-                        <h3 class="font-semi-bold mb-2">  الطلاب</h3>
-                        <h6 class="text-gray"> الطلاب المسجلين في المنصة</h6>
+                        <h3 class="font-semi-bold mb-2">  المتدربين</h3>
+                        <h6 class="text-gray"> المتدربين المسجلين في المنصة</h6>
                       </div>
-                      <div class="col-auto"><a class="btn btn-light" href="trainings.html"> مشاهدة الكل </a></div>
+                      <div class="col-auto"><a class="btn btn-light" href="{{route('admin.trainees.index')}}"> مشاهدة الكل </a></div>
                     </div>
                   </div>
                   <div class="pannel-body">
                     <div class="row"> 
-                      @foreach ($students as $student )
+                      @foreach ($trainees as $trainee )
                       <div class="col-lg-4 col-md-6">
                         <div class="widget_item-card p-4 bg-white">
                           <div class="d-flex align-items-start">
                             <div class="col">
                               <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="{{$student->user->profile?->image}}" alt="{{$student->user->name}}"/></div>
+                                <div class="widget_item-user-avatar col-auto me-2"><img src="{{$trainee->user->profile?->image}}" alt="{{$trainee->user->name}}"/></div>
                                 <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">{{$student->user->name}}</h6>
-                                  <h6 class="text-gray"> {{$student->training->association->name}}</h6>
+                                  <h6 class="mb-1 font-medium">{{$trainee->user->name}}</h6>
+                                  <h6 class="text-gray"> {{$trainee->training->association->name}}</h6>
                                 </div>
                               </div>
                             </div>
@@ -87,8 +87,8 @@
                                 <div class="dropdown ms-2">
                                   <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="{{asset('assets/images/more-vertical.svg')}}" alt=""/></button>
                                   <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="trainings-profile.html"> 
-                                    <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span>
+                                    <a class="dropdown-item" href="{{route('admin.trainees.show', $trainee)}}"> 
+                                    <span class="dropdown-item-icon"><img class="me-2" src="{{asset('assets/images/user.svg')}}" alt=""/></span>
                                     <span class="font-medium">عرض الملف الشخصي </span></a>
                                   </div>
                                 </div>
@@ -98,16 +98,16 @@
                           <hr/>
                           <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap border-0">
                             <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/user-group2.svg')}}" alt=""/><span class="info-title text-gray">المؤهل العلمي<span class="font-bold d-block text-black mt-2">البكالوريوس</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/user-group2.svg')}}" alt=""/><span class="info-title text-gray">المؤهل العلمي<span class="font-bold d-block text-black mt-2">{{$trainee->user->profile?->specialization?->name}}</span></span></div>
                             </div>
                             <div class="col-6 mb-4">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">{{$student->user->created_at}}</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">{{$trainee->user->created_at}}</span></span></div>
                             </div>
                             <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/call.svg')}}" alt=""/><span class="info-title text-gray">رقم الجوال <span class="font-bold d-block text-black mt-2">{{$student->user->phone}}</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/call.svg')}}" alt=""/><span class="info-title text-gray">رقم الجوال <span class="font-bold d-block text-black mt-2">{{$trainee->user->phone}}</span></span></div>
                             </div>
                             <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/city2.svg')}}" alt=""/><span class="info-title text-gray"> المدينة<span class="font-bold d-block text-black mt-2"> {{$student->user->profile?->city?->name}}</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/city2.svg')}}" alt=""/><span class="info-title text-gray"> المدينة<span class="font-bold d-block text-black mt-2"> {{$trainee->user->profile?->city?->name}}</span></span></div>
                             </div>
                           </div>
                         </div>
