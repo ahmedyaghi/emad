@@ -39,10 +39,8 @@
                         <div class="pannel">
                             <h3 class="font-semi-bold">معلومات الملاحظة</h3>
                             <hr/>
-
                             <div class="row"> 
-
-                                {{-- العنوان --}}
+                               
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="mb-2">عنوان الملاحظة</label>
@@ -52,14 +50,14 @@
                                         @endif
                                     </div>
                                 </div>
-
-                                {{-- الجهة المرسلة --}}
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label class="mb-2">الجهة المرسلة إليها</label>
                                         <select class="select2" data-placeholder="الجهة المرسلة إليها" name="send_to">
                                             <option></option>
-                                            <option value="1">إدارة الجمعية</option>
+                                            @foreach ($associations as $association)
+                                                <option value="{{ $association->id }}">{{ $association->name }}</option>
+                                            @endforeach
                                         </select>
                                         @if($errors->first('send_to'))
                                             <div class="text-danger mt-2">{{ $errors->first('send_to') }}</div>

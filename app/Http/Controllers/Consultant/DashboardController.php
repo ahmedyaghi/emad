@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $trainees_count = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->count();
         $reports_count = Report::where('consultant_id', auth()->id())->count();
         $assessments_count = Assessment::where('consultant_id', auth()->id())->count();
-        $notes_count = Note::where('send_to', auth()->id())->count();
+        $notes_count = Note::where('send_from', auth()->id())->count();
 
         $trainees = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->take(3)->get();
         $reports = Report::where('consultant_id', auth()->id())->take(3)->get();

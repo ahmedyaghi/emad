@@ -14,9 +14,7 @@ class AssessmentController extends Controller
 {
     public function index()
     {
-        $assessments = Assessment::whereHas('application.training', function ($q) {
-            $q->where('association_id', auth()->id());
-        })->paginate(9);
+        $assessments = Assessment::where('association_id', auth()->id())->paginate(9);
 
         return view('association.assessments.index', get_defined_vars());
     }

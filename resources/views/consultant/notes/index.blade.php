@@ -43,7 +43,7 @@
                     <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">   تاريخ الملاحظة<span class="font-bold d-block text-black mt-2">{{$note->created_at}}</span></span></div>
                   </div>
                   <div class="col-6">
-                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">  الجهة المرسلة إليها<span class="font-bold d-block text-black mt-2">{{$note->send_to}}</span></span></div>
+                    <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">  الجهة المرسلة إليها<span class="font-bold d-block text-black mt-2">{{$note->recipient->name}}</span></span></div>
                   </div>
                 </div>
               </div>
