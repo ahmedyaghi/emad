@@ -14,7 +14,14 @@ class NoteController extends Controller
 {
     public function index()
     {
-        $notes = Note::where('send_from', auth()->id())->paginate(9);
+        $query = Note::where('send_from', auth()->id());
+
+        if (request()->has('keyword') && request('keyword') != '') {
+            $keyword = request('keyword');
+            $query->where('title', 'like', "%{$keyword}%");
+        }
+
+        $notes = $query->paginate(9)->withQueryString();
 
         return view('consultant.notes.index', get_defined_vars());
     }

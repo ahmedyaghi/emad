@@ -10,23 +10,8 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="pannel">
-                <div class="toolbar-action">
-                  <div class="search-bar">
-                    <input class="form-control" type="text" placeholder="البحث عن التقييم ..."/><span class="search-icon"><img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
-                  </div>
-                  <div class="action-buttons">
-                    <select class="select2">
-                      <option value="1"> الأحدث</option>
-                      <option value="2"> الاقدم</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+             <x-common.search  :placeholder="'البحث عن التقييمات ...'" :route="route('consultant.assessments.index')"/>
+
           @if(!$assessments->isEmpty())
           <div class="row">
             @php

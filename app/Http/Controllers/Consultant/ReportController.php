@@ -13,7 +13,14 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $reports = Report::with('application')->where('consultant_id', auth()->id())->paginate(9);
+        $query = Report::with('application')->where('consultant_id', auth()->id());
+
+        if (request()->has('keyword') && request('keyword') != '') {
+            $keyword = request('keyword');
+            $query->where('title', 'like', "%{$keyword}%");
+        }
+
+        $reports = $query->paginate(9)->withQueryString();
 
         return view('consultant.reports.index', get_defined_vars());
     }

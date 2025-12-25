@@ -16,10 +16,9 @@ class DashboardController extends Controller
         $reports_count = Report::where('consultant_id', auth()->id())->count();
         $assessments_count = Assessment::where('consultant_id', auth()->id())->count();
         $notes_count = Note::where('send_from', auth()->id())->count();
-
         $trainees = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->take(3)->get();
-        $reports = Report::where('consultant_id', auth()->id())->take(3)->get();
-        $assessments = Assessment::where('consultant_id', auth()->id())->take(3)->get();
+        $reports = Report::with('application')->where('consultant_id', auth()->id())->take(3)->get();
+        $assessments = Assessment::with('application')->where('consultant_id', auth()->id())->take(3)->get();
 
         return view('consultant.dashboard', get_defined_vars());
     }

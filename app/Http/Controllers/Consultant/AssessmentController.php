@@ -14,7 +14,14 @@ class AssessmentController extends Controller
 {
     public function index()
     {
-        $assessments = Assessment::with('application')->where('consultant_id', auth()->id())->paginate(9);
+        $query = Assessment::with('application')->where('consultant_id', auth()->id());
+
+        if (request()->has('keyword') && request('keyword') != '') {
+            $keyword = request('keyword');
+            $query->where('name', 'like', "%{$keyword}%");
+        }
+
+        $assessments = $query->paginate(9)->withQueryString();
 
         return view('consultant.assessments.index', get_defined_vars());
     }

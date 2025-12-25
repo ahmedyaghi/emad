@@ -9,7 +9,16 @@ class TraineeController extends Controller
 {
     public function index()
     {
-        $trainees = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->with(['applications.training', 'applications.user'])->paginate(9);
+
+        $query = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->with(['applications.user', 'applications.training']);
+
+        if (request()->has('keyword') && request('keyword') != '') {
+            $keyword = request('keyword');
+            $query->whereHas('applications.user', function ($q) use ($keyword) {
+                $q->where('name', 'like', "%{$keyword}%");
+            });
+        }
+        $trainees = $query->paginate(9)->withQueryString();
 
         return view('consultant.trainees.index', get_defined_vars());
     }

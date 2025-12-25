@@ -10,32 +10,14 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="pannel">
-                <div class="toolbar-action">
-                  <div class="search-bar">
-                    <input class="form-control" type="text" placeholder="البحث عن الملاحظة ..."/><span class="search-icon"><img src="{{asset('assets/images/search.svg')}}" alt=""/></span>
-                  </div>
-                  <div class="action-buttons">
-                    <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="{{asset('assets/images/filter.svg')}}" alt=""/></button>
-                  </div>
-                  <div class="action-buttons">
-                    <select class="select2">
-                      <option value="1"> الأحدث</option>
-                      <option value="2"> الاقدم</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              <x-common.search  :placeholder="'البحث عن الملاحظات ...'" :route="route('consultant.notes.index')"/>
+
           @if(!$notes->isEmpty())
           <div class="row">
             @foreach($notes as $note)
               <div class="col-lg-4 col-md-6">
               <div class="widget_item-card bg-white p-4">
-                <h4 class="widget_item-title font-semi-bold mb-3"><a href="final-report.html">{{$note->title}}</a></h4>
+                <h4 class="widget_item-title font-semi-bold mb-3"><a href="#">{{$note->title}}</a></h4>
                 <h6 class="widget_item-desc text-gray mb-3">{{$note->description}}</h6>
                 <hr/>
                 <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3 border-0">
