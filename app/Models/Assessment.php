@@ -10,6 +10,9 @@ class Assessment extends Model
 {
     protected $fillable = [
         'application_id',
+        'association_id',
+        'consultant_id',
+        'faculty_member_id',
         'name',
         'description',
         'status',
@@ -28,6 +31,21 @@ class Assessment extends Model
     public function tasks()
     {
         return $this->hasMany(AssessmentTask::class);
+    }
+
+    public function association()
+    {
+        return $this->belongsTo(User::class, 'association_id', 'id');
+    }
+
+    public function consultant()
+    {
+        return $this->belongsTo(User::class, 'consultant_id', 'id');
+    }
+
+    public function facultyMember()
+    {
+        return $this->belongsTo(User::class, 'faculty_member_id', 'id');
     }
 
     protected function createdAt(): Attribute

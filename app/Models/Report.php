@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Storage;
 class Report extends Model
 {
     protected $fillable = [
+        'association_id',
+        'consultant_id',
+        'faculty_member_id',
         'application_id',
         'title',
         'description',
@@ -27,6 +30,28 @@ class Report extends Model
         return Attribute::make(
             get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
+    }
+
+    protected function updatedAt(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+        );
+    }
+
+    public function association()
+    {
+        return $this->belongsTo(User::class, 'association_id', 'id');
+    }
+
+    public function consultant()
+    {
+        return $this->belongsTo(User::class, 'consultant_id', 'id');
+    }
+
+    public function facultyMember()
+    {
+        return $this->belongsTo(User::class, 'faculty_member_id', 'id');
     }
 
     public function getFileSizeAttribute()

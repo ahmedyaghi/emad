@@ -33,6 +33,7 @@ class ReportController extends Controller
     public function store(ReportRequest $request)
     {
         $data = $request->validated();
+        $data['association_id'] = auth()->id();
         $data['slug'] = Str::slug($data['title']);
         if ($request->hasFile('file')) {
             unset($data['file']);

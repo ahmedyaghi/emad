@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->foreignId('type_id')->constrained('note_types')->onDelete('cascade');
             $table->foreignId('send_from')->constrained('users')->onDelete('cascade');
-            $table->string('send_to');
+            $table->foreignId('send_to')->constrained('users')->onDelete('cascade');
             $table->text('description');
             $table->string('file')->nullable();
             $table->timestamps();

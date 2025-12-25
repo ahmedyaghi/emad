@@ -15,6 +15,9 @@ return new class extends Migration
         Schema::create('assessments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('application_id')->constrained('training_opportunity_applications')->onDelete('cascade');
+            $table->foreignId('association_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('consultant_id')->nullable()->constrained('users')->onDelete('set null');
+            $table->foreignId('faculty_member_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('name');
             $table->text('description')->nullable();
             $table->tinyInteger('status')->nullable();

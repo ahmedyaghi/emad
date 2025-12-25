@@ -24,4 +24,9 @@ class Note extends Model
     {
         return $this->belongsTo(User::class, 'send_from');
     }
+
+    public function recipient()
+    {
+        return $this->belongsTo(User::class, 'send_to');
+    }   
 }

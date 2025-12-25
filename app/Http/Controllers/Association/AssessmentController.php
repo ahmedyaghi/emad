@@ -43,6 +43,7 @@ class AssessmentController extends Controller
 
         $assessment = Assessment::create([
             'application_id' => $data['application_id'],
+            'association_id' => auth()->id(),
             'name' => $data['name'],
             'description' => $data['description'],
             'status' => 1,
