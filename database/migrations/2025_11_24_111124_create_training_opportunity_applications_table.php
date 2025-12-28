@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('slug')->unique();
             $table->string('cv');
-            $table->text('cover_letter');
+            $table->text('cover_letter')->nullable();
             $table->tinyInteger('status')->nullable()->default(0);
             $table->timestamps();
         });

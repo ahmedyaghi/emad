@@ -23,7 +23,7 @@ class ApplyTrainingOpportunityRequest extends FormRequest
     {
         return [
             'cv' => 'required|mimes:pdf,doc,docx|max:5120',
-            'cover_letter' => 'required|string|max:2000',
+            'cover_letter' => 'nullable|string|max:2000',
             'training_id' => 'required|exists:training_opportunities,id',
         ];
     }
