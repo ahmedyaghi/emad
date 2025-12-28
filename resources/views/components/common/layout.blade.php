@@ -111,7 +111,7 @@
               </div>
               <div class="header-user-info">
               <ul class="d-flex align-items-center">
-                  <li> <a href="{{route('logout')}}"> <img src="{{asset('assets/images/logout.svg')}}" alt=""></a></li>
+                  <li> <a href="{{route('logout')}}"> <img src="{{asset('assets/images/logout.svg')}}" alt="" width="20px" height="20px"></a></li>
                   <li> <a href=""> <img src="{{asset('assets/images/notification.svg')}}" alt=""/></a></li>
                   <li class="d-flex"><a href="{{route($role.'.profile')}}"> <img class="user-avatar" src="{{Auth::user()->profile?->image}}" alt=""/></a></li>
                   <li class="toggle-sidebar d-lg-none"><img src="{{asset('assets/images/menu.svg')}}" alt=""/></li>
