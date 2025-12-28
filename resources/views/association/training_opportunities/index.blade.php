@@ -54,7 +54,7 @@
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2">عرض {{count($training_opportunities)}} تدريباتي المنشورة</h3>
+                  <h3 class="font-semi-bold mb-2">عرض {{count($training_opportunities)}}الفرص التدريبية</h3>
                   <h6 class="text-gray">بناءً على وظائفك المنشورة</h6>
                 </div>
                 <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('association.training-opportunities.create')}}">نشر تدريب جديد</a></div>

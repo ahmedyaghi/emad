@@ -7,7 +7,7 @@
                     <div class="d-flex">
                       <div class="col">
                         <h2 class="font-semi-bold">{{count($training_opportunities)}}</h2>
-                        <h6 class="text-gray">وظائفي المنشورة</h6>
+                        <h6 class="text-gray">الفرص التدريبية</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/briefcase3.svg')}}" alt=""/></div>
                     </div>
@@ -47,7 +47,7 @@
                   <div class="pannel-head">
                     <div class="d-flex justify-content-between">
                       <div class="col-lg-7">
-                        <h3 class="font-semi-bold mb-2"> وظائفي المنشورة</h3>
+                        <h3 class="font-semi-bold mb-2"> الفرص التدريبية</h3>
                         <h6 class="text-gray">تابع حالة الوظائف التي نشرتها ، وابقَ على اطلاع بآخر التحديثات</h6>
                       </div>
                       <div class="col-auto"><a class="btn btn-light" href="{{route('association.training-opportunities.create')}}">نشر وظيفة جديدة</a></div>
