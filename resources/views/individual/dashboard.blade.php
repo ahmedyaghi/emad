@@ -1,5 +1,5 @@
 <x-common.layout>
-   <div class="main-content-inner"> 
+   <div class="main-content-inner">
             <div class="row gx-lg-3">
               <div class="col-lg-3 col-sm-6">
                 <div class="card">
@@ -55,11 +55,11 @@
               </div>
             </div>
             <div class="row mb-4">
-              <div class="col-12"> 
-                <div class="card-profile d-flex align-items-start"> 
+              <div class="col-12">
+                <div class="card-profile d-flex align-items-start">
                   <div class="col-auto me-3">
-                    <div class="circle-progress circle-small" id="graph" data-percent="70">
-                      <div class="total-result">70%</div>
+                    <div class="circle-progress" id="graph" data-percent="70">
+                      <div class="total-result text-white">70%</div>
                     </div>
                   </div>
                   <div class="col-lg-9">
@@ -111,7 +111,7 @@
                 </div>
               </div>
             </div>
-            @if(!$training_opportunities->isEmpty())  
+            @if(!$training_opportunities->isEmpty())
             <div class="row gx-lg-3">
               <div class="col-12">
                 <div class="card">
@@ -125,9 +125,9 @@
                     </div>
                   </div>
                   <div class="card-body">
-                    <div class="row"> 
+                    <div class="row">
                       @foreach($training_opportunities as $training_opportunity)
-                       <div class="col-lg-4 col-md-6"> 
+                       <div class="col-lg-4 col-md-6">
                         <div class="widget_item-card m-2 shadow-none">
                           <div class="widget_item-content">
                             <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('individual.training-opportunities.show', $training_opportunity)}}">{{$training_opportunity->title}}</a></h4>

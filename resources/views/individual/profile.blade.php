@@ -1,6 +1,6 @@
 <x-common.layout>
       <div class="pannel">
-            <div class="row"> 
+            <div class="row">
               <div class="col-lg-6">
                 <div class="widget_item-card">
                   <div class="d-flex align-items-start justify-content-between">
@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="col-lg-6">
-                <div class="card-profile d-flex align-items-start"> 
+                <div class="card-profile d-flex align-items-start">
                   <div class="col-auto me-3">
                     <div class="circle-progress circle-small" id="graph" data-percent="70">
                       <div class="total-result">70%</div>
@@ -33,12 +33,12 @@
                 <div class="pannel">
                   <h5 class="mb-3 font-bold">التقييمات </h5>
                   <hr/>
-                  <div class="row"> 
+                  <div class="row">
                     <div class="col-lg-4">
                       <div class="card">
                         <div class="d-flex align-items-center justify-content-between">
                           <h4 class="font-semi-bold">اسم التقييم</h4>
-                          <div class="col-auto"> 
+                          <div class="col-auto">
                             <h6 class="font-12 accepted-text accepted-bg px-4 py-2 rounded-2">ممتاز</h6>
                           </div>
                         </div>
@@ -56,7 +56,7 @@
                       <div class="card">
                         <div class="d-flex align-items-center justify-content-between">
                           <h4 class="font-semi-bold">اسم التقييم</h4>
-                          <div class="col-auto"> 
+                          <div class="col-auto">
                             <h6 class="font-12 accepted-text accepted-bg px-4 py-2 rounded-2">ممتاز</h6>
                           </div>
                         </div>
@@ -74,7 +74,7 @@
                       <div class="card">
                         <div class="d-flex align-items-center justify-content-between">
                           <h4 class="font-semi-bold">اسم التقييم</h4>
-                          <div class="col-auto"> 
+                          <div class="col-auto">
                             <h6 class="font-12 accepted-text accepted-bg px-4 py-2 rounded-2">ممتاز</h6>
                           </div>
                         </div>
@@ -92,12 +92,12 @@
                 </div>
               </div>
             </div>
-            <div class="row"> 
+            <div class="row">
               <div class="col-12">
                 <div class="pannel">
                   <h5 class="mb-3 font-bold">الملاحظات </h5>
                   <hr/>
-                  <div class="row"> 
+                  <div class="row">
                     <div class="col-lg-4">
                       <div class="card">
                         <h5 class="font-semi-bold mb-2">عنوان الملاحظة</h5>
@@ -121,7 +121,7 @@
               </div>
             </div>
           </div>
-          <div class="row mb-4"> 
+          <div class="row mb-4">
             <div class="col-12">
               <div class="profile-nav">
                 <ul class="nav nav-pills mb-3 gap-3" id="pills-tab" role="tablist">
@@ -144,14 +144,14 @@
               </div>
             </div>
           </div>
-          <div class="row mb-4"> 
+          <div class="row mb-4">
             <div class="col-12">
               <div class="pannel">
                 <div class="tab-content" id="pills-tabContent">
                   <div class="tab-pane fade show active" id="tab-1">
                     <h5 class="mb-3 font-bold">البيانات الشخصية</h5>
                     <hr/>
-                    <div class="row"> 
+                    <div class="row">
                       <div class="col-lg-3 col-md-4 col-6 mb-4">
                         <div class="d-flex align-items-start">
                           <div class="col-auto me-3"><img src="{{asset('assets/images/globe.svg')}}" alt=""/></div>
@@ -433,15 +433,15 @@
                 </div>
                 <div class="modal-body p-0">
                   <form action="{{route('individual.profile.add.qualification')}}" method="POST" id="qualificationForm">
-                    @csrf 
+                    @csrf
                       <input type="hidden" name="qualification_form_id" id="qualification_form_id">
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
-                          <div class="row"> 
+                          <div class="row">
                             @if(!$qualifications->isEmpty())
                             <div class="col-12">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">نوع المؤهل <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="بكالوريوس / دبلوم / ثانوية عامة / شهادة مهنية " name="qualification_id">
                                   <option value="">اختر</option>
@@ -457,7 +457,7 @@
                             @endif
                             @if(!$specializations->isEmpty())
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">التخصص الدراسي <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="اختر" name="specialization_id">
                                   <option value="">اختر</option>
@@ -473,7 +473,7 @@
                            @endif
                            @if(!$universities->isEmpty())
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">الجهة التعليمية  <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="اختر الجهة" name="university_id">
                                     <option value="">اختر</option>
@@ -488,7 +488,7 @@
                             </div>
                             @endif
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">سنة التخرج <span class="text-danger">* </span></label>
                                 <input class="form-control yearpicker" type="text" placeholder="اختر سنة التخرج" name="graduation_year"/>
                                 @error('graduation_year')
@@ -498,7 +498,7 @@
                             </div>
                             @if(!$grades->isEmpty())
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">التقدير <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="اختر" name="grade_id">
                                   <option value="">اختر</option>
@@ -518,7 +518,7 @@
                     </div>
                     <div class="row">
                       <div class="col-12">
-                        <div class="modal-footer d-flex align-items-center justify-content-between"> 
+                        <div class="modal-footer d-flex align-items-center justify-content-between">
                           <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
                           <button class="btn btn-primary action_button" type="submit">إضافة</button>
                         </div>
@@ -541,15 +541,15 @@
                 </div>
                 <div class="modal-body p-0">
                   <form action="{{route('individual.profile.add.experience')}}" method="POST" id="experienceForm">
-                    @csrf 
+                    @csrf
                     <input type="hidden" name="experience_form_id" id="experience_form_id">
 
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
-                          <div class="row"> 
+                          <div class="row">
                             <div class="col-12">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">المسمى الوظيفي <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="اختر" name="position_id">
                                   <option value="">اختر</option>
@@ -563,7 +563,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">اسم الجهة  <span class="text-danger">* </span></label>
                                <input class="form-control" type="text" placeholder="اختر اسم الجهة" name="company_name"/>
                                 @error('company_name')
@@ -572,7 +572,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">موقع العمل <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="اختر" name="city_id">
                                   <option value="">اختر</option>
@@ -586,7 +586,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">فترة العمل من <span class="text-danger">* </span></label>
                                 <input class="form-control datepicker_db" type="text" placeholder="فترة العمل من" name="start_date"/>
                                 @error('start_date')
@@ -595,7 +595,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">فترة العمل الى <span class="text-danger">* </span></label>
                                 <input class="form-control datepicker_db" type="text" placeholder="فترة العمل الى" name="end_date"/>
                                 @error('end_date')
@@ -609,7 +609,7 @@
                     </div>
                     <div class="row">
                       <div class="col-12">
-                        <div class="modal-footer d-flex align-items-center justify-content-between"> 
+                        <div class="modal-footer d-flex align-items-center justify-content-between">
                           <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
                           <button class="btn btn-primary action_button" type="submit">إضافة</button>
                         </div>
@@ -632,12 +632,12 @@
                 </div>
                 <div class="modal-body p-0">
                    <form action="{{route('individual.profile.add.attachment')}}" method="POST" enctype="multipart/form-data">
-                    @csrf 
+                    @csrf
                     <div class="row">
 
                       <div class="col-lg-12">
                         <div class="p-4">
-                        <div class="form-group"> 
+                        <div class="form-group">
                           <label class="form-label">عنوان المرفق<span class="text-danger">* </span></label>
                           <input class="form-control" type="text" placeholder="عنوان المرفق" name="title"/>
                           @error('title')
@@ -649,7 +649,7 @@
 
                       <div class="col-12">
                         <div class="p-4">
-                          <div class="form-group"> 
+                          <div class="form-group">
                             <label class="form-label">السيرة الذاتية</label>
                             <div class="upload-box">
                               <input id="fileInput" type="file" accept=".pdf,.doc,.docx" name="file"/>
@@ -668,7 +668,7 @@
                     </div>
                     <div class="row">
                       <div class="col-12">
-                        <div class="modal-footer d-flex align-items-center justify-content-between"> 
+                        <div class="modal-footer d-flex align-items-center justify-content-between">
                           <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
                           <button class="btn btn-primary" type="submit">إضافة</button>
                         </div>
@@ -692,15 +692,15 @@
                 </div>
                 <div class="modal-body p-0">
                   <form action="{{route('individual.profile.add.financial_data')}}" method="POST" id="financial_dataForm">
-                    @csrf 
+                    @csrf
                     <input type="hidden" name="financial_data_form_id" id="financial_data_form_id">
 
                     <div class="row">
                       <div class="col-12">
                         <div class="p-4">
-                          <div class="row"> 
+                          <div class="row">
                             <div class="col-12">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">البنك <span class="text-danger">* </span></label>
                                 <select class="select2" data-placeholder="اختر" name="bank_id">
                                   <option value="">اختر</option>
@@ -714,7 +714,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">رقم الايبان  <span class="text-danger">* </span></label>
                                <input class="form-control" type="text" placeholder="رقم الايبان" name="iban_number"/>
                                 @error('iban_number')
@@ -723,7 +723,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">اسم صاحب الحساب البنكي  <span class="text-danger">* </span></label>
                                <input class="form-control" type="text" placeholder="اسم صاحب الحساب البنكي" name="account_owner_name"/>
                                 @error('account_owner_name')
@@ -732,7 +732,7 @@
                               </div>
                             </div>
                             <div class="col-lg-6">
-                              <div class="form-group"> 
+                              <div class="form-group">
                                 <label class="form-label">رقم هوية صاحب الحساب البنكي  <span class="text-danger">* </span></label>
                                <input class="form-control" type="text" placeholder="رقم هوية صاحب الحساب البنكي" name="account_owner_id_num"/>
                                 @error('account_owner_id_num')
@@ -746,7 +746,7 @@
                     </div>
                     <div class="row">
                       <div class="col-12">
-                        <div class="modal-footer d-flex align-items-center justify-content-between"> 
+                        <div class="modal-footer d-flex align-items-center justify-content-between">
                           <button class="btn btn-white" type="button" data-bs-dismiss="modal">إلغاء</button>
                           <button class="btn btn-primary action_button" type="submit">إضافة</button>
                         </div>

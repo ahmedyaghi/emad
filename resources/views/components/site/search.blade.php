@@ -57,6 +57,11 @@
                 <button class="btn btn-primary w-100" type="submit">البحث</button>
             </div>
             </div>
+            <div class="col-12 col-lg-auto ps-lg-0" data-aos="fade-up" data-aos-delay="500">
+            <div class="form-group mb-3 mb-lg-0">
+                <button class="btn btn-white w-100 px-4" type="button">اعادة تعيين</button>
+            </div>
+            </div>
         </div>
         </form>
     </div>
