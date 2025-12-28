@@ -37,14 +37,17 @@
     <link rel="stylesheet" href="{{ asset('assets/css/summernote-bs5.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/css/toastr.min.css')}}"/>
-    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css')}}"> --> 
+    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css')}}"> -->
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css')}}"/>
   </head>
   <body>
     <!-- begin:: Page -->
     <div class="dashboard">
+        <div id="loader">
+            <span class="loader"></span>
+        </div>
       <div class="dashboard-container">
-      <!-- begin:: aside --> 
+      <!-- begin:: aside -->
       @php
           $role = auth()->user()->getRoleNames()->first();
       @endphp
@@ -87,19 +90,19 @@
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.courses') ? 'active' : '' }} menu-link" href="{{route($role.'.courses')}}"><span class="menu-icon"><img src="{{asset('assets/images/audio-book.svg')}}" alt=""/></span><span class="menu-text">دوراتي</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.exams.*') ? 'active' : '' }} menu-link" href="{{route($role.'.exams.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">الاختبارات</span></a></li>
                 @break
-            
+
               @default
             @endswitch
           </ul>
           <div class="sidebar-footer"><a class="profile d-flex align-items-center gap-2" href="{{route($role.'.profile')}}">
               <div class="profile-image col-auto"><img src="{{Auth::user()->profile?->image}}" alt=""/></div>
-              <div class="col"> 
+              <div class="col">
               <h6 class="text-white">{{Auth::user()->name}}</h6>
               <h6 class="text-white font-light font-12">عرض الملف الشخصي</h6>
               </div>
               <div class="col-auto icon"><img src="{{asset('assets/images/arrow-left.svg')}}" alt=""/></div></a></div>
       </aside>
-      <!-- end:: aside --> 
+      <!-- end:: aside -->
       </div>
       <main>
         <main class="main-content">
@@ -153,6 +156,13 @@
         @if(session('warning'))
             toastr.warning("{{ session('warning') }}");
         @endif
+    </script>
+    <script>
+
+        $(window).on('load', function () {
+        $('#loader').fadeOut();
+    });
+
     </script>
   </body>
 </html>
