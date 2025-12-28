@@ -42,6 +42,9 @@
   <body>
     <!-- begin:: Page -->
       <div class="page">
+        <div id="loader">
+            <span class="loader"></span>
+        </div>
         <div class="main-wrapper">
         <!-- begin:: Header -->
           <x-site.header :internal="$internal"/>
@@ -100,7 +103,15 @@
             toastr.warning("{{ session('warning') }}");
         @endif
       </script>
-    
+
+      <script>
+
+         $(window).on('load', function () {
+            $('#loader').fadeOut();
+        });
+
+      </script>
+
 
 
   </body>
