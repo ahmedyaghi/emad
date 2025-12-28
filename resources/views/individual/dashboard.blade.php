@@ -7,7 +7,7 @@
                     <div class="d-flex">
                       <div class="col">
                         <h2 class="font-semi-bold">0</h2>
-                        <h6 class="text-gray">عدد المهارات المكتسبة</h6>
+                        <h6 class="text-gray">عدد الفرص التدريبية</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
                     </div>
@@ -20,7 +20,7 @@
                     <div class="d-flex">
                       <div class="col">
                         <h2 class="font-semi-bold">0</h2>
-                        <h6 class="text-gray">عدد الدورات المكتملة</h6>
+                        <h6 class="text-gray">عدد الدورات المضافة</h6>
                       </div>
                       <div class="col-auto"> <img src="{{asset('assets/images/permanent-job.svg')}}" alt=""/></div>
                     </div>
