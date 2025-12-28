@@ -1,3 +1,68 @@
+$('.add-row-task').click(function(){
+    $('.list-task').append(`
+<div class="row list-rows mb-3 mb-lg-0 align-items-center">
+
+                                <div class="col-12 col-md-6 col-lg">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">اليوم / التاريخ</label>
+                    <input class="form-control datepicker" autocomplete="off" type="text" name="tasks[0][date]" value="" placeholder="اليوم / التاريخ">
+                                      </div>
+                </div>
+                                <div class="col-12 col-md-6 col-lg">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">عنوان المهمة</label>
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][name]" value="" placeholder="عنوان المهمة">
+                                      </div>
+                </div>
+                                <div class="col-12 col-md-6 col-lg">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">عدد الساعات</label>
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][number_of_hours]" value="" placeholder="عدد الساعات">
+                                      </div>
+                </div>
+                                <div class="col-12 col-md-6 col-lg">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">مستوى الانجاز</label>
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][achievement_level]" value="" placeholder="مستوى الانجاز">
+                                      </div>
+                </div>
+                                <div class="col-12 col-md-6 col-lg">
+                  <div class="form-group">
+                    <label class="form-label d-md-none">ملاحظات الجمعية</label>
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][notes]" value="" placeholder="ملاحظات الجمعية">
+                                      </div>
+                </div>
+                                <div class="col-auto">
+                    <div class="form-group">
+                        <button type="button" class="btn p-1 remove-task border-0">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                </div>
+    `)
+      document.querySelectorAll(".datepicker").forEach((picker) => {
+    new tempusDominus.TempusDominus(picker, {
+      useCurrent: false,
+      localization: { locale: "ar", format: "dd/MM/yyyy" },
+      display: {
+        components: {
+          calendar: true,
+          date: true,
+          month: true,
+          year: true,
+          decades: true,
+          clock: false
+        }
+      }
+    });
+  });
+});
+
+$(document).on('click' , '.remove-task' , function(){
+    $(this).closest('.list-rows').remove()
+})
+
 /* =========================================================
  PASSWORD VISIBILITY TOGGLE
    - Switches input type between "password" and "text"

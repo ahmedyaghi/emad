@@ -1,8 +1,8 @@
 <x-common.layout>
     <div class="row mb-lg-2">
       <div class="col-12">
-        <div class="row"> 
-          <div class="col-12"> 
+        <div class="row">
+          <div class="col-12">
             <ol class="breadcrumb">
             <div class="breadcrumb-item"><a href="{{route('association.assessments.index')}}">التقييمات</a></div>
             <div class="breadcrumb-item">إضافة تقييم المتدرب</div>
@@ -11,11 +11,11 @@
         </div>
       </div>
     </div>
-    <div class="row"> 
-      <div class="col-12"> 
+    <div class="row">
+      <div class="col-12">
         <form action="{{route('association.assessments.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
-          <div class="row"> 
+          <div class="row">
             <div class="col-12 mb-4">
               <div class="d-lg-flex justify-content-between">
                 <div class="col-lg-7 mb-3 mb-lg-0">
@@ -33,7 +33,7 @@
                 <div class="pannel">
                 <h3 class="font-semi-bold">اختيار الطالب - الفرصة التدريبية</h3>
                 <hr/>
-                <div class="form-group"> 
+                <div class="form-group">
                   <select class="select2" name="application_id">
                     <option value="">اختر</option>
                       @foreach ($applications as $application)
@@ -49,11 +49,11 @@
           </div>
 
           <div class="row">
-            <div class="col-12"> 
+            <div class="col-12">
                 <div class="pannel">
                 <h3 class="font-semi-bold">عنوان التقييم</h3>
                 <hr/>
-                <div class="form-group"> 
+                <div class="form-group">
                   <input type="text" class="form-control" placeholder="عنوان التقييم ..." name="name" />
                   @if ($errors->has('name'))
                       <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -63,7 +63,7 @@
               <div class="pannel">
                 <h3 class="font-semi-bold">ملاحظات عامة</h3>
                 <hr/>
-                <div class="form-group"> 
+                <div class="form-group">
                   <textarea class="form-control" rows="5" placeholder="ملاحظات عامة ..." name="description"></textarea>
                     @if ($errors->has('description'))
                       <span class="text-danger">{{ $errors->first('description') }}</span>
@@ -120,13 +120,13 @@
                 <h3 class="font-semi-bold"> معلومات عامة عن تقدم الطالب</h3>
                 <hr/>
                 <div class="row d-none d-lg-flex fw-bold mb-2 py-2">
-                  <div class="col-4"> 
+                  <div class="col-4">
                     <h5>المعيار</h5>
                   </div>
-                  <div class="col-4"> 
+                  <div class="col-4">
                     <h5>التقييم</h5>
                   </div>
-                  <div class="col-4"> 
+                  <div class="col-4">
                     <h5>الملاحظات</h5>
                   </div>
                 </div>
@@ -169,19 +169,22 @@
           <div class="row">
             <div class="col-12">
               <div class="pannel">
-                <h3 class="font-semi-bold">  المهام المنفذة خلال الفترة </h3>
+                <div class="d-flex align-items-center justify-content-between">
+                    <h3 class="font-semi-bold">  المهام المنفذة خلال الفترة </h3>
+                    <button class="btn btn-primary add-row-task" type="button">  اضف جديد</button>
+                </div>
                 <hr/>
                 <div class="row row-cols-lg-5 mb-3 d-none d-lg-flex">
                   <div class="col">
                     <h5> اليوم / التاريخ </h5>
                   </div>
-                  <div class="col"> 
+                  <div class="col">
                     <h5> عنوان المهمة </h5>
                   </div>
                   <div class="col">
                     <h5> عدد الساعات </h5>
                   </div>
-                  <div class="col"> 
+                  <div class="col">
                     <h5>مستوى الانجاز </h5>
                   </div>
                   <div class="col">
@@ -189,9 +192,11 @@
                   </div>
                 </div>
 
-                @for($i=0; $i<5; $i++)
-                <div class="row row-cols-lg-5 list-rows mb-3 mb-lg-0">
-                @php 
+                <div class="list-task">
+
+                @for($i=0; $i<1; $i++)
+                <div class="row list-rows mb-3 mb-lg-0 align-items-center">
+                @php
                   $fields =
                    [
                     'date'=>'اليوم / التاريخ',
@@ -203,7 +208,7 @@
                 @endphp
 
                 @foreach($fields as $field => $label)
-                <div class="col-12">
+                <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
                     <label class="form-label d-md-none">{{$label}}</label>
                     <input class="form-control {{ $field === 'date' ? 'datepicker' : '' }}"  autocomplete="off" type="text" name="tasks[{{$i}}][{{$field}}]" value="{{ old('tasks.'.$i.'.'.$field) }}" placeholder="{{$label}}"/>
@@ -213,8 +218,18 @@
                   </div>
                 </div>
                 @endforeach
-                </div>    
+                <div class="col-auto">
+                    <div class="form-group">
+                        <button type="button" class="remove-task btn p-1 border-0">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                </div>
                 @endfor
+                </div>
+
+
                 {{-- <div class="row row-cols-lg-5 list-rows mb-3 mb-lg-0">
                   <div class="col-12">
                     <div class="form-group">
@@ -257,7 +272,7 @@
                     </div>
                   </div>
                 </div> --}}
-             
+
               </div>
             </div>
           </div>
@@ -270,13 +285,13 @@
                   <div class="col">
                     <h5> المعيار </h5>
                   </div>
-                  <div class="col"> 
+                  <div class="col">
                     <h5> الوزن النسبي </h5>
                   </div>
                   <div class="col">
                     <h5> مستوى الانجاز </h5>
                   </div>
-                  <div class="col"> 
+                  <div class="col">
                     <h5>الملاحظات </h5>
                   </div>
                 </div>
@@ -350,7 +365,7 @@
                     </div>
                   </div>
                 </div> --}}
-             
+
               </div>
             </div>
           </div>
@@ -360,16 +375,16 @@
                 <h3 class="font-semi-bold">  التوصيات والمتابعة القادمة </h3>
                 <hr/>
                 <div class="row d-none d-lg-flex fw-bold mb-2 py-2">
-                  <div class="col-3"> 
+                  <div class="col-3">
                     <h5>المجال </h5>
                   </div>
-                  <div class="col-3"> 
+                  <div class="col-3">
                     <h5>التوصية </h5>
                   </div>
-                  <div class="col-3"> 
+                  <div class="col-3">
                     <h5> الجهة المسؤولة </h5>
                   </div>
-                  <div class="col-3"> 
+                  <div class="col-3">
                     <h5> الاجراء المطلوب </h5>
                   </div>
                 </div>
