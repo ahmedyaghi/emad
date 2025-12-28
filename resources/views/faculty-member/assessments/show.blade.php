@@ -4,7 +4,7 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href="{{route('consultant.assessments.index')}}">التقييمات</a></div>
+                    <div class="breadcrumb-item"><a href="{{route('faculty-member.assessments.index')}}">التقييمات</a></div>
                     <div class="breadcrumb-item">التقييم النهائي</div>
                   </ol>
                 </div>
@@ -49,7 +49,7 @@
                       <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">   اسم عضو هيئة التدريس المشرف<span class="text-black font-bold d-block mt-2">{{$assessment->application->training->faculty_member->name}}</span></span></div>
                     </div>
                     <div class="col-6 col-lg-3">
-                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">    اسم المستشار الميداني<span class="text-black font-bold d-block mt-2">{{$assessment->application->training->consultant->name}}</span></span></div>
+                      <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/user2.svg')}}" alt=""/><span class="info-title text-gray">    اسم المستشار الميداني<span class="text-black font-bold d-block mt-2">{{$assessment->application->training->faculty_member->name}}</span></span></div>
                     </div>
                     {{-- <div class="col-6 col-lg-3">
                       <div class="d-flex align-items-start mb-4"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">    تاريخ البداية<span class="text-black font-bold d-block mt-2">  25 مايو 2024</span></span></div>

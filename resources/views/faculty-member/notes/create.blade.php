@@ -14,7 +14,7 @@
 
     <div class="row"> 
         <div class="col-12"> 
-            <form action="{{ route('consultant.notes.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('faculty-member.notes.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row"> 
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-lg-auto">
                                 <div class="d-flex align-items-center">
-                                    <a class="me-2 btn btn-white" href="{{ route('consultant.notes.index') }}">رجوع</a>
+                                    <a class="me-2 btn btn-white" href="{{ route('faculty-member.notes.index') }}">رجوع</a>
                                     <button class="btn btn-primary px-4" type="submit">إضافة الملاحظة</button>
                                 </div>
                             </div>

@@ -26,7 +26,7 @@ class NoteRequest extends FormRequest
             'type_id' => 'required|exists:note_types,id',
             'send_to' => 'required|string',
             'description' => 'required|string',
-            'file' => 'nullable|file|max:5120|mimes:jpg,jpeg,png,gif',
+            'file' => 'nullable|file|max:5120|mimes:doc,docx,pdf',
         ];
     }
 }

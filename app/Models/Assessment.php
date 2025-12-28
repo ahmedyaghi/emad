@@ -43,7 +43,7 @@ class Assessment extends Model
         return $this->belongsTo(User::class, 'consultant_id', 'id');
     }
 
-    public function facultyMember()
+    public function faculty_member()
     {
         return $this->belongsTo(User::class, 'faculty_member_id', 'id');
     }

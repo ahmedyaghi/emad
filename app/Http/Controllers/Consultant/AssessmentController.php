@@ -41,7 +41,7 @@ class AssessmentController extends Controller
     public function store(AssessmentRequest $request)
     {
         $data = $request->validated();
-        $has_assessment = Assessment::where('application_id', $data['application_id'])->exists();
+        $has_assessment = Assessment::where('application_id', $data['application_id'])->where('consultant_id', auth()->id())->exists();
         if ($has_assessment) {
             return redirect()->route('consultant.assessments.index')->with('error', 'تم إضافة التقييم مسبقاَ');
         }

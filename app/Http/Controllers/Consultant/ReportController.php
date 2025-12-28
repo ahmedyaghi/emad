@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Consultant;
 
 use App\Enums\TrainingApplicationStatus;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Association\ReportRequest;
+use App\Http\Requests\Consultant\ReportRequest;
 use App\Models\Report;
 use App\Models\TrainingOpportunityApplication;
 use Illuminate\Support\Str;
