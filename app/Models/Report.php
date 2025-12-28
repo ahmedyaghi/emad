@@ -49,7 +49,7 @@ class Report extends Model
         return $this->belongsTo(User::class, 'consultant_id', 'id');
     }
 
-    public function facultyMember()
+    public function faculty_member()
     {
         return $this->belongsTo(User::class, 'faculty_member_id', 'id');
     }
@@ -82,7 +82,7 @@ class Report extends Model
         }
 
         if ($this->faculty_member_id) {
-            return $this->application->training->facultyMember->name;
+            return $this->application->training->faculty_member->name;
         }
     }
 }

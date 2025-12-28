@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Consultant;
 
+use App\Enums\TrainingApplicationStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Assessment;
 use App\Models\Note;
@@ -12,11 +13,15 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $trainees_count = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->count();
+        $trainees_count = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications', function ($query) {
+            $query->where('status', TrainingApplicationStatus::ACCEPTED);
+        })->count();
         $reports_count = Report::where('consultant_id', auth()->id())->count();
         $assessments_count = Assessment::where('consultant_id', auth()->id())->count();
         $notes_count = Note::where('send_from', auth()->id())->count();
-        $trainees = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications')->take(3)->get();
+        $trainees = TrainingOpportunity::where('consultant_id', auth()->id())->whereHas('applications', function ($query) {
+            $query->where('status', TrainingApplicationStatus::ACCEPTED);
+        })->take(3)->get();
         $reports = Report::with('application')->where('consultant_id', auth()->id())->take(3)->get();
         $assessments = Assessment::with('application')->where('consultant_id', auth()->id())->take(3)->get();
 

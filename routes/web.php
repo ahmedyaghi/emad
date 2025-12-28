@@ -50,7 +50,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
         Route::resource('trainees', App\Http\Controllers\Admin\TraineeController::class)->names('trainees');
-
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
@@ -79,7 +78,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('exams', App\Http\Controllers\Individual\ExamController::class)->names('exams');
         Route::resource('reports', App\Http\Controllers\Individual\ReportController::class)->names('reports');
         Route::resource('assessments', App\Http\Controllers\Individual\AssessmentController::class)->names('assessments');
-
     });
 
     Route::group(['prefix' => 'association', 'as' => 'association.', 'middleware' => ['role:association']], function () {
@@ -94,11 +92,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::group(['prefix' => 'faculty-member', 'as' => 'faculty-member.', 'middleware' => ['role:faculty-member']], function () {
         Route::get('/', [App\Http\Controllers\FacultyMember\DashboardController::class, 'dashboard'])->name('dashboard');
-        Route::get('/trainees', [App\Http\Controllers\FacultyMember\TraineeController::class, 'trainees'])->name('trainees');
-        Route::get('/reports', [App\Http\Controllers\FacultyMember\ReportController::class, 'reports'])->name('reports');
         Route::get('/profile', [App\Http\Controllers\FacultyMember\ProfileController::class, 'profile'])->name('profile');
-        Route::get('/assessments', [App\Http\Controllers\FacultyMember\AssessmentController::class, 'assessments'])->name('assessments');
-        Route::get('/notes', [App\Http\Controllers\FacultyMember\NoteController::class, 'notes'])->name('notes');
+        Route::resource('/trainees', App\Http\Controllers\FacultyMember\TraineeController::class)->names('trainees');
+        Route::resource('/reports', App\Http\Controllers\FacultyMember\ReportController::class)->names('reports');
+        Route::resource('/assessments', App\Http\Controllers\FacultyMember\AssessmentController::class)->names('assessments');
+        Route::resource('/notes', App\Http\Controllers\FacultyMember\NoteController::class)->names('notes');
     });
 
     Route::group(['prefix' => 'consultant', 'as' => 'consultant.', 'middleware' => ['role:consultant']], function () {

@@ -72,19 +72,13 @@
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.articles.*') ? 'active' : '' }} menu-link" href="{{route($role.'.articles.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/book.svg')}}" alt=""/></span><span class="menu-text"> المقالات</span></a></li>
               @break
               @case('consultant')
+              @case('faculty-member')
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.trainees.*') ? 'active' : '' }} menu-link" href="{{route($role.'.trainees.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/agreement.svg')}}" alt=""/></span><span class="menu-text"> المتدربين</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports.*') ? 'active' : '' }} menu-link" href="{{route($role.'.reports.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.assessments.*') ? 'active' : '' }} menu-link" href="{{route($role.'.assessments.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/catalogue.svg')}}" alt=""/></span><span class="menu-text"> التقييم النهائي</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.notes.*') ? 'active' : '' }} menu-link" href="{{route($role.'.notes.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">  ملاحظات</span></a></li>
-                @break
-              @case('faculty-member')
-              <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
-              <li class="menu-item"><a class="{{ request()->routeIs($role.'.trainees') ? 'active' : '' }} menu-link" href="{{route($role.'.trainees')}}"><span class="menu-icon"><img src="{{asset('assets/images/agreement.svg')}}" alt=""/></span><span class="menu-text"> المتدربين</span></a></li>
-              <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports') ? 'active' : '' }} menu-link" href="{{route($role.'.reports')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
-              <li class="menu-item"><a class="{{ request()->routeIs($role.'.assessments') ? 'active' : '' }} menu-link" href="{{route($role.'.assessments')}}"><span class="menu-icon"><img src="{{asset('assets/images/catalogue.svg')}}" alt=""/></span><span class="menu-text"> التقييم النهائي</span></a></li>
-              <li class="menu-item"><a class="{{ request()->routeIs($role.'.notes') ? 'active' : '' }} menu-link" href="{{route($role.'.notes')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text">  ملاحظات</span></a></li>
-              @break
+             @break
               @case('individual')
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.training-opportunities.*') ? 'active' : '' }} menu-link" href="{{route($role.'.training-opportunities.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/briefcase2.svg')}}" alt=""/></span><span class="menu-text"> استكشف الفرص التدريبية</span></a></li>

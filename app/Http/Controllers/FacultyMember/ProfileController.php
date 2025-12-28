@@ -8,6 +8,8 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('faculty-member.profile');
+        $user = auth()->user()->load('profile');
+
+        return view('faculty-member.profile', get_defined_vars());
     }
 }

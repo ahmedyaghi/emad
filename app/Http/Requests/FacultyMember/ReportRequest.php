@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Consultant;
+namespace App\Http\Requests\FacultyMember;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NoteRequest extends FormRequest
+class ReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,10 @@ class NoteRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'application_id' => 'required|exists:training_opportunity_applications,id',
             'title' => 'required|string|max:255',
-            'type_id' => 'required|exists:note_types,id',
-            'send_to' => 'required|string',
             'description' => 'required|string',
-            'file' => 'nullable|file|max:5120|mimes:doc,docx,pdf',
+            'file' => 'required|mimes:pdf,doc,docx',
         ];
     }
 }
