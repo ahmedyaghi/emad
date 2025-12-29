@@ -119,6 +119,8 @@
               </div>
             </div>
             @endif
+
+             @if(!$reports->isEmpty())
             <div class="row">
               <div class="col-12">
                 <div class="pannel">
@@ -128,49 +130,54 @@
                         <h3 class="font-semi-bold mb-2">  التقارير</h3>
                         <h6 class="text-gray">  الاطلاع على تقارير الطلاب</h6>
                       </div>
-                      <div class="col-auto"><a class="btn btn-light" href="report.html"> مشاهدة الكل </a></div>
+                      <div class="col-auto"><a class="btn btn-light" href="{{route('admin.reports.index')}}"> مشاهدة الكل </a></div>
                     </div>
                   </div>
                   <div class="pannel-body">
                     <div class="row"> 
+                      @foreach ($reports as $report )
                       <div class="col-lg-4 col-md-6">
                         <div class="card widget_item-card p-4 rounded-4">
                           <div class="widget_item-content">
                             <div class="d-flex align-items-center justify-content-between mb-3">
-                              <h4 class="widget_item-title font-semi-bold"><a href="report-details.html">اسم التقرير</a></h4>
+                              <h4 class="widget_item-title font-semi-bold"><a href="{{route('admin.reports.show', $report->id)}}">{{$report->title}}</a></h4>
                               <button class="btn btn-light p-1 rounded"><img src="{{asset('assets/images/download2.svg')}}" alt=""/></button>
                             </div>
-                            <h6 class="widget_item-desc text-gray mb-3">اكتشف مجموعة واسعة من الفرص التي تمكنك من تطبيق معرفتك، واكتساب خبرة عملية، والمساهمة في قضايا مجتمعية مهمة.</h6>
+                            <h6 class="widget_item-desc text-gray mb-3">{{ $report->description }}</h6>
                             <div class="widget_item-profile mb-4 d-flex align-items-center">
-                              <div class="profile-image me-3"><img src="../assets/images/avatar.png" alt=""/></div>
-                              <h6 class="font-medium">عبدالله احمد القحطاني</h6>
+                              <div class="profile-image me-3"><img src="{{$report->application->user->profile->image}}" alt=""/></div>
+                              <h6 class="font-medium">{{$report->application->user->name}}</h6>
                             </div>
                             <div class="widget_item-info mt-3 pt-3 d-flex align-items-center">
                               <div class="col">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
+                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/calendar.svg')}}" alt=""/><span class="info-title text-gray">تاريخ التقرير<span class="font-bold d-block text-black mt-2">{{$report->created_at}}</span></span></div>
                               </div>
                               <div class="col">
-                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">اسم الجهة</span></span></div>
+                                <div class="d-flex align-items-start"><img class="info-icon me-2" src="{{asset('assets/images/system-update.svg')}}" alt=""/><span class="info-title text-gray">الجهة المرسلة للتقرير<span class="font-bold d-block text-black mt-2">{{$report->sender_name}}</span></span></div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
+                      @endforeach
                   </div>
                   </div>
                 </div>
               </div>
             </div>
+            @endif
+
+{{--            
             <div class="row">
               <div class="col-12">
                 <div class="pannel">
                   <div class="pannel-head">
                     <div class="d-flex justify-content-between">
                       <div class="col-lg-7">
-                        <h3 class="font-semi-bold mb-2">   التقيمات النهائية</h3>
+                        <h3 class="font-semi-bold mb-2">التقيمات النهائية</h3>
                         <h6 class="text-gray">  الاطلاع على التقيمات النهائية يمكن حفظ التقييم وتعديله حتى تاريخ الإغلاق.</h6>
                       </div>
-                      <div class="col-auto"><a class="btn btn-light" href="final.html"> مشاهدة الكل </a></div>
+                      <div class="col-auto"><a class="btn btn-light" href="{{route('admin.assessments.index')}}"> مشاهدة الكل </a></div>
                     </div>
                   </div>
                   <div class="pannel-body">
@@ -207,6 +214,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
+       
           </div>
 </x-common.layout>
