@@ -37,13 +37,13 @@
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="mb-2">تاريخ بدء الدورة  <span class="text-danger"> *</span></label>
-                                  <input class="form-control datetimepicker" type="text" name="start_date" placeholder="تاريخ بدء التدريب" autocomplete="off"/>
+                                  <input class="form-control datetimepicker required" type="text" name="start_date" placeholder="تاريخ بدء التدريب" autocomplete="off"/>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
                                   <label class="mb-2">تاريخ نهاية الدورة   <span class="text-danger"> *</span></label>
-                                  <input class="form-control datetimepicker" type="text" name="end_date" placeholder="تاريخ نهاية التدريب" autocomplete="off"/>
+                                  <input class="form-control datetimepicker required" type="text" name="end_date" placeholder="تاريخ نهاية التدريب" autocomplete="off"/>
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -61,7 +61,7 @@
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                  <label class="mb-2">الفئة المستهدفة   </label>
+                                  <label class="mb-2">الفئة المستهدفة   <span class="text-danger"> *</span></label>
                                  <select class="select2 form-control required" data-placeholder="اختر" name="target_id">
                                     @if(!$targets->isEmpty())
                                         <option></option>
@@ -75,19 +75,19 @@
                               <div class="col-12">
                                 <div class="form-group">
                                   <label class="mb-2">وصف الدورة<span class="text-danger"> *</span></label>
-                                  <textarea class="form-control summernote" rows="5" name="description"></textarea>
+                                  <textarea class="form-control summernote required" rows="5" name="description"></textarea>
                                 </div>
                               </div>
                               <div class="col-md-12">
                                 <div class="form-group">
-                                  <label class="mb-2">محاور الدورة</label>
-                                  <textarea class="form-control summernote" rows="5" name="topics"></textarea>
+                                  <label class="mb-2">محاور الدورة <span class="text-danger"> *</span></label>
+                                  <textarea class="form-control summernote required" rows="5" name="topics"></textarea>
                                 </div>
                               </div>
                               <div class="col-md-12">
                                 <div class="form-group">
-                                  <label class="mb-2">الأهداف</label>
-                                  <textarea class="form-control summernote" rows="5" name="goals"></textarea>
+                                  <label class="mb-2">الأهداف <span class="text-danger"> *</span></label>
+                                  <textarea class="form-control summernote required" rows="5" name="goals"></textarea>
                                 </div>
                               </div>
                               <hr/>
@@ -100,7 +100,7 @@
                                        <div class="col-12">
                                         <div class="form-group">
                                           <label class="mb-2">صورة المحاضر <span class="text-danger"> *</span></label>
-                                          <input class="form-control lecturer-image-input" type="file" accept="image/*" name='lecturers[0][image]' style="display: none;"/>
+                                          <input class="form-control lecturer-image-input required" type="file" accept="image/*" name='lecturers[0][image]' style="display: none;"/>
                                           <div class="lecturer-image-preview mt-2" style="cursor: pointer; width: 150px; height:150px; border: 2px dashed #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
                                             <img src="" alt="اضغط لرفع الصورة" class="lecturer-preview-img" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; display: none;"/>
                                             <div class="lecturer-placeholder" style="text-align: center; color: #999;">
@@ -255,8 +255,8 @@
           });
 
           if(allOk){
-            let data = get_data();
-            send_data(url, data);
+            let formData = get_form_data();
+            send_data(url, formData);
           }
         });
 
@@ -595,83 +595,121 @@
 
 
       });
-      function get_data(){
-          let data = {};
-
-          // Course Information
-          data.title = $('input[name="title"]').val();
-          data.video_url = $('input[name="video_url"]').val();
-          data.start_date = $('input[name="start_date"]').val();
-          data.end_date = $('input[name="end_date"]').val();
-          data.qualification_id = $('select[name="qualification_id"]').val();
-          data.target_id = $('select[name="target_id"]').val();
-          data.description = $('textarea[name="description"]').val();
-          data.topics = $('textarea[name="topics"]').val();
-          data.goals = $('textarea[name="goals"]').val();
-
-          data.lecturers = [];
 
 
-          $('#lecturers-container .lecturer-item').each(function(){
-              let lecturer = {};
-              lecturer.name = $(this).find('input[type="text"]').val();
-              lecturer.bio = $(this).find('textarea').val();
-              data.lecturers.push(lecturer);
-          });
+      function get_form_data(){
+        let formData = new FormData();
 
-          // Units and Lessons
-          data.units = [];
-          $('#units-container .unit').each(function(unitIndex){
-              let unit = {};
-              unit.name = $(this).find('input[name^="unit"][name$="[name]"]').val();
-              unit.lessons = [];
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
 
-              $(this).find('.lessons-container .lesson').each(function(lessonIndex){
-                  let lesson = {};
-                  lesson.name = $(this).find('input[name$="[name]"]').val();
-                  lesson.link = $(this).find('input[name$="[link]"]').val();
-                  unit.lessons.push(lesson);
-              });
+        // Course info
+        formData.append('title', $('input[name="title"]').val());
+        formData.append('video_url', $('input[name="video_url"]').val());
+        formData.append('start_date', $('input[name="start_date"]').val());
+        formData.append('end_date', $('input[name="end_date"]').val());
+        formData.append('qualification_id', $('select[name="qualification_id"]').val());
+        formData.append('target_id', $('select[name="target_id"]').val());
+        formData.append('description', $('textarea[name="description"]').val());
+        formData.append('topics', $('textarea[name="topics"]').val());
+        formData.append('goals', $('textarea[name="goals"]').val());
 
-              data.units.push(unit);
-          });
+        // Lecturers
+        $('#lecturers-container .lecturer-item').each(function(index){
+            formData.append(`lecturers[${index}][name]`,
+                $(this).find('input[type="text"]').val()
+            );
 
-          // Trainees
-          data.trainees = [];
-          $('#trainees-list .trainee-card').each(function(){
-              data.trainees.push($(this).data('user-id'));
-          });
+            formData.append(`lecturers[${index}][bio]`,
+                $(this).find('textarea').val()
+            );
 
-          return data;
-      }
+            let imageInput = $(this).find('.lecturer-image-input')[0];
+            if(imageInput.files.length > 0){
+                formData.append(
+                    `lecturers[${index}][image]`,
+                    imageInput.files[0]
+                );
+            }
+        });
+
+        // Units & Lessons
+        $('#units-container .unit').each(function(unitIndex){
+            formData.append(
+                `units[${unitIndex}][name]`,
+                $(this).find('input[name$="[name]"]').val()
+            );
+
+            $(this).find('.lessons-container .lesson').each(function(lessonIndex){
+                formData.append(
+                    `units[${unitIndex}][lessons][${lessonIndex}][name]`,
+                    $(this).find('input[name$="[name]"]').val()
+                );
+                formData.append(
+                    `units[${unitIndex}][lessons][${lessonIndex}][link]`,
+                    $(this).find('input[name$="[link]"]').val()
+                );
+            });
+        });
+
+        // Trainees
+        $('#trainees-list .trainee-card').each(function(index){
+            formData.append(`trainees[${index}]`, $(this).data('user-id'));
+        });
+
+        return formData;
+    }
 
 
-
-      function send_data(url, data, method = 'POST'){
-        $.ajax({
+    function send_data(url, formData){
+      $.ajax({
           url: url,
-          type: method,
-           data: {
-            ...data,
-            _token: $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(response){
-          if (response.success) {
+          type: 'POST',
+          data: formData,
+          processData: false, 
+          contentType: false, 
+          success: function(response){
+              if (response.success) {
               toastr.success(response.message);
               setTimeout(() => {
                   window.location.href = response.redirect;
               }, 1200);
           }
-        },
-        error: function(result){
-         var msg = 'حدث خطأ أثناء الإضافة';
-          $.each(result.responseJSON.errors, function (key, value) {
-                msg += '<br>' + value;
-            });
-            toastr.error(msg);
-        }
-        });
-      }
+          },
+          error: function(xhr){
+                var msg = 'حدث خطأ أثناء الإضافة';
+              $.each(xhr.responseJSON.errors, function (key, value) {
+                  msg += '<br>' + value;
+              });
+              toastr.error(msg);
+          }
+      });
+  }
+
+      // function send_data(url, data, method = 'POST'){
+      //   $.ajax({
+      //     url: url,
+      //     type: method,
+      //      data: {
+      //       ...data,
+      //       _token: $('meta[name="csrf-token"]').attr('content')
+      //   },
+      //   success: function(response){
+      //     if (response.success) {
+      //         toastr.success(response.message);
+      //         setTimeout(() => {
+      //             window.location.href = response.redirect;
+      //         }, 1200);
+      //     }
+      //   },
+      //   error: function(result){
+      //    var msg = 'حدث خطأ أثناء الإضافة';
+      //     $.each(result.responseJSON.errors, function (key, value) {
+      //           msg += '<br>' + value;
+      //       });
+      //       toastr.error(msg);
+      //   }
+      //   });
+      // }
  </script>
 @endsection
 </x-common.layout>

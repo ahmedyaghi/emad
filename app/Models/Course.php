@@ -87,24 +87,51 @@ class Course extends Model
         return $this->belongsToMany(Lecturer::class);
     }
 
-    public function progress()
+    public function progressForUser(User $user): int
     {
-
-        $lessonIds = $this->units()->with('lessons')->get()
+        $lessonIds = $this->units()
+            ->with('lessons:id,unit_id')
+            ->get()
             ->pluck('lessons.*.id')
             ->flatten();
 
         $totalLessons = $lessonIds->count();
 
-        if ($totalLessons == 0) {
+        if ($totalLessons === 0) {
             return 0;
         }
 
-        $completedLessons = UserLessonProgress::where('user_id', auth()->id())
+        $completedLessons = UserLessonProgress::where('user_id', $user->id)
             ->whereIn('lesson_id', $lessonIds)
             ->where('is_completed', 1)
             ->count();
 
-        return round(($completedLessons / $totalLessons) * 100);
+        return (int) round(($completedLessons / $totalLessons) * 100);
     }
+
+    public function progress(): int
+    {
+        return $this->progressForUser(auth()->user());
+    }
+
+    // public function progress()
+    // {
+
+    //     $lessonIds = $this->units()->with('lessons')->get()
+    //         ->pluck('lessons.*.id')
+    //         ->flatten();
+
+    //     $totalLessons = $lessonIds->count();
+
+    //     if ($totalLessons == 0) {
+    //         return 0;
+    //     }
+
+    //     $completedLessons = UserLessonProgress::where('user_id', auth()->id())
+    //         ->whereIn('lesson_id', $lessonIds)
+    //         ->where('is_completed', 1)
+    //         ->count();
+
+    //     return round(($completedLessons / $totalLessons) * 100);
+    // }
 }

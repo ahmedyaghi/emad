@@ -139,61 +139,46 @@
                     @endif
                 </div>
                 <div class="tab-pane fade" id="tab-4">
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                        <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                      </div>
-                      <div class="col-auto"><a class="disabled btn btn-primary" href="">بدء الاختبار </a></div>
-                    </div>
-                  </div>
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                        <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                      </div>
-                      <div class="col-auto"><a class="btn btn-primary" href="testing.html">بدء الاختبار </a></div>
-                    </div>
-                  </div>
-                  <div class="card"> 
-                    <div class="d-flex align-items-center"> 
-                      <div class="col">
-                        <h5 class="font-semi-bold mb-2">اسم الاختبار</h5>
-                        <h6 class="text-gray">7 يوليو 2025 - 12:00 مساء</h6>
-                      </div>
-                      <div class="col-auto">
-                        <div class="widget_item-card rounded-3 p-3 test-result mb-0">
-                          <h4 class="mb-2"><span class="total-score"> 120 / </span><span class="achieved-score">90</span></h4>
-                          <h6 class="font-light font-12">نتيجة الاختبار </h6>
+                  @if(!is_null($course->exams()->get()))   
+                   @foreach ( $course->exams()->get() as $exam)
+                    <div class="card"> 
+                      <div class="d-flex align-items-center"> 
+                        <div class="col">
+                          <h5 class="font-semi-bold mb-2">{{$exam->title}}</h5>
+                          <h6 class="text-gray">{{$exam->datetime->locale('ar')->translatedFormat('d F Y h:i A')}}</h6>
                         </div>
+                        {{-- <div class="col-auto">
+                          <a class="disabled btn btn-primary" href="">بدء الاختبار </a>
+                        </div> --}}
                       </div>
                     </div>
-                  </div>
+                    @endforeach
+                   @endif
                 </div>
                 <div class="tab-pane fade" id="tab-5">
                   <div class="pannel"> 
                     <div class="d-flex align-items-center justify-content-between mb-4">
                       <h3 class="font-bold">المتدربين</h3>
-                      <div class="d-flex align-items-center">
+                      {{-- <div class="d-flex align-items-center">
                         <div class="col">
                           <input class="form-control" type="text" placeholder="ابحث عن متدرب"/>
                         </div>
                         <div class="col-auto"><a class="px-3 ms-2 btn btn-primary" href="trainings-add.html"> إضافة متدرب</a></div>
-                      </div>
+                      </div> --}}
                     </div>
                     <hr/>
+                     @if(!is_null($course->users()->get()))   
                     <div class="row">
+                      @foreach ( $course->users()->get() as $user)
                       <div class="col-lg-6 col-md-6">
                         <div class="card">
                           <div class="d-flex align-items-start">
                             <div class="col">
                               <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
+                                <div class="widget_item-user-avatar col-auto me-2"><img src="{{$user->profile->image}}" alt=""/></div>
                                 <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                                  <h6 class="text-gray">مشرف تنظيم حشود</h6>
+                                  <h6 class="mb-1 font-medium">{{$user->name}}</h6>
+                                  <h6 class="text-gray">{{$user->profile->bio}}</h6>
                                 </div>
                               </div>
                             </div>
@@ -209,7 +194,7 @@
                           <hr/>
                           <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
                             <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
+                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">{{$user->created_at}}</span></span></div>
                             </div>
                             <div class="col-6">
                               <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">التقييم العام<span class="text-success font-bold d-block mt-2">ممتاز</span></span></div>
@@ -218,199 +203,55 @@
                           <div class="widget_item-details bg-gray rounded-4 p-2">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                               <h6 class="font-light">نسبة التقدم</h6>
-                              <h6 class="font-bold bg-white px-2 py-1 rounded"> 30%</h6>
+                              <h6 class="font-bold bg-white px-2 py-1 rounded"> {{$course->progress()}}%</h6>
                             </div>
                             <div class="progress bg-white">
-                              <div class="progress-bar" div="div" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                              <div class="progress-bar" div="div" role="progressbar" style="width: {{$course->progress()}}%" aria-valuenow="{{$course->progress()}}" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="card">
-                          <div class="d-flex align-items-start">
-                            <div class="col">
-                              <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                                  <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <div class="d-flex align-items-center"> 
-                                <div class="dropdown ms-2">
-                                  <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                  <div class="dropdown-menu"><a class="dropdown-item" href="add-student-report.html"> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">التقييم العام<span class="text-success font-bold d-block mt-2">ممتاز</span></span></div>
-                            </div>
-                          </div>
-                          <div class="widget_item-details bg-gray rounded-4 p-2">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                              <h6 class="font-light">نسبة التقدم</h6>
-                              <h6 class="font-bold bg-white px-2 py-1 rounded"> 30%</h6>
-                            </div>
-                            <div class="progress bg-white">
-                              <div class="progress-bar" div="div" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="card">
-                          <div class="d-flex align-items-start">
-                            <div class="col">
-                              <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                                  <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <div class="d-flex align-items-center"> 
-                                <div class="dropdown ms-2">
-                                  <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                  <div class="dropdown-menu"><a class="dropdown-item" href="add-student-report.html"> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">التقييم العام<span class="text-success font-bold d-block mt-2">ممتاز</span></span></div>
-                            </div>
-                          </div>
-                          <div class="widget_item-details bg-gray rounded-4 p-2">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                              <h6 class="font-light">نسبة التقدم</h6>
-                              <h6 class="font-bold bg-white px-2 py-1 rounded"> 30%</h6>
-                            </div>
-                            <div class="progress bg-white">
-                              <div class="progress-bar" div="div" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-lg-6 col-md-6">
-                        <div class="card">
-                          <div class="d-flex align-items-start">
-                            <div class="col">
-                              <div class="widget_item-user d-flex align-items-center">
-                                <div class="widget_item-user-avatar col-auto me-2"><img src="../assets/images/avatar.png" alt=""/></div>
-                                <div class="widget_item-user-info">
-                                  <h6 class="mb-1 font-medium">عبدالله محمود القحطاني</h6>
-                                  <h6 class="text-gray">مشرف تنظيم حشود</h6>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-auto">
-                              <div class="d-flex align-items-center"> 
-                                <div class="dropdown ms-2">
-                                  <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown"><img src="../assets/images/more-vertical.svg" alt=""/></button>
-                                  <div class="dropdown-menu"><a class="dropdown-item" href="add-student-report.html"> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/file-add.svg" alt=""/></span><span class="font-medium">اضافة تقرير </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/user.svg" alt=""/></span><span class="font-medium">عرض الملف الشخصي </span></a><a class="dropdown-item" href=""> <span class="dropdown-item-icon"><img class="me-2" src="../assets/images/delete2.svg" alt=""/></span><span class="font-medium">حذف من التدريب </span></a></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <hr/>
-                          <div class="widget_item-info mt-3 d-flex align-items-center flex-wrap mb-3">
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray"> تاريخ التسجيل<span class="font-bold d-block text-black mt-2">10 مايو 2025</span></span></div>
-                            </div>
-                            <div class="col-6">
-                              <div class="d-flex align-items-start"><img class="info-icon me-2" src="../assets/images/calendar.svg" alt=""/><span class="info-title text-gray">التقييم العام<span class="text-success font-bold d-block mt-2">ممتاز</span></span></div>
-                            </div>
-                          </div>
-                          <div class="widget_item-details bg-gray rounded-4 p-2">
-                            <div class="d-flex align-items-center justify-content-between mb-2">
-                              <h6 class="font-light">نسبة التقدم</h6>
-                              <h6 class="font-bold bg-white px-2 py-1 rounded"> 30%</h6>
-                            </div>
-                            <div class="progress bg-white">
-                              <div class="progress-bar" div="div" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                       @endforeach
                     </div>
+                    @endif
                     <div class="row"> 
                       <div class="col-12"> 
-                        <ul class="pagination justify-content-end">
-                          <li class="page-item active"><a class="page-link" href=""> 1</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 2</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 3</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 4</a></li>
-                          <li class="page-item"><a class="page-link" href=""> 5</a></li>
-                        </ul>
+                       {{$course->users()->paginate(9)->links('components.common.pagination')}}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4"> 
-              <div class="pannel">
-                <h5 class="mb-3 font-bold"> اعلي المتدربين</h5>
-                <hr/>
+            <div class="col-lg-4">
+            <div class="pannel">
+              <h5 class="mb-3 font-bold">أعلى المتدربين</h5>
+              <hr/>
+
+              @forelse($top_trainees as $item)
                 <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray p-2 rounded-4 mb-2">
-                  <div class="widget_item-user-avatar col-auto me-2 image-small"><img src="../assets/images/avatar.png" alt=""/></div>
-                  <div class="widget_item-user-info me-auto">
-                    <h6 class="font-12 mb-1 font-semi-bold"> أحمد السالم</h6>
-                    <h6 class="font-12 text-gray"> نسبة التقدم</h6>
+                  
+                  <div class="widget_item-user-avatar col-auto me-2 image-small">
+                    <img src="{{ $item['user']->profile?->image}}" alt="">
                   </div>
-                  <h6 class="font-12 font-medium bg-white rounded-3 py-1 px-2">87%</h6>
-                </div>
-                <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray p-2 rounded-4 mb-2">
-                  <div class="widget_item-user-avatar col-auto me-2 image-small"><img src="../assets/images/avatar.png" alt=""/></div>
+
                   <div class="widget_item-user-info me-auto">
-                    <h6 class="font-12 mb-1 font-semi-bold"> أحمد السالم</h6>
-                    <h6 class="font-12 text-gray"> نسبة التقدم</h6>
+                    <h6 class="font-12 mb-1 font-semi-bold">
+                      {{ $item['user']->name }}
+                    </h6>
+                    <h6 class="font-12 text-gray">نسبة التقدم</h6>
                   </div>
-                  <h6 class="font-12 font-medium bg-white rounded-3 py-1 px-2">87%</h6>
+
+                  <h6 class="font-12 font-medium bg-white rounded-3 py-1 px-2">
+                    {{ $item['progress'] }}%
+                  </h6>
                 </div>
-                <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray p-2 rounded-4 mb-2">
-                  <div class="widget_item-user-avatar col-auto me-2 image-small"><img src="../assets/images/avatar.png" alt=""/></div>
-                  <div class="widget_item-user-info me-auto">
-                    <h6 class="font-12 mb-1 font-semi-bold"> أحمد السالم</h6>
-                    <h6 class="font-12 text-gray"> نسبة التقدم</h6>
-                  </div>
-                  <h6 class="font-12 font-medium bg-white rounded-3 py-1 px-2">87%</h6>
-                </div>
-                <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray p-2 rounded-4 mb-2">
-                  <div class="widget_item-user-avatar col-auto me-2 image-small"><img src="../assets/images/avatar.png" alt=""/></div>
-                  <div class="widget_item-user-info me-auto">
-                    <h6 class="font-12 mb-1 font-semi-bold"> أحمد السالم</h6>
-                    <h6 class="font-12 text-gray"> نسبة التقدم</h6>
-                  </div>
-                  <h6 class="font-12 font-medium bg-white rounded-3 py-1 px-2">87%</h6>
-                </div>
-                <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray p-2 rounded-4 mb-2">
-                  <div class="widget_item-user-avatar col-auto me-2 image-small"><img src="../assets/images/avatar.png" alt=""/></div>
-                  <div class="widget_item-user-info me-auto">
-                    <h6 class="font-12 mb-1 font-semi-bold"> أحمد السالم</h6>
-                    <h6 class="font-12 text-gray"> نسبة التقدم</h6>
-                  </div>
-                  <h6 class="font-12 font-medium bg-white rounded-3 py-1 px-2">87%</h6>
-                </div>
-              </div>
+              @empty
+                <p class="text-gray text-center">لا يوجد متدربين بعد</p>
+              @endforelse
+
             </div>
+          </div>
           </div>
 
 

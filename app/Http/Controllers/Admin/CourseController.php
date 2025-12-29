@@ -34,6 +34,14 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+        $course->with(['users', 'units.lessons']);
+        $top_trainees = $course->users->map(function ($user) use ($course) {
+            return [
+                'user' => $user,
+                'progress' => $course->progressForUser($user),
+            ];
+        })->sortByDesc('progress')->take(5);
+
         return view('admin.courses.show', get_defined_vars());
     }
 
@@ -48,8 +56,8 @@ class CourseController extends Controller
             $course = Course::create([
                 'title' => $data['title'],
                 'video_url' => $data['video_url'],
-                'start_date' => date('Y-m-d', strtotime($data['start_date'])),
-                'end_date' => date('Y-m-d', strtotime($data['end_date'])),
+                'start_date' => $data['start_date'],
+                'end_date' => $data['end_date'],
                 'qualification_id' => $data['qualification_id'],
                 'target_id' => $data['target_id'],
                 'description' => $data['description'] ?? null,
@@ -58,11 +66,25 @@ class CourseController extends Controller
                 'slug' => Str::slug($data['title'], '-'),
             ]);
 
+            if (! empty($data['trainees'])) {
+                foreach ($data['trainees'] as $trainee) {
+                    $course->users()->attach($trainee);
+                }
+            }
+
             if (! empty($data['lecturers'])) {
                 foreach ($data['lecturers'] as $lecturer_data) {
+
+                    $lecturer_image = null;
+
+                    if (isset($lecturer_data['image'])) {
+                        $lecturer_image = $lecturer_data['image']->store('admin/courses', 'public');
+                    }
+
                     $lecturer = Lecturer::create([
                         'name' => $lecturer_data['name'],
-                        'bio' => $lecturer_data['bio'] ?? null,
+                        'bio' => $lecturer_data['bio'],
+                        'image' => $lecturer_image,
                     ]);
                     $course->lecturers()->attach($lecturer->id);
                 }
@@ -84,12 +106,6 @@ class CourseController extends Controller
                             ]);
                         }
                     }
-                }
-            }
-
-            if (! empty($data['trainees'])) {
-                foreach ($data['trainees'] as $traineeData) {
-                    $course->users()->attach($traineeData);
                 }
             }
 

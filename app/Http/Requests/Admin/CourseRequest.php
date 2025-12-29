@@ -34,6 +34,7 @@ class CourseRequest extends FormRequest
             'lecturers' => 'required|array|min:1',
             'lecturers.*.name' => 'required|string|max:255',
             'lecturers.*.bio' => 'required|string',
+            'lecturers.*.image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'units' => 'required|array|min:1',
             'units.*.name' => 'required|string|max:255',
             'units.*.lessons' => 'required|array|min:1',
