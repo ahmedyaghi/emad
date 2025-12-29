@@ -1,35 +1,39 @@
 $('.add-row-task').click(function(){
+
+  let index = $('.list-task .list-rows').length;
+
+
     $('.list-task').append(`
 <div class="row list-rows mb-3 mb-lg-0 align-items-center">
 
                                 <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
                     <label class="form-label d-md-none">اليوم / التاريخ</label>
-                    <input class="form-control datepicker" autocomplete="off" type="text" name="tasks[0][date]" value="" placeholder="اليوم / التاريخ">
+                    <input class="form-control datepicker" autocomplete="off" type="text" name="tasks[${index}][date]" value="" placeholder="اليوم / التاريخ">
                                       </div>
                 </div>
                                 <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
                     <label class="form-label d-md-none">عنوان المهمة</label>
-                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][name]" value="" placeholder="عنوان المهمة">
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[${index}][name]" value="" placeholder="عنوان المهمة">
                                       </div>
                 </div>
                                 <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
                     <label class="form-label d-md-none">عدد الساعات</label>
-                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][number_of_hours]" value="" placeholder="عدد الساعات">
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[${index}][number_of_hours]" value="" placeholder="عدد الساعات">
                                       </div>
                 </div>
                                 <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
                     <label class="form-label d-md-none">مستوى الانجاز</label>
-                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][achievement_level]" value="" placeholder="مستوى الانجاز">
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[${index}][achievement_level]" value="" placeholder="مستوى الانجاز">
                                       </div>
                 </div>
                                 <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
                     <label class="form-label d-md-none">ملاحظات الجمعية</label>
-                    <input class="form-control " autocomplete="off" type="text" name="tasks[0][notes]" value="" placeholder="ملاحظات الجمعية">
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[${index}][notes]" value="" placeholder="ملاحظات الجمعية">
                                       </div>
                 </div>
                                 <div class="col-auto">
