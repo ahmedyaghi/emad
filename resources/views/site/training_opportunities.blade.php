@@ -36,8 +36,8 @@
                         <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('training-opportunity', $training_opportunity->slug)}}">{{$training_opportunity->title}}</a></h4>
                         <h6 class="widget_item-desc text-gray mb-3">{{$training_opportunity->short_description}}</h6>
                         <div class="widget_item-campany mb-4 d-flex align-items-center">
-                        <div class="campany-image me-2"><img src="../assets/images/logo.svg" alt=""/></div>
-                        <h6 class="campany-name">شركة عماد </h6>
+                        <div class="campany-image me-2"><img src="{{$training_opportunity->association->profile?->image}}" alt=""/></div>
+                        <h6 class="campany-name">{{$training_opportunity->association->name}} </h6>
                         </div>
                         <div class="widget_item-info mt-3 pt-3 mb-4">
                         <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="{{asset('assets/images/location.svg')}}" alt=""/><span class="info-title text-gray">{{$training_opportunity->location}}</span></div>
@@ -46,8 +46,17 @@
                         </div>
                         <div class="widget_item-action row gx-2">
                         <div class="col-lg-7"><a class="btn btn-white px-0 w-100" href="{{route('training-opportunity', $training_opportunity->slug)}}">عرض تفاصيل </a></div>
-                        <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="{{route('training-opportunity', $training_opportunity->slug)}}">قدّم الآن </a></div>
-                        </div>
+                        @guest
+                          <div class="col-lg-5"><a class="btn btn-primary px-0 w-100" href="" data-bs-toggle="modal" data-bs-target="#loginModal">قدّم الآن </a></div>
+                        @endguest
+                        @auth
+                          @if(auth()->user()->hasRole('individual'))
+                          <div class="col-lg-5">
+                          <a class="btn btn-primary w-100" href="{{route('individual.training-opportunities.show', $training_opportunity)}}">قدّم الآن </a>
+                          </div>
+                          @endif
+                        @endauth
+                      </div>
                     </div>
                     </div>
                 </div>
