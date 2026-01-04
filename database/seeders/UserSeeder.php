@@ -2,13 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Enums\UserType;
 use App\Enums\UserStatus;
+use App\Enums\UserType;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Symfony\Component\Clock\now;
-
-use Illuminate\Support\Facades\HashClock\now;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
