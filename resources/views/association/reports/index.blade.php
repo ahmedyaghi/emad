@@ -4,7 +4,7 @@
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
                   <h3 class="font-semi-bold mb-2"> التقارير</h3>
-                  <h6 class="text-gray">  الاطلاع على تقارير الطلاب</h6>
+                  <h6 class="text-gray">  الاطلاع على تقارير طلاب التدريب التعاوني</h6>
                 </div>
                 <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('association.reports.create')}}">اضافة تقرير</a></div>
               </div>

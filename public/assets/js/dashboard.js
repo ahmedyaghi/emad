@@ -32,8 +32,8 @@ $('.add-row-task').click(function(){
                 </div>
                                 <div class="col-12 col-md-6 col-lg">
                   <div class="form-group">
-                    <label class="form-label d-md-none">ملاحظات الجمعية</label>
-                    <input class="form-control " autocomplete="off" type="text" name="tasks[${index}][notes]" value="" placeholder="ملاحظات الجمعية">
+                    <label class="form-label d-md-none">ملاحظات الجهة</label>
+                    <input class="form-control " autocomplete="off" type="text" name="tasks[${index}][notes]" value="" placeholder="ملاحظات الجهة">
                                       </div>
                 </div>
                                 <div class="col-auto">

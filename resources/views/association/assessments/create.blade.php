@@ -20,7 +20,7 @@
               <div class="d-lg-flex justify-content-between">
                 <div class="col-lg-7 mb-3 mb-lg-0">
                   <h3 class="font-semi-bold mb-3">  إضافة تقييم المتدرب</h3>
-                  <h6 class="text-gray">قم بتعبئة التقييم بناءً على أداء الطلاب خلال هذا الأسبوع.</h6>
+                  <h6 class="text-gray">قم بتعبئة التقييم بناءً على أداء المتدرب خلال الفترة</h6>
                 </div>
                 <div class="col-auto"> <a class="btn btn-white" href="{route('association.assessments.index')}}">رجوع </a>
                   <button class="btn btn-primary px-3 ms-2" type="submit">إضافة التقييم </button>
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-12">
                 <div class="pannel">
-                <h3 class="font-semi-bold">اختيار الطالب - الفرصة التدريبية</h3>
+                <h3 class="font-semi-bold">اختيار المتدرب - فرصة التدريب التعاوني</h3>
                 <hr/>
                 <div class="form-group">
                   <select class="select2" name="application_id">
@@ -117,7 +117,7 @@
           <div class="row">
             <div class="col-12">
               <div class="pannel">
-                <h3 class="font-semi-bold"> معلومات عامة عن تقدم الطالب</h3>
+                <h3 class="font-semi-bold"> التقييم السلوكي</h3>
                 <hr/>
                 <div class="row d-none d-lg-flex fw-bold mb-2 py-2">
                   <div class="col-4">
@@ -188,7 +188,7 @@
                     <h5>مستوى الانجاز </h5>
                   </div>
                   <div class="col">
-                    <h5> ملاحظات الجمعية </h5>
+                    <h5> ملاحظات الجهة </h5>
                   </div>
                 </div>
 
@@ -203,7 +203,7 @@
                     'name'=>'عنوان المهمة',
                     'number_of_hours'=>'عدد الساعات',
                     'achievement_level'=>'مستوى الانجاز',
-                    'notes'=>'ملاحظات الجمعية'
+                    'notes'=>'ملاحظات الجهة'
                   ];
                 @endphp
 
@@ -279,7 +279,7 @@
           <div class="row">
             <div class="col-12">
               <div class="pannel">
-                <h3 class="font-semi-bold">  التقييم الرقمي </h3>
+                <h3 class="font-semi-bold">  التقييم المهاري </h3>
                 <hr/>
                 <div class="row row-cols-lg-4 mb-3 d-none d-lg-flex">
                   <div class="col">
@@ -372,7 +372,7 @@
           <div class="row">
             <div class="col-12">
               <div class="pannel">
-                <h3 class="font-semi-bold">  التوصيات والمتابعة القادمة </h3>
+                <h3 class="font-semi-bold">  التوصيات  </h3>
                 <hr/>
                 <div class="row d-none d-lg-flex fw-bold mb-2 py-2">
                   <div class="col-3">
@@ -382,10 +382,10 @@
                     <h5>التوصية </h5>
                   </div>
                   <div class="col-3">
-                    <h5> الجهة المسؤولة </h5>
+                    <h5> الإدارة المعنية </h5>
                   </div>
                   <div class="col-3">
-                    <h5> الاجراء المطلوب </h5>
+                    <h5> الإجراءات المقترحة </h5>
                   </div>
                 </div>
                 @foreach($general_criterias->where('type', 3) as $criteria)
@@ -396,7 +396,7 @@
                       <h5 class="my-3 my-lg-0 form-control">{{$criteria->title}}</h5>
                     </div>
                   </div>
-                  @php $recommendFields = ['recommendations'=>'التوصية','responsible_side'=>'الجهة المسؤولة','action_required'=>'الإجراء المطلوب']; @endphp
+                  @php $recommendFields = ['recommendations'=>'التوصية','responsible_side'=>'الإدارة المعنية','action_required'=>'الإجراءات المقترحة']; @endphp
                   @foreach($recommendFields as $field => $label)
                   <div class="col-12 col-lg-3">
                     <div class="form-group">

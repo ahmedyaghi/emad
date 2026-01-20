@@ -50,7 +50,7 @@
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
                   <h3 class="font-semi-bold mb-2"> عرض {{count($trainees)}} المتدربين</h3>
-                  <h6 class="text-gray"> بناءً على الدورات الخاصة بك</h6>
+                  <h6 class="text-gray"> بناءً على الفرص التدريبية الخاصة بك</h6>
                 </div>
               </div>
             </div>

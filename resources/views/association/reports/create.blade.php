@@ -20,7 +20,7 @@
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
                   <h3 class="font-semi-bold mb-3">  اضافة تقرير المتدرب</h3>
-                  <h6 class="text-gray">قم بتعبئة التقييم بناءً على أداء الطلاب خلال هذا الأسبوع.</h6>
+                  <h6 class="text-gray">قم بتعبئة التقرير بناءً على أداء المتدرب خلال الفترة</h6>
                 </div>
                 <div class="col-lg-auto"><a class="me-2 btn btn-white" href="{{route('association.reports.index')}}"> رجوع</a>
                   <button class="btn btn-primary px-4" type="submit">اضافة تقرير</button>
@@ -31,7 +31,7 @@
           <div class="row">
             <div class="col-12">
                 <div class="pannel">
-                <h3 class="font-semi-bold">اختيار المتدرب - الفرصة التدريبية</h3>
+                <h3 class="font-semi-bold">اختيار المتدرب - فرصة التدريب التعاوني</h3>
                 <hr/>
                 <div class="form-group"> 
                   <select class="select2" name="application_id">
