@@ -5,7 +5,7 @@
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                      <p class="d-block mb-1 font-bold">تصفية<br/><span class="fw-normal">قم بتخصيص نتائج البحث لعرض الوظائف التي تناسبك بشكل أفضل. </span></p>
+                      <p class="d-block mb-1 font-bold">تصفية<br/><span class="fw-normal">قم بتخصيص نتائج البحث لعرض الفرص التي تناسبك بشكل أفضل. </span></p>
                     </button>
                   </h2>
                   <div class="accordion-collapse collapse show" id="collapseOne">
@@ -54,8 +54,8 @@
             <div class="col-12 mb-4">
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
-                  <h3 class="font-semi-bold mb-2">عرض {{count($training_opportunities)}}الفرص التدريبية</h3>
-                  <h6 class="text-gray">بناءً على وظائفك المنشورة</h6>
+                  <h3 class="font-semi-bold mb-2">عرض {{count($training_opportunities)}} فرص التدريب</h3>
+                  <h6 class="text-gray">بناءً على الفرص المنشورة</h6>
                 </div>
                 <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('association.training-opportunities.create')}}">نشر تدريب جديد</a></div>
               </div>

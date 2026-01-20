@@ -15,10 +15,10 @@
             <div class="col-12">
               <ul class="nav nav-pills mb-3 gap-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab">عن التدريب</button>
+                  <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab">عن التدريب التعاوني</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2" type="button" role="tab">المتقدمين</button>
+                  <button class="nav-link " data-bs-toggle="pill" data-bs-target="#tab-2" type="button" role="tab">المتقدمين للفرصة</button>
                 </li>
               </ul>
               <div class="tab-content" id="pills-tabContent">

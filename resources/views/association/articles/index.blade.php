@@ -4,7 +4,7 @@
               <div class="d-flex justify-content-between">
                 <div class="col-lg-7">
                   <h3 class="font-semi-bold mb-2"> المقالات</h3>
-                  <h6 class="text-gray"> الاطلاع على المقالات</h6>
+                  <h6 class="text-gray"> الاطلاع على المقالات والاصدارات</h6>
                 </div>
                 <div class="col-lg-auto"><a class="btn btn-primary px-4" href="{{route('association.articles.create')}}">اضافة مقال</a></div>
               </div>

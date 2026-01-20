@@ -4,8 +4,8 @@
               <div class="row"> 
                 <div class="col-12"> 
                   <ol class="breadcrumb">
-                    <div class="breadcrumb-item"><a href="{{route('association.training-opportunities.index')}}"> استكشف الوظائف</a></div>
-                    <div class="breadcrumb-item"> نشر تدريب جديد</div>
+                    <div class="breadcrumb-item"><a href="{{route('association.training-opportunities.index')}}"> استكشف الفرص التعاونية</a></div>
+                    <div class="breadcrumb-item">نشر تدريب تعاوني جديد</div>
                   </ol>
                 </div>
               </div>
@@ -16,8 +16,8 @@
               <div class="pannel">
                 <div class="row mb-4">
                   <div class="col-12">
-                    <h3 class="font-bold mb-3"> نشر تدريب جديد</h3>
-                    <h6>أضف تفاصيل التدريب لعرضها في المنصة، ليتمكن الباحثون عن تدريب من الاطلاع عليها والتقديم. </h6>
+                    <h3 class="font-bold mb-3"> نشر تدريب تعاوني جديد</h3>
+                    <h6>أضف تفاصيل عن التدريب التعاوني لعرضها في المنصة، ليتمكن الباحثون عن التدريب من الاطلاع عليها والتقديم.</h6>
                   </div>
                 </div>
                 <hr/>
@@ -28,7 +28,7 @@
                       <div class="row"> 
                         <div class="col-12"> 
                           <div class="form-group"> 
-                            <label class="mb-2"> المسمى الوظيفي <span class="text-danger"> *</span></label>
+                            <label class="mb-2"> مسمى فرصة التدريب التعاوني <span class="text-danger"> *</span></label>
                             <input class="form-control" type="text" placeholder="مثال: مشرف حجاج، منظم صفوف، مرشد ميداني…" name="title"/>
                             @if ($errors->has('title'))
                              <span class="text-danger">{{ $errors->first('title') }}</span>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2">  مكان التدريب  <span class="text-danger"> *</span></label>
+                            <label class="mb-2">  مكان التدريب التعاوني  <span class="text-danger"> *</span></label>
                             <select class="select2 form-control" data-placeholder="اختر" name="city_id">
                               @if(!$cities->isEmpty())
                                     <option> </option>
@@ -63,7 +63,7 @@
 
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2">  المستشار  <span class="text-danger"> *</span></label>
+                            <label class="mb-2">  الموجه (Mentor)  <span class="text-danger"> *</span></label>
                             <select class="select2 form-control" data-placeholder="اختر" name="consultant_id">
                               @if(!$cities->isEmpty())
                                     <option> </option>
@@ -98,8 +98,8 @@
 
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2"> تاريخ بدء التدريب  <span class="text-danger"> *</span></label>
-                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ بدء التدريب" name="start_date" autocomplete="off"/>
+                            <label class="mb-2"> تاريخ بدء التدريب التعاوني  <span class="text-danger"> *</span></label>
+                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ بدء التدريب التعاوني" name="start_date" autocomplete="off"/>
                              @if ($errors->has('start_date'))
                              <span class="text-danger">{{ $errors->first('start_date') }}</span>
                             @endif
@@ -107,8 +107,8 @@
                         </div>
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2"> تاريخ نهاية التدريب   <span class="text-danger"> *</span></label>
-                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ نهاية التدريب" name="end_date" autocomplete="off"  />
+                            <label class="mb-2"> تاريخ نهاية التدريب التعاوني   <span class="text-danger"> *</span></label>
+                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ نهاية التدريب التعاوني" name="end_date" autocomplete="off"  />
                              @if ($errors->has('end_date'))
                              <span class="text-danger">{{ $errors->first('end_date') }}</span>
                             @endif
@@ -116,7 +116,7 @@
                         </div>
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2">  نوع التدريب   <span class="text-danger"> *</span></label>
+                            <label class="mb-2">  نوع التدريب التعاوني  <span class="text-danger"> *</span></label>
                             <select class="select2 form-control" data-placeholder="اختر" name="type_id">
                                 @if(!$types->isEmpty())
                                       <option> </option>
@@ -174,8 +174,8 @@
                         </div>
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2"> وصف التدريب    <span class="text-danger"> *</span></label>
-                            <textarea class="form-control" rows="6" placeholder="أدخل وصف التدريب..." name="short_description"></textarea>
+                            <label class="mb-2"> وصف التدريب التعاوني  <span class="text-danger"> *</span></label>
+                            <textarea class="form-control" rows="6" placeholder="أدخل وصف التدريب التعاوني..." name="short_description"></textarea>
                              @if ($errors->has('short_description'))
                              <span class="text-danger">{{ $errors->first('short_description') }}</span>
                             @endif
@@ -211,7 +211,7 @@
                         <div class="col-12"> 
                           <div class="text-end">
                             {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#successModal">نشر التدريب</button> --}}
-                            <button class="btn btn-primary" type="submit">نشر التدريب</button>
+                            <button class="btn btn-primary" type="submit">نشر فرصة التدريب التعاوني</button>
                           </div>
                         </div>
                       </div>

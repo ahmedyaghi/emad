@@ -47,10 +47,10 @@
                   <div class="pannel-head">
                     <div class="d-flex justify-content-between">
                       <div class="col-lg-7">
-                        <h3 class="font-semi-bold mb-2"> الفرص التدريبية</h3>
-                        <h6 class="text-gray">تابع حالة الوظائف التي نشرتها ، وابقَ على اطلاع بآخر التحديثات</h6>
+                        <h3 class="font-semi-bold mb-2"> فرص التدريب التعاوني</h3>
+                        <h6 class="text-gray">تابع حالة الفرص التي نشرتها ، وابقَ على اطلاع بآخر التحديثات</h6>
                       </div>
-                      <div class="col-auto"><a class="btn btn-light" href="{{route('association.training-opportunities.create')}}">نشر وظيفة جديدة</a></div>
+                      <div class="col-auto"><a class="btn btn-light" href="{{route('association.training-opportunities.create')}}">نشر فرصة جديدة</a></div>
                     </div>
                   </div>
                   @if(!$training_opportunities->isEmpty())
