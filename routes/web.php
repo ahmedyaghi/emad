@@ -19,6 +19,7 @@ Route::get('/news', [NewsController::class, 'news'])->name('news');
 Route::get('/news/{slug}', [NewsController::class, 'news_details'])->name('news.details');
 Route::get('/cities/{city}/neighborhoods', [MainController::class, 'get_neighborhoods'])->name('cities.neighborhoods');
 
+
 Route::middleware('guest')->group(function () {
     Route::get('/register/{type}', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'handle_register'])->name('handle.register');
@@ -50,6 +51,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
         Route::resource('trainees', App\Http\Controllers\Admin\TraineeController::class)->names('trainees');
+        Route::get('logs', [App\Http\Controllers\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {
