@@ -51,7 +51,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
         Route::resource('trainees', App\Http\Controllers\Admin\TraineeController::class)->names('trainees');
-        Route::get('logs', [App\Http\Controllers\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
+        Route::get('logs', [Rap2hpoutre\LaravelLogViewer\Http\Controllers\LogViewerController::class, 'index']);
 
     });
 
