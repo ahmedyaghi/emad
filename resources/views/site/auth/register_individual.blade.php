@@ -196,7 +196,7 @@
                           <div class="col-12">
                             <div class="form-group"> 
                               <div class="upload-box">
-                                <input id="fileInput" type="file" accept=".pdf,.doc,.docx"/>
+                                <input id="fileInput" type="file" accept=".pdf,.doc,.docx" name="file"/>
                                 <div class="upload-placeholder"><img class="mb-3" src="{{asset('assets/images/upload.svg')}}"/>
                                   <h3 class="font-bold mb-2 text-main">اسحب وأفلِت أو اختر الملف الذي تريد تحميله</h3>
                                   <h6 class="mb-2 text-sub">الحد الأقصى للحجم 5 ميجا بايت</h6>

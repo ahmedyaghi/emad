@@ -56,7 +56,7 @@ class AuthController extends Controller
         if ($request->hasFile('image')) {
             $data['image'] = $request->file('image')->store('users/profile', 'public');
         }
-
+      
         if ($request->hasFile('file')) {
             $data['file'] = $request->file('file')->store('users/files', 'public');
         }
