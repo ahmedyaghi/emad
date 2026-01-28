@@ -29,6 +29,10 @@ class RegisterRequest extends FormRequest
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
             'specilization_id' => 'required|string|max:255',
+            'website' => 'nullable|string|max:255',
+            'twitter' => 'nullable|string|max:255',
+            'facebook' => 'nullable|string|max:255',
+            'youtube' => 'nullable|string|max:255',
         ];
 
         switch ($this->input('type')) {
@@ -56,10 +60,7 @@ class RegisterRequest extends FormRequest
                     'section_type_id' => 'required|string|max:255',
                     'country_id' => 'required|string|max:255',
                     'city_id' => 'required|string|max:255',
-                    'website' => 'required|string|max:255',
-                    'twitter' => 'required|string|max:255',
-                    'facebook' => 'required|string|max:255',
-                    'youtube' => 'required|string|max:255',
+
                     'manager_name' => 'required|string|max:255',
                     'manager_phone' => 'required|string|max:255',
                     'manager_email' => 'required|string|max:255',
@@ -72,10 +73,6 @@ class RegisterRequest extends FormRequest
                     'city_id' => 'required|string|max:255',
                     'section_type_id' => 'required|string|max:255',
                     'country_id' => 'required|string|max:255',
-                    'website' => 'required|string|max:255',
-                    'twitter' => 'required|string|max:255',
-                    'facebook' => 'required|string|max:255',
-                    'youtube' => 'required|string|max:255',
                     'type' => 'required|in:'.UserType::FACULTY_MEMBER->value,
                 ]);
                 break;

@@ -209,7 +209,7 @@
                         @endif
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    {{-- <div class="col-md-6">
                         <div class="form-group">
                         <label class="mb-2"> الجنسية<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control required" data-placeholder="اختر" name="nationality_id">
@@ -221,7 +221,7 @@
                             <span class="text-danger">{{ $errors->first('nationality_id') }}</span>
                         @endif
                         </div>
-                    </div>
+                    </div> --}}
                   <div class="col-md-6">
                         <div class="form-group">
                           <label class="mb-2">رقم الجوال<span class="text-danger ms-1">*</span></label>
