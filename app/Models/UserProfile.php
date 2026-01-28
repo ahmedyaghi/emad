@@ -18,12 +18,13 @@ class UserProfile extends Model
         'country_id',
         'neighborhood_id',
         'university_id',
-        'skill_id',
+        'skills',
         'manager_position_id',
         'manager_nationality_id',
         'bio',
         'website',
         'image',
+        'file',
         'twitter',
         'facebook',
         'youtube',
@@ -92,5 +93,10 @@ class UserProfile extends Model
         return Attribute::make(
             get: fn ($value) => $value ? Storage::url($value) : asset('assets/images/avatar.png')
         );
+    }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class);
     }
 }

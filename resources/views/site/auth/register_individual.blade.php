@@ -169,14 +169,14 @@
                           <div class="col-md-6">
                             <div class="form-group">
                               <label class="mb-2">اﻟﻤﻬـﺎرات</label>
-                              <select class="select2 form-control" data-placeholder="اختر" name="skill_id">
+                              <select class="select2 form-control" data-placeholder="اختر" name="skills[]" multiple="multiple">
                                 <option></option>
                                 @foreach ($skills as $skill)
                                   <option value="{{$skill->id}}">{{$skill->name}}</option>
                                 @endforeach
                               </select>
-                              @if ($errors->has('skill_id'))
-                                <span class="text-danger">{{ $errors->first('skill_id') }}</span>
+                              @if ($errors->has('skills'))
+                                <span class="text-danger">{{ $errors->first('skills') }}</span>
                             @endif
                             </div>
                           </div>
@@ -217,7 +217,7 @@
                         </div>
                       </form>
 
-                      @if ($errors->any())
+                      {{-- @if ($errors->any())
                           <div class="alert alert-danger">
                               <ul class="mb-0">
                                   @foreach ($errors->all() as $error)
@@ -225,7 +225,7 @@
                                   @endforeach
                               </ul>
                           </div>
-                      @endif
+                      @endif --}}
 
                     </div>
                   </div>

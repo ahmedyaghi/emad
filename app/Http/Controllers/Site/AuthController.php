@@ -57,6 +57,10 @@ class AuthController extends Controller
             $data['image'] = $request->file('image')->store('users/profile', 'public');
         }
 
+        if ($request->hasFile('file')) {
+            $data['file'] = $request->file('file')->store('users/files', 'public');
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -69,7 +73,12 @@ class AuthController extends Controller
 
         $user->profile()->create([
             'image' => $data['image'] ?? null,
+            'file' => $data['file'] ?? null,
         ]);
+
+        if (! empty($data['skills'])) {
+            $user->profile->skills()->sync($request->skills);
+        }
 
         $enum_type = UserType::from($data['type']);
 

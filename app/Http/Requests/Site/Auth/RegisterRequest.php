@@ -42,9 +42,9 @@ class RegisterRequest extends FormRequest
                     'file' => 'nullable|file|mimes:pdf,doc,docx',
                     'city_id' => 'required|string|max:255',
                     'neighborhood_id' => 'required|exists:neighborhoods,id',
-                    'linkedin' => 'required|string|max:255',
-                    'skill_id' => 'required|exists:skills,id',
-                    // 'course_id' => 'required|string|max:255',
+                    'linkedin' => 'nullable|string|max:255',
+                    'skills' => 'nullable|array',
+                    'skills.*' => 'exists:skills,id',
                     'type' => 'required|in:'.UserType::INDIVIDUAL->value,
                 ]);
                 break;
