@@ -21,7 +21,7 @@
                         <div class="row"> 
                           <div class="col-lg-6">
                             <div class="form-group"> 
-                              <label class="mb-2">الإسم</label>
+                              <label class="mb-2">الإسم <span class="text-danger ms-1">*</span></label>
                               <input class="form-control" type="text" placeholder="أدخل الاسم" name="name" value="{{old('name')}}"/>
                                 @if ($errors->has('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -30,7 +30,7 @@
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group"> 
-                              <label class="mb-2">رقم الهوية الوطنية أو الإقامة</label>
+                              <label class="mb-2">رقم الهوية الوطنية أو الإقامة <span class="text-danger ms-1">*</span></label>
                               <input class="form-control" type="text" placeholder="000000000000" name="id_number" value="{{old('id_number')}}"/>
                                 @if ($errors->has('id_number'))
                                     <span class="text-danger">{{ $errors->first('id_number') }}</span>
@@ -39,7 +39,7 @@
                           </div>
                           <div class="col-lg-6">
                             <div class="form-group"> 
-                              <label class="mb-2">العمر</label>
+                              <label class="mb-2">العمر <span class="text-danger ms-1">*</span></label>
                               <input class="form-control" type="text" placeholder="00" name="age" value="{{old('age')}}"/>
                                 @if ($errors->has('age'))
                                     <span class="text-danger">{{ $errors->first('age') }}</span>
@@ -48,7 +48,7 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label class="mb-2"> الجنس</label>
+                              <label class="mb-2"> الجنس <span class="text-danger ms-1">*</span></label>
                               <select class="select2 form-control" data-placeholder="اختر" name="gender">
                                 <option></option>
                                 <option value="1">ذكر</option>
@@ -89,7 +89,7 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label class="mb-2">اﻟﻤﺪﻳﻨﺔ</label>
+                              <label class="mb-2">اﻟﻤﺪﻳﻨﺔ <span class="text-danger ms-1">*</span></label>
                               <select class="select2 form-control" data-placeholder="اختر" name="city_id" id="city_id">
                                 <option></option>
                                @foreach ($cities as $city)
@@ -103,7 +103,7 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label class="mb-2"> اﻟﺤﻲ</label>
+                              <label class="mb-2"> اﻟﺤﻲ <span class="text-danger ms-1">*</span></label>
                               <select class="select2 form-control" data-placeholder="اختر" name="neighborhood_id" id="neighborhood_id">
                                 <option></option>
                               </select>
@@ -132,7 +132,7 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group"> 
-                              <label class="mb-2">البريد الاكتروني</label>
+                              <label class="mb-2">البريد الاكتروني <span class="text-danger ms-1">*</span></label>
                              <input class="form-control" type="text" placeholder="email@example.com" name="email" value="{{old('email')}}"/>
                             @if ($errors->has('email'))
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -141,7 +141,7 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group"> 
-                              <label class="mb-2">كلمة المرور</label>
+                              <label class="mb-2">كلمة المرور <span class="text-danger ms-1">*</span></label>
                              <input class="form-control" type="password" placeholder="****************" name="password" />
                             @if ($errors->has('password'))
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -150,7 +150,7 @@
                           </div>
                           <div class="col-md-6">
                             <div class="form-group"> 
-                              <label class="mb-2">تأكيد كلمة المرور</label>
+                              <label class="mb-2">تأكيد كلمة المرور <span class="text-danger ms-1">*</span></label>
                              <input class="form-control" type="password" placeholder="****************" name="password_confirmation" />
                             @if ($errors->has('password_confirmation'))
                                 <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>

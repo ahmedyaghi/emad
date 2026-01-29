@@ -16,7 +16,7 @@
                   <div class="row">
                    <div class="col-lg-6">
                       <div class="form-group"> 
-                        <label class="mb-2">الإسم</label>
+                        <label class="mb-2">الإسم <span class="text-danger ms-1">*</span></label>
                         <input class="form-control" type="text" placeholder="أدخل الاسم" name="name" value="{{old('name')}}"/>
                           @if ($errors->has('name'))
                               <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-lg-6">
                       <div class="form-group"> 
-                        <label class="mb-2">رقم الهوية الوطنية أو الإقامة</label>
+                        <label class="mb-2">رقم الهوية الوطنية أو الإقامة <span class="text-danger ms-1">*</span></label>
                         <input class="form-control" type="text" placeholder="000000000000" name="id_number" value="{{old('id_number')}}"/>
                           @if ($errors->has('id_number'))
                               <span class="text-danger">{{ $errors->first('id_number') }}</span>
@@ -47,7 +47,7 @@
                      </div>
                      <div class="col-md-6">
                       <div class="form-group">
-                        <label class="mb-2">اﻟﻤﺪﻳﻨﺔ</label>
+                        <label class="mb-2">اﻟﻤﺪﻳﻨﺔ<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="city_id">
                           <option></option>
                           <option value="1">اﻟﻤﺪﻳﻨﺔ 1</option>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="mb-2">الدولة</label>
+                        <label class="mb-2">الدولة <span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر"  name="country_id">
                           <option></option>
                           <option value="1">الدولة 1</option>
@@ -119,8 +119,7 @@
                             <div class="col-auto">
                               <select class="form-control  select2 " data-width="100px" data-placeholder="اختر" name="code">
                                 <option value="+966">966</option>
-                                <option value="+968">968</option>
-                                <option value="+969">969</option>
+                               
                               </select>
                             </div>
                           </div>
@@ -128,7 +127,7 @@
                       </div>
                      <div class="col-md-6">
                         <div class="form-group"> 
-                          <label class="mb-2">البريد الاكتروني</label>
+                          <label class="mb-2"> البريد الاكتروني <span class="text-danger ms-1">*</span></label>
                           <input class="form-control" type="text" placeholder="email@example.com" name="email" value="{{old('email')}}"/>
                         @if ($errors->has('email'))
                             <span class="text-danger">{{ $errors->first('email') }}</span>
@@ -138,7 +137,7 @@
 
                         <div class="col-md-6">
                         <div class="form-group"> 
-                          <label class="mb-2">كلمة المرور</label>
+                          <label class="mb-2">كلمة المرور <span class="text-danger ms-1">*</span></label>
                           <input class="form-control" type="password" placeholder="****************" name="password" />
                         @if ($errors->has('password'))
                             <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -147,7 +146,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group"> 
-                          <label class="mb-2">تأكيد كلمة المرور</label>
+                          <label class="mb-2">تأكيد كلمة المرور <span class="text-danger ms-1">*</span></label>
                           <input class="form-control" type="password" placeholder="****************" name="password_confirmation" />
                         @if ($errors->has('password_confirmation'))
                             <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>

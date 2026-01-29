@@ -20,9 +20,15 @@ Route::get('/news/{slug}', [NewsController::class, 'news_details'])->name('news.
 Route::get('/cities/{city}/neighborhoods', [MainController::class, 'get_neighborhoods'])->name('cities.neighborhoods');
 
 Route::middleware('guest')->group(function () {
+
     Route::get('/register/{type}', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'handle_register'])->name('handle.register');
     Route::post('/login', [AuthController::class, 'handle_login'])->name('handle.login');
+    Route::get('/reset-password', [AuthController::class, 'reset_password'])->name('password.request');
+    Route::post('/reset-password', [AuthController::class, 'handle_reset_password'])->name('password.email');
+    Route::get('/reset-password/{token}', [AuthController::class, 'new_password'])->name('password.reset');
+    Route::post('/reset-password/{token}', [AuthController::class, 'password_reset'])->name('password.update');
+
     Route::get('/login', function () {
         return redirect('/');
     })->name('login');
@@ -51,7 +57,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
         Route::resource('trainees', App\Http\Controllers\Admin\TraineeController::class)->names('trainees');
         Route::get('logs', [Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-
     });
 
     Route::group(['prefix' => 'individual', 'as' => 'individual.', 'middleware' => ['role:individual']], function () {

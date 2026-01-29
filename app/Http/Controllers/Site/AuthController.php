@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 
@@ -167,5 +168,53 @@ class AuthController extends Controller
         Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
 
         return redirect()->route('verification.verify')->with('success', 'تم ارسال رمز جديد لبريدك الالكتروني');
+    }
+
+    public function reset_password()
+    {
+        return view('site.auth.reset_password');
+    }
+
+    public function handle_reset_password(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email|exists:users,email',
+        ]);
+        $status = Password::sendResetLink($request->only('email'));
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with('success', 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني')
+            : back()->withErrors(['email' => 'فشل في إرسال رابط إعادة تعيين كلمة المرور']);
+    }
+
+    public function new_password()
+    {
+        return view('site.auth.new_password');
+    }
+
+    public function password_reset(Request $request, $token)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        $status = Password::reset(
+            [
+                'email' => $request->email,
+                'password' => $request->password,
+                'password_confirmation' => $request->password_confirmation,
+                'token' => $token,
+            ],
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password),
+                ])->save();
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('main')->with('success', 'تم إعادة تعيين كلمة المرور بنجاح')
+            : back()->withErrors(['email' => 'فشل في إعادة تعيين كلمة المرور']);
     }
 }

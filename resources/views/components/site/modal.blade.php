@@ -23,7 +23,7 @@
                           <span class="text-danger">{{ $errors->first('password') }}</span>
                       @endif
                   </div>
-                  <div class="form-group"> <a class="form-label text-black" href="">نسيت كلمة المرور ؟</a></div>
+                  <div class="form-group"> <a class="form-label text-black" href="{{route('password.request')}}">نسيت كلمة المرور ؟</a></div>
                   <div class="form-group"> 
                      @if ($errors->has('credentials'))
                           <span class="text-danger">{{ $errors->first('credentials') }}</span>

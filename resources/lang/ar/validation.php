@@ -183,6 +183,13 @@ return [
         'duration' => 'المدة',
         'short_description' => 'الوصف القصير',
         'gender' => 'الجنس',
+        'section_type_id' => 'القطاع',
+        'country_id' => 'الدولة',
+        'city_id' => 'المدينة',
+        'specilization_id' => 'التخصص',
+        'manager_name' => 'اسم المدير',
+        'manager_phone' => 'هاتف المدير',
+        'manager_email' => 'بريد المدير الالكتروني',
 
     ],
 ];
