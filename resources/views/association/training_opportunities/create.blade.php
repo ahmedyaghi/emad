@@ -29,7 +29,7 @@
                         <div class="col-12"> 
                           <div class="form-group"> 
                             <label class="mb-2"> مسمى فرصة التدريب التعاوني <span class="text-danger"> *</span></label>
-                            <input class="form-control" type="text" placeholder="مثال: مشرف حجاج، منظم صفوف، مرشد ميداني…" name="title"/>
+                            <input class="form-control" type="text" placeholder="مثال: مشرف حجاج، منظم صفوف، مرشد ميداني…" name="title" value="{{old('title')}}"/>
                             @if ($errors->has('title'))
                              <span class="text-danger">{{ $errors->first('title') }}</span>
                             @endif
@@ -38,7 +38,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> عدد الشواغر <span class="text-danger"> *</span></label>
-                            <input class="form-control" type="text" placeholder="عدد الشواغر" name="vacancies_count"/>
+                            <input class="form-control" type="text" placeholder="عدد الشواغر" name="vacancies_count" value="{{old('vacancies_count')}}"/>
                              @if ($errors->has('vacancies_count'))
                              <span class="text-danger">{{ $errors->first('vacancies_count') }}</span>
                             @endif
@@ -51,7 +51,7 @@
                               @if(!$cities->isEmpty())
                                     <option> </option>
                                   @foreach($cities as $city)
-                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                    <option value="{{ $city->id }}" {{ old('city_id') == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
                                   @endforeach
                              @endif
                             </select>
@@ -68,7 +68,7 @@
                               @if(!$cities->isEmpty())
                                     <option> </option>
                                   @foreach($consultants as $consultant)
-                                    <option value="{{ $consultant->id }}">{{ $consultant->name }}</option>
+                                    <option value="{{ $consultant->id }}" {{ old('consultant_id') == $consultant->id ? 'selected' : '' }}>{{ $consultant->name }}</option>
                                   @endforeach
                              @endif
                             </select>
@@ -86,7 +86,7 @@
                               @if(!$cities->isEmpty())
                                     <option> </option>
                                   @foreach($faculty_members as $faculty_member)
-                                    <option value="{{ $faculty_member->id }}">{{ $faculty_member->name }}</option>
+                                    <option value="{{ $faculty_member->id }}" {{ old('faculty_member_id') == $faculty_member->id ? 'selected' : '' }}>{{ $faculty_member->name }}</option>
                                   @endforeach
                              @endif
                             </select>
@@ -99,7 +99,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> تاريخ بدء التدريب التعاوني  <span class="text-danger"> *</span></label>
-                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ بدء التدريب التعاوني" name="start_date" autocomplete="off"/>
+                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ بدء التدريب التعاوني" name="start_date" autocomplete="off" value="{{ old('start_date') }}"/>
                              @if ($errors->has('start_date'))
                              <span class="text-danger">{{ $errors->first('start_date') }}</span>
                             @endif
@@ -108,7 +108,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> تاريخ نهاية التدريب التعاوني   <span class="text-danger"> *</span></label>
-                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ نهاية التدريب التعاوني" name="end_date" autocomplete="off"  />
+                            <input class="form-control datepicker_db" type="text" placeholder="تاريخ نهاية التدريب التعاوني" name="end_date" autocomplete="off" value="{{ old('end_date') }}"/>
                              @if ($errors->has('end_date'))
                              <span class="text-danger">{{ $errors->first('end_date') }}</span>
                             @endif
@@ -121,7 +121,7 @@
                                 @if(!$types->isEmpty())
                                       <option> </option>
                                     @foreach($types as $type)
-                                      <option value="{{ $type->id }}">{{ $type->title }}</option>
+                                      <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->title }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -135,9 +135,9 @@
                             <label class="mb-2">  الفئة المستهدفة   </label>
                             <select class="select2 form-control" data-placeholder="اختر" name="target">
                               <option> </option>
-                              <option value="1">ذكور</option>
-                              <option value="2">إناث</option>
-                              <option value="3">ذكور وإناث</option>
+                              <option value="1" {{ old('target') == 1 ? 'selected' : '' }}>ذكور</option>
+                              <option value="2" {{ old('target') == 2 ? 'selected' : '' }}>إناث</option>
+                              <option value="3" {{ old('target') == 3 ? 'selected' : '' }}>ذكور وإناث</option>
                             </select>
                              @if ($errors->has('target'))
                              <span class="text-danger">{{ $errors->first('target') }}</span>
@@ -151,7 +151,7 @@
                                 @if(!$qualifications->isEmpty())
                                       <option> </option>
                                     @foreach($qualifications as $qualification)
-                                      <option value="{{ $qualification->id }}">{{ $qualification->name }}</option>
+                                      <option value="{{ $qualification->id }}" {{ old('qualification_id') == $qualification->id ? 'selected' : '' }}>{{ $qualification->name }}</option>
                                     @endforeach
                                 @endif
                             </select>
@@ -162,9 +162,9 @@
                         </div>
                         <div class="col-md-6"> 
                           <div class="form-group"> 
-                            <label class="mb-2"> المرتب   <span class="text-danger"> *</span></label>
+                            <label class="mb-2"> مكافأة التدريب التعاوني </label>
                             <div class="input-icon icon-left">
-                              <input class="form-control" type="text" placeholder="00" name="salary"/>
+                              <input class="form-control" type="text" placeholder="00" name="salary" value="{{old('salary')}}"/>
                               <div class="icon w-auto">  ريال سعودي</div>
                             </div>
                              @if ($errors->has('salary'))
@@ -175,7 +175,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> وصف التدريب التعاوني  <span class="text-danger"> *</span></label>
-                            <textarea class="form-control" rows="6" placeholder="أدخل وصف التدريب التعاوني..." name="short_description"></textarea>
+                            <textarea class="form-control" rows="6" placeholder="أدخل وصف التدريب التعاوني..." name="short_description">{{ old('short_description') }}</textarea>
                              @if ($errors->has('short_description'))
                              <span class="text-danger">{{ $errors->first('short_description') }}</span>
                             @endif
@@ -184,7 +184,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> المزايا والمكافأة<span class="text-danger"> *</span></label>
-                            <textarea class="form-control" rows="6" placeholder="أدخل المهام والمسؤوليات..." name="features"></textarea>
+                            <textarea class="form-control" rows="6" placeholder="أدخل المهام والمسؤوليات..." name="features">{{ old('features') }}</textarea>
                              @if ($errors->has('features'))
                              <span class="text-danger">{{ $errors->first('features') }}</span>
                             @endif
@@ -193,7 +193,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2">المهام والمسؤوليات<span class="text-danger"> *</span></label>
-                            <textarea class="form-control" rows="6" placeholder="أدخل المهام والمسؤوليات..." name="responsibilities" ></textarea>
+                            <textarea class="form-control" rows="6" placeholder="أدخل المهام والمسؤوليات..." name="responsibilities">{{ old('responsibilities') }}</textarea>
                              @if ($errors->has('responsibilities'))
                              <span class="text-danger">{{ $errors->first('responsibilities') }}</span>
                             @endif
@@ -202,7 +202,7 @@
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2">شروط القبول<span class="text-danger"> *</span></label>
-                            <textarea class="form-control" rows="6" placeholder="أدخل شروط القبول..." name="conditions"></textarea>
+                            <textarea class="form-control" rows="6" placeholder="أدخل شروط القبول..." name="conditions">{{ old('conditions') }}</textarea>
                              @if ($errors->has('conditions'))
                              <span class="text-danger">{{ $errors->first('conditions') }}</span>
                             @endif

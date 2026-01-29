@@ -32,7 +32,7 @@ class TrainingOpportunityRequest extends FormRequest
             'consultant_id' => 'required|exists:users,id',
             'faculty_member_id' => 'required|exists:users,id',
             'target' => 'required|in:1,2,3',
-            'salary' => 'required|string',
+            'salary' => 'nullable|string',
             'short_description' => 'required|string',
             'features' => 'required|string',
             'responsibilities' => 'required|string',

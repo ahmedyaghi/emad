@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\UserStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CreateUserRequest;
 use App\Models\User;
@@ -27,6 +28,7 @@ class UserController extends Controller
     {
         $data = $request->validated();
         $data['email_verified_at'] = now();
+        $data['status'] = UserStatus::ACCEPTED;
         unset($data['role_id']);
         $user = User::create($data);
         $user->roles()->attach([$request->role_id]);
