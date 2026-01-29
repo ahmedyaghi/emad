@@ -103,7 +103,7 @@
                 <h2 class="section-title font-bold mb-2">الرجاء إدخال رمز OTP</h2>
                 <h4 class="text-gray">تم إرسال رمز التحقق (OTP) إلى رقم جوالك. يرجى إدخال الرمز في الحقل أدناه لاستكمال عملية التسجيل.</h4>
                 <hr/>
-                <div class="d-flex justify-content-center gap-2 mb-4 pt-3">
+                <div class="d-flex justify-content-center gap-2 mb-4 pt-3" style="direction: ltr;">
                   <input class="otp-input form-control text-center" type="text" maxlength="1" placeholder="0"/>
                   <input class="otp-input form-control text-center" type="text" maxlength="1" placeholder="0"/>
                   <input class="otp-input form-control text-center" type="text" maxlength="1" placeholder="0"/>

@@ -3,9 +3,16 @@
     <nav class="navbar navbar-expand-lg navbar-light py-0">
         <div class="overlay collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"></div>
         <div class="container"><a class="navbar-brand py-0" href="{{route('main')}}"><img src="{{asset('assets/images/logo.svg')}}" alt="{{$settings['site_title'] ?? ''}}"/></a>
-        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars fa-lg"></i></button>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars fa-lg"></i></button>
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+            <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
             <ul class="navbar-nav mx-auto">
             <li class="nav-item"><a class="nav-link {{ request()->routeIs('main') ? 'active' : '' }}" href="{{route('main')}}">الرئيسية</a></li>
             <li class="nav-item"><a class="nav-link {{ request()->routeIs('training-opportunities') ? 'active' : '' }}" href="{{route('training-opportunities')}}">فرص تدريبية</a></li>

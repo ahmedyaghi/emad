@@ -13,7 +13,7 @@
                     <form action="{{route('verification.verify')}}" method="POST">
                         @csrf
 
-                         <div class="d-flex justify-content-center gap-2 mb-4 pt-3">
+                         <div class="d-flex justify-content-center gap-2 mb-4 pt-3" style="direction: ltr;">
                             <input class="otp-input form-control text-center" type="text" maxlength="1" placeholder="0" name="code[]" value="{{old('code.0')}}"/>
                             <input class="otp-input form-control text-center" type="text" maxlength="1" placeholder="0" name="code[]" value="{{old('code.1')}}"/>
                             <input class="otp-input form-control text-center" type="text" maxlength="1" placeholder="0" name="code[]" value="{{old('code.2')}}"/>
