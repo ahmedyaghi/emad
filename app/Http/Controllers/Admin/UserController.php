@@ -26,10 +26,11 @@ class UserController extends Controller
     public function store(CreateUserRequest $request)
     {
         $data = $request->validated();
-
+        $data['email_verified_at'] = now();
         unset($data['role_id']);
         $user = User::create($data);
         $user->roles()->attach([$request->role_id]);
+        $user->profile()->create([]);
 
         return redirect()->route('admin.users.index')->with('success', 'تم إضافة المستخدم بنجاح');
     }
