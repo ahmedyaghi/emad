@@ -28,7 +28,6 @@ Route::middleware('guest')->group(function () {
     Route::post('/reset-password', [AuthController::class, 'handle_reset_password'])->name('password.email');
     Route::get('/reset-password/{token}', [AuthController::class, 'new_password'])->name('password.reset');
     Route::post('/reset-password/{token}', [AuthController::class, 'password_reset'])->name('password.update');
-
     Route::get('/login', function () {
         return redirect('/');
     })->name('login');
@@ -37,7 +36,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/email/verify', [AuthController::class, 'notice'])->name('verification.notice');
     Route::post('/email/verify', [AuthController::class, 'verify'])->name('verification.verify');
-    Route::get('/email/resend-cdoe', [AuthController::class, 'resend_cdoe'])->name('verification.resend.code');
+    Route::get('/email/resend-code', [AuthController::class, 'resend'])->name('verification.resend.code');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 

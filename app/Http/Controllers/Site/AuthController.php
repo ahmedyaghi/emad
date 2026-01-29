@@ -155,9 +155,8 @@ class AuthController extends Controller
         throw ValidationException::withMessages(['invalid_code' => 'رمز التحقق غير صحيح']);
     }
 
-    public function resend_cdoe()
+    public function resend()
     {
-
         if (Auth::user()->email_verified_at != null) {
             return redirect()->route('main');
         }
@@ -167,7 +166,7 @@ class AuthController extends Controller
         Auth::user()->verification_code()->create(['code' => $code]);
         Mail::to(Auth::user()->email)->send(new VerifyUserMail(Auth::user()->name, $code));
 
-        return redirect()->route('verification.verify')->with('success', 'تم ارسال رمز جديد لبريدك الالكتروني');
+        return response()->json(['status' => 'success', 'message' => 'تم إعادة إرسال رمز التحقق بنجاح']);
     }
 
     public function reset_password()

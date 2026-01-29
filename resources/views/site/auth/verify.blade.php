@@ -30,7 +30,8 @@
                         <div class="text-center">
                             <div class="text-danger small mb-3" id="otpError"></div>
                             <h3 class="mb-3">لم يصلك رمز التحقق؟</h3>
-                            <h5 class="text-danger"> إعادة الإرسال خلال 59 ثانية ...</h5>
+                            <button type="button" class="btn btn-link p-0" id="resendBtn" disabled>إعادة إرسال الرمز</button>
+                            <h5 class="text-danger mt-2">إعادة الإرسال خلال <span id="countdown">59</span> ثانية ...</h5>
                         </div>
                         <div class=" gap-2 d-flex justify-content-between mt-4">
                         <button class="btn btn-white px-5" type="button" data-bs-dismiss="modal">إلغاء</button>
@@ -43,4 +44,64 @@
             </div>
           </div>
         </section><!-- end:: section --> 
+
+        @section('scripts')
+        <script>
+          $(document).ready(function() {
+              var countdown = 59;
+              var $countdown = $('#countdown');
+              var $resendBtn = $('#resendBtn');
+
+              // بدء العد التنازلي
+              var timer = setInterval(function() {
+                  countdown--;
+                  $countdown.text(countdown);
+                  if(countdown <= 0){
+                      clearInterval(timer);
+                      $countdown.parent().hide(); // اخفاء النص
+                      $resendBtn.prop('disabled', false); // تفعيل الزر
+                  }
+              }, 1000);
+
+              // عند الضغط على زر إعادة الإرسال
+              $resendBtn.click(function() {
+                  $resendBtn.prop('disabled', true);
+                  countdown = 59;
+                  $countdown.parent().show();
+                  $countdown.text(countdown);
+
+                  // إعادة تشغيل العد التنازلي
+                  timer = setInterval(function() {
+                      countdown--;
+                      $countdown.text(countdown);
+                      if(countdown <= 0){
+                          clearInterval(timer);
+                          $countdown.parent().hide();
+                          $resendBtn.prop('disabled', false);
+                      }
+                  }, 1000);
+
+                  // AJAX لإعادة إرسال OTP
+                  $.ajax({
+                      url: "{{ route('verification.resend.code') }}",
+                      method: "GET",
+                      data: {},
+                      headers: {
+                          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                      },
+                      success: function(data){
+                          if(data.status === 'success'){
+                              toastr.success(data.message || 'تم إعادة إرسال رمز التحقق بنجاح');
+                          } else {
+                              $('#otpError').text(data.message || 'حدث خطأ حاول مرة أخرى');
+                          }
+                      },
+                      error: function(){
+                          $('#otpError').text('حدث خطأ حاول مرة أخرى');
+                      }
+                  });
+              });
+          });
+          </script>
+        @endsection
 </x-site.layout>
