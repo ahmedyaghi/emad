@@ -169,7 +169,7 @@
                     <hr/>
                      @if(!is_null($course->users()->get()))   
                     <div class="row">
-                      @foreach ( $course->users()->get() as $user)
+                      @foreach ( $course->users()->with('profile')->get() as $user)
                       <div class="col-lg-6 col-md-6">
                         <div class="card">
                           <div class="d-flex align-items-start">
@@ -229,6 +229,9 @@
               <hr/>
 
               @forelse($top_trainees as $item)
+              @php
+                $item['user']->load('profile')
+              @endphp
                 <div class="widget_item-user d-flex align-items-center justify-content-between bg-gray p-2 rounded-4 mb-2">
                   
                   <div class="widget_item-user-avatar col-auto me-2 image-small">

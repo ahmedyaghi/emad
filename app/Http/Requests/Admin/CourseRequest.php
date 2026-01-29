@@ -40,7 +40,7 @@ class CourseRequest extends FormRequest
             'units.*.lessons' => 'required|array|min:1',
             'units.*.lessons.*.name' => 'required|string|max:255',
             'units.*.lessons.*.link' => 'required|string|max:255',
-            'trainees' => 'required|array|min:1',
+            'trainees' => 'nullable|array|min:1',
         ];
     }
 }

@@ -2282,3 +2282,8 @@ html[dir=ltr] .section-home::after, html[dir=ltr] .btn-light-primary .icon img {
     height: 45px;
     padding: 0px 20px;
 }
+
+
+.main-header.internal .navbar-toggler:not(.collapsed) svg path {
+    stroke: #000000;
+}

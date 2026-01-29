@@ -311,10 +311,10 @@
                alert("يجب إضافة وحدة واحدة على الأقل");
                ok = false;
            }
-           if(ok && step === 2 && $('.trainee-card').length === 0){
-              alert("يجب إضافة متدرب واحد على الأقل");
-               ok = false;
-           }
+          //  if(ok && step === 2 && $('.trainee-card').length === 0){
+          //     alert("يجب إضافة متدرب واحد على الأقل");
+          //      ok = false;
+          //  }
 
           $('#smartwizard').smartWizard('fixHeight');
           if(!ok) $('html, body').animate({ scrollTop: 0 }, 500);
