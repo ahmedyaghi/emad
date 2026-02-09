@@ -6,7 +6,7 @@
               <div class="col-lg-6 mx-auto">
                 <div class="text-center">
                   <h1 class="home-title font-bold mb-4 text-white" data-aos="fade-up" data-aos-delay="100"> اكتشف المقالات</h1>
-                  <h4 class="home-text mb-4 text-white px-5" data-aos="fade-up" data-aos-delay="200">تصفح المقالات والتطوع المتاحة، وقم بتطبيق مهاراتك في مشاريع مؤثرة.</h4>
+                  <h4 class="home-text mb-4 text-white px-5" data-aos="fade-up" data-aos-delay="200">اكتشف فرصًا تطوعية ومقالات ملهمة، وساهم بمهاراتك في إحداث أثر حقيقي.</h4>
                 </div>
               </div>
             </div>
