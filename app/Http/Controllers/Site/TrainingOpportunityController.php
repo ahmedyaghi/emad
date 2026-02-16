@@ -32,7 +32,7 @@ class TrainingOpportunityController extends Controller
                 $query = $query->where('for_female', 1);
             }
         }
-        $training_opportunities = $query->with('association');
+        $training_opportunities = $query->with(['association', 'association.profile']);
         $training_opportunities = $query->paginate((request()->has('per_page') && ! empty(request('per_page')) ? request('per_page') : 9));
 
         $training_opportunity_types = TrainingOpportunityType::all();

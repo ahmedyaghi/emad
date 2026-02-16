@@ -36,7 +36,7 @@
                         <h4 class="widget_item-title font-semi-bold mb-2"><a href="{{route('training-opportunity', $training_opportunity->slug)}}">{{$training_opportunity->title}}</a></h4>
                         <h6 class="widget_item-desc text-gray mb-3">{{$training_opportunity->short_description}}</h6>
                         <div class="widget_item-campany mb-4 d-flex align-items-center">
-                        <div class="campany-image me-2"><img src="{{$training_opportunity->association->profile?->image}}" alt=""/></div>
+                        <div class="campany-image me-2"><img src="{{$training_opportunity->association?->profile?->image}}" alt=""/></div>
                         <h6 class="campany-name">{{$training_opportunity->association->name}} </h6>
                         </div>
                         <div class="widget_item-info mt-3 pt-3 mb-4">
