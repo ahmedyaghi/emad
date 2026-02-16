@@ -28,7 +28,7 @@ class TrainingOpportunityController extends Controller
         if (! empty(request('association_id'))) {
             $query = $query->where('association_id', request('association_id'));
         }
-        $training_opportunities = $query->with('association');
+        $training_opportunities = $query->with(['association', 'association.profile']);
         $training_opportunities = $query->withCount('applications');
 
         $training_opportunities = $query->paginate(9);
