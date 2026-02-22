@@ -89,7 +89,7 @@ class TrainingOpportunityController extends Controller
             return redirect()->route('individual.training-opportunity-applications')->with('error', 'تم التقديم مسبقاَ علي التدريب !');
         }
         $data['user_id'] = auth()->id();
-        $data['slug'] = Str::slug(TrainingOpportunity::find($request->training_id)->title);
+        $data['slug'] = Str::slug(TrainingOpportunity::find($request->training_id)->title).'-'.Str::random(6);
         if ($request->hasFile('cv')) {
             unset($data['cv']);
             $data['cv'] = $request->file('cv')->store('training-opportunities/applications', 'public');
