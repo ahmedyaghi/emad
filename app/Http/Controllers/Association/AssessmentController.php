@@ -23,7 +23,7 @@ class AssessmentController extends Controller
     {
         $general_criterias = GeneralCriteria::all();
         $evaluations = Evaluation::all();
-        $applications = TrainingOpportunityApplication::with('user')->where('status', TrainingApplicationStatus::ACCEPTED)
+        $applications = TrainingOpportunityApplication::with(['user', 'user.profile', 'training'])->where('status', TrainingApplicationStatus::ACCEPTED)
             ->whereHas('training', function ($q) {
                 $q->where('association_id', auth()->id());
             })->get();
