@@ -41,17 +41,17 @@ class TrainingOpportunityController extends Controller
 
     public function show(TrainingOpportunity $training_opportunity)
     {
-        $applied_applications = TrainingOpportunityApplication::with(['user' , 'user.profile'])
+        $applied_applications = TrainingOpportunityApplication::with(['user', 'user.profile'])
             ->where('training_id', $training_opportunity->id)
             ->where('status', TrainingApplicationStatus::APPLIED)
             ->paginate(9);
 
-        $reviewed_applications = TrainingOpportunityApplication::with(['user' , 'user.profile'])
+        $reviewed_applications = TrainingOpportunityApplication::with(['user', 'user.profile'])
             ->where('training_id', $training_opportunity->id)
             ->where('status', TrainingApplicationStatus::REVIEWED)
             ->paginate(9);
 
-        $accepted_applications = TrainingOpportunityApplication::with(['user' , 'user.profile'])
+        $accepted_applications = TrainingOpportunityApplication::with(['user', 'user.profile'])
             ->where('training_id', $training_opportunity->id)
             ->where('status', TrainingApplicationStatus::ACCEPTED)
             ->paginate(9);

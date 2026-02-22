@@ -13,7 +13,7 @@ class TraineeController extends Controller
 
         $query = TrainingOpportunityApplication::query();
 
-        $query->with(['user','user.profile']);
+        $query->with(['user', 'user.profile']);
 
         $query->whereHas('training', function ($q) {
             $q->where('association_id', auth()->id());
