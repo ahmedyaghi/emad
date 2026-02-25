@@ -13,4 +13,9 @@ class ReportController extends Controller
 
         return view('admin.reports.index', get_defined_vars());
     }
+
+    public function show(Report $report)
+    {
+        return view('admin.reports.show', get_defined_vars());
+    }
 }
