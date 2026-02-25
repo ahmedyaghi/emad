@@ -17,7 +17,7 @@ class DashboardController extends Controller
         $users_count = User::count();
         $trainees_count = User::where('type', UserType::INDIVIDUAL)->whereHas('training_opportunity_applications')->count();
         $associations_count = User::where('type', UserType::ASSOCIATION)->count();
-        $trainees = TrainingOpportunityApplication::with(['user', 'user.profile', 'user.profile.specialization', 'training', 'training.association'])->take(3)->get();
+        $trainees = TrainingOpportunityApplication::with(['user', 'user.profile', 'user.profile.specialization', 'user.profile.city', 'training', 'training.association'])->take(3)->get();
         $notes_count = Note::count();
         $reports = Report::with(['application.user'])->take(3)->get();
         $assessments = Assessment::all();
