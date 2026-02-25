@@ -20,7 +20,7 @@ class ReportController extends Controller
 
     public function create()
     {
-        $applications = TrainingOpportunityApplication::with('user')->where('status', TrainingApplicationStatus::ACCEPTED)
+        $applications = TrainingOpportunityApplication::with(['user', 'training'])->where('status', TrainingApplicationStatus::ACCEPTED)
             ->whereHas('training', function ($q) {
                 $q->where('association_id', auth()->id());
             })->get();
