@@ -33,7 +33,6 @@ class TrainingOpportunity extends Model
         'status',
     ];
 
-
     public function association()
     {
         return $this->belongsTo(User::class, 'association_id', 'id');
