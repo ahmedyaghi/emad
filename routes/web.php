@@ -55,6 +55,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('courses/search-trainee', [App\Http\Controllers\Admin\CourseController::class, 'search_trainee'])->name('courses.search.trainee');
         Route::resource('/courses', App\Http\Controllers\Admin\CourseController::class)->names('courses');
         Route::resource('trainees', App\Http\Controllers\Admin\TraineeController::class)->names('trainees');
+        Route::resource('articles', App\Http\Controllers\Admin\ArticleController::class)->names('articles');
         Route::get('logs', [Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
     });
 
@@ -91,7 +92,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/profile', [App\Http\Controllers\Association\ProfileController::class, 'profile'])->name('profile');
         Route::resource('training-opportunities', App\Http\Controllers\Association\TrainingOpportunityController::class)->names('training-opportunities');
         Route::resource('reports', App\Http\Controllers\Association\ReportController::class)->names('reports');
-        Route::resource('articles', App\Http\Controllers\Association\ArticleController::class)->names('articles');
+
         Route::resource('assessments', App\Http\Controllers\Association\AssessmentController::class)->names('assessments');
         Route::resource('trainees', App\Http\Controllers\Association\TraineeController::class)->names('trainees');
     });

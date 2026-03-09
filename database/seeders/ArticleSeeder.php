@@ -15,7 +15,7 @@ class ArticleSeeder extends Seeder
     {
         for ($i = 1; $i <= 5; $i++) {
             Article::create([
-                'association_id' => 3,
+                'user_id' => 1,
                 'title' => 'مقال تجريبي رقم '.$i,
                 'short_description' => 'هذا وصف مختصر للمقال التجريبي رقم '.$i,
                 'description' => '<p>هذا هو المحتوى الكامل للمقال التجريبي رقم '.$i.'. هنا يمكنك إضافة نصوص، صور، وروابط حسب الحاجة.</p>',

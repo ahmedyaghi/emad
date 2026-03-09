@@ -4,7 +4,7 @@
     <div class="row"> 
     <div class="col-12"> 
         <ol class="breadcrumb">
-        <div class="breadcrumb-item"><a href="{{route('association.articles.create')}}">  المقالات</a></div>
+        <div class="breadcrumb-item"><a href="{{route('admin.articles.create')}}">  المقالات</a></div>
         <div class="breadcrumb-item">إضافة مقال</div>
         </ol>
     </div>
@@ -13,7 +13,7 @@
 </div>
 <div class="row"> 
 <div class="col-12"> 
-    <form action="{{route('association.articles.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.articles.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="row"> 
         <div class="col-12 mb-3">
@@ -23,7 +23,7 @@
             <h6 class="text-gray">  قم بتعبئة التقييم بناءً على بيانات المقال</h6>
             </div>
             <div class="col-lg-auto">
-            <div class="d-flex align-items-center"> <a class="me-2 btn btn-white" href="{{route('association.articles.index')}}"> رجوع</a>
+            <div class="d-flex align-items-center"> <a class="me-2 btn btn-white" href="{{route('admin.articles.index')}}"> رجوع</a>
                 <button class="btn btn-primary px-4" type="submit">إضافة المقال</button>
             </div>
             </div>

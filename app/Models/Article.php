@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class Article extends Model
 {
     protected $fillable = [
-        'association_id',
+        'user_id',
         'title',
         'slug',
         'short_description',
@@ -19,29 +19,29 @@ class Article extends Model
         'published_at',
     ];
 
-    public function association()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'association_id', 'id');
+        return $this->belongsTo(User::class);
     }
 
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? Storage::url($value) : asset('assets/images/image.png')
+            get: fn($value) => $value ? Storage::url($value) : asset('assets/images/image.png')
         );
     }
 
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 }

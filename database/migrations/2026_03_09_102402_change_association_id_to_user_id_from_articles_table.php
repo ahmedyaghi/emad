@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('user_profiles', function (Blueprint $table) {
-            $table->dropForeign(['skill_id']);
-            $table->dropColumn('skill_id');
+        Schema::table('articles', function (Blueprint $table) {
+            $table->renameColumn('association_id', 'user_id');
         });
     }
 
@@ -22,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user_profiles', function (Blueprint $table) {
-            $table->foreignId('skill_id')->nullable()->constrained()->onDelete('cascade');
+        Schema::table('articles', function (Blueprint $table) {
+            $table->renameColumn('user_id', 'association_id');
         });
     }
 };

@@ -65,6 +65,7 @@
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.packages.*') ? 'active' : '' }} menu-link" href="{{route($role.'.packages.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/subtitle.svg')}}" alt=""/></span><span class="menu-text"> الباقات</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.associations.*') ? 'active' : '' }} menu-link" href="{{route($role.'.associations.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/city3.svg')}}" alt=""/></span><span class="menu-text">  الجمعيات</span></a></li>
                 <li class="menu-item"><a class="{{ ( request()->routeIs($role.'.users.*') ||  request()->routeIs($role.'.roles.*')) ? 'active' : '' }} menu-link" href="{{route($role.'.users.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/user3.svg')}}" alt=""/></span><span class="menu-text">  إدارة المستخدمين</span></a></li>
+                <li class="menu-item"><a class="{{ request()->routeIs($role.'.articles.*') ? 'active' : '' }} menu-link" href="{{route($role.'.articles.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/book.svg')}}" alt=""/></span><span class="menu-text"> المقالات</span></a></li>
                 @break
               @case('association')
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.dashboard') ? 'active' : '' }} menu-link" href="{{route($role.'.dashboard')}}"><span class="menu-icon"><img src="{{asset('assets/images/home.svg')}}" alt=""/></span><span class="menu-text"> الصفحة الرئيسية</span></a></li>
@@ -72,7 +73,6 @@
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.trainees.*') ? 'active' : '' }} menu-link" href="{{route($role.'.trainees.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/agreement.svg')}}" alt=""/></span><span class="menu-text"> المتدربين</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.reports.*') ? 'active' : '' }} menu-link" href="{{route($role.'.reports.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/file.svg')}}" alt=""/></span><span class="menu-text">  التقارير</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.assessments.*') ? 'active' : '' }} menu-link" href="{{route($role.'.assessments.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/property-edit.svg')}}" alt=""/></span><span class="menu-text"> التقييم النهائي</span></a></li>
-                <li class="menu-item"><a class="{{ request()->routeIs($role.'.articles.*') ? 'active' : '' }} menu-link" href="{{route($role.'.articles.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/book.svg')}}" alt=""/></span><span class="menu-text"> المقالات</span></a></li>
               @break
               @case('consultant')
               @case('faculty-member')
