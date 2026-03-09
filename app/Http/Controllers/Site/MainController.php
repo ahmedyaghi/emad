@@ -20,7 +20,6 @@ class MainController extends Controller
         $training_opportunity_types = TrainingOpportunityType::all();
         $articles = Article::with(['user', 'user.profile'])->get();
         $cities = City::all();
-
         return view('site.main', get_defined_vars());
     }
 
