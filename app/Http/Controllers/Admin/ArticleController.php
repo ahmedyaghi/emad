@@ -14,7 +14,7 @@ class ArticleController extends Controller
         $query = Article::query();
 
         if (! empty(request('keyword'))) {
-            $query = $query->where('title', 'like', '%' . request('keyword') . '%');
+            $query = $query->where('title', 'like', '%'.request('keyword').'%');
         }
         if (! empty(request('order'))) {
             $query = $query->orderBy('id', request('order'));
