@@ -16,7 +16,7 @@ class MainController extends Controller
     public function main()
     {
         $associations = User::with('profile')->where('type', UserType::ASSOCIATION)->where('status', UserStatus::ACCEPTED)->get();
-        $training_opportunities = TrainingOpportunity::with(['association', 'association.profile','city'])->paginate(9);
+        $training_opportunities = TrainingOpportunity::with(['association', 'association.profile', 'city'])->paginate(9);
         $training_opportunity_types = TrainingOpportunityType::all();
         $articles = Article::with(['user', 'user.profile'])->get();
         $cities = City::all();
