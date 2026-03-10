@@ -134,7 +134,6 @@
         @endif
         <!-- end:: section -->
 
-
         <!-- start:: section -->
         <section class="section section-join">
           <div class="container">
@@ -162,6 +161,7 @@
               </div>
             </div>
           </div>
-        </section><!-- end:: section -->
+        </section>
+        <!-- end:: section -->
 
 </x-site.layout>

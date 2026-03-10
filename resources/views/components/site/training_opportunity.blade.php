@@ -9,7 +9,7 @@
             </div>
             <div class="widget_item-info mt-3 pt-3 mb-4">
                 <div class="d-flex align-items-center mb-3"><img class="info-icon me-2" src="{{asset('assets/images/location.svg')}}"
-                        alt="" /><span class="info-title text-gray">{{ $model->location}}</span></div>
+                        alt="" /><span class="info-title text-gray">{{ $model->city?->name}}</span></div>
                 <div class="d-flex align-items-center mb-3"><img class="info-icon me-2"
                         src="{{asset('assets/images/briefcase.svg')}}" alt="" /><span class="info-title text-gray">{{ $model->attendance}} </span></div>
                 <div class="d-flex align-items-center mb-3">

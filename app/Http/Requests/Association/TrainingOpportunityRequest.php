@@ -37,6 +37,8 @@ class TrainingOpportunityRequest extends FormRequest
             'features' => 'required|string',
             'responsibilities' => 'required|string',
             'conditions' => 'required|string',
+            'attendance' => 'required|string',
+            'duration' => 'required|string',
 
         ];
     }

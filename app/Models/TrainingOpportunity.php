@@ -64,28 +64,28 @@ class TrainingOpportunity extends Model
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
     protected function updatedAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
     protected function startDate(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
     protected function endDate(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
+            get: fn($value) => Carbon::parse($value)->locale('ar')->translatedFormat('d F Y')
         );
     }
 
@@ -97,5 +97,10 @@ class TrainingOpportunity extends Model
     public function faculty_member()
     {
         return $this->belongsTo(User::class, 'faculty_member_id', 'id');
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }

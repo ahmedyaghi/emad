@@ -172,6 +172,29 @@
                             @endif
                           </div>
                         </div>
+
+                          <div class="col-md-6"> 
+                          <div class="form-group"> 
+                            <label class="mb-2"> مدة التدريب <span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text" placeholder="مدة التدريب" name="duration" value="{{old('duration')}}"/>
+                             @if ($errors->has('duration'))
+                             <span class="text-danger">{{ $errors->first('duration') }}</span>
+                            @endif
+                          </div>
+                        </div>
+
+
+                          <div class="col-md-6"> 
+                          <div class="form-group"> 
+                            <label class="mb-2"> نوع الدوام <span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text" placeholder="نوع الدوام" name="attendance" value="{{old('attendance')}}"/>
+                             @if ($errors->has('attendance'))
+                             <span class="text-danger">{{ $errors->first('attendance') }}</span>
+                            @endif
+                          </div>
+                        </div>
+
+
                         <div class="col-md-6"> 
                           <div class="form-group"> 
                             <label class="mb-2"> وصف التدريب التعاوني  <span class="text-danger"> *</span></label>
