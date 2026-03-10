@@ -36,7 +36,9 @@ class ArticleController extends Controller
         $data['slug'] = Str::slug($data['title']);
         if ($request->hasFile('image')) {
             unset($data['image']);
-            $data['image'] = $request->file('image')->store('admins/articles', 'public');
+            $image = time().'.'.$request->image->extension();
+            $request->image->move(public_path('uploads/admin/articles'), $image);
+            $data['image'] = $image;
         }
         Article::create($data);
 

@@ -35,7 +35,10 @@ class ReportController extends Controller
         $data['slug'] = Str::slug($data['title']);
         if ($request->hasFile('file')) {
             unset($data['file']);
-            $data['file'] = $request->file('file')->store('associations/reports', 'public');
+            $file = time().'.'.$request->file->extension();
+            $request->file->move(public_path('uploads/association/reports'), $file);
+            $data['file'] = $file;
+
         }
         Report::create($data);
 

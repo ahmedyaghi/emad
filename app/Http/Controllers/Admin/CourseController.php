@@ -78,7 +78,9 @@ class CourseController extends Controller
                     $lecturer_image = null;
 
                     if (isset($lecturer_data['image'])) {
-                        $lecturer_image = $lecturer_data['image']->store('admin/courses', 'public');
+                        $image = time() . '.' . $lecturer_data['image']->extension();
+                        $lecturer_data['image']->move(public_path('uploads/admin/courses/lecturers'), $image);
+                        $lecturer_image = $image;
                     }
 
                     $lecturer = Lecturer::create([
@@ -122,7 +124,7 @@ class CourseController extends Controller
 
             return response()->json([
                 'success' => false,
-                'message' => 'حدث خطأ أثناء الحفظ: '.$e->getMessage(),
+                'message' => 'حدث خطأ أثناء الحفظ: ' . $e->getMessage(),
             ], 500);
         }
     }
@@ -137,7 +139,7 @@ class CourseController extends Controller
         }
 
         if (! empty(request('name'))) {
-            $query->orWhere('name', 'like', '%'.request('name').'%');
+            $query->orWhere('name', 'like', '%' . request('name') . '%');
         }
         $query->where('type', UserType::INDIVIDUAL);
         $query->with('profile');

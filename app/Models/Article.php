@@ -27,7 +27,7 @@ class Article extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? Storage::url($value) : asset('assets/images/image.png')
+            get: fn ($value) => $value ? url('uploads/admin/articles/'.$value) : asset('assets/images/image.png')
         );
     }
 
