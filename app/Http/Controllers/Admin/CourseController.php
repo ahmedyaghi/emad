@@ -79,7 +79,7 @@ class CourseController extends Controller
 
                     if (isset($lecturer_data['image'])) {
                         $image = time().'.'.$lecturer_data['image']->extension();
-                        $lecturer_data['image']->move(public_path('uploads/admin/courses/lecturers'), $image);
+                        $lecturer_data['image']->move(public_path('uploads/courses/lecturers'), $image);
                         $lecturer_image = $image;
                     }
 

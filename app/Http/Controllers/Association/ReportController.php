@@ -33,13 +33,10 @@ class ReportController extends Controller
         $data = $request->validated();
         $data['association_id'] = auth()->id();
         $data['slug'] = Str::slug($data['title']);
-        if ($request->hasFile('file')) {
-            unset($data['file']);
-            $file = time().'.'.$request->file->extension();
-            $request->file->move(public_path('uploads/association/reports'), $file);
-            $data['file'] = $file;
-
-        }
+        unset($data['file']);
+        $file = time().'.'.$request->file->extension();
+        $request->file->move(public_path('uploads/reports'), $file);
+        $data['file'] = $file;
         Report::create($data);
 
         return redirect()->route('association.reports.index')->with('success', 'تم إضافة التقرير بنجاح!');

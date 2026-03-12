@@ -37,7 +37,7 @@ class ArticleController extends Controller
         if ($request->hasFile('image')) {
             unset($data['image']);
             $image = time().'.'.$request->image->extension();
-            $request->image->move(public_path('uploads/admin/articles'), $image);
+            $request->image->move(public_path('uploads/articles'), $image);
             $data['image'] = $image;
         }
         Article::create($data);

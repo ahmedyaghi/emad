@@ -15,7 +15,7 @@ class Assessment extends Model
         'faculty_member_id',
         'name',
         'description',
-        'status'
+        'status',
     ];
 
     public function application()

@@ -100,7 +100,8 @@
               <h6 class="text-white">{{Auth::user()->name}}</h6>
               <h6 class="text-white font-light font-12">عرض الملف الشخصي</h6>
               </div>
-              <div class="col-auto icon"><img src="{{asset('assets/images/arrow-left.svg')}}" alt=""/></div></a></div>
+              <div class="col-auto icon"><img src="{{asset('assets/images/arrow-left.svg')}}" alt=""/></div></a>\
+          </div>
       </aside>
       <!-- end:: aside -->
       </div>

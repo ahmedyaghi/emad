@@ -6,7 +6,7 @@
         @endphp
         <div class="d-flex align-items-center justify-content-between mb-3">
         <h4 class="widget_item-title font-semi-bold"><a href="{{route($role.'.reports.show', $report)}}">{{$report->title}}</a></h4>
-        <a class="btn btn-light p-1 rounded" href="{{Storage::url($report->file)}}"><img src="{{asset('assets/images/download2.svg')}}" alt=""/></a>
+        <a class="btn btn-light p-1 rounded" href="{{$report->file}}"><img src="{{asset('assets/images/download2.svg')}}" alt=""/></a>
         </div>
         <h6 class="widget_item-desc text-gray mb-3">{{$report->description}}</h6>
         <div class="widget_item-profile mb-4 d-flex align-items-center">

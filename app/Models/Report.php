@@ -85,4 +85,11 @@ class Report extends Model
             return $this->application->training->faculty_member->name;
         }
     }
+
+    protected function file(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($value) => $value ? url('uploads/reports/'.$value) : null
+        );
+    }
 }

@@ -21,7 +21,7 @@ class Lecturer extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? url('uploads/admin/courses/lecturers/'.$value) : asset('assets/images/avatar.png')
+            get: fn ($value) => $value ? url('uploads/courses/lecturers/'.$value) : asset('assets/images/avatar.png')
         );
     }
 }

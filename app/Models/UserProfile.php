@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class UserProfile extends Model
 {
@@ -91,7 +90,7 @@ class UserProfile extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? Storage::url($value) : asset('assets/images/avatar.png')
+            get: fn ($value) => $value ? url('uploads/users/profiles/'.$value) : asset('assets/images/avatar.png')
         );
     }
 

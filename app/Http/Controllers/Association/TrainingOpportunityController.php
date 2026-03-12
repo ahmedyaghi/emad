@@ -93,8 +93,6 @@ class TrainingOpportunityController extends Controller
                     break;
             }
         }
-        // $data['start_date'] = date('Y-m-d', strtotime($data['start_date']));
-        // $data['end_date'] = date('Y-m-d', strtotime($data['end_date']));
         $data['slug'] = Str::slug($data['title']);
         $data['status'] = 1;
         unset($data['target']);

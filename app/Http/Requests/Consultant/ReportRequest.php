@@ -25,7 +25,7 @@ class ReportRequest extends FormRequest
             'application_id' => 'required|exists:training_opportunity_applications,id',
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'file' => 'required|mimes:pdf,doc,docx'
+            'file' => 'required|mimes:pdf,doc,docx',
         ];
     }
 }
