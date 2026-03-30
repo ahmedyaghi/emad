@@ -9,7 +9,6 @@ class TrainingOpportunityTypeSeeder extends Seeder
 {
     public function run(): void
     {
-        TrainingOpportunityType::query()->delete();
         $types = [
             'إداري',
             'تقني',
