@@ -38,5 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillSeeder::class);
         $this->call(SpecializationSeeder::class);
         $this->call(SectionTypeSeeder::class);
+        $this->call(NationalitySeeder::class);
     }
 }
