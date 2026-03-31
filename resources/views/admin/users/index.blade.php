@@ -20,7 +20,10 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-auto"> <a class="btn btn-primary" href="{{route('admin.users.create')}}"> إضافة المستخدم</a></div>
+                <div class="col-auto"> 
+                  <a class="btn btn-primary" href="{{route('admin.users.create')}}"> إضافة المستخدم</a>
+                 <a href="{{ route('admin.users.export') }}" class="btn btn-secondary">تصدير Excel</a>
+              </div>
               </div>
             </div>
           </div>
@@ -30,9 +33,6 @@
                 <div class="toolbar-action">
                   <div class="search-bar">
                     <input class="form-control" type="text" placeholder="البحث عن المستخدمين ..."/><span class="search-icon"><img src="../assets/images/search.svg" alt=""/></span>
-                  </div>
-                  <div class="action-buttons">
-                    <button class="btn btn-icon border rounded-4 drawer-toggle"><img src="../assets/images/filter.svg" alt=""/></button>
                   </div>
                   <div class="action-buttons">
                     <select class="select2">
@@ -62,26 +62,44 @@
                   <div class="col-auto">
                         <div class="d-flex align-items-center">
                             <div class="dropdown ms-2">
-                                <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown" aria-expanded="false"><img src="../assets/images/more-vertical.svg" alt=""></button>
+                                <button class="btn btn-icon bg-light py-1 px-2 h-auto w-auto border-0" data-bs-toggle="dropdown" aria-expanded="false"><img src="{{asset('assets/images/more-vertical.svg')}}" alt=""></button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="">
+                              
+                                   <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                                      @csrf
+                                      @method('PATCH')
+
+                                      <input type="hidden" name="status" value="{{ $user->status === \App\Enums\UserStatus::ACCEPTED ? \App\Enums\UserStatus::REJECTED : \App\Enums\UserStatus::ACCEPTED }}">
+
+                                      <button type="submit" class="dropdown-item">
+                                          <span class="dropdown-item-icon me-2">
+                                              @if($user->status === \App\Enums\UserStatus::ACCEPTED)
+                                                  <i class="fas fa-user-slash  text-danger"></i> &nbsp;
+                                                  تعطيل المستخدم &nbsp;
+                                              @else
+                                                  <i class="fas fa-user-check text-success"></i> &nbsp;
+                                                  تفعيل المستخدم &nbsp;
+                                              @endif
+                                          </span>
+                                      </button>
+                                  </form>
+                                   <a class="dropdown-item" href="{{ route('admin.users.edit', $user->id) }}">
+                                      <span class="dropdown-item-icon me-2">
+                                          <i class="fas fa-user-edit text-primary"></i>
+                                      </span>
+                                      <span class="font-medium"> تعديل المستخدم </span>
+                                  </a>
+                                   <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('هل أنت متأكد من حذف المستخدم؟')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="dropdown-item">
                                         <span class="dropdown-item-icon me-2">
-                                            <i class="fas fa-user-check text-primary"></i>
-                                        </span>
-                                        <span class="font-medium">تفعيل المستخدم </span>
-                                    </a>
-                                    <a class="dropdown-item" href="">
-                                        <span class="dropdown-item-icon me-2">
-                                            <i class="fas fa-user-edit text-primary"></i>
-                                        </span>
-                                        <span class="font-medium"> تعديل المستخدم </span>
-                                    </a>
-                                    <button class="dropdown-item" >
-                                        <span class="dropdown-item-icon me-2">
-                                            <i class="fas fa-user-times text-primary"></i>
+                                            <i class="fas fa-user-times text-danger"></i>
                                         </span>
                                         <span class="font-medium"> حذف المستخدم </span>
                                     </button>
+                                </form>
                                 </div>
                             </div>
                         </div>
@@ -111,79 +129,6 @@
             <div class="col-12">
               <div class="pannel p-2">
                 {{$users->links('components.common.pagination')}}
-              </div>
-            </div>
-          </div>
-          <div class="drawer bg-white p-4">
-            <div class="drawer-head mb-4">
-              <div class="d-flex align-items-center justify-content-between">
-                <h4 class="font-bold">فلترة المتقدمين</h4>
-                <button class="btn btn-icon btn-light h-auto w-auto p-1 rounded-pull drawer-toggle"><img src="../assets/images/close.svg" alt=""/></button>
-              </div>
-            </div>
-            <div class="drawer-body mb-4">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="mb-2">هل الموظف سعودي؟</label>
-                    <select class="select2" data-placeholder="هل الموظف سعودي؟">
-                      <option value="1">نعم </option>
-                      <option value="1">لا </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="mb-2">الجنسية</label>
-                    <select class="select2" data-placeholder="الجنسية">
-                      <option value="1">نعم </option>
-                      <option value="1">لا </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="mb-2">المؤهل العلمي</label>
-                    <select class="select2" data-placeholder="المؤهل العلمي">
-                      <option value="1">نعم </option>
-                      <option value="1">لا </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="mb-2">التخصص</label>
-                    <select class="select2" data-placeholder="التخصص">
-                      <option value="1">نعم </option>
-                      <option value="1">لا </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-label">تاريخ التقديم </label>
-                    <input class="form-control datetimepicker" type="text" placeholder="تاريخ التقديم "/>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="mb-2">هل الموظف قديم؟</label>
-                    <select class="select2" data-placeholder="هل الموظف قديم؟">
-                      <option value="1">نعم </option>
-                      <option value="1">لا </option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="drawer-footer">
-              <div class="row">
-                <div class="col-lg-6">
-                  <button class="btn btn-white w-100">مسح الفلاتر</button>
-                </div>
-                <div class="col-lg-6">
-                  <button class="btn btn-primary w-100">تطبيق الفلتر (24 مشروع)</button>
-                </div>
               </div>
             </div>
           </div>

@@ -46,6 +46,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'dashboard'])->name('dashboard');
         Route::resource('profile', App\Http\Controllers\Admin\ProfileController::class)->names('profile');
         Route::get('/users/update-status/{status}/{id}', [App\Http\Controllers\Admin\UserController::class, 'update_status'])->name('users.update.status');
+        Route::get('/users-export', [App\Http\Controllers\Admin\UserController::class, 'export'])->name('users.export');
         Route::resource('/users', App\Http\Controllers\Admin\UserController::class)->names('users');
         Route::resource('/roles', App\Http\Controllers\Admin\RoleController::class)->names('roles');
         Route::resource('/packages', App\Http\Controllers\Admin\PackageController::class)->names('packages');
