@@ -67,7 +67,6 @@
                 <li class="menu-item"><a class="{{ ( request()->routeIs($role.'.users.*') ||  request()->routeIs($role.'.roles.*')) ? 'active' : '' }} menu-link" href="{{route($role.'.users.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/user3.svg')}}" alt=""/></span><span class="menu-text">  إدارة المستخدمين</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.articles.*') ? 'active' : '' }} menu-link" href="{{route($role.'.articles.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/book.svg')}}" alt=""/></span><span class="menu-text"> المقالات</span></a></li>
                 <li class="menu-item"><a class="{{ request()->routeIs($role.'.universities.*') ? 'active' : '' }} menu-link" href="{{route($role.'.universities.index')}}"><span class="menu-icon"><img src="{{asset('assets/images/university.svg')}}" alt=""/></span><span class="menu-text"> الجامعات</span></a></li>
-                <li class="menu-item"><a class="{{ request()->routeIs($role.'.logs') ? 'active' : '' }} menu-link" href="{{route($role.'.logs')}}" target="_blank"><span class="menu-icon"><img src="{{asset('assets/images/log.svg')}}" alt=""/></span><span class="menu-text"> سجل الأخطاء</span></a></li>
 
                 @break
               @case('association')

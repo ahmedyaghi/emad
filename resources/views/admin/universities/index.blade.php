@@ -33,7 +33,7 @@
                     <div class="col-auto">
                       <div class="dropdown">
                         <button class="btn btn-white border-0 btn-icon" type="button" data-bs-toggle="dropdown">
-                          <img src="{{asset('dashboard-assets/images/more.svg')}}" alt=""/>
+                          <img src="{{asset('assets/images/more-vertical.svg')}}" alt=""/>
                         </button>
                         <ul class="dropdown-menu">
                           <li>
