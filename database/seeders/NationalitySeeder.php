@@ -61,6 +61,7 @@ class NationalitySeeder extends Seeder
             'رواندي',
         ];
 
+        Nationality::query()->delete();
         foreach ($nationalities as $name) {
             Nationality::create(['name' => $name]);
         }
