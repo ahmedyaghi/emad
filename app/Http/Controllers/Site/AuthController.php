@@ -10,6 +10,10 @@ use App\Http\Requests\Site\Auth\RegisterRequest;
 use App\Http\Requests\Site\Auth\VerifyCodeRequest;
 use App\Mail\VerifyUserMail;
 use App\Models\City;
+use App\Models\Country;
+use App\Models\Nationality;
+use App\Models\Position;
+use App\Models\SectionType;
 use App\Models\Skill;
 use App\Models\Specialization;
 use App\Models\University;
@@ -30,6 +34,11 @@ class AuthController extends Controller
         $cities = City::all();
         $specializations = Specialization::all();
         $skills = Skill::all();
+        $nationalities = Nationality::all();
+        $countries = Country::all();
+        $section_types = SectionType::all();
+        $positions = Position::all();
+
         switch ($type) {
             case 'individual':
                 return view('site.auth.register_individual', get_defined_vars());

@@ -46,7 +46,6 @@
                             <div class="col-auto">
                               <select class="form-control  select2 " data-width="100px" data-placeholder="اختر" name="code">
                                 <option value="+966">966</option>
-
                               </select>
                             </div>
                           </div>
@@ -83,16 +82,17 @@
                       
 
                      <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
-                          <option></option>
-                          <option value="1">اﻟﺘﺨﺼﺺ 1</option>
-                          <option value="2">اﻟﺘﺨﺼﺺ 2</option>
-                        </select>
-                        @if ($errors->has('specilization_id'))
-                              <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
-                        @endif
+                        <div class="form-group">
+                          <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
+                          <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
+                            <option></option>
+                            @foreach ($specializations as $specialization)
+                              <option value="{{$specialization->id}}">{{$specialization->name}}</option>
+                            @endforeach
+                          </select>
+                          @if ($errors->has('specilization_id'))
+                                <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
+                          @endif
                       </div>
                      </div>
                     {{-- <div class="col-md-6">
@@ -113,8 +113,9 @@
                         <label class="mb-2">الجنسية<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="nationality_id">
                           <option></option>
-                          <option value="1">الجنسية 1</option>
-                          <option value="2">الجنسية 2</option>
+                          @foreach ($nationalities as $nationality)
+                              <option value="{{$nationality->id}}">{{$nationality->name}}</option>
+                            @endforeach
                         </select>
                          @if ($errors->has('nationality_id'))
                               <span class="text-danger">{{ $errors->first('nationality_id') }}</span>
@@ -126,8 +127,8 @@
                         <label class="mb-2">الجنس<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="gender">
                           <option></option>
-                          <option value="1">الجنس 1</option>
-                          <option value="2">الجنس 2</option>
+                          <option value="1">ذكر</option>
+                          <option value="2">أنثى</option>
                         </select>
                         @if ($errors->has('gender'))
                               <span class="text-danger">{{ $errors->first('gender') }}</span>
@@ -191,7 +192,15 @@
                     </div>
                   </div>
                   </form>
-               
+                 @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 </div>
               </div>
             </div>

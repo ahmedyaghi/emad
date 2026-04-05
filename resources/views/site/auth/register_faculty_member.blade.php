@@ -34,15 +34,16 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
-                          <option></option>
-                          <option value="1">اﻟﺘﺨﺼﺺ 1</option>
-                          <option value="2">اﻟﺘﺨﺼﺺ 2</option>
-                        </select>
-                        @if ($errors->has('specilization_id'))
-                              <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
-                        @endif
+                          <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
+                          <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
+                            <option></option>
+                            @foreach ($specializations as $specialization)
+                              <option value="{{$specialization->id}}">{{$specialization->name}}</option>
+                            @endforeach
+                          </select>
+                          @if ($errors->has('specilization_id'))
+                                <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
+                          @endif
                       </div>
                      </div>
                      <div class="col-md-6">
@@ -50,8 +51,9 @@
                         <label class="mb-2">اﻟﻤﺪﻳﻨﺔ<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="city_id">
                           <option></option>
-                          <option value="1">اﻟﻤﺪﻳﻨﺔ 1</option>
-                          <option value="2">اﻟﻤﺪﻳﻨﺔ 2</option>
+                          @foreach ($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                          @endforeach
                         </select>
                         @if ($errors->has('city_id'))
                               <span class="text-danger">{{ $errors->first('city_id') }}</span>
@@ -85,8 +87,9 @@
                         <label class="mb-2"> القطاع<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="section_type_id">
                           <option></option>
-                          <option value="1">القطاع 1</option>
-                          <option value="2">القطاع 2</option>
+                          @foreach ($section_types as $section_type)
+                            <option value="{{$section_type->id}}">{{$section_type->name}}</option>
+                          @endforeach
                         </select>
                         @if ($errors->has('section_type_id'))
                               <span class="text-danger">{{ $errors->first('section_type_id') }}</span>
@@ -98,8 +101,9 @@
                         <label class="mb-2">الدولة <span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر"  name="country_id">
                           <option></option>
-                          <option value="1">الدولة 1</option>
-                          <option value="2">الدولة 2</option>
+                          @foreach($countries as $country)
+                            <option value="{{$country->id}}">{{$country->name}}</option>
+                          @endforeach
                         </select>
                          @if ($errors->has('country_id'))
                               <span class="text-danger">{{ $errors->first('country_id') }}</span>
@@ -119,7 +123,6 @@
                             <div class="col-auto">
                               <select class="form-control  select2 " data-width="100px" data-placeholder="اختر" name="code">
                                 <option value="+966">966</option>
-                               
                               </select>
                             </div>
                           </div>
@@ -201,6 +204,15 @@
                     </div>
                   </div>
                   </form>
+                   @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 </div>
               </div>
             </div>

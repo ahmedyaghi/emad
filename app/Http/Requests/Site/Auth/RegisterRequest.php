@@ -80,9 +80,9 @@ class RegisterRequest extends FormRequest
 
                 $rules = array_merge($rules, [
                     'gender' => 'required|integer|in:1,2',
-                    'work_type_id' => 'required|string|max:255',
+                    // 'work_type_id' => 'required|string|max:255',
                     'nationality_id' => 'required|string|max:255',
-                    'place_type_id' => 'required|string|max:255',
+                    // 'place_type_id' => 'required|string|max:255',
                     'type' => 'required|in:'.UserType::CONSULTANT->value,
                 ]);
                 break;

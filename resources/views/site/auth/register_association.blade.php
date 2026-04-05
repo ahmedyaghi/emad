@@ -84,15 +84,16 @@
                       </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
-                        <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
-                          <option></option>
-                          <option value="1">اﻟﺘﺨﺼﺺ 1</option>
-                          <option value="2">اﻟﺘﺨﺼﺺ 2</option>
-                        </select>
-                        @if ($errors->has('specilization_id'))
-                              <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
-                        @endif
+                          <label class="mb-2"> اﻟﺘﺨﺼﺺ<span class="text-danger ms-1">*</span></label>
+                          <select class="select2 form-control" data-placeholder="اختر" name="specilization_id">
+                            <option></option>
+                            @foreach ($specializations as $specialization)
+                              <option value="{{$specialization->id}}">{{$specialization->name}}</option>
+                            @endforeach
+                          </select>
+                          @if ($errors->has('specilization_id'))
+                                <span class="text-danger">{{ $errors->first('specilization_id') }}</span>
+                          @endif
                       </div>
                      </div>
                     
@@ -101,8 +102,9 @@
                         <label class="mb-2"> القطاع<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر" name="section_type_id">
                           <option></option>
-                          <option value="1">القطاع 1</option>
-                          <option value="2">القطاع 2</option>
+                          @foreach ($section_types as $section_type)
+                            <option value="{{$section_type->id}}">{{$section_type->name}}</option>
+                          @endforeach
                         </select>
                         @if ($errors->has('section_type_id'))
                               <span class="text-danger">{{ $errors->first('section_type_id') }}</span>
@@ -114,8 +116,9 @@
                         <label class="mb-2">الدولة <span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر"  name="country_id">
                           <option></option>
-                          <option value="1">الدولة 1</option>
-                          <option value="2">الدولة 2</option>
+                          @foreach ($countries as $country)
+                            <option value="{{$country->id}}">{{$country->name}}</option>
+                          @endforeach
                         </select>
                          @if ($errors->has('country_id'))
                               <span class="text-danger">{{ $errors->first('country_id') }}</span>
@@ -128,8 +131,9 @@
                         <label class="mb-2">المدينة <span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control" data-placeholder="اختر"  name="city_id">
                           <option></option>
-                          <option value="1">المدينة 1</option>
-                          <option value="2">المدينة 2</option>
+                          @foreach ($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>  
+                          @endforeach
                         </select>
                          @if ($errors->has('city_id'))
                               <span class="text-danger">{{ $errors->first('city_id') }}</span>
@@ -199,8 +203,9 @@
                         <label class="mb-2"> المنصب<span class="text-danger ms-1">*</span></label>
                         <select class="select2 form-control required" data-placeholder="اختر" name="position_id">
                             <option></option>
-                            <option value="1">المنصب 1</option>
-                            <option value="2">المنصب 2</option>
+                             @foreach ($positions as $position)
+                            <option value="{{$position->id}}">{{$position->name}}</option>  
+                          @endforeach
                         </select>
                         @if ($errors->has('position_id'))
                             <span class="text-danger">{{ $errors->first('position_id') }}</span>
@@ -258,6 +263,15 @@
                     </div>
                   </div>
                   </form>
+                   @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 </div>
               </div>
             </div>
